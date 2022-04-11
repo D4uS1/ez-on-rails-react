@@ -1,0 +1,39 @@
+.ez-on-rails-form-outer-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ez-on-rails-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ez-on-rails-form-field-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.ez-on-rails-form-field-label {
+    font-size: large;
+}
+
+.ez-on-rails-form-field {
+
+}
+
+.ez-on-rails-form-field-container .invalid-feedback {
+    font-size: small;
+    color: darkred;
+}
+
+.ez-on-rails-form-submit-button {
+
+}

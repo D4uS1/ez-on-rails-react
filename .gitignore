@@ -1,0 +1,7 @@
+node_modules/
+
+# Webstorm
+.idea/
+
+# OSX
+.DS_Store
