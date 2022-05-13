@@ -153,7 +153,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
         privacyPolicyAccepted: false
     };
 
-    return <div className="ez-on-rails-form-outer-container">
+    return (
         <Formik
             initialValues={initialFormValues}
             validationSchema={RegistrationValidationSchema}
@@ -262,5 +262,5 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 </form>
             )}
         </Formik>
-    </div>
+    )
 }

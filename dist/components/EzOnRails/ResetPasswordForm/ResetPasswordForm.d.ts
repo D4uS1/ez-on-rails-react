@@ -1,6 +1,5 @@
-/// <reference types="react" />
 import '../EzOnRails.css';
-import { DefaultFormProps } from "../shared/Types";
+import { DefaultFormProps } from '../shared/Types';
 /**
  * Props for the RequestPasswordForm component.
  * Used to customize the request password form form.

@@ -1,7 +1,6 @@
-/// <reference types="react" />
 import '../EzOnRails.css';
-import { EzOnRailsAuthInfo } from "../../../http/client/EzOnRailsHttpClient";
-import { DefaultFormProps } from "../shared/Types";
+import { EzOnRailsAuthInfo } from '../../../http/client/EzOnRailsHttpClient';
+import { DefaultFormProps } from '../shared/Types';
 /**
  * Props for the LoginForm component.
  * Used to customize the login form.

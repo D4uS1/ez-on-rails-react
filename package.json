@@ -1,6 +1,6 @@
 {
   "name": "ez-on-rails-react",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Interface for communicating with ez-on-rails backends in react.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

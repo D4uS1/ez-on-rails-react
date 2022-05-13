@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import '../EzOnRails.css';
 import { DefaultFormProps } from "../shared/Types";
 /**

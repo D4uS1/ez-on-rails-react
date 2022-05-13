@@ -73,7 +73,7 @@ var EzOnRailsConfig = {
     }
 };
 
-/*! *****************************************************************************
+/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -115,7 +115,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __awaiter$1(thisArg, _arguments, P, generator) {
+function __awaiter(thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -125,7 +125,7 @@ function __awaiter$1(thisArg, _arguments, P, generator) {
     });
 }
 
-function __generator$1(thisArg, body) {
+function __generator(thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
@@ -165,7 +165,7 @@ function __values(o) {
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
 
-function __read$1(o, n) {
+function __read(o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
     if (!m) return o;
     var i = m.call(o), r, ar = [], e;
@@ -179,6 +179,13 @@ function __read$1(o, n) {
         }
         finally { if (e) throw e.error; }
     }
+    return ar;
+}
+
+/** @deprecated */
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
     return ar;
 }
 
@@ -2070,9 +2077,9 @@ var isUnauthorizedError = function (error) {
  * @param body
  * @param headers
  */
-var fetchWithThrow = function (method, url, body, headers) { return __awaiter$1(void 0, void 0, void 0, function () {
+var fetchWithThrow = function (method, url, body, headers) { return __awaiter(void 0, void 0, void 0, function () {
     var response, responseHeaders, responseBody;
-    return __generator$1(this, function (_a) {
+    return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, fetch(url, {
                     method: method,
@@ -2124,9 +2131,9 @@ var EzOnRailsHttpClient = {
      *
      * @param data
      */
-    signUp: function (data) { return __awaiter$1(void 0, void 0, void 0, function () {
+    signUp: function (data) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     data = toSnakeCase(data);
@@ -2145,9 +2152,9 @@ var EzOnRailsHttpClient = {
      *
      * @param data
      */
-    signIn: function (data) { return __awaiter$1(void 0, void 0, void 0, function () {
+    signIn: function (data) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     data = toSnakeCase(data);
@@ -2161,8 +2168,8 @@ var EzOnRailsHttpClient = {
     /**
      * Sends a signout request for the current user to the ez_on_rails endpoint.
      */
-    signOut: function (authInfo) { return __awaiter$1(void 0, void 0, void 0, function () {
-        return __generator$1(this, function (_a) {
+    signOut: function (authInfo) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetchWithThrow('DELETE', toApiUrl('auth/sign_out'), null, defaultHttpHeader(authInfo))];
                 case 1:
@@ -2176,8 +2183,8 @@ var EzOnRailsHttpClient = {
      *
      * @param data
      */
-    passwordResetInstructions: function (data) { return __awaiter$1(void 0, void 0, void 0, function () {
-        return __generator$1(this, function (_a) {
+    passwordResetInstructions: function (data) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     data = toSnakeCase(data);
@@ -2195,8 +2202,8 @@ var EzOnRailsHttpClient = {
      *
      * @param data
      */
-    passwordReset: function (data) { return __awaiter$1(void 0, void 0, void 0, function () {
-        return __generator$1(this, function (_a) {
+    passwordReset: function (data) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     data = toSnakeCase(data);
@@ -2212,9 +2219,9 @@ var EzOnRailsHttpClient = {
      *
      * @param authInfo
      */
-    getUser: function (authInfo) { return __awaiter$1(void 0, void 0, void 0, function () {
+    getUser: function (authInfo) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetchWithThrow('GET', toApiUrl('users/me'), null, defaultHttpHeader(authInfo))];
                 case 1:
@@ -2229,9 +2236,9 @@ var EzOnRailsHttpClient = {
      * @param data
      * @param authInfo
      */
-    updateUser: function (data, authInfo) { return __awaiter$1(void 0, void 0, void 0, function () {
+    updateUser: function (data, authInfo) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     data = toSnakeCase(data);
@@ -2248,8 +2255,8 @@ var EzOnRailsHttpClient = {
      *
      * @param data
      */
-    confirmationInstructions: function (data) { return __awaiter$1(void 0, void 0, void 0, function () {
-        return __generator$1(this, function (_a) {
+    confirmationInstructions: function (data) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     data = toSnakeCase(data);
@@ -2265,9 +2272,9 @@ var EzOnRailsHttpClient = {
      *
      * @param data
      */
-    confirmation: function (data) { return __awaiter$1(void 0, void 0, void 0, function () {
+    confirmation: function (data) { return __awaiter(void 0, void 0, void 0, function () {
         var url;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     url = toBaseUrl('users/confirmation');
@@ -2300,9 +2307,9 @@ var EzOnRailsHttpClient = {
     get: function (url, data, authInfo, beforeRequest) {
         if (authInfo === void 0) { authInfo = undefined; }
         if (beforeRequest === void 0) { beforeRequest = undefined; }
-        return __awaiter$1(void 0, void 0, void 0, function () {
+        return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = toApiUrl(url);
@@ -2342,9 +2349,9 @@ var EzOnRailsHttpClient = {
     post: function (url, data, authInfo, beforeRequest) {
         if (authInfo === void 0) { authInfo = undefined; }
         if (beforeRequest === void 0) { beforeRequest = undefined; }
-        return __awaiter$1(void 0, void 0, void 0, function () {
+        return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         if (data) {
@@ -2380,9 +2387,9 @@ var EzOnRailsHttpClient = {
     patch: function (url, data, authInfo, beforeRequest) {
         if (authInfo === void 0) { authInfo = undefined; }
         if (beforeRequest === void 0) { beforeRequest = undefined; }
-        return __awaiter$1(void 0, void 0, void 0, function () {
+        return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         if (data) {
@@ -2418,9 +2425,9 @@ var EzOnRailsHttpClient = {
     put: function (url, data, authInfo, beforeRequest) {
         if (authInfo === void 0) { authInfo = undefined; }
         if (beforeRequest === void 0) { beforeRequest = undefined; }
-        return __awaiter$1(void 0, void 0, void 0, function () {
+        return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         if (data) {
@@ -2458,9 +2465,9 @@ var EzOnRailsHttpClient = {
     delete: function (url, data, authInfo, beforeRequest) {
         if (authInfo === void 0) { authInfo = undefined; }
         if (beforeRequest === void 0) { beforeRequest = undefined; }
-        return __awaiter$1(void 0, void 0, void 0, function () {
+        return __awaiter(void 0, void 0, void 0, function () {
             var result;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         url = toApiUrl(url);
@@ -2514,8 +2521,8 @@ var EzOnRailsSwr = {
         if (method === void 0) { method = 'get'; }
         if (data === void 0) { data = null; }
         if (authInfo === void 0) { authInfo = undefined; }
-        return __awaiter$1(void 0, void 0, void 0, function () {
-            return __generator$1(this, function (_a) {
+        return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 method = method.toLowerCase();
                 switch (method) {
                     case 'post': {
@@ -2572,7 +2579,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$2 = ".ez-on-rails-form-outer-container {\n    display: flex;\n    width: 100%;\n    height: 100%;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.ez-on-rails-form-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: flex-start;\n}\n\n.ez-on-rails-form-field-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-start;\n    align-items: flex-start;\n}\n\n.ez-on-rails-form-field-label {\n    font-size: large;\n}\n\n.ez-on-rails-form-field {\n\n}\n\n.ez-on-rails-form-field-container .invalid-feedback {\n    font-size: small;\n    color: darkred;\n}\n\n.ez-on-rails-form-submit-button {\n\n}\n";
+var css_248z$2 = ".ez-on-rails-form-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: flex-start;\n}\n\n.ez-on-rails-form-field-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-start;\n    align-items: flex-start;\n}\n\n.ez-on-rails-form-field-label {\n    font-size: large;\n}\n\n.ez-on-rails-form-field {\n\n}\n\n.ez-on-rails-form-field-container .invalid-feedback {\n    font-size: small;\n    color: darkred;\n}\n\n.ez-on-rails-form-submit-button {\n\n}\n";
 styleInject(css_248z$2);
 
 // ES6 Map
@@ -10742,9 +10749,9 @@ var isSet = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
 var isSet$1 = isSet;
 
 /** Used to compose bitmasks for cloning. */
-var CLONE_DEEP_FLAG = 1,
+var CLONE_DEEP_FLAG$1 = 1,
     CLONE_FLAT_FLAG = 2,
-    CLONE_SYMBOLS_FLAG$1 = 4;
+    CLONE_SYMBOLS_FLAG$2 = 4;
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -10809,9 +10816,9 @@ cloneableTags[weakMapTag] = false;
  */
 function baseClone(value, bitmask, customizer, key, object, stack) {
   var result,
-      isDeep = bitmask & CLONE_DEEP_FLAG,
+      isDeep = bitmask & CLONE_DEEP_FLAG$1,
       isFlat = bitmask & CLONE_FLAT_FLAG,
-      isFull = bitmask & CLONE_SYMBOLS_FLAG$1;
+      isFull = bitmask & CLONE_SYMBOLS_FLAG$2;
 
   if (customizer) {
     result = object ? customizer(value, key, object, stack) : customizer(value);
@@ -10884,7 +10891,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 }
 
 /** Used to compose bitmasks for cloning. */
-var CLONE_SYMBOLS_FLAG = 4;
+var CLONE_SYMBOLS_FLAG$1 = 4;
 
 /**
  * Creates a shallow clone of `value`.
@@ -10913,7 +10920,7 @@ var CLONE_SYMBOLS_FLAG = 4;
  * // => true
  */
 function clone(value) {
-  return baseClone(value, CLONE_SYMBOLS_FLAG);
+  return baseClone(value, CLONE_SYMBOLS_FLAG$1);
 }
 
 /**
@@ -11444,6 +11451,32 @@ var TYPE_STATICS = {};
 TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
 TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
 
+/** Used to compose bitmasks for cloning. */
+var CLONE_DEEP_FLAG = 1,
+    CLONE_SYMBOLS_FLAG = 4;
+
+/**
+ * This method is like `_.clone` except that it recursively clones `value`.
+ *
+ * @static
+ * @memberOf _
+ * @since 1.0.0
+ * @category Lang
+ * @param {*} value The value to recursively clone.
+ * @returns {*} Returns the deep cloned value.
+ * @see _.clone
+ * @example
+ *
+ * var objects = [{ 'a': 1 }, { 'b': 2 }];
+ *
+ * var deep = _.cloneDeep(objects);
+ * console.log(deep[0] === objects[0]);
+ * // => false
+ */
+function cloneDeep(value) {
+  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -11462,6 +11495,12 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
 function _objectWithoutPropertiesLoose$2(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -11476,6 +11515,20 @@ function _objectWithoutPropertiesLoose$2(source, excluded) {
 
   return target;
 }
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+/** @private is the value an empty array? */
+
+var isEmptyArray = function isEmptyArray(value) {
+  return Array.isArray(value) && value.length === 0;
+};
 /** @private is the given object a Function? */
 
 var isFunction = function isFunction(obj) {
@@ -12683,6 +12736,298 @@ var Form$2 = /*#__PURE__*/React.forwardRef(function (props, ref) {
 });
 Form$2.displayName = 'Form';
 
+/**
+ * Some array helpers!
+ */
+
+var move = function move(array, from, to) {
+  var copy = copyArrayLike(array);
+  var value = copy[from];
+  copy.splice(from, 1);
+  copy.splice(to, 0, value);
+  return copy;
+};
+var swap = function swap(arrayLike, indexA, indexB) {
+  var copy = copyArrayLike(arrayLike);
+  var a = copy[indexA];
+  copy[indexA] = copy[indexB];
+  copy[indexB] = a;
+  return copy;
+};
+var insert = function insert(arrayLike, index, value) {
+  var copy = copyArrayLike(arrayLike);
+  copy.splice(index, 0, value);
+  return copy;
+};
+var replace = function replace(arrayLike, index, value) {
+  var copy = copyArrayLike(arrayLike);
+  copy[index] = value;
+  return copy;
+};
+
+var copyArrayLike = function copyArrayLike(arrayLike) {
+  if (!arrayLike) {
+    return [];
+  } else if (Array.isArray(arrayLike)) {
+    return [].concat(arrayLike);
+  } else {
+    var maxIndex = Object.keys(arrayLike).map(function (key) {
+      return parseInt(key);
+    }).reduce(function (max, el) {
+      return el > max ? el : max;
+    }, 0);
+    return Array.from(_extends({}, arrayLike, {
+      length: maxIndex + 1
+    }));
+  }
+};
+
+var FieldArrayInner = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(FieldArrayInner, _React$Component);
+
+  function FieldArrayInner(props) {
+    var _this;
+
+    _this = _React$Component.call(this, props) || this;
+
+    _this.updateArrayField = function (fn, alterTouched, alterErrors) {
+      var _this$props = _this.props,
+          name = _this$props.name,
+          setFormikState = _this$props.formik.setFormikState;
+      setFormikState(function (prevState) {
+        var updateErrors = typeof alterErrors === 'function' ? alterErrors : fn;
+        var updateTouched = typeof alterTouched === 'function' ? alterTouched : fn; // values fn should be executed before updateErrors and updateTouched,
+        // otherwise it causes an error with unshift.
+
+        var values = setIn(prevState.values, name, fn(getIn(prevState.values, name)));
+        var fieldError = alterErrors ? updateErrors(getIn(prevState.errors, name)) : undefined;
+        var fieldTouched = alterTouched ? updateTouched(getIn(prevState.touched, name)) : undefined;
+
+        if (isEmptyArray(fieldError)) {
+          fieldError = undefined;
+        }
+
+        if (isEmptyArray(fieldTouched)) {
+          fieldTouched = undefined;
+        }
+
+        return _extends({}, prevState, {
+          values: values,
+          errors: alterErrors ? setIn(prevState.errors, name, fieldError) : prevState.errors,
+          touched: alterTouched ? setIn(prevState.touched, name, fieldTouched) : prevState.touched
+        });
+      });
+    };
+
+    _this.push = function (value) {
+      return _this.updateArrayField(function (arrayLike) {
+        return [].concat(copyArrayLike(arrayLike), [cloneDeep(value)]);
+      }, false, false);
+    };
+
+    _this.handlePush = function (value) {
+      return function () {
+        return _this.push(value);
+      };
+    };
+
+    _this.swap = function (indexA, indexB) {
+      return _this.updateArrayField(function (array) {
+        return swap(array, indexA, indexB);
+      }, true, true);
+    };
+
+    _this.handleSwap = function (indexA, indexB) {
+      return function () {
+        return _this.swap(indexA, indexB);
+      };
+    };
+
+    _this.move = function (from, to) {
+      return _this.updateArrayField(function (array) {
+        return move(array, from, to);
+      }, true, true);
+    };
+
+    _this.handleMove = function (from, to) {
+      return function () {
+        return _this.move(from, to);
+      };
+    };
+
+    _this.insert = function (index, value) {
+      return _this.updateArrayField(function (array) {
+        return insert(array, index, value);
+      }, function (array) {
+        return insert(array, index, null);
+      }, function (array) {
+        return insert(array, index, null);
+      });
+    };
+
+    _this.handleInsert = function (index, value) {
+      return function () {
+        return _this.insert(index, value);
+      };
+    };
+
+    _this.replace = function (index, value) {
+      return _this.updateArrayField(function (array) {
+        return replace(array, index, value);
+      }, false, false);
+    };
+
+    _this.handleReplace = function (index, value) {
+      return function () {
+        return _this.replace(index, value);
+      };
+    };
+
+    _this.unshift = function (value) {
+      var length = -1;
+
+      _this.updateArrayField(function (array) {
+        var arr = array ? [value].concat(array) : [value];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      }, function (array) {
+        var arr = array ? [null].concat(array) : [null];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      }, function (array) {
+        var arr = array ? [null].concat(array) : [null];
+
+        if (length < 0) {
+          length = arr.length;
+        }
+
+        return arr;
+      });
+
+      return length;
+    };
+
+    _this.handleUnshift = function (value) {
+      return function () {
+        return _this.unshift(value);
+      };
+    };
+
+    _this.handleRemove = function (index) {
+      return function () {
+        return _this.remove(index);
+      };
+    };
+
+    _this.handlePop = function () {
+      return function () {
+        return _this.pop();
+      };
+    }; // We need TypeScript generics on these, so we'll bind them in the constructor
+    // @todo Fix TS 3.2.1
+
+
+    _this.remove = _this.remove.bind(_assertThisInitialized(_this));
+    _this.pop = _this.pop.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  var _proto = FieldArrayInner.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props.validateOnChange && this.props.formik.validateOnChange && !reactFastCompare(getIn(prevProps.formik.values, prevProps.name), getIn(this.props.formik.values, this.props.name))) {
+      this.props.formik.validateForm(this.props.formik.values);
+    }
+  };
+
+  _proto.remove = function remove(index) {
+    // We need to make sure we also remove relevant pieces of `touched` and `errors`
+    var result;
+    this.updateArrayField( // so this gets call 3 times
+    function (array) {
+      var copy = array ? copyArrayLike(array) : [];
+
+      if (!result) {
+        result = copy[index];
+      }
+
+      if (isFunction(copy.splice)) {
+        copy.splice(index, 1);
+      }
+
+      return copy;
+    }, true, true);
+    return result;
+  };
+
+  _proto.pop = function pop() {
+    // Remove relevant pieces of `touched` and `errors` too!
+    var result;
+    this.updateArrayField( // so this gets call 3 times
+    function (array) {
+      var tmp = array;
+
+      if (!result) {
+        result = tmp && tmp.pop && tmp.pop();
+      }
+
+      return tmp;
+    }, true, true);
+    return result;
+  };
+
+  _proto.render = function render() {
+    var arrayHelpers = {
+      push: this.push,
+      pop: this.pop,
+      swap: this.swap,
+      move: this.move,
+      insert: this.insert,
+      replace: this.replace,
+      unshift: this.unshift,
+      remove: this.remove,
+      handlePush: this.handlePush,
+      handlePop: this.handlePop,
+      handleSwap: this.handleSwap,
+      handleMove: this.handleMove,
+      handleInsert: this.handleInsert,
+      handleReplace: this.handleReplace,
+      handleUnshift: this.handleUnshift,
+      handleRemove: this.handleRemove
+    };
+
+    var _this$props2 = this.props,
+        component = _this$props2.component,
+        render = _this$props2.render,
+        children = _this$props2.children,
+        name = _this$props2.name,
+        _this$props2$formik = _this$props2.formik,
+        restOfFormik = _objectWithoutPropertiesLoose$2(_this$props2$formik, ["validate", "validationSchema"]);
+
+    var props = _extends({}, arrayHelpers, {
+      form: restOfFormik,
+      name: name
+    });
+
+    return component ? React.createElement(component, props) : render ? render(props) : children // children come last, always called
+    ? typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? React.Children.only(children) : null : null;
+  };
+
+  return FieldArrayInner;
+}(React.Component);
+
+FieldArrayInner.defaultProps = {
+  validateOnChange: true
+};
+
 var classnames = createCommonjsModule(function (module) {
 /*!
   Copyright (c) 2018 Jed Watson.
@@ -12738,8 +13083,10 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
+const DEFAULT_BREAKPOINTS = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'];
 const ThemeContext = /*#__PURE__*/React__namespace.createContext({
-  prefixes: {}
+  prefixes: {},
+  breakpoints: DEFAULT_BREAKPOINTS
 });
 
 function useBootstrapPrefix(prefix, defaultPrefix) {
@@ -12747,6 +13094,12 @@ function useBootstrapPrefix(prefix, defaultPrefix) {
     prefixes
   } = React.useContext(ThemeContext);
   return prefix || prefixes[defaultPrefix] || defaultPrefix;
+}
+function useBootstrapBreakpoints() {
+  const {
+    breakpoints
+  } = React.useContext(ThemeContext);
+  return breakpoints;
 }
 
 /*
@@ -13799,7 +14152,6 @@ function hasChildOfType(children, type) {
   return React__namespace.Children.toArray(children).some(child => /*#__PURE__*/React__namespace.isValidElement(child) && child.type === type);
 }
 
-const DEVICE_SIZES = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'];
 function useCol({
   as,
   bsPrefix,
@@ -13807,9 +14159,10 @@ function useCol({
   ...props
 }) {
   bsPrefix = useBootstrapPrefix(bsPrefix, 'col');
+  const breakpoints = useBootstrapBreakpoints();
   const spans = [];
   const classes = [];
-  DEVICE_SIZES.forEach(brkPoint => {
+  breakpoints.forEach(brkPoint => {
     const propValue = props[brkPoint];
     delete props[brkPoint];
     let span;
@@ -14314,7 +14667,7 @@ var Form$1 = Object.assign(Form, {
  * @constructor
  */
 var RegistrationForm = function (props) {
-    var _a = __read$1(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
+    var _a = __read(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
     /**
      * Signs up the user given by the form values.
      * Calls the callback for a successfull registration in the props, if the request was successfull.
@@ -14324,9 +14677,9 @@ var RegistrationForm = function (props) {
      *
      * @param values
      */
-    var register = function (values) { return __awaiter$1(void 0, void 0, void 0, function () {
+    var register = function (values) { return __awaiter(void 0, void 0, void 0, function () {
         var e_1;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     setInProgress(true);
@@ -14373,13 +14726,13 @@ var RegistrationForm = function (props) {
         passwordConfirmation: '',
         privacyPolicyAccepted: false
     };
-    return jsxRuntime.jsx("div", __assign({ className: "ez-on-rails-form-outer-container" }, { children: jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, validationSchema: RegistrationValidationSchema, onSubmit: function (values) {
-                register(values);
-            } }, { children: function (_a) {
-                var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'username-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'username', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", onChange: handleChange, isInvalid: !!errors.username }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.username }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'email', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", onChange: handleChange, isInvalid: !!errors.email }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.email }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'password', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.password }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.password }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'passwordConfirmation', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.passwordConfirmation }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.passwordConfirmation }), void 0)] }), void 0), jsxRuntime.jsx(Form$1.Group, __assign({ id: 'privacy-policy-accepted-container', className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsxRuntime.jsx(Form$1.Check, { id: 'privacyPolicyAccepted', className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelPrivacyPolicyAccepted ||
-                                    jsxRuntime.jsxs("span", { children: ["Ich habe die ", jsxRuntime.jsx("a", __assign({ href: props.privacyPolicyUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "Datenschutzerkl\u00E4rung" }), void 0), " und ", jsxRuntime.jsx("a", __assign({ href: props.generalTermsUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "allgemeinen Gesch\u00E4ftsbedingungen" }), void 0), " gelesen und akzeptiere diese."] }, void 0), onChange: handleChange, isInvalid: !!errors.privacyPolicyAccepted, feedbackType: 'invalid', feedback: errors.privacyPolicyAccepted }, void 0) }), void 0), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ className: props.submitButtonClassName || 'ez-on-rails-form-submit-button', type: "submit", variant: "primary" }, { children: props.labelSubmitButton || "Registrieren" }), void 0) }), void 0))] }), void 0));
-            } }), void 0) }), void 0);
+    return (jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, validationSchema: RegistrationValidationSchema, onSubmit: function (values) {
+            register(values);
+        } }, { children: function (_a) {
+            var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
+            return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'username-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' })), jsxRuntime.jsx(Form$1.Control, { id: 'username', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", onChange: handleChange, isInvalid: !!errors.username }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.username }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsxRuntime.jsx(Form$1.Control, { id: 'email', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", onChange: handleChange, isInvalid: !!errors.email }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.email }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsxRuntime.jsx(Form$1.Control, { id: 'password', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.password }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.password }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' })), jsxRuntime.jsx(Form$1.Control, { id: 'passwordConfirmation', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.passwordConfirmation }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.passwordConfirmation }))] })), jsxRuntime.jsx(Form$1.Group, __assign({ id: 'privacy-policy-accepted-container', className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsxRuntime.jsx(Form$1.Check, { id: 'privacyPolicyAccepted', className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelPrivacyPolicyAccepted ||
+                                jsxRuntime.jsxs("span", { children: ["Ich habe die ", jsxRuntime.jsx("a", __assign({ href: props.privacyPolicyUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "Datenschutzerkl\u00E4rung" })), " und ", jsxRuntime.jsx("a", __assign({ href: props.generalTermsUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "allgemeinen Gesch\u00E4ftsbedingungen" })), " gelesen und akzeptiere diese."] }), onChange: handleChange, isInvalid: !!errors.privacyPolicyAccepted, feedbackType: 'invalid', feedback: errors.privacyPolicyAccepted }) })), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ className: props.submitButtonClassName || 'ez-on-rails-form-submit-button', type: "submit", variant: "primary" }, { children: props.labelSubmitButton || "Registrieren" })) })))] })));
+        } })));
 };
 
 /**
@@ -14390,7 +14743,7 @@ var RegistrationForm = function (props) {
  * @constructor
  */
 var LoginForm = function (props) {
-    var _a = __read$1(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
+    var _a = __read(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
     /**
      * Valodation scheme for the login form.
      */
@@ -14409,9 +14762,9 @@ var LoginForm = function (props) {
      *
      * @param values
      */
-    var login = function (values) { return __awaiter$1(void 0, void 0, void 0, function () {
+    var login = function (values) { return __awaiter(void 0, void 0, void 0, function () {
         var authInfo, e_1;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     setInProgress(true);
@@ -14421,8 +14774,9 @@ var LoginForm = function (props) {
                     return [4 /*yield*/, EzOnRailsHttpClient.signIn(values)];
                 case 2:
                     authInfo = _a.sent();
-                    if (!authInfo)
+                    if (!authInfo) {
                         throw 'No authentication object returned';
+                    }
                     return [4 /*yield*/, props.onLoginSuccess(values.email, authInfo, values.stayLoggedIn)];
                 case 3:
                     _a.sent();
@@ -14442,13 +14796,13 @@ var LoginForm = function (props) {
         password: '',
         stayLoggedIn: false
     };
-    return jsxRuntime.jsx("div", __assign({ className: "ez-on-rails-form-outer-container" }, { children: jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
-                login(values);
-            }, validationSchema: LoginValidationSchema }, { children: function (_a) {
-                var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'email', type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'password', type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }), void 0)] }), void 0), !props.hideStayLoggedIn &&
-                            jsxRuntime.jsx(Form$1.Group, __assign({ id: 'stay-logged-in-container', className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsxRuntime.jsx(Form$1.Check, { id: 'stayLoggedIn', className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelStayLoggedIn || "Auf diesem Gerät eingeloggt bleiben", onChange: handleChange }, void 0) }), void 0), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Login" }), void 0) }), void 0))] }), void 0));
-            } }), void 0) }), void 0);
+    return (jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
+            login(values);
+        }, validationSchema: LoginValidationSchema }, { children: function (_a) {
+            var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
+            return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsxRuntime.jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsxRuntime.jsx(Form$1.Control, { id: "password", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), !props.hideStayLoggedIn &&
+                        jsxRuntime.jsx(Form$1.Group, __assign({ id: "stay-logged-in-container", className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsxRuntime.jsx(Form$1.Check, { id: "stayLoggedIn", className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben', onChange: handleChange }) })), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Login' })) })))] })));
+        } })));
 };
 
 /**
@@ -14458,7 +14812,7 @@ var LoginForm = function (props) {
  * @constructor
  */
 var LostPasswordForm = function (props) {
-    var _a = __read$1(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
+    var _a = __read(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
     /**
      * Valodation scheme for the login form.
      */
@@ -14489,12 +14843,12 @@ var LostPasswordForm = function (props) {
     var initialFormValues = {
         email: '',
     };
-    return jsxRuntime.jsx("div", __assign({ className: "ez-on-rails-form-outer-container" }, { children: jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
-                passwordReset(values);
-            }, validationSchema: LostPasswordValidationSchema }, { children: function (_a) {
-                var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'email', type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }), void 0)] }), void 0), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Passwort zurücksetzen" }), void 0) }), void 0))] }), void 0));
-            } }), void 0) }), void 0);
+    return (jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
+            passwordReset(values);
+        }, validationSchema: LostPasswordValidationSchema }, { children: function (_a) {
+            var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
+            return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsxRuntime.jsx(Form$1.Control, { id: 'email', type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Passwort zurücksetzen" })) })))] })));
+        } })));
 };
 
 /**
@@ -14504,7 +14858,7 @@ var LostPasswordForm = function (props) {
  * @constructor
  */
 var ResendConfirmationForm = function (props) {
-    var _a = __read$1(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
+    var _a = __read(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
     /**
      * Valodation scheme for the login form.
      */
@@ -14535,12 +14889,12 @@ var ResendConfirmationForm = function (props) {
     var initialFormValues = {
         email: '',
     };
-    return jsxRuntime.jsx("div", __assign({ className: "ez-on-rails-form-outer-container" }, { children: jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
-                resendConfirmation(values);
-            }, validationSchema: ResendConfirmationValidationSchema }, { children: function (_a) {
-                var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'email', type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }), void 0)] }), void 0), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Passwort zurücksetzen" }), void 0) }), void 0))] }), void 0));
-            } }), void 0) }), void 0);
+    return (jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
+            resendConfirmation(values);
+        }, validationSchema: ResendConfirmationValidationSchema }, { children: function (_a) {
+            var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
+            return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsxRuntime.jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort zurücksetzen' })) })))] })));
+        } })));
 };
 
 var css_248z$1 = ".development-hint-container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background-color: #28a745;\n    height: 1.5em;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100vw;\n}\n\n.development-hint-text {\n    color: white;\n}\n";
@@ -14557,7 +14911,7 @@ styleInject(css_248z$1);
  * @constructor
  */
 var DevelopmentHint = function (props) {
-    var _a = __read$1(React.useState(props.visible), 2), visible = _a[0], setVisible = _a[1];
+    var _a = __read(React.useState(props.visible), 2), visible = _a[0], setVisible = _a[1];
     /**
      * Called after the last dismiss timeout triggers.
      * Sets the visibility for the compoonent to true.
@@ -14575,7 +14929,7 @@ var DevelopmentHint = function (props) {
         setVisible(false);
         setTimeout(dismissTimeout, props.dismissTimeout || 20000);
     };
-    return visible ? jsxRuntime.jsx("div", __assign({ onClick: onClickContainer, className: 'development-hint-container' }, { children: jsxRuntime.jsx("span", __assign({ className: 'development-hint-text' }, { children: "development" }), void 0) }), void 0) : null;
+    return visible ? jsxRuntime.jsx("div", __assign({ onClick: onClickContainer, className: 'development-hint-container' }, { children: jsxRuntime.jsx("span", __assign({ className: 'development-hint-text' }, { children: "development" })) })) : null;
 };
 
 var activestorage = createCommonjsModule(function (module, exports) {
@@ -15522,83 +15876,6 @@ var activestorage = createCommonjsModule(function (module, exports) {
 });
 });
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-/** @deprecated */
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
 var COMMON_MIME_TYPES = new Map([
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
     ['aac', 'audio/aac'],
@@ -15621,6 +15898,8 @@ var COMMON_MIME_TYPES = new Map([
     ['epub', 'application/epub+zip'],
     ['gz', 'application/gzip'],
     ['gif', 'image/gif'],
+    ['heic', 'image/heic'],
+    ['heif', 'image/heif'],
     ['htm', 'text/html'],
     ['html', 'text/html'],
     ['ico', 'image/vnd.microsoft.icon'],
@@ -16898,7 +17177,7 @@ function useDropzone() {
       return;
     }
 
-    if (event.keyCode === 32 || event.keyCode === 13) {
+    if (event.key === " " || event.key === "Enter" || event.keyCode === 32 || event.keyCode === 13) {
       event.preventDefault();
       openFileDialog();
     }
@@ -17000,7 +17279,6 @@ function useDropzone() {
         },
         onChange: composeHandler(composeEventHandlers(onChange, onDropCb)),
         onClick: composeHandler(composeEventHandlers(onClick, onInputElementClick)),
-        autoComplete: "off",
         tabIndex: -1
       }, refKey, inputRef);
 
@@ -17094,16 +17372,16 @@ var blobShowPath = function (signedId, filename) {
  * and some input field for pasting content.
  */
 var ActiveStorageDropzone = function (props) {
-    var _a = __read$1(React.useState(0), 2), uploadsInProgress = _a[0], setUploadsInProgress = _a[1];
+    var _a = __read(React.useState(0), 2), uploadsInProgress = _a[0], setUploadsInProgress = _a[1];
     // standard upload icon for dropzone (from boostrap icons)
-    var standardUploadIcon = (jsxRuntime.jsxs("svg", __assign({ xmlns: "http://www.w3.org/2000/svg", width: "32", height: "32", fill: "currentColor", className: "bi bi-cloud-arrow-up", viewBox: "0 0 16 16" }, { children: [jsxRuntime.jsx("path", { fillRule: "evenodd", d: "M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z" }, void 0), jsxRuntime.jsx("path", { d: "M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" }, void 0)] }), void 0));
+    var standardUploadIcon = (jsxRuntime.jsxs("svg", __assign({ xmlns: "http://www.w3.org/2000/svg", width: "32", height: "32", fill: "currentColor", className: "bi bi-cloud-arrow-up", viewBox: "0 0 16 16" }, { children: [jsxRuntime.jsx("path", { fillRule: "evenodd", d: "M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z" }), jsxRuntime.jsx("path", { d: "M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" })] })));
     /**
      * Removes the file having the given signedId from the server.
      *
      * @param signedId
      */
-    var removeFileFromServer = function (signedId) { return __awaiter$1(void 0, void 0, void 0, function () {
-        return __generator$1(this, function (_a) {
+    var removeFileFromServer = function (signedId) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, EzOnRailsHttpClient.delete("active_storage/blobs/".concat(signedId), null, props.authInfo)];
                 case 1:
@@ -17118,9 +17396,9 @@ var ActiveStorageDropzone = function (props) {
      * @param event The javascript event to stop other onclick callbacks.
      * @param signedId The signed id of the image.
      */
-    var removeFile = function (event, signedId) { return __awaiter$1(void 0, void 0, void 0, function () {
+    var removeFile = function (event, signedId) { return __awaiter(void 0, void 0, void 0, function () {
         var newFiles;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: 
                 // remove file from server to prevent garbage
@@ -17128,7 +17406,7 @@ var ActiveStorageDropzone = function (props) {
                 case 1:
                     // remove file from server to prevent garbage
                     _a.sent();
-                    newFiles = __spreadArray([], __read$1(props.files), false);
+                    newFiles = __spreadArray([], __read(props.files), false);
                     newFiles = newFiles.filter(function (file) { return signedId !== file.signedId; });
                     props.onChange(newFiles);
                     // Supress dropzones onclick callback
@@ -17212,7 +17490,7 @@ var ActiveStorageDropzone = function (props) {
                     // Set current files to render them
                     var newFiles = props.files;
                     newFiles.push(file);
-                    props.onChange(__spreadArray([], __read$1(newFiles), false));
+                    props.onChange(__spreadArray([], __read(newFiles), false));
                 }
             });
         });
@@ -17257,11 +17535,11 @@ var ActiveStorageDropzone = function (props) {
         onDropAccepted(pastedFiles);
     };
     // preview of the current stated files
-    var previews = props.files.map(function (file) { return (jsxRuntime.jsxs("div", __assign({ className: "card w-25 animate__animated animate__fadeIn mb-4", style: { flex: '0 0 auto' } }, { children: [jsxRuntime.jsx("div", __assign({ className: 'card-header p-1' }, { children: jsxRuntime.jsx("button", __assign({ onClick: function (event) { return removeFile(event, file.signedId || ''); }, type: "button", className: "close", "aria-label": "Close" }, { children: jsxRuntime.jsx("span", __assign({ "aria-hidden": "true" }, { children: "\u00D7" }), void 0) }), void 0) }), void 0), jsxRuntime.jsx("div", __assign({ className: 'd-flex justify-content-center align-items-center w-100 h-100' }, { children: jsxRuntime.jsx("img", { src: toBaseUrl(file.path || ''), alt: file.filename, className: 'd-block mw-100 m-auto m-0 rounded p-1' }, void 0) }), void 0)] }), file.signedId)); });
+    var previews = props.files.map(function (file) { return (jsxRuntime.jsxs("div", __assign({ className: "card w-25 animate__animated animate__fadeIn mb-4", style: { flex: '0 0 auto' } }, { children: [jsxRuntime.jsx("div", __assign({ className: 'card-header p-1' }, { children: jsxRuntime.jsx("button", __assign({ onClick: function (event) { return removeFile(event, file.signedId || ''); }, type: "button", className: "close", "aria-label": "Close" }, { children: jsxRuntime.jsx("span", __assign({ "aria-hidden": "true" }, { children: "\u00D7" })) })) })), jsxRuntime.jsx("div", __assign({ className: 'd-flex justify-content-center align-items-center w-100 h-100' }, { children: jsxRuntime.jsx("img", { src: toBaseUrl(file.path || ''), alt: file.filename, className: 'd-block mw-100 m-auto m-0 rounded p-1' }) }))] }), file.signedId)); });
     // shows some indicator for some incoming files
     var progressSpinners = [];
     for (var i = 0; i < uploadsInProgress; i++) {
-        progressSpinners.push(jsxRuntime.jsx("div", __assign({ className: "card w-25 mb-4", style: { flex: '0 0 auto' } }, { children: jsxRuntime.jsx("div", __assign({ className: 'd-flex justify-content-center align-items-center w-100 h-100' }, { children: jsxRuntime.jsx("div", __assign({ className: "p-4 text-center" }, { children: jsxRuntime.jsx("div", __assign({ className: "spinner-border", role: "status" }, { children: jsxRuntime.jsx("span", __assign({ className: "sr-only" }, { children: "Loading..." }), void 0) }), void 0) }), void 0) }), void 0) }), i));
+        progressSpinners.push(jsxRuntime.jsx("div", __assign({ className: "card w-25 mb-4", style: { flex: '0 0 auto' } }, { children: jsxRuntime.jsx("div", __assign({ className: 'd-flex justify-content-center align-items-center w-100 h-100' }, { children: jsxRuntime.jsx("div", __assign({ className: "p-4 text-center" }, { children: jsxRuntime.jsx("div", __assign({ className: "spinner-border", role: "status" }, { children: jsxRuntime.jsx("span", __assign({ className: "sr-only" }, { children: "Loading..." })) })) })) })) }), i));
     }
     /**
      * Called if one or more files were rejected by the dropzone.
@@ -17284,10 +17562,10 @@ var ActiveStorageDropzone = function (props) {
         }
     };
     // dropzone having a drop area
-    return (jsxRuntime.jsxs("div", { children: [props.pasteZone && (jsxRuntime.jsx("input", { type: "text", className: "w-100 active-storage-dropzone-pastezone-container p-2", value: props.textPastezone || 'Copy and paste some files here', onPaste: onPaste, readOnly: true }, void 0)), jsxRuntime.jsx(Dropzone$1, __assign({ onDropAccepted: onDropAccepted, multiple: props.multiple, maxFiles: props.maxFiles, maxSize: props.maxSize, onDropRejected: onDropzoneRejection, accept: props.accept }, { children: function (_a) {
+    return (jsxRuntime.jsxs("div", { children: [props.pasteZone && (jsxRuntime.jsx("input", { type: "text", className: "w-100 active-storage-dropzone-pastezone-container p-2", value: props.textPastezone || 'Copy and paste some files here', onPaste: onPaste, readOnly: true })), jsxRuntime.jsx(Dropzone$1, __assign({ onDropAccepted: onDropAccepted, multiple: props.multiple, maxFiles: props.maxFiles, maxSize: props.maxSize, onDropRejected: onDropzoneRejection, accept: props.accept }, { children: function (_a) {
                     var _b = _a === void 0 ? useDropzone() : _a, getRootProps = _b.getRootProps, getInputProps = _b.getInputProps;
-                    return (jsxRuntime.jsx("section", { children: jsxRuntime.jsxs("div", __assign({}, getRootProps(), { className: "active-storage-dropzone-dropzone-container p-4 ".concat(props.className) }, { children: [jsxRuntime.jsx("input", __assign({}, getInputProps()), void 0), jsxRuntime.jsx("p", __assign({ className: 'm-0' }, { children: props.textDropzone || "Drag 'n' drop some files here, or click to select files" }), void 0), previews.length > 0 ? (jsxRuntime.jsx("aside", __assign({ className: 'card-deck justify-content-center w-100 m-4' }, { children: previews }), void 0)) : (jsxRuntime.jsx("div", __assign({ className: 'm-0' }, { children: props.customIcon || standardUploadIcon }), void 0)), progressSpinners.length > 0 && (jsxRuntime.jsx("aside", __assign({ className: 'card-deck justify-content-center w-100 m-4' }, { children: progressSpinners }), void 0))] }), void 0) }, void 0));
-                } }), void 0)] }, void 0));
+                    return (jsxRuntime.jsx("section", { children: jsxRuntime.jsxs("div", __assign({}, getRootProps(), { className: "active-storage-dropzone-dropzone-container p-4 ".concat(props.className) }, { children: [jsxRuntime.jsx("input", __assign({}, getInputProps())), jsxRuntime.jsx("p", __assign({ className: 'm-0' }, { children: props.textDropzone || "Drag 'n' drop some files here, or click to select files" })), previews.length > 0 ? (jsxRuntime.jsx("aside", __assign({ className: 'card-deck justify-content-center w-100 m-4' }, { children: previews }))) : (jsxRuntime.jsx("div", __assign({ className: 'm-0' }, { children: props.customIcon || standardUploadIcon }))), progressSpinners.length > 0 && (jsxRuntime.jsx("aside", __assign({ className: 'card-deck justify-content-center w-100 m-4' }, { children: progressSpinners })))] })) }));
+                } }))] }));
 };
 
 /**
@@ -17298,7 +17576,7 @@ var ActiveStorageDropzone = function (props) {
  * @constructor
  */
 var ResetPasswordForm = function (props) {
-    var _a = __read$1(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
+    var _a = __read(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
     /**
      * Valodation scheme for the password reset form.
      */
@@ -17316,9 +17594,9 @@ var ResetPasswordForm = function (props) {
      *
      * @param values
      */
-    var resetPassword = React.useCallback(function (values) { return __awaiter$1(void 0, void 0, void 0, function () {
+    var resetPassword = React.useCallback(function (values) { return __awaiter(void 0, void 0, void 0, function () {
         var e_1;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     setInProgress(true);
@@ -17346,12 +17624,12 @@ var ResetPasswordForm = function (props) {
         password: '',
         passwordConfirmation: ''
     };
-    return jsxRuntime.jsx("div", __assign({ className: "ez-on-rails-form-outer-container" }, { children: jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
-                resetPassword(values);
-            }, validationSchema: PasswordResetValidationSchema }, { children: function (_a) {
-                var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'password', type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'passwordConfirmation', type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.passwordConfirmation }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }), void 0)] }), void 0), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Passwort ändern" }), void 0) }), void 0))] }), void 0));
-            } }), void 0) }), void 0);
+    return (jsxRuntime.jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
+            resetPassword(values);
+        }, validationSchema: PasswordResetValidationSchema }, { children: function (_a) {
+            var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
+            return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsxRuntime.jsx(Form$1.Control, { id: "password", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: "password-confirmation-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort' })), jsxRuntime.jsx(Form$1.Control, { id: "passwordConfirmation", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.passwordConfirmation }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }))] })), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort ändern' })) })))] })));
+        } })));
 };
 
 /**
@@ -17366,7 +17644,7 @@ var ProtectedPage = function (props) {
     return (jsxRuntime.jsx("div", { children: props.authInfo ?
             props.children
             :
-                jsxRuntime.jsx("div", __assign({ className: props.accessDeniedClassName || 'ez-on-rails-protected-page-access-denied-container' }, { children: props.accessDeniedText || 'Sie müssen eingeloggt sein um diesen Inhalt sehen zu können.' }), void 0) }, void 0));
+                jsxRuntime.jsx("div", __assign({ className: props.accessDeniedClassName || 'ez-on-rails-protected-page-access-denied-container' }, { children: props.accessDeniedText || 'Sie müssen eingeloggt sein um diesen Inhalt sehen zu können.' })) }));
 };
 
 /**
@@ -17379,8 +17657,8 @@ var ProtectedPage = function (props) {
  * @constructor
  */
 var UpdateUserForm = function (props) {
-    var _a = __read$1(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
-    var _b = __read$1(React.useState(null), 2), initialFormData = _b[0], setInitialFormData = _b[1];
+    var _a = __read(React.useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
+    var _b = __read(React.useState(null), 2), initialFormData = _b[0], setInitialFormData = _b[1];
     /**
      * Converts the specified data returned by an ez-on-rails backend server to form values
      * that can be passed to the component.
@@ -17402,9 +17680,9 @@ var UpdateUserForm = function (props) {
      * Requests the user data from the server and sets the initial form values to those data.
      */
     React.useEffect(function () {
-        (function () { return __awaiter$1(void 0, void 0, void 0, function () {
+        (function () { return __awaiter(void 0, void 0, void 0, function () {
             var initialUserData;
-            return __generator$1(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, EzOnRailsHttpClient.getUser(props.authInfo)];
                     case 1:
@@ -17424,9 +17702,9 @@ var UpdateUserForm = function (props) {
      *
      * @param values
      */
-    var updateUser = function (values) { return __awaiter$1(void 0, void 0, void 0, function () {
+    var updateUser = function (values) { return __awaiter(void 0, void 0, void 0, function () {
         var updateParams, updatedUserData, e_1;
-        return __generator$1(this, function (_a) {
+        return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     setInProgress(true);
@@ -17483,9 +17761,9 @@ var UpdateUserForm = function (props) {
                 updateUser(values);
             } }, { children: function (_a) {
                 var errors = _a.errors, values = _a.values, handleChange = _a.handleChange, setFieldValue = _a.setFieldValue, setFieldError = _a.setFieldError, handleSubmit = _a.handleSubmit;
-                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'username-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'username', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", value: values.username, onChange: handleChange, isInvalid: !!errors.username }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.username }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'email', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", value: values.email, onChange: handleChange, isInvalid: !!errors.email }, void 0), values.unconfirmedEmail && (jsxRuntime.jsxs("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text' }, { children: [props.unconfirmedEmailText || 'Die folgende E-Mail Adresse wurde noch nicht bestätigt: ', " ", values.unconfirmedEmail] }), void 0)), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'password', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.password, onChange: handleChange, isInvalid: !!errors.password }, void 0), jsxRuntime.jsx("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-password-optional-text' }, { children: props.passwordChangeOptionalText || 'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.' }), void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' }), void 0), jsxRuntime.jsx(Form$1.Control, { id: 'passwordConfirmation', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.passwordConfirmation, onChange: handleChange, isInvalid: !!errors.passwordConfirmation }, void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }), void 0)] }), void 0), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'avatar-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelAvatar || 'Avatar' }), void 0), jsxRuntime.jsx("div", __assign({ className: props.dropzoneContainerClassName || 'ez-on-rails-form-field' }, { children: jsxRuntime.jsx(ActiveStorageDropzone, { authInfo: props.authInfo, onChange: function (blobs) { return setFieldValue('avatar', blobs.length > 0 ? blobs[0] : null); }, files: values.avatar ? [values.avatar] : [], multiple: false, maxFiles: 1, onMaxFilesError: function () { return setFieldError('avatar', props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.'); }, maxSize: props.avatarMaxSize || 5242880, onMaxSizeError: function () { return setFieldError('avatar', props.avatarToLargeErrorText || 'Es sind maximal 5MB große Bilder erlaubt.'); }, onInvalidTypeError: function () { return setFieldError('avatar', props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.'); } }, void 0) }), void 0), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.avatar }), void 0)] }), void 0), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ type: "submit", variant: "primary", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Speichern" }), void 0) }), void 0))] }), void 0));
-            } }), void 0)) :
-            (jsxRuntime.jsx("div", { children: "Loading..." }, void 0)) }), void 0));
+                return (jsxRuntime.jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'username-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' })), jsxRuntime.jsx(Form$1.Control, { id: 'username', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", value: values.username, onChange: handleChange, isInvalid: !!errors.username }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.username }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsxRuntime.jsx(Form$1.Control, { id: 'email', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", value: values.email, onChange: handleChange, isInvalid: !!errors.email }), values.unconfirmedEmail && (jsxRuntime.jsxs("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text' }, { children: [props.unconfirmedEmailText || 'Die folgende E-Mail Adresse wurde noch nicht bestätigt: ', " ", values.unconfirmedEmail] }))), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsxRuntime.jsx(Form$1.Control, { id: 'password', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.password, onChange: handleChange, isInvalid: !!errors.password }), jsxRuntime.jsx("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-password-optional-text' }, { children: props.passwordChangeOptionalText || 'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.' })), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' })), jsxRuntime.jsx(Form$1.Control, { id: 'passwordConfirmation', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.passwordConfirmation, onChange: handleChange, isInvalid: !!errors.passwordConfirmation }), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }))] })), jsxRuntime.jsxs(Form$1.Group, __assign({ id: 'avatar-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsxRuntime.jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelAvatar || 'Avatar' })), jsxRuntime.jsx("div", __assign({ className: props.dropzoneContainerClassName || 'ez-on-rails-form-field' }, { children: jsxRuntime.jsx(ActiveStorageDropzone, { authInfo: props.authInfo, onChange: function (blobs) { return setFieldValue('avatar', blobs.length > 0 ? blobs[0] : null); }, files: values.avatar ? [values.avatar] : [], multiple: false, maxFiles: 1, onMaxFilesError: function () { return setFieldError('avatar', props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.'); }, maxSize: props.avatarMaxSize || 5242880, onMaxSizeError: function () { return setFieldError('avatar', props.avatarToLargeErrorText || 'Es sind maximal 5MB große Bilder erlaubt.'); }, onInvalidTypeError: function () { return setFieldError('avatar', props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.'); } }) })), jsxRuntime.jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.avatar }))] })), !inProgress && (jsxRuntime.jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsxRuntime.jsx(Button, __assign({ type: "submit", variant: "primary", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Speichern" })) })))] })));
+            } }))) :
+            (jsxRuntime.jsx("div", { children: "Loading..." })) })));
 };
 
 var EzOnRailsComponents = {

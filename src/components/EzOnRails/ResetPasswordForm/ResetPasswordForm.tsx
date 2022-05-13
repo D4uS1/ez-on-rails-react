@@ -1,12 +1,12 @@
-import '../EzOnRails.css'
-import { Formik } from "formik";
+import '../EzOnRails.css';
+import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useCallback, useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { EzOnRailsHttpClient } from "../../../http/client/EzOnRailsHttpClient";
-import { DefaultFormProps } from "../shared/Types";
+import { EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { DefaultFormProps } from '../shared/Types';
 
 /**
  * Props for the RequestPasswordForm component.
@@ -32,7 +32,7 @@ export interface ResetPasswordFormProps extends DefaultFormProps {
     passwordConfirmationMatchErrorText?: string;
 
     // The minimum length of the password
-    minPasswordLength?: number
+    minPasswordLength?: number;
 
     // Called if the user successfully resetted the password.
     onResetPasswordSuccess: () => Promise<void>;
@@ -57,7 +57,7 @@ interface PasswordResetFormValues {
  * @constructor
  */
 export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
-    const [inProgress, setInProgress] = useState<boolean>(false)
+    const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
      * Valodation scheme for the password reset form.
@@ -69,7 +69,6 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
             .oneOf([Yup.ref('password')], props.passwordConfirmationMatchErrorText || 'Die Passwörter müssen übereinstimmen.')
     } as any).defined();
 
-
     /**
      * Tries to reset the password on the server side.
      * If the reset was successful, the onSuccess callback in the props will be called.
@@ -79,7 +78,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
      * @param values
      */
     const resetPassword = useCallback(async (values: PasswordResetFormValues) => {
-        setInProgress(true)
+        setInProgress(true);
 
         try {
             await EzOnRailsHttpClient.passwordReset({
@@ -89,7 +88,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 
             await props.onResetPasswordSuccess();
         } catch (e) {
-            props.onResetPasswordError(e)
+            props.onResetPasswordError(e);
             setInProgress(false);
         }
     }, [props.resetPasswordToken]);
@@ -100,11 +99,11 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
         passwordConfirmation: ''
     };
 
-    return <div className="ez-on-rails-form-outer-container">
+    return (
         <Formik
             initialValues={initialFormValues}
             onSubmit={(values) => {
-                resetPassword(values)
+                resetPassword(values);
             }}
             validationSchema={PasswordResetValidationSchema}
         >
@@ -115,13 +114,13 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
               }) => (
                 <form onSubmit={handleSubmit}
                       className={props.containerClassName || 'ez-on-rails-form-container'}>
-                    <Form.Group id='password-container'
+                    <Form.Group id="password-container"
                                 className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelPassword || 'Passwort'}
                         </Form.Label>
 
-                        <Form.Control id='password'
+                        <Form.Control id="password"
                                       type="password"
                                       onChange={handleChange}
                                       className={props.fieldInputClassName || 'ez-on-rails-form-field'}
@@ -132,13 +131,13 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                         </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group id='password-confirmation-container'
+                    <Form.Group id="password-confirmation-container"
                                 className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelPasswordConfirmation || 'Passwort'}
                         </Form.Label>
 
-                        <Form.Control id='passwordConfirmation'
+                        <Form.Control id="passwordConfirmation"
                                       type="password"
                                       onChange={handleChange}
                                       className={props.fieldInputClassName || 'ez-on-rails-form-field'}
@@ -154,14 +153,12 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                             <Button variant="primary"
                                     type="submit"
                                     className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
-                                {props.labelSubmitButton || "Passwort ändern"}
+                                {props.labelSubmitButton || 'Passwort ändern'}
                             </Button>
                         </div>
                     )}
                 </form>
             )}
         </Formik>
-    </div>
-}
-
-
+    );
+};

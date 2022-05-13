@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const EzOnRails: {
     config: {
         init: (options: import("./config/EzOnRailsConfig").EzOnRailsConfigOptions) => void;

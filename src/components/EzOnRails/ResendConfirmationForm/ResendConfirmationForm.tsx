@@ -1,12 +1,12 @@
-import '../EzOnRails.css'
-import { useState } from 'react'
-import * as Yup from "yup";
-import { SchemaOf } from "yup";
-import { EzOnRailsHttpClient } from "../../../http/client/EzOnRailsHttpClient";
-import { Formik } from "formik";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { DefaultFormProps } from "../shared/Types";
+import '../EzOnRails.css';
+import { useState } from 'react';
+import * as Yup from 'yup';
+import { SchemaOf } from 'yup';
+import { EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { Formik } from 'formik';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { DefaultFormProps } from '../shared/Types';
 
 /**
  * Type for props for the ResendConfirmationForm component.
@@ -42,7 +42,7 @@ interface ResendConfirmationFormValues {
  * @constructor
  */
 export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
-    const [inProgress, setInProgress] = useState<boolean>(false)
+    const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
      * Valodation scheme for the login form.
@@ -62,7 +62,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
      * @param values
      */
     const resendConfirmation = (values: ResendConfirmationFormValues) => {
-        setInProgress(true)
+        setInProgress(true);
 
         EzOnRailsHttpClient.confirmationInstructions(values).then(() => {
             props.onResendConfirmationSuccess(values.email);
@@ -71,54 +71,56 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
         }).catch((e) => {
             props.onResendConfirmationError(e);
             setInProgress(false);
-        })
-    }
+        });
+    };
 
     // initial values
     const initialFormValues: ResendConfirmationFormValues = {
         email: '',
     };
-    return <div className="ez-on-rails-form-outer-container"><Formik
-        initialValues={initialFormValues}
-        onSubmit={(values) => {
-            resendConfirmation(values)
-        }}
-        validationSchema={ResendConfirmationValidationSchema}
-    >
-        {({
-              errors,
-              handleChange,
-              handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}
-                  className={props.containerClassName || 'ez-on-rails-form-container'}>
-                <Form.Group id='email-container'
-                            className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
-                    <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
-                        {props.labelEmail || 'E-Mail Adresse'}
-                    </Form.Label>
-                    <Form.Control id='email'
-                                  type="email"
-                                  onChange={handleChange}
-                                  className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                  isInvalid={!!errors.email}/>
-                    <Form.Control.Feedback type="invalid"
-                                           className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
-                        {errors.email}
-                    </Form.Control.Feedback>
-                </Form.Group>
 
-                {!inProgress && (
-                    <div className={props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container'}>
-                        <Button variant="primary"
-                                type="submit"
-                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
-                            {props.labelSubmitButton || "Passwort zurücksetzen"}
-                        </Button>
-                    </div>
-                )}
-            </form>
-        )}
-    </Formik>
-    </div>
-}
+    return (
+        <Formik
+            initialValues={initialFormValues}
+            onSubmit={(values) => {
+                resendConfirmation(values);
+            }}
+            validationSchema={ResendConfirmationValidationSchema}
+        >
+            {({
+                  errors,
+                  handleChange,
+                  handleSubmit,
+              }) => (
+                <form onSubmit={handleSubmit}
+                      className={props.containerClassName || 'ez-on-rails-form-container'}>
+                    <Form.Group id="email-container"
+                                className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                            {props.labelEmail || 'E-Mail Adresse'}
+                        </Form.Label>
+                        <Form.Control id="email"
+                                      type="email"
+                                      onChange={handleChange}
+                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                      isInvalid={!!errors.email}/>
+                        <Form.Control.Feedback type="invalid"
+                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                            {errors.email}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+
+                    {!inProgress && (
+                        <div className={props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container'}>
+                            <Button variant="primary"
+                                    type="submit"
+                                    className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
+                                {props.labelSubmitButton || 'Passwort zurücksetzen'}
+                            </Button>
+                        </div>
+                    )}
+                </form>
+            )}
+        </Formik>
+    );
+};

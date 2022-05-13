@@ -1,6 +1,5 @@
-/// <reference types="react" />
 import '../EzOnRails.css';
-import { DefaultFormProps } from "../shared/Types";
+import { DefaultFormProps } from '../shared/Types';
 /**
  * Type for props for the ResendConfirmationForm component.
  */

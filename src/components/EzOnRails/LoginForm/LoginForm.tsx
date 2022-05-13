@@ -1,12 +1,12 @@
-import '../EzOnRails.css'
-import { Formik } from "formik";
+import '../EzOnRails.css';
+import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from "../../../http/client/EzOnRailsHttpClient";
-import { DefaultFormProps } from "../shared/Types";
+import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { DefaultFormProps } from '../shared/Types';
 
 /**
  * Props for the LoginForm component.
@@ -38,7 +38,7 @@ export interface LoginFormProps extends DefaultFormProps {
     hideStayLoggedIn?: boolean;
 
     // The minimum length of the password
-    minPasswordLength?: number
+    minPasswordLength?: number;
 
     // Called if the user successfully logged in. The email of the user and its auth info for the next request will be passed. Passes also if the user checked the stayLoggedIn checkbox.
     onLoginSuccess: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
@@ -65,7 +65,7 @@ interface LoginFormValues {
  */
 export const LoginForm = (props: LoginFormProps) => {
 
-    const [inProgress, setInProgress] = useState<boolean>(false)
+    const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
      * Valodation scheme for the login form.
@@ -77,7 +77,6 @@ export const LoginForm = (props: LoginFormProps) => {
             .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich')
     } as any).defined();
 
-
     /**
      * Tries to log in the user given by the form values.
      * If the login was successful, the onLoginSuccess callback in the props will be called.
@@ -88,15 +87,17 @@ export const LoginForm = (props: LoginFormProps) => {
      * @param values
      */
     const login = async (values: LoginFormValues) => {
-        setInProgress(true)
+        setInProgress(true);
 
         try {
-            const authInfo = await EzOnRailsHttpClient.signIn(values)
-            if (!authInfo) throw 'No authentication object returned';
+            const authInfo = await EzOnRailsHttpClient.signIn(values);
+            if (!authInfo) {
+                throw 'No authentication object returned';
+            }
 
             await props.onLoginSuccess(values.email, authInfo, values.stayLoggedIn);
         } catch (e) {
-            props.onLoginError(e)
+            props.onLoginError(e);
             setInProgress(false);
         }
     };
@@ -108,11 +109,11 @@ export const LoginForm = (props: LoginFormProps) => {
         stayLoggedIn: false
     };
 
-    return <div className="ez-on-rails-form-outer-container">
+    return (
         <Formik
             initialValues={initialFormValues}
             onSubmit={(values) => {
-                login(values)
+                login(values);
             }}
             validationSchema={LoginValidationSchema}
         >
@@ -123,13 +124,13 @@ export const LoginForm = (props: LoginFormProps) => {
               }) => (
                 <form onSubmit={handleSubmit}
                       className={props.containerClassName || 'ez-on-rails-form-container'}>
-                    <Form.Group id='email-container'
+                    <Form.Group id="email-container"
                                 className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelEmail || 'E-Mail Adresse'}
                         </Form.Label>
 
-                        <Form.Control id='email'
+                        <Form.Control id="email"
                                       type="email"
                                       onChange={handleChange}
                                       className={props.fieldInputClassName || 'ez-on-rails-form-field'}
@@ -140,13 +141,13 @@ export const LoginForm = (props: LoginFormProps) => {
                         </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group id='password-container'
+                    <Form.Group id="password-container"
                                 className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelPassword || 'Passwort'}
                         </Form.Label>
 
-                        <Form.Control id='password'
+                        <Form.Control id="password"
                                       type="password"
                                       onChange={handleChange}
                                       className={props.fieldInputClassName || 'ez-on-rails-form-field'}
@@ -158,12 +159,12 @@ export const LoginForm = (props: LoginFormProps) => {
                     </Form.Group>
 
                     {!props.hideStayLoggedIn &&
-                        <Form.Group id='stay-logged-in-container'
+                        <Form.Group id="stay-logged-in-container"
                                     className={props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container'}>
-                            <Form.Check id='stayLoggedIn'
+                            <Form.Check id="stayLoggedIn"
                                         className={props.fieldCheckboxInputClassName || 'ez-on-rails-form-field'}
                                         type="checkbox"
-                                        label={props.labelStayLoggedIn || "Auf diesem Gerät eingeloggt bleiben"}
+                                        label={props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben'}
                                         onChange={handleChange}/>
                         </Form.Group>
                     }
@@ -173,14 +174,12 @@ export const LoginForm = (props: LoginFormProps) => {
                             <Button variant="primary"
                                     type="submit"
                                     className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
-                                {props.labelSubmitButton || "Login"}
+                                {props.labelSubmitButton || 'Login'}
                             </Button>
                         </div>
                     )}
                 </form>
             )}
         </Formik>
-    </div>
-}
-
-
+    );
+};

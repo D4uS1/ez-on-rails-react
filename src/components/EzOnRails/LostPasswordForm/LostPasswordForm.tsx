@@ -79,7 +79,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
         email: '',
     };
 
-    return <div className="ez-on-rails-form-outer-container">
+    return (
         <Formik
             initialValues={initialFormValues}
             onSubmit={(values) => {
@@ -122,7 +122,5 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
                 </form>
             )}
         </Formik>
-    </div>
-
-
-}
+    );
+};

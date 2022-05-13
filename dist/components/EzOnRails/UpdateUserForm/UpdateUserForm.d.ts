@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import '../EzOnRails.css';
 import { EzOnRailsAuthInfo, EzOnRailsUser } from "../../../http/client/EzOnRailsHttpClient";
 import { DefaultFormProps } from "../shared/Types";
