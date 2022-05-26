@@ -190,16 +190,16 @@ const fetchWithThrow = async (
 
     // throw if something went wrong
     if (response.status >= 400) {
-        throw new EzOnRailsHttpError(`Server responded with status ${response.status}.`, response.status);
+        throw new EzOnRailsHttpError(JSON.stringify(response.body)['error'], response.status);
     }
 
     // get header and data and return result
     let responseHeaders = {};
-    let responseBody = null
+    let responseBody = null;
     try {
         // build headers
         response.headers.forEach((value, key) => {
-            responseHeaders[key] = value
+            responseHeaders[key] = value;
         });
 
         // build body
