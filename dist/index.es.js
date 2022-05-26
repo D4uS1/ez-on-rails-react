@@ -2064,7 +2064,7 @@ var fetchWithThrow = function (method, url, body, headers) { return __awaiter(vo
                 response = _a.sent();
                 // throw if something went wrong
                 if (response.status >= 400) {
-                    throw new EzOnRailsHttpError("Server responded with status ".concat(response.status, "."), response.status);
+                    throw new EzOnRailsHttpError(JSON.stringify(response.body)['error'], response.status);
                 }
                 responseHeaders = {};
                 responseBody = null;
