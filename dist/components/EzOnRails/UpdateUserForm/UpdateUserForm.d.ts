@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import '../EzOnRails.css';
 import { EzOnRailsAuthInfo, EzOnRailsUser } from "../../../http/client/EzOnRailsHttpClient";
 import { DefaultFormProps } from "../shared/Types";
@@ -33,6 +34,11 @@ export interface UpdateUserFormProps extends DefaultFormProps {
     onUserUpdateError: (e: any) => void;
     avatarMaxSize?: number;
     dropzoneContainerClassName?: string;
+    hideUsername?: boolean;
+    hideEmail?: boolean;
+    hidePassword?: boolean;
+    hideAvatar?: boolean;
+    submitRef?: React.Ref<HTMLButtonElement>;
 }
 /**
  * UpdateUserForm component for a default form using EzOnRails to update the own user.

@@ -98,6 +98,21 @@ export interface UpdateUserFormProps extends DefaultFormProps {
 
     // css class for the container holding the dropzone for the avatar
     dropzoneContainerClassName?: string;
+
+    // if set to true, the username field will not be shown and submitted, can be used to only show a set of fields to update
+    hideUsername?: boolean;
+
+    // if set to true, the email field will not be shown and submitted, can be used to only show a set of fields to update
+    hideEmail?: boolean;
+
+    // if set to true, the password and passwordConfirmation field will not be shown and submitted, can be used to only show a set of fields to update
+    hidePassword?: boolean;
+
+    // if set to true, the avatar field will not be shown and submitted, can be used to only show a set of fields to update
+    hideAvatar?: boolean;
+
+    // Ref that is assigned to the submit button, can be used to eg. trigger the submit from outside the form
+    submitRef?: React.Ref<HTMLButtonElement>;
 }
 
 /**
@@ -232,118 +247,129 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                               }) => (
                                 <form onSubmit={handleSubmit}
                                       className={props.containerClassName || 'ez-on-rails-form-container'}>
-                                    <Form.Group
-                                        id='username-container'
-                                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
-                                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
-                                            {props.labelUsername || 'Benutzername'}
-                                        </Form.Label>
-                                        <Form.Control id='username'
-                                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                                      type="text"
-                                                      value={values.username}
-                                                      onChange={handleChange}
-                                                      isInvalid={!!errors.username}/>
-                                        <Form.Control.Feedback type="invalid"
-                                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
-                                            {errors.username}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                    { !props.hideUsername && (
+                                        <Form.Group
+                                            id='username-container'
+                                            className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                                            <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                                {props.labelUsername || 'Benutzername'}
+                                            </Form.Label>
+                                            <Form.Control id='username'
+                                                          className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                                          type="text"
+                                                          value={values.username}
+                                                          onChange={handleChange}
+                                                          isInvalid={!!errors.username}/>
+                                            <Form.Control.Feedback type="invalid"
+                                                                   className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                                                {errors.username}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    )}
 
-                                    <Form.Group
-                                        id='email-container'
-                                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
-                                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
-                                            {props.labelEmail || 'E-Mail Adresse'}
-                                        </Form.Label>
-                                        <Form.Control id='email'
-                                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                                      type="email"
-                                                      value={values.email}
-                                                      onChange={handleChange}
-                                                      isInvalid={!!errors.email}/>
-                                        {values.unconfirmedEmail && (
-                                            <div
-                                                className={props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text'}>
-                                                {props.unconfirmedEmailText || 'Die folgende E-Mail Adresse wurde noch nicht bestätigt: ' } {values.unconfirmedEmail}
+                                    { !props.hideEmail && (
+                                        <Form.Group
+                                            id='email-container'
+                                            className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                                            <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                                {props.labelEmail || 'E-Mail Adresse'}
+                                            </Form.Label>
+                                            <Form.Control id='email'
+                                                          className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                                          type="email"
+                                                          value={values.email}
+                                                          onChange={handleChange}
+                                                          isInvalid={!!errors.email}/>
+                                            {values.unconfirmedEmail && (
+                                                <div
+                                                    className={props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text'}>
+                                                    {props.unconfirmedEmailText || 'Die folgende E-Mail Adresse wurde noch nicht bestätigt: ' } {values.unconfirmedEmail}
+                                                </div>
+                                            )}
+                                            <Form.Control.Feedback type="invalid"
+                                                                   className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                                                {errors.email}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    )}
+
+                                    { !props.hidePassword && (
+                                        <Form.Group
+                                            id='password-container'
+                                            className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                                            <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                                {props.labelPassword || 'Passwort'}
+                                            </Form.Label>
+                                            <Form.Control id='password'
+                                                          className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                                          type="password"
+                                                          value={values.password}
+                                                          onChange={handleChange}
+                                                          isInvalid={!!errors.password}/>
+                                            <div className={props.fieldInfoClassName || 'ez-on-rails-password-optional-text'}>
+                                                {props.passwordChangeOptionalText || 'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.'}
                                             </div>
-                                        )}
-                                        <Form.Control.Feedback type="invalid"
-                                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
-                                            {errors.email}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                            <Form.Control.Feedback type="invalid"
+                                                                   className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                                                {errors.password}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    )}
 
-                                    <Form.Group
-                                        id='password-container'
-                                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
-                                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
-                                            {props.labelPassword || 'Passwort'}
-                                        </Form.Label>
-                                        <Form.Control id='password'
-                                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                                      type="password"
-                                                      value={values.password}
-                                                      onChange={handleChange}
-                                                      isInvalid={!!errors.password}/>
-                                        <div className={props.fieldInfoClassName || 'ez-on-rails-password-optional-text'}>
-                                            {props.passwordChangeOptionalText || 'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.'}
-                                        </div>
-                                        <Form.Control.Feedback type="invalid"
-                                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
-                                            {errors.password}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                    { !props.hidePassword && (
+                                        <Form.Group
+                                            id='password-confirmation-container'
+                                            className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                                            <Form.Label
+                                                className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                                {props.labelPasswordConfirmation || 'Passwort wiederholen'}
+                                            </Form.Label>
+                                            <Form.Control id='passwordConfirmation'
+                                                          className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                                          type="password"
+                                                          value={values.passwordConfirmation}
+                                                          onChange={handleChange}
+                                                          isInvalid={!!errors.passwordConfirmation}/>
+                                            <Form.Control.Feedback type="invalid"
+                                                                   className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                                                {errors.passwordConfirmation}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    )}
 
-                                    <Form.Group
-                                        id='password-confirmation-container'
-                                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
-                                        <Form.Label
-                                            className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
-                                            {props.labelPasswordConfirmation || 'Passwort wiederholen'}
-                                        </Form.Label>
-                                        <Form.Control id='passwordConfirmation'
-                                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                                      type="password"
-                                                      value={values.passwordConfirmation}
-                                                      onChange={handleChange}
-                                                      isInvalid={!!errors.passwordConfirmation}/>
-                                        <Form.Control.Feedback type="invalid"
-                                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
-                                            {errors.passwordConfirmation}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-
-                                    <Form.Group
-                                        id='avatar-container'
-                                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
-                                        <Form.Label
-                                            className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
-                                            {props.labelAvatar || 'Avatar'}
-                                        </Form.Label>
-                                        <div
-                                            className={props.dropzoneContainerClassName || 'ez-on-rails-form-field'}>
-                                            <ActiveStorageDropzone authInfo={props.authInfo}
-                                                                   onChange={(blobs) => setFieldValue('avatar', blobs.length > 0 ? blobs[0] : null)}
-                                                                   files={values.avatar ? [values.avatar] : []}
-                                                                   multiple={false}
-                                                                   maxFiles={1}
-                                                                   onMaxFilesError={() => setFieldError('avatar', props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.')}
-                                                                   maxSize={props.avatarMaxSize || 5242880} // 5 Mb
-                                                                   onMaxSizeError={() => setFieldError('avatar', props.avatarToLargeErrorText || 'Es sind maximal 5MB große Bilder erlaubt.')}
-                                                                   onInvalidTypeError={() => setFieldError('avatar', props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.')}/>
-                                        </div>
-                                        <Form.Control.Feedback type="invalid"
-                                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
-                                            {errors.avatar}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                    {!props.hideAvatar && (
+                                        <Form.Group
+                                            id='avatar-container'
+                                            className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                                            <Form.Label
+                                                className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                                {props.labelAvatar || 'Avatar'}
+                                            </Form.Label>
+                                            <div
+                                                className={props.dropzoneContainerClassName || 'ez-on-rails-form-field'}>
+                                                <ActiveStorageDropzone authInfo={props.authInfo}
+                                                                       onChange={(blobs) => setFieldValue('avatar', blobs.length > 0 ? blobs[0] : null)}
+                                                                       files={values.avatar ? [values.avatar] : []}
+                                                                       multiple={false}
+                                                                       maxFiles={1}
+                                                                       onMaxFilesError={() => setFieldError('avatar', props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.')}
+                                                                       maxSize={props.avatarMaxSize || 5242880} // 5 Mb
+                                                                       onMaxSizeError={() => setFieldError('avatar', props.avatarToLargeErrorText || 'Es sind maximal 5MB große Bilder erlaubt.')}
+                                                                       onInvalidTypeError={() => setFieldError('avatar', props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.')}/>
+                                            </div>
+                                            <Form.Control.Feedback type="invalid"
+                                                                   className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                                                {errors.avatar}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    )}
                                     {
                                         !inProgress && (
                                             <div
                                                 className={props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container'}>
 
-                                                <Button type="submit"
+                                                <Button ref={props.submitRef}
+                                                        type="submit"
                                                         variant="primary"
                                                         className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
                                                     {props.labelSubmitButton || "Speichern"}

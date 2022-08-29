@@ -511,7 +511,7 @@ export const EzOnRailsHttpClient = {
         }
 
         if (beforeRequest) {
-            data = beforeRequest(data)
+            data = beforeRequest(data);
         }
 
         if (data) {
