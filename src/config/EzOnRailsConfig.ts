@@ -23,13 +23,13 @@ export const EzOnRailsConfig = {
      * @param options
      */
     init: (options: EzOnRailsConfigOptions) => {
-        if (!options.baseUrl.endsWith("/")) {
+        if (!options.baseUrl.endsWith('/')) {
             options.baseUrl += '/';
         }
 
-        localStorage.setItem("EzOnRails.baseUrl", options.baseUrl);
-        localStorage.setItem("EzOnRails.apiUrl", `${options.baseUrl}api/`)
-        localStorage.setItem("EzOnRails.apiVersion", options.apiVersion)
+        localStorage.setItem('EzOnRails.baseUrl', options.baseUrl);
+        localStorage.setItem('EzOnRails.apiUrl', `${options.baseUrl}api/`);
+        localStorage.setItem('EzOnRails.apiVersion', options.apiVersion);
     },
 
     /**
@@ -37,7 +37,7 @@ export const EzOnRailsConfig = {
      * If no saved apiUrl was found, null will be returned.
      */
     baseUrl: (): string | null => {
-        return localStorage.getItem("EzOnRails.baseUrl");
+        return localStorage.getItem('EzOnRails.baseUrl');
     },
 
     /**
@@ -45,7 +45,7 @@ export const EzOnRailsConfig = {
      * If no saved apiUrl was found, null will be returned.
      */
     apiUrl: (): string | null => {
-        return localStorage.getItem("EzOnRails.apiUrl");
+        return localStorage.getItem('EzOnRails.apiUrl');
     },
 
     /**
@@ -54,6 +54,6 @@ export const EzOnRailsConfig = {
      * If not api version is yet defined, 1.0 will be returned as default.
      */
     apiVersion: (): string => {
-        return localStorage.getItem("EzOnRails.apiVersion") || '1.0';
+        return localStorage.getItem('EzOnRails.apiVersion') || '1.0';
     }
-}
+};

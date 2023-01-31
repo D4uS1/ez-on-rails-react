@@ -1,4 +1,5 @@
-import { EzOnRailsConfig } from "../../config/EzOnRailsConfig";
+import { toCamel, toSnake } from 'convert-keys';
+import { EzOnRailsConfig } from '../../config/EzOnRailsConfig';
 
 /**
  * Returns the full url to the backend having the relative path.
@@ -7,13 +8,13 @@ import { EzOnRailsConfig } from "../../config/EzOnRailsConfig";
  *
  * @param path
  */
-export const toBaseUrl = (path: string): string => {
+const toBaseUrl = (path: string): string => {
     if (path.startsWith('/')) {
-        path = path.slice(1)
+        path = path.slice(1);
     }
 
-    return `${EzOnRailsConfig.baseUrl()}${path}`
-}
+    return `${EzOnRailsConfig.baseUrl()}${path}`;
+};
 
 /**
  * Returns the full url to the backend api having the relative path.
@@ -22,18 +23,52 @@ export const toBaseUrl = (path: string): string => {
  *
  * @param path
  */
-export const toApiUrl = (path: string): string => {
+const toApiUrl = (path: string): string => {
     if (path.startsWith('/')) {
-        path = path.slice(1)
+        path = path.slice(1);
     }
 
-    return `${EzOnRailsConfig.apiUrl()}${path}`
-}
+    return `${EzOnRailsConfig.apiUrl()}${path}`;
+};
+
+/**
+ * Converts the object or array into snake_case.
+ */
+const toSnakeCase = <T>(data: T): T => {
+    // Data is not interpretable
+    if (!data) return data;
+
+    return toSnake(data);
+};
+
+/**
+ * Converts the object or array to camelCase.
+ *
+ * @param data
+ */
+const toCamelCase = <T>(data: T): T => {
+    // Data is not interpretable
+    if (!data) return data;
+
+    return toCamel(data);
+};
+
+/**
+ * Converts the given parameters object to a get Parameter string.
+ */
+const toGetParameters = (parameters: Record<string, string | number | boolean | null>) => {
+    return Object.keys(parameters)
+        .map((key) => key + '=' + parameters[key])
+        .join('&');
+};
 
 /**
  * Contains utils for http access of some EzOnRails Backend.
  */
 export const EzOnRailsHttpUtils = {
     toBaseUrl: toBaseUrl,
-    toApiUrl: toApiUrl
-}
+    toApiUrl: toApiUrl,
+    toSnakeCase: toSnakeCase,
+    toCamelCase: toCamelCase,
+    toGetParameters: toGetParameters
+};

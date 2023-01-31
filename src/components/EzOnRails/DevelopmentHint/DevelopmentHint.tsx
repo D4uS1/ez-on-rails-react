@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import './DevelopmentHint.css'
+import { useState } from 'react';
+import './DevelopmentHint.css';
 
 /**
  * Props for the DevelopmentHint component.
@@ -23,7 +23,7 @@ export interface DevelopmentHintProps {
  * @constructor
  */
 export const DevelopmentHint = (props: DevelopmentHintProps) => {
-    const [visible, setVisible] = useState<boolean>(props.visible)
+    const [visible, setVisible] = useState<boolean>(props.visible);
 
     /**
      * Called after the last dismiss timeout triggers.
@@ -41,12 +41,12 @@ export const DevelopmentHint = (props: DevelopmentHintProps) => {
      */
     const onClickContainer = () => {
         setVisible(false);
-        setTimeout(dismissTimeout, props.dismissTimeout || 20000)
-    }
+        setTimeout(dismissTimeout, props.dismissTimeout || 20000);
+    };
 
-    return visible ? <div onClick={onClickContainer} className='development-hint-container'>
-        <span className='development-hint-text'>
-            development
-        </span>
-    </div> : null;
-}
+    return visible ? (
+        <div onClick={onClickContainer} className="development-hint-container">
+            <span className="development-hint-text">development</span>
+        </div>
+    ) : null;
+};

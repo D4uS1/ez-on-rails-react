@@ -1,15 +1,15 @@
-import { EzOnRailsConfig } from "../../config/EzOnRailsConfig";
-import  { toSnake, toCamel } from 'convert-keys'
-import { toApiUrl, toBaseUrl } from "../utils/EzOnRailsUtils";
-import { RailsFileBlob } from "../../components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone";
+import { EzOnRailsConfig } from '../../config/EzOnRailsConfig';
+import { EzOnRailsHttpUtils } from '../utils/EzOnRailsUtils';
+import { RailsFileBlob } from '../../components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone';
+import { EzOnRailsHttpError } from './EzOnRailsHttpError';
 
 /**
  * Describes the header information needed to authenticate as user on an EzOnRails application.
  */
 interface EzOnRailsAuthHeader {
-    'uid': string;
-    'client': string;
-    'expiry': string;
+    uid: string;
+    client: string;
+    expiry: string;
     'token-type': string;
     'access-token': string;
 }
@@ -48,28 +48,7 @@ export type EzOnRailsUpdateUserParams = Partial<Omit<EzOnRailsUser, 'avatar' | '
     avatar?: string | null;
     password?: string | null;
     passwordConfirmation?: string | null;
-}
-
-/**
- * Error class for requesting actions via the EzOnRailsHttpClient.
- * Holds an httpStatusCode and message field that is accessible from outside.
- */
-export class EzOnRailsHttpError extends Error {
-    public httpStatusCode: number;
-
-    /**
-     * Constructor expects th httpStatusCode given by the response of the request and a message.
-     *
-     * @param message
-     * @param httpStatusCode
-     */
-    constructor(message: string, httpStatusCode: number) {
-        super();
-
-        this.message = message;
-        this.httpStatusCode = httpStatusCode;
-    }
-}
+};
 
 /**
  * Changes the specified authInfo object to an AuthHeader object, that can be passed via the
@@ -78,61 +57,34 @@ export class EzOnRailsHttpError extends Error {
  *
  * @param authInfo
  */
-const authInfoToHeader = (authInfo: EzOnRailsAuthInfo | undefined):EzOnRailsAuthHeader | undefined => {
+const authInfoToHeader = (authInfo: EzOnRailsAuthInfo | undefined): EzOnRailsAuthHeader | undefined => {
     if (!authInfo) return undefined;
 
     return {
         uid: authInfo.uid,
         client: authInfo.client,
         expiry: authInfo.expiry,
-        "token-type": authInfo.tokenType,
-        "access-token": authInfo.accessToken
-    }
-}
-
-/**
- * Converts the object or array into snake_case.
- */
-const toSnakeCase = (data: any):any => {
-    // Data is not interpretable
-    if (!data) return data;
-
-   return toSnake(data);
-}
-
-/**
- * Converts the object or array to camelCase.
- *
- * @param data
- */
-const toCamelCase = (data: any): any => {
-    // Data is not interpretable
-    if (!data) return data;
-
-    return toCamel(data);
-}
+        'token-type': authInfo.tokenType,
+        'access-token': authInfo.accessToken
+    };
+};
 
 /**
  * Extracts the authentication information from the specified header and returns
  * a resulting EzOnRailsAuthInfo object. If no auth info are provided, undefined will be
  * returned.
  *
- * @param authHeader
+ * @param headers
  */
-const getAuthInfoFromHeader = (headers: any): EzOnRailsAuthInfo | undefined => {
-    if (headers["uid"] && headers["access-token"] && headers["client"] && headers["expiry"] && headers["token-type"] && headers["access-token"]) {
-        return {
-            uid: headers["uid"],
-            client: headers["client"],
-            expiry: headers["expiry"],
-            tokenType: headers["token-type"],
-            accessToken: headers["access-token"]
-        }
-    }
-
-    return undefined;
-}
-
+const getAuthInfoFromHeader = (headers: Record<string, string>): EzOnRailsAuthInfo => {
+    return {
+        uid: headers['uid'],
+        client: headers['client'],
+        expiry: headers['expiry'],
+        tokenType: headers['token-type'],
+        accessToken: headers['access-token']
+    };
+};
 
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
@@ -141,27 +93,22 @@ const getAuthInfoFromHeader = (headers: any): EzOnRailsAuthInfo | undefined => {
 export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | undefined = undefined) => {
     return {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'api-version': EzOnRailsConfig.apiVersion(),
         ...authInfoToHeader(authInfo)
     };
-}
+};
 
 /**
- * Converts the given parameters object to a get Parameter string.
+ * Describes the response object of the fetchWithThrow function.
+ * TRes describes the type of the expected response body.
  */
-const toGetParameters = (parameters: any) => {
-    return Object.keys(parameters).map(key => key + '=' + parameters[key]).join('&');
-}
+interface FetchWithThrowResponse<TRes> {
+    // The response headers
+    headers: Record<string, string>;
 
-/**
- * Checks whether the error returned by some http response from ez-on-rails is
- * an unauthorizes error.
- *
- * @param error
- */
-export const isUnauthorizedError = (error: any) => {
-    return error?.status === 401 || error?.response?.status === 401
+    // The response body
+    body: TRes;
 }
 
 /**
@@ -176,12 +123,12 @@ export const isUnauthorizedError = (error: any) => {
  * @param body
  * @param headers
  */
-const fetchWithThrow = async (
+const fetchWithThrow = async <TRes>(
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
     url: string,
-    body: any,
-    headers: any,
-): Promise<any> => {
+    body: unknown,
+    headers: Record<string, string>
+): Promise<FetchWithThrowResponse<TRes>> => {
     const response = await fetch(url, {
         method: method,
         headers: headers,
@@ -194,7 +141,7 @@ const fetchWithThrow = async (
     }
 
     // get header and data and return result
-    let responseHeaders = {};
+    const responseHeaders = {};
     let responseBody = null;
     try {
         // build headers
@@ -205,10 +152,84 @@ const fetchWithThrow = async (
         // build body
         responseBody = await response.json();
     } catch (e) {}
+
     return {
         headers: responseHeaders,
         body: responseBody
     };
+};
+
+/**
+ * Describes the parameters that are needed for signup.
+ * The interface allows any data to be passed, but requires the parameters to be set that are minimum
+ * needed by ez-on-rails for signUp. This makes it possible to append any data on the user model that is also saved
+ * on signUp, but also gets sure that the needed data for registration process is passed.
+ */
+interface EzOnRailsSignUpParams {
+    // The users email
+    email: string;
+
+    // The users password
+    password: string;
+
+    // The password confirmation, this must match the password
+    passwordConfirmation: string;
+
+    // The optional username, can be anything
+    username?: string;
+
+    // Any additional data if your model has additional data on registration
+    [key: string]: unknown;
+}
+
+/**
+ * Descibes the parameters needed to sign in.
+ */
+interface EzOnRailsSignInParams {
+    // The email of the user
+    email: string;
+
+    // The users password
+    password: string;
+}
+
+/**
+ * Describes the parameters needed for the password reset instructions endpoint.
+ */
+interface EzOnRailsPasswordResetInstructionsParams {
+    // The email the instructions are send to
+    email: string;
+}
+
+/**
+ * Describes the parameters needed for the password reset endpoint.
+ */
+interface EzOnRailsPasswordResetParams {
+    // The password the user wants to set
+    password: string;
+
+    // The password confirmation of the password, must match the password
+    passwordConfirmation: string;
+
+    // The token that was send via email to the user to reset the password
+    resetPasswordToken: string;
+}
+
+/**
+ * Describes the parameters needed for the endpoint to resend the confirmation instructions.
+ */
+interface EzOnRailsConfirmationInstructionsParams {
+    // The email the instructions are requested for
+    email: string;
+}
+
+/**
+ * Describes the parameters needed to confirm an account using the confirmation link that was
+ * send via email.
+ */
+interface EzOnRailsConfirmParams {
+    // The token that was send to the users email
+    confirmationToken: string;
 }
 
 /**
@@ -217,7 +238,6 @@ const fetchWithThrow = async (
  * The Storage is expected to contain the followingValues.
  */
 export const EzOnRailsHttpClient = {
-
     /**
      * Sends a signup request to the server.
      * The specified data is the user data passed to the sign_up action of the EzOnRails endpoint.
@@ -227,12 +247,10 @@ export const EzOnRailsHttpClient = {
      *
      * @param data
      */
-    signUp: async (data: any): Promise<any | undefined> => {
-        data = toSnakeCase(data);
+    signUp: async (data: EzOnRailsSignUpParams) => {
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
 
-        const result = await fetchWithThrow('POST', toBaseUrl('users'), { user: data }, defaultHttpHeader())
-
-        return toCamelCase(result.body);
+        await fetchWithThrow('POST', EzOnRailsHttpUtils.toBaseUrl('users'), { user: data }, defaultHttpHeader());
     },
 
     /**
@@ -243,19 +261,24 @@ export const EzOnRailsHttpClient = {
      *
      * @param data
      */
-    signIn: async (data: any): Promise<any & EzOnRailsAuthInfo | undefined>  => {
-        data = toSnakeCase(data);
+    signIn: async (data: EzOnRailsSignInParams): Promise<EzOnRailsAuthInfo> => {
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
 
-        const result = await fetchWithThrow('POST', toApiUrl('auth/sign_in'),  data, defaultHttpHeader());
+        const result = await fetchWithThrow(
+            'POST',
+            EzOnRailsHttpUtils.toApiUrl('auth/sign_in'),
+            data,
+            defaultHttpHeader()
+        );
 
-        return { ...getAuthInfoFromHeader(result.headers), ...toCamelCase(result.body) }
+        return getAuthInfoFromHeader(result.headers);
     },
 
     /**
      * Sends a signout request for the current user to the ez_on_rails endpoint.
      */
     signOut: async (authInfo: EzOnRailsAuthInfo) => {
-        await fetchWithThrow('DELETE', toApiUrl('auth/sign_out'), null, defaultHttpHeader(authInfo));
+        await fetchWithThrow('DELETE', EzOnRailsHttpUtils.toApiUrl('auth/sign_out'), null, defaultHttpHeader(authInfo));
     },
 
     /**
@@ -263,10 +286,15 @@ export const EzOnRailsHttpClient = {
      *
      * @param data
      */
-    passwordResetInstructions: async (data: any) => {
-        data = toSnakeCase(data);
+    passwordResetInstructions: async (data: EzOnRailsPasswordResetInstructionsParams) => {
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
 
-        await fetchWithThrow('POST', toBaseUrl('users/password'), { user: data }, defaultHttpHeader());
+        await fetchWithThrow(
+            'POST',
+            EzOnRailsHttpUtils.toBaseUrl('users/password'),
+            { user: data },
+            defaultHttpHeader()
+        );
     },
 
     /**
@@ -276,10 +304,15 @@ export const EzOnRailsHttpClient = {
      *
      * @param data
      */
-    passwordReset: async (data: any) => {
-        data = toSnakeCase(data);
+    passwordReset: async (data: EzOnRailsPasswordResetParams) => {
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
 
-        await fetchWithThrow('PUT', toBaseUrl('users/password'), { user: data }, defaultHttpHeader());
+        await fetchWithThrow(
+            'PUT',
+            EzOnRailsHttpUtils.toBaseUrl('users/password'),
+            { user: data },
+            defaultHttpHeader()
+        );
     },
 
     /**
@@ -288,9 +321,14 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      */
     getUser: async (authInfo: EzOnRailsAuthInfo): Promise<EzOnRailsUser> => {
-        const result = await fetchWithThrow('GET', toApiUrl('users/me'), null, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<EzOnRailsUser>(
+            'GET',
+            EzOnRailsHttpUtils.toApiUrl('users/me'),
+            null,
+            defaultHttpHeader(authInfo)
+        );
 
-        return toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -300,11 +338,16 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      */
     updateUser: async (data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo): Promise<EzOnRailsUser> => {
-        data = toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
 
-        const result = await fetchWithThrow('PATCH', toApiUrl('users/me'), { user: data }, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<EzOnRailsUser>(
+            'PATCH',
+            EzOnRailsHttpUtils.toApiUrl('users/me'),
+            { user: data },
+            defaultHttpHeader(authInfo)
+        );
 
-        return toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -313,10 +356,15 @@ export const EzOnRailsHttpClient = {
      *
      * @param data
      */
-    confirmationInstructions: async (data: any) => {
-        data = toSnakeCase(data);
+    confirmationInstructions: async (data: EzOnRailsConfirmationInstructionsParams) => {
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
 
-        await fetchWithThrow('POST', toBaseUrl('users/confirmation'), { user: data }, defaultHttpHeader());
+        await fetchWithThrow(
+            'POST',
+            EzOnRailsHttpUtils.toBaseUrl('users/confirmation'),
+            { user: data },
+            defaultHttpHeader()
+        );
     },
 
     /**
@@ -324,10 +372,11 @@ export const EzOnRailsHttpClient = {
      *
      * @param data
      */
-    confirmation: async (data: any) => {
-        let url = toBaseUrl('users/confirmation');
-        data = toSnakeCase(data);
-        url = `${url}?${toGetParameters(data)}`;
+    confirmation: async (data: EzOnRailsConfirmParams) => {
+        let url = EzOnRailsHttpUtils.toBaseUrl('users/confirmation');
+        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        // @ts-ignore This works because the type only is a default json object
+        url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
 
         await fetchWithThrow('GET', url, null, defaultHttpHeader());
     },
@@ -349,29 +398,29 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      * @param beforeRequest
      */
-    get: async <T>(
+    get: async <TParams, TResponse>(
         url: string,
-        data: any,
+        data: TParams,
         authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        beforeRequest: ((data: any) => any) | undefined = undefined
-    ):Promise<T> => {
-        url = toApiUrl(url);
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+    ): Promise<TResponse> => {
+        url = EzOnRailsHttpUtils.toApiUrl(url);
 
         if (data) {
-            data = toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toSnakeCase(data);
         }
 
         if (beforeRequest) {
-            data = beforeRequest(data)
+            data = beforeRequest(data);
         }
 
         if (data) {
-            url = `${url}?${toGetParameters(data)}`;
+            url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
         }
 
-        const result = await fetchWithThrow('GET', url, null, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<TResponse>('GET', url, null, defaultHttpHeader(authInfo));
 
-        return  toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -390,23 +439,28 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      * @param beforeRequest
      */
-    post: async <T>(
+    post: async <TParams, TResponse>(
         url: string,
-        data: any,
+        data: TParams,
         authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        beforeRequest: ((data: any) => any) | undefined = undefined
-    ):Promise<T> =>  {
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+    ): Promise<TResponse> => {
         if (data) {
-            data = toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toSnakeCase(data);
         }
 
         if (beforeRequest) {
-            data = beforeRequest(data)
+            data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow('POST', toApiUrl(url), data, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<TResponse>(
+            'POST',
+            EzOnRailsHttpUtils.toApiUrl(url),
+            data,
+            defaultHttpHeader(authInfo)
+        );
 
-        return toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -425,23 +479,28 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      * @param beforeRequest
      */
-    patch: async <T>(
+    patch: async <TParams, TResponse>(
         url: string,
-        data: any,
+        data: TParams,
         authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        beforeRequest: ((data: any) => any) | undefined = undefined
-    ):Promise<T> =>  {
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+    ): Promise<TResponse> => {
         if (data) {
-            data = toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toSnakeCase(data);
         }
 
         if (beforeRequest) {
-            data = beforeRequest(data)
+            data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow('PATCH', toApiUrl(url), data, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<TResponse>(
+            'PATCH',
+            EzOnRailsHttpUtils.toApiUrl(url),
+            data,
+            defaultHttpHeader(authInfo)
+        );
 
-        return toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -460,24 +519,28 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      * @param beforeRequest
      */
-    put: async <T>(
+    put: async <TParams, TResponse>(
         url: string,
-        data: any,
+        data: TParams,
         authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        beforeRequest: ((data: any) => any) | undefined = undefined
-    ):Promise<T> =>  {
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+    ): Promise<TResponse> => {
         if (data) {
-            data = toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toSnakeCase(data);
         }
 
         if (beforeRequest) {
-            data = beforeRequest(data)
+            data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow('PUT', toApiUrl(url), data, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<TResponse>(
+            'PUT',
+            EzOnRailsHttpUtils.toApiUrl(url),
+            data,
+            defaultHttpHeader(authInfo)
+        );
 
-        return toCamelCase(result.body);
-
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -498,16 +561,16 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      * @param beforeRequest
      */
-    delete: async <T>(
+    delete: async <TParams, TResponse>(
         url: string,
-        data: any,
+        data: TParams,
         authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        beforeRequest: ((data: any) => any) | undefined = undefined
-    ):Promise<T> =>  {
-        url = toApiUrl(url);
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+    ): Promise<TResponse> => {
+        url = EzOnRailsHttpUtils.toApiUrl(url);
 
         if (data) {
-            data = toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toSnakeCase(data);
         }
 
         if (beforeRequest) {
@@ -515,12 +578,12 @@ export const EzOnRailsHttpClient = {
         }
 
         if (data) {
-            url = `${url}?${toGetParameters(data)}`;
+            url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
         }
 
-        const result = await fetchWithThrow('DELETE', url, null, defaultHttpHeader(authInfo));
+        const result = await fetchWithThrow<TResponse>('DELETE', url, null, defaultHttpHeader(authInfo));
 
-        return  toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toCamelCase(result.body);
     },
 
     /**
@@ -529,7 +592,7 @@ export const EzOnRailsHttpClient = {
      *
      * @param authInfo
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo):any => {
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo): Record<string, string> => {
         return defaultHttpHeader(authInfo);
     }
-}
+};

@@ -1,4 +1,4 @@
-import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from "../client/EzOnRailsHttpClient";
+import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../client/EzOnRailsHttpClient';
 
 /**
  * SWR Fetcher for EzOnRails api calls.
@@ -18,24 +18,33 @@ import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from "../client/EzOnRailsHttpC
  * @param key
  */
 export const EzOnRailsSwr = {
-    fetcher: async <T>(url: string, method: string = 'get', data: any = null, authInfo: EzOnRailsAuthInfo | undefined = undefined):Promise<T> => {
+    fetcher: async <T>(
+        url: string,
+        method = 'get',
+        data: unknown = null,
+        authInfo: EzOnRailsAuthInfo | undefined = undefined
+    ): Promise<T> => {
         method = method.toLowerCase();
         switch (method) {
             case 'post': {
                 return EzOnRailsHttpClient.post<T>(url, data, authInfo);
             }
+
             case 'put': {
                 return EzOnRailsHttpClient.put<T>(url, data, authInfo);
             }
+
             case 'patch': {
                 return EzOnRailsHttpClient.patch<T>(url, data, authInfo);
             }
+
             case 'delete': {
                 return EzOnRailsHttpClient.delete<T>(url, data, authInfo);
             }
+
             default: {
                 return EzOnRailsHttpClient.get<T>(url, data, authInfo);
             }
         }
     }
-}
+};

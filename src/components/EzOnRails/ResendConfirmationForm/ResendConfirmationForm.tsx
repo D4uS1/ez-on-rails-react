@@ -25,14 +25,14 @@ export interface ResendConfirmationFormProps extends DefaultFormProps {
     onResendConfirmationSuccess: (email: string) => void;
 
     // Called if the request to resend confirmation instructions was successful. The error is the exception that was thrown during the request.
-    onResendConfirmationError: (e: any) => void;
+    onResendConfirmationError: (e: unknown) => void;
 }
 
 /**
  * Describes the input fields for the ResendConfirmationForm.
  */
 interface ResendConfirmationFormValues {
-    email: string,
+    email: string;
 }
 
 /**
@@ -47,10 +47,13 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const ResendConfirmationValidationSchema: SchemaOf<ResendConfirmationFormValues> = Yup.object().shape({
-        email: Yup.string().email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
-            .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
-    } as any).defined();
+    const ResendConfirmationValidationSchema: SchemaOf<ResendConfirmationFormValues> = Yup.object()
+        .shape({
+            email: Yup.string()
+                .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
+                .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
+        })
+        .defined();
 
     /**
      * Tries to send a resend confirmation email request to the server by the form values.
@@ -64,19 +67,21 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     const resendConfirmation = (values: ResendConfirmationFormValues) => {
         setInProgress(true);
 
-        EzOnRailsHttpClient.confirmationInstructions(values).then(() => {
-            props.onResendConfirmationSuccess(values.email);
+        EzOnRailsHttpClient.confirmationInstructions(values)
+            .then(() => {
+                props.onResendConfirmationSuccess(values.email);
 
-            setInProgress(false);
-        }).catch((e) => {
-            props.onResendConfirmationError(e);
-            setInProgress(false);
-        });
+                setInProgress(false);
+            })
+            .catch((e) => {
+                props.onResendConfirmationError(e);
+                setInProgress(false);
+            });
     };
 
     // initial values
     const initialFormValues: ResendConfirmationFormValues = {
-        email: '',
+        email: ''
     };
 
     return (
@@ -87,34 +92,37 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
             }}
             validationSchema={ResendConfirmationValidationSchema}
         >
-            {({
-                  errors,
-                  handleChange,
-                  handleSubmit,
-              }) => (
-                <form onSubmit={handleSubmit}
-                      className={props.containerClassName || 'ez-on-rails-form-container'}>
-                    <Form.Group id="email-container"
-                                className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+            {({ errors, handleChange, handleSubmit }) => (
+                <form onSubmit={handleSubmit} className={props.containerClassName || 'ez-on-rails-form-container'}>
+                    <Form.Group
+                        id="email-container"
+                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                    >
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelEmail || 'E-Mail Adresse'}
                         </Form.Label>
-                        <Form.Control id="email"
-                                      type="email"
-                                      onChange={handleChange}
-                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                      isInvalid={!!errors.email}/>
-                        <Form.Control.Feedback type="invalid"
-                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                        <Form.Control
+                            id="email"
+                            type="email"
+                            onChange={handleChange}
+                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            isInvalid={!!errors.email}
+                        />
+                        <Form.Control.Feedback
+                            type="invalid"
+                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                        >
                             {errors.email}
                         </Form.Control.Feedback>
                     </Form.Group>
 
                     {!inProgress && (
                         <div className={props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container'}>
-                            <Button variant="primary"
-                                    type="submit"
-                                    className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
+                            <Button
+                                variant="primary"
+                                type="submit"
+                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                            >
                                 {props.labelSubmitButton || 'Passwort zurücksetzen'}
                             </Button>
                         </div>

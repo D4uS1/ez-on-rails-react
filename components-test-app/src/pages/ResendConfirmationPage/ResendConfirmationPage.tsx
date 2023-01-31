@@ -1,7 +1,6 @@
 import './ResendConfirmationPage.css'
 import React from 'react'
 import { ResendConfirmationForm } from "ez-on-rails-react";
-import { AppRoutes } from "../../configuration/AppRoutes";
 
 /**
  * Page holding a form to resend the confirmation instructions and a link to the login form.

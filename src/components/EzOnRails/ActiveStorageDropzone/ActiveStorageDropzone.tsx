@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import * as ActiveStorage from '@rails/activestorage';
 import { ReactNode, useState } from 'react';
 import { ClipboardEvent, MouseEvent } from 'react';
 import Dropzone, { ErrorCode, FileRejection, useDropzone } from 'react-dropzone';
 import './ActiveStorageDropzone.css';
-import { toBaseUrl } from "../../../http/utils/EzOnRailsUtils";
-import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from "../../../http/client/EzOnRailsHttpClient";
+import { toBaseUrl } from '../../../http/utils/EzOnRailsUtils';
+import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
 
 /**
  * Returns the relative url from the backend url to show the blob having the specified signedId and filename from the backend.
@@ -110,7 +110,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
      * @param signedId
      */
     const removeFileFromServer = async (signedId: string) => {
-       await EzOnRailsHttpClient.delete(`active_storage/blobs/${signedId}`, null, props.authInfo);
+        await EzOnRailsHttpClient.delete(`active_storage/blobs/${signedId}`, null, props.authInfo);
     };
 
     /**

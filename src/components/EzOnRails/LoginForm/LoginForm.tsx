@@ -44,16 +44,16 @@ export interface LoginFormProps extends DefaultFormProps {
     onLoginSuccess: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
 
     // Called if the user login failed. The passed error is the exception.
-    onLoginError: (e: any) => void;
+    onLoginError: (e: unknown) => void;
 }
 
 /**
  * Describes the input fields for the LoginForm.
  */
 interface LoginFormValues {
-    email: string,
-    password: string,
-    stayLoggedIn: boolean
+    email: string;
+    password: string;
+    stayLoggedIn: boolean;
 }
 
 /**
@@ -64,18 +64,25 @@ interface LoginFormValues {
  * @constructor
  */
 export const LoginForm = (props: LoginFormProps) => {
-
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
      * Valodation scheme for the login form.
      */
-    const LoginValidationSchema: SchemaOf<LoginFormValues> = Yup.object().shape({
-        email: Yup.string().email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
-            .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.'),
-        password: Yup.string().min(props.minPasswordLength || 8, props.passwordToShortErrorText || 'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
-            .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich')
-    } as any).defined();
+    const LoginValidationSchema: SchemaOf<LoginFormValues> = Yup.object()
+        .shape({
+            email: Yup.string()
+                .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
+                .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.'),
+            password: Yup.string()
+                .min(
+                    props.minPasswordLength || 8,
+                    props.passwordToShortErrorText ||
+                        'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.'
+                )
+                .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich')
+        })
+        .defined();
 
     /**
      * Tries to log in the user given by the form values.
@@ -117,63 +124,76 @@ export const LoginForm = (props: LoginFormProps) => {
             }}
             validationSchema={LoginValidationSchema}
         >
-            {({
-                  errors,
-                  handleChange,
-                  handleSubmit,
-              }) => (
-                <form onSubmit={handleSubmit}
-                      className={props.containerClassName || 'ez-on-rails-form-container'}>
-                    <Form.Group id="email-container"
-                                className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+            {({ errors, handleChange, handleSubmit }) => (
+                <form onSubmit={handleSubmit} className={props.containerClassName || 'ez-on-rails-form-container'}>
+                    <Form.Group
+                        id="email-container"
+                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                    >
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelEmail || 'E-Mail Adresse'}
                         </Form.Label>
 
-                        <Form.Control id="email"
-                                      type="email"
-                                      onChange={handleChange}
-                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                      isInvalid={!!errors.email}/>
-                        <Form.Control.Feedback type="invalid"
-                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                        <Form.Control
+                            id="email"
+                            type="email"
+                            onChange={handleChange}
+                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            isInvalid={!!errors.email}
+                        />
+                        <Form.Control.Feedback
+                            type="invalid"
+                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                        >
                             {errors.email}
                         </Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group id="password-container"
-                                className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}>
+                    <Form.Group
+                        id="password-container"
+                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                    >
                         <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
                             {props.labelPassword || 'Passwort'}
                         </Form.Label>
 
-                        <Form.Control id="password"
-                                      type="password"
-                                      onChange={handleChange}
-                                      className={props.fieldInputClassName || 'ez-on-rails-form-field'}
-                                      isInvalid={!!errors.password}/>
-                        <Form.Control.Feedback type="invalid"
-                                               className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}>
+                        <Form.Control
+                            id="password"
+                            type="password"
+                            onChange={handleChange}
+                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            isInvalid={!!errors.password}
+                        />
+                        <Form.Control.Feedback
+                            type="invalid"
+                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                        >
                             {errors.password}
                         </Form.Control.Feedback>
                     </Form.Group>
 
-                    {!props.hideStayLoggedIn &&
-                        <Form.Group id="stay-logged-in-container"
-                                    className={props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container'}>
-                            <Form.Check id="stayLoggedIn"
-                                        className={props.fieldCheckboxInputClassName || 'ez-on-rails-form-field'}
-                                        type="checkbox"
-                                        label={props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben'}
-                                        onChange={handleChange}/>
+                    {!props.hideStayLoggedIn && (
+                        <Form.Group
+                            id="stay-logged-in-container"
+                            className={props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container'}
+                        >
+                            <Form.Check
+                                id="stayLoggedIn"
+                                className={props.fieldCheckboxInputClassName || 'ez-on-rails-form-field'}
+                                type="checkbox"
+                                label={props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben'}
+                                onChange={handleChange}
+                            />
                         </Form.Group>
-                    }
+                    )}
 
                     {!inProgress && (
                         <div className={props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container'}>
-                            <Button variant="primary"
-                                    type="submit"
-                                    className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}>
+                            <Button
+                                variant="primary"
+                                type="submit"
+                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                            >
                                 {props.labelSubmitButton || 'Login'}
                             </Button>
                         </div>

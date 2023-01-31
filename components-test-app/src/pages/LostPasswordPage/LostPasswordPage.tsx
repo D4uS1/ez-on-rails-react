@@ -1,7 +1,6 @@
 import './LostPasswordPage.css'
 import React from 'react'
 import { LostPasswordForm } from "ez-on-rails-react";
-import { AppRoutes } from "../../configuration/AppRoutes";
 
 /**
  * Page holding a form to reset the password and a link to the login form.

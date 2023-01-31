@@ -1,7 +1,6 @@
 import './RegisterPage.css'
 import React from 'react'
 import { RegistrationForm } from "ez-on-rails-react";
-import { AppRoutes } from "../../configuration/AppRoutes";
 
 /**
  * Page holding a form to register and links to the login or resend confirmation instructions page.
