@@ -34,21 +34,108 @@ export interface EzOnRailsAuthInfo {
  * Used by the actions to get and update the own user.
  */
 export interface EzOnRailsUser {
+    // The email of the user
     email: string;
-    unconfirmedEmail: string | null;
-    username: string | null;
-    avatar: RailsFileBlob | null;
+
+    // An unconfirmed email, if the user has not yet confirmed his email
+    unconfirmedEmail?: string;
+
+    // The optional username of the user
+    username?: string;
+
+    // The users avatar as blob, holding the url and signedId and filename
+    avatar?: RailsFileBlob | null;
 }
 
 /**
  * Type for a updating an registered in an ez-on-rails system.
  * Used by the actions to get and update the own user.
+ * The unconfirmedEmail is not needed to be submitted, since this is only used to show the user if he
+ * has provided any unconfirmed email yet.
  */
-export type EzOnRailsUpdateUserParams = Partial<Omit<EzOnRailsUser, 'avatar' | 'unconfirmedEmail'>> & {
-    avatar?: string | null;
-    password?: string | null;
-    passwordConfirmation?: string | null;
+export type EzOnRailsUpdateUserParams = Partial<Omit<EzOnRailsUser, 'unconfirmedEmail'>> & {
+    // The  new password, must only be passed if the user wants to change the password
+    password?: string;
+
+    // The confirmed new password, must match password, must only be passed if the user wants to change the password
+    passwordConfirmation?: string;
 };
+
+/**
+ * Describes the parameters that are needed for signup.
+ * The interface allows any data to be passed, but requires the parameters to be set that are minimum
+ * needed by ez-on-rails for signUp. This makes it possible to append any data on the user model that is also saved
+ * on signUp, but also gets sure that the needed data for registration process is passed.
+ */
+export interface EzOnRailsSignUpParams {
+    // The users email
+    email: string;
+
+    // The users password
+    password: string;
+
+    // The password confirmation, this must match the password
+    passwordConfirmation: string;
+
+    // Indicates whether the user accepted the privacy policy. Needs to be true to register.
+    privacyPolicyAccepted: boolean;
+
+    // The optional username, can be anything
+    username?: string;
+
+    // Any additional data if your model has additional data on registration
+    [key: string]: unknown;
+}
+
+/**
+ * Descibes the parameters needed to sign in.
+ */
+export interface EzOnRailsSignInParams {
+    // The email of the user
+    email: string;
+
+    // The users password
+    password: string;
+}
+
+/**
+ * Describes the parameters needed for the password reset instructions endpoint.
+ */
+export interface EzOnRailsPasswordResetInstructionsParams {
+    // The email the instructions are send to
+    email: string;
+}
+
+/**
+ * Describes the parameters needed for the password reset endpoint.
+ */
+export interface EzOnRailsPasswordResetParams {
+    // The password the user wants to set
+    password: string;
+
+    // The password confirmation of the password, must match the password
+    passwordConfirmation: string;
+
+    // The token that was send via email to the user to reset the password
+    resetPasswordToken: string;
+}
+
+/**
+ * Describes the parameters needed for the endpoint to resend the confirmation instructions.
+ */
+export interface EzOnRailsConfirmationInstructionsParams {
+    // The email the instructions are requested for
+    email: string;
+}
+
+/**
+ * Describes the parameters needed to confirm an account using the confirmation link that was
+ * send via email.
+ */
+export interface EzOnRailsConfirmParams {
+    // The token that was send to the users email
+    confirmationToken: string;
+}
 
 /**
  * Changes the specified authInfo object to an AuthHeader object, that can be passed via the
@@ -160,79 +247,6 @@ const fetchWithThrow = async <TRes>(
 };
 
 /**
- * Describes the parameters that are needed for signup.
- * The interface allows any data to be passed, but requires the parameters to be set that are minimum
- * needed by ez-on-rails for signUp. This makes it possible to append any data on the user model that is also saved
- * on signUp, but also gets sure that the needed data for registration process is passed.
- */
-interface EzOnRailsSignUpParams {
-    // The users email
-    email: string;
-
-    // The users password
-    password: string;
-
-    // The password confirmation, this must match the password
-    passwordConfirmation: string;
-
-    // The optional username, can be anything
-    username?: string;
-
-    // Any additional data if your model has additional data on registration
-    [key: string]: unknown;
-}
-
-/**
- * Descibes the parameters needed to sign in.
- */
-interface EzOnRailsSignInParams {
-    // The email of the user
-    email: string;
-
-    // The users password
-    password: string;
-}
-
-/**
- * Describes the parameters needed for the password reset instructions endpoint.
- */
-interface EzOnRailsPasswordResetInstructionsParams {
-    // The email the instructions are send to
-    email: string;
-}
-
-/**
- * Describes the parameters needed for the password reset endpoint.
- */
-interface EzOnRailsPasswordResetParams {
-    // The password the user wants to set
-    password: string;
-
-    // The password confirmation of the password, must match the password
-    passwordConfirmation: string;
-
-    // The token that was send via email to the user to reset the password
-    resetPasswordToken: string;
-}
-
-/**
- * Describes the parameters needed for the endpoint to resend the confirmation instructions.
- */
-interface EzOnRailsConfirmationInstructionsParams {
-    // The email the instructions are requested for
-    email: string;
-}
-
-/**
- * Describes the parameters needed to confirm an account using the confirmation link that was
- * send via email.
- */
-interface EzOnRailsConfirmParams {
-    // The token that was send to the users email
-    confirmationToken: string;
-}
-
-/**
  * Contains some Request related Methods to some EzOnRails api.
  * EzOnRails uses the localStorage to read and write the Configuration.
  * The Storage is expected to contain the followingValues.
@@ -338,12 +352,14 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      */
     updateUser: async (data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo): Promise<EzOnRailsUser> => {
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        // Only the signedId must be passed to the update action
+        const avatarSignedId = data.avatar?.signedId;
+        const submitData = { ...EzOnRailsHttpUtils.toSnakeCase(data), avatar: avatarSignedId };
 
         const result = await fetchWithThrow<EzOnRailsUser>(
             'PATCH',
             EzOnRailsHttpUtils.toApiUrl('users/me'),
-            { user: data },
+            { user: submitData },
             defaultHttpHeader(authInfo)
         );
 

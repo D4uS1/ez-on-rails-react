@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import './DevelopmentHint.css';
 /**
  * Props for the DevelopmentHint component.

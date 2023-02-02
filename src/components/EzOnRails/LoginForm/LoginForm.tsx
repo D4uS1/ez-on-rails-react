@@ -5,8 +5,15 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { EzOnRailsAuthInfo, EzOnRailsHttpClient, EzOnRailsSignInParams } from '../../../http/client/EzOnRailsHttpClient';
 import { DefaultFormProps } from '../shared/Types';
+
+/**
+ * Adds the stayLoggedIn checkbox to the SignIn values. This value will not be submitted to the server, but
+ * will be passed in the callback if the request to sign in was successful. Hence the token can be saved
+ * for new sessions.
+ */
+type SignInFormValues = EzOnRailsSignInParams & { stayLoggedIn: boolean };
 
 /**
  * Props for the LoginForm component.
@@ -48,15 +55,6 @@ export interface LoginFormProps extends DefaultFormProps {
 }
 
 /**
- * Describes the input fields for the LoginForm.
- */
-interface LoginFormValues {
-    email: string;
-    password: string;
-    stayLoggedIn: boolean;
-}
-
-/**
  * Component for a default login form via EzOnRails.
  * Customizable with the props via css.
  *
@@ -69,7 +67,7 @@ export const LoginForm = (props: LoginFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const LoginValidationSchema: SchemaOf<LoginFormValues> = Yup.object()
+    const LoginValidationSchema: SchemaOf<EzOnRailsSignInParams> = Yup.object()
         .shape({
             email: Yup.string()
                 .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
@@ -93,7 +91,7 @@ export const LoginForm = (props: LoginFormProps) => {
      *
      * @param values
      */
-    const login = async (values: LoginFormValues) => {
+    const login = async (values: SignInFormValues) => {
         setInProgress(true);
 
         try {
@@ -110,7 +108,7 @@ export const LoginForm = (props: LoginFormProps) => {
     };
 
     // initial values
-    const initialFormValues: LoginFormValues = {
+    const initialFormValues: SignInFormValues = {
         email: '',
         password: '',
         stayLoggedIn: false

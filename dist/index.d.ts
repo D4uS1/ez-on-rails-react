@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export declare const EzOnRails: {
     config: {
         init: (options: import("./config/EzOnRailsConfig").EzOnRailsConfigOptions) => void;
@@ -7,28 +8,31 @@ export declare const EzOnRails: {
     };
     http: {
         client: {
-            signUp: (data: any) => Promise<any>;
-            signIn: (data: any) => Promise<any>;
+            signUp: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsSignUpParams) => Promise<void>;
+            signIn: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsSignInParams) => Promise<import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo>;
             signOut: (authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo) => Promise<void>;
-            passwordResetInstructions: (data: any) => Promise<void>;
-            passwordReset: (data: any) => Promise<void>;
+            passwordResetInstructions: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsPasswordResetInstructionsParams) => Promise<void>;
+            passwordReset: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsPasswordResetParams) => Promise<void>;
             getUser: (authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo) => Promise<import("./http/client/EzOnRailsHttpClient").EzOnRailsUser>;
             updateUser: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsUpdateUserParams, authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo) => Promise<import("./http/client/EzOnRailsHttpClient").EzOnRailsUser>;
-            confirmationInstructions: (data: any) => Promise<void>;
-            confirmation: (data: any) => Promise<void>;
-            get: <T>(url: string, data: any, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T>;
-            post: <T_1>(url: string, data: any, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_1>;
-            patch: <T_2>(url: string, data: any, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_2>;
-            put: <T_3>(url: string, data: any, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_3>;
-            delete: <T_4>(url: string, data: any, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_4>;
-            defaultHttpHeader: (authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo) => any;
+            confirmationInstructions: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsConfirmationInstructionsParams) => Promise<void>;
+            confirmation: (data: import("./http/client/EzOnRailsHttpClient").EzOnRailsConfirmParams) => Promise<void>;
+            get: <TParams, TResponse>(url: string, data: TParams, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+            post: <TParams_1, TResponse_1>(url: string, data: TParams_1, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_1) => TParams_1) | undefined) => Promise<TResponse_1>;
+            patch: <TParams_2, TResponse_2>(url: string, data: TParams_2, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
+            put: <TParams_3, TResponse_3>(url: string, data: TParams_3, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
+            delete: <TParams_4, TResponse_4>(url: string, data: TParams_4, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
+            defaultHttpHeader: (authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo) => Record<string, string>;
         };
         swr: {
-            fetcher: <T_5>(url: string, method?: string, data?: any, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined) => Promise<T_5>;
+            fetcher: <TParams_5, TResponse_5>(url: string, method?: string, data?: TParams_5 | null, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined) => Promise<TResponse_5>;
         };
         utils: {
             toBaseUrl: (path: string) => string;
             toApiUrl: (path: string) => string;
+            toSnakeCase: <T>(data: T) => T;
+            toCamelCase: <T_1>(data: T_1) => T_1;
+            toGetParameters: (parameters: Record<string, string | number | boolean | null>) => string;
         };
     };
     components: {
@@ -43,19 +47,18 @@ export declare const EzOnRails: {
         ResetPasswordForm: (props: import("./components/EzOnRails/ResetPasswordForm/ResetPasswordForm").ResetPasswordFormProps) => JSX.Element;
     };
 };
-export { EzOnRailsConfig } from "./config/EzOnRailsConfig";
-export { EzOnRailsHttp, EzOnRailsHttpError } from "./http/EzOnRailsHttp";
-export { EzOnRailsComponents } from "./components/EzOnRailsComponents";
-export { ActiveStorageDropzone } from "./components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone";
-export { LoginForm } from "./components/EzOnRails/LoginForm/LoginForm";
-export { RegistrationForm } from "./components/EzOnRails/RegistrationForm/RegistrationForm";
-export { LostPasswordForm } from "./components/EzOnRails/LostPasswordForm/LostPasswordForm";
-export { UpdateUserForm } from "./components/EzOnRails/UpdateUserForm/UpdateUserForm";
-export { ProtectedPage } from "./components/EzOnRails/ProtectedPage/ProtectedPage";
-export { ResetPasswordForm } from "./components/EzOnRails/ResetPasswordForm/ResetPasswordForm";
-export { ResendConfirmationForm } from "./components/EzOnRails/ResendConfirmationForm/ResendConfirmationForm";
-export { DevelopmentHint } from "./components/EzOnRails/DevelopmentHint/DevelopmentHint";
-export { isUnauthorizedError } from "./http/client/EzOnRailsHttpClient";
-export { defaultHttpHeader } from "./http/client/EzOnRailsHttpClient";
-export type { EzOnRailsAuthInfo, EzOnRailsUser, EzOnRailsUpdateUserParams } from "./http/client/EzOnRailsHttpClient";
-export type { RailsFileBlob } from "./components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone";
+export { EzOnRailsConfig } from './config/EzOnRailsConfig';
+export { EzOnRailsHttp, EzOnRailsHttpError } from './http/EzOnRailsHttp';
+export { EzOnRailsComponents } from './components/EzOnRailsComponents';
+export { ActiveStorageDropzone } from './components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone';
+export { LoginForm } from './components/EzOnRails/LoginForm/LoginForm';
+export { RegistrationForm } from './components/EzOnRails/RegistrationForm/RegistrationForm';
+export { LostPasswordForm } from './components/EzOnRails/LostPasswordForm/LostPasswordForm';
+export { UpdateUserForm } from './components/EzOnRails/UpdateUserForm/UpdateUserForm';
+export { ProtectedPage } from './components/EzOnRails/ProtectedPage/ProtectedPage';
+export { ResetPasswordForm } from './components/EzOnRails/ResetPasswordForm/ResetPasswordForm';
+export { ResendConfirmationForm } from './components/EzOnRails/ResendConfirmationForm/ResendConfirmationForm';
+export { DevelopmentHint } from './components/EzOnRails/DevelopmentHint/DevelopmentHint';
+export { defaultHttpHeader } from './http/client/EzOnRailsHttpClient';
+export type { EzOnRailsAuthInfo, EzOnRailsUser, EzOnRailsUpdateUserParams } from './http/client/EzOnRailsHttpClient';
+export type { RailsFileBlob } from './components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone';

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export declare const EzOnRailsComponents: {
     ActiveStorageDropzone: (props: import("./EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone").ActiveStorageDropzoneProps) => JSX.Element;
     DevelopmentHint: (props: import("./EzOnRails/DevelopmentHint/DevelopmentHint").DevelopmentHintProps) => JSX.Element | null;

@@ -1,4 +1,4 @@
-import { EzOnRailsHttpClient, EzOnRailsHttpError } from './client/EzOnRailsHttpClient';
+import { EzOnRailsHttpClient } from './client/EzOnRailsHttpClient';
 import { EzOnRailsSwr } from './swr/EzOnRailsSwr';
 import { EzOnRailsHttpUtils } from './utils/EzOnRailsUtils';
 
@@ -8,4 +8,4 @@ export const EzOnRailsHttp = {
     utils: EzOnRailsHttpUtils
 };
 
-export { EzOnRailsHttpError };
+export { EzOnRailsHttpError } from './client/EzOnRailsHttpError';

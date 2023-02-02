@@ -2,9 +2,9 @@ import React from 'react';
 import * as ActiveStorage from '@rails/activestorage';
 import { ReactNode, useState } from 'react';
 import { ClipboardEvent, MouseEvent } from 'react';
-import Dropzone, { ErrorCode, FileRejection, useDropzone } from 'react-dropzone';
+import Dropzone, { Accept, ErrorCode, FileRejection, useDropzone } from 'react-dropzone';
 import './ActiveStorageDropzone.css';
-import { toBaseUrl } from '../../../http/utils/EzOnRailsUtils';
+import { EzOnRailsHttpUtils } from '../../../http/utils/EzOnRailsUtils';
 import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
 
 /**
@@ -61,10 +61,10 @@ export interface ActiveStorageDropzoneProps {
     onMaxSizeError: (maxSize: number) => void;
 
     // One media type to filter allowed files. This can be used to allow only images for instance
-    accept?: string;
+    accept?: Accept;
 
     // Called if the user tried to upload a file with a type that is not accepted
-    onInvalidTypeError: (accept: string | undefined) => void;
+    onInvalidTypeError: (accept: Accept | undefined) => void;
 
     // Indicates if the paste zone should be available
     pasteZone?: boolean;
@@ -192,7 +192,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
             // let uploader = new ActiveStorageUploader(onDirectUploadProgress, props.authInfo)
             const upload = new ActiveStorage.DirectUpload(
                 acceptedFile,
-                toBaseUrl('api/active_storage/blobs/create_direct_upload'),
+                EzOnRailsHttpUtils.toBaseUrl('api/active_storage/blobs/create_direct_upload'),
                 {
                     directUploadWillCreateBlobWithXHR: (request: XMLHttpRequest) => {
                         const httpHeader: { [key: string]: string } = EzOnRailsHttpClient.defaultHttpHeader(
@@ -250,7 +250,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
         // @ts-ignore this is nonsense, it is iterable...
         for (const item of items) {
             // this item is no image
-            if (props.accept && !item.type.match(props.accept)) continue;
+            if (props.accept && !Object.keys(props.accept).some((type) => item.type.match(type))) continue;
 
             const file = item.getAsFile();
 
@@ -281,7 +281,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
             </div>
             <div className={'d-flex justify-content-center align-items-center w-100 h-100'}>
                 <img
-                    src={toBaseUrl(file.path || '')}
+                    src={EzOnRailsHttpUtils.toBaseUrl(file.path || '')}
                     alt={file.filename}
                     className={'d-block mw-100 m-auto m-0 rounded p-1'}
                 />

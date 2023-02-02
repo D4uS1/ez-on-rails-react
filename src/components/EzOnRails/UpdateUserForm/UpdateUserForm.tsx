@@ -10,7 +10,7 @@ import {
     EzOnRailsUser
 } from '../../../http/client/EzOnRailsHttpClient';
 import { Button, Form } from 'react-bootstrap';
-import { ActiveStorageDropzone, RailsFileBlob } from '../ActiveStorageDropzone/ActiveStorageDropzone';
+import { ActiveStorageDropzone } from '../ActiveStorageDropzone/ActiveStorageDropzone';
 import { DefaultFormProps } from '../shared/Types';
 
 /**
@@ -116,18 +116,6 @@ export interface UpdateUserFormProps extends DefaultFormProps {
 }
 
 /**
- * Form values for the update user form.
- */
-interface UpdateUserFormValues {
-    email: string;
-    unconfirmedEmail: string | null; // only used for display
-    username: string;
-    password: string;
-    passwordConfirmation: string;
-    avatar: RailsFileBlob | null;
-}
-
-/**
  * UpdateUserForm component for a default form using EzOnRails to update the own user.
  * The auth info needed by the component to receive the users information and update the new information
  * needs to be passed by the props.
@@ -138,23 +126,18 @@ interface UpdateUserFormValues {
  */
 export const UpdateUserForm = (props: UpdateUserFormProps) => {
     const [inProgress, setInProgress] = useState<boolean>(false);
-    const [initialFormData, setInitialFormData] = useState<UpdateUserFormValues | null>(null);
+    const [initialFormData, setInitialFormData] = useState<EzOnRailsUpdateUserParams | null>(null);
+    const [unconfirmedEmail, setUnconfirmedEmail] = useState<string | undefined>(undefined);
 
     /**
-     * Converts the specified data returned by an ez-on-rails backend server to form values
-     * that can be passed to the component.
+     * Sets the state values to display the form, holding the user data and unconfirmed email, by setting it
+     * to the values of the specified user object.
      *
-     * @param data
+     * @param user
      */
-    const userResponseToFormValues = (data: EzOnRailsUser): UpdateUserFormValues => {
-        return {
-            username: data.username || '',
-            email: data.email,
-            unconfirmedEmail: data.unconfirmedEmail,
-            password: '',
-            passwordConfirmation: '',
-            avatar: data.avatar
-        };
+    const setFormDataFromUser = (user: EzOnRailsUser) => {
+        setInitialFormData(user);
+        setUnconfirmedEmail(user.unconfirmedEmail);
     };
 
     /**
@@ -163,8 +146,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
      */
     useEffect(() => {
         (async () => {
-            const initialUserData = await EzOnRailsHttpClient.getUser(props.authInfo);
-            setInitialFormData(userResponseToFormValues(initialUserData));
+            setFormDataFromUser(await EzOnRailsHttpClient.getUser(props.authInfo));
         })();
     }, []);
 
@@ -177,34 +159,16 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
      *
      * @param values
      */
-    const updateUser = async (values: UpdateUserFormValues) => {
+    const updateUser = async (values: EzOnRailsUpdateUserParams) => {
         setInProgress(true);
 
-        // build paramns
-        const updateParams: EzOnRailsUpdateUserParams = {};
-        if (values.email) {
-            updateParams.email = values.email;
-        }
-
-        if (values.username) {
-            updateParams.username = values.username;
-        }
-
-        if (values.password) {
-            updateParams.password = values.password;
-            updateParams.passwordConfirmation = values.passwordConfirmation;
-        }
-
-        if (values.avatar) {
-            updateParams.avatar = values.avatar.signedId;
-        }
-
         try {
-            const updatedUserData = await EzOnRailsHttpClient.updateUser(updateParams, props.authInfo);
-            props.onUserUpdateSuccess(updatedUserData);
+            const updatedUser = await EzOnRailsHttpClient.updateUser(values, props.authInfo);
+            props.onUserUpdateSuccess(updatedUser);
 
             // reinitialize form to show possibly unconfirmed email
-            setInitialFormData(userResponseToFormValues(updatedUserData));
+            setFormDataFromUser(updatedUser);
+
             setInProgress(false);
         } catch (e: unknown) {
             props.onUserUpdateError(e);
@@ -215,7 +179,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
     /**
      * Validation Schema for registration values.
      */
-    const UpdateUserValidationSchema: SchemaOf<UpdateUserFormValues> = Yup.object()
+    const UpdateUserValidationSchema: SchemaOf<EzOnRailsUpdateUserParams> = Yup.object()
         .shape({
             username: Yup.string()
                 .min(
@@ -305,13 +269,13 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         onChange={handleChange}
                                         isInvalid={!!errors.email}
                                     />
-                                    {values.unconfirmedEmail && (
+                                    {unconfirmedEmail && (
                                         <div
                                             className={props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text'}
                                         >
                                             {props.unconfirmedEmailText ||
                                                 'Die folgende E-Mail Adresse wurde noch nicht bestätigt: '}{' '}
-                                            {values.unconfirmedEmail}
+                                            {unconfirmedEmail}
                                         </div>
                                     )}
                                     <Form.Control.Feedback

@@ -1,5 +1,5 @@
 import React from 'react';
-import { EzOnRailsAuthInfo } from "../../../http/client/EzOnRailsHttpClient";
+import { EzOnRailsAuthInfo } from '../../../http/client/EzOnRailsHttpClient';
 /**
  * Props for the ProtectedPage component.
  */

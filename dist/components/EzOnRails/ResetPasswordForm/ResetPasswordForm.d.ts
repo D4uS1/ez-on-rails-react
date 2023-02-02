@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import '../EzOnRails.css';
 import { DefaultFormProps } from '../shared/Types';
 /**
@@ -13,7 +14,7 @@ export interface ResetPasswordFormProps extends DefaultFormProps {
     passwordConfirmationMatchErrorText?: string;
     minPasswordLength?: number;
     onResetPasswordSuccess: () => Promise<void>;
-    onResetPasswordError: (e: any) => void;
+    onResetPasswordError: (e: unknown) => void;
 }
 /**
  * Component for a default password reset form via EzOnRails.

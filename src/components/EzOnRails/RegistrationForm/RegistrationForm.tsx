@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { Formik } from 'formik';
-import { EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { EzOnRailsHttpClient, EzOnRailsSignUpParams } from '../../../http/client/EzOnRailsHttpClient';
 import { Button, Form } from 'react-bootstrap';
 import { DefaultFormProps } from '../shared/Types';
 
@@ -83,17 +83,6 @@ export interface RegistrationFormProps extends DefaultFormProps {
 }
 
 /**
- * Form values for the register form.
- */
-interface RegisterFormValues {
-    username: string;
-    email: string;
-    password: string;
-    passwordConfirmation: string;
-    privacyPolicyAccepted: boolean;
-}
-
-/**
  * RegistrationForm component for a default Registration form using EzOnRails.
  * Customizable with the props using css.
  *
@@ -112,7 +101,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
      *
      * @param values
      */
-    const register = async (values: RegisterFormValues) => {
+    const register = async (values: EzOnRailsSignUpParams) => {
         setInProgress(true);
 
         try {
@@ -128,7 +117,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
     /**
      * Validation Schema for registration values.
      */
-    const RegistrationValidationSchema: SchemaOf<RegisterFormValues> = Yup.object()
+    const RegistrationValidationSchema: SchemaOf<EzOnRailsSignUpParams> = Yup.object()
         .shape({
             username: Yup.string()
                 .min(
@@ -168,7 +157,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
         .defined();
 
     // initial values of the formular
-    const initialFormValues: RegisterFormValues = {
+    const initialFormValues: EzOnRailsSignUpParams = {
         username: '',
         email: '',
         password: '',

@@ -1,6 +1,6 @@
 import '../EzOnRails.css';
-import { ReactNode } from "react";
-import { DefaultFormProps } from "../shared/Types";
+import { ReactNode } from 'react';
+import { DefaultFormProps } from '../shared/Types';
 /**
  * Props for the RegistrationForm.
  * Used to customize the register form.
@@ -26,7 +26,7 @@ export interface RegistrationFormProps extends DefaultFormProps {
     maxUsernameLength?: number;
     maxEmailLength?: number;
     onRegisterSuccess: (email: string) => void;
-    onRegisterError: (e: any) => void;
+    onRegisterError: (e: unknown) => void;
     privacyPolicyUrl?: string;
     generalTermsUrl?: string;
 }

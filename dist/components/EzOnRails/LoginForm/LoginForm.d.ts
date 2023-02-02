@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import '../EzOnRails.css';
 import { EzOnRailsAuthInfo } from '../../../http/client/EzOnRailsHttpClient';
 import { DefaultFormProps } from '../shared/Types';
@@ -16,7 +17,7 @@ export interface LoginFormProps extends DefaultFormProps {
     hideStayLoggedIn?: boolean;
     minPasswordLength?: number;
     onLoginSuccess: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
-    onLoginError: (e: any) => void;
+    onLoginError: (e: unknown) => void;
 }
 /**
  * Component for a default login form via EzOnRails.

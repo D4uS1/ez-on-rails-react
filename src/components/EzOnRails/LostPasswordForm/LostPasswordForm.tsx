@@ -2,7 +2,7 @@ import '../EzOnRails.css';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { EzOnRailsHttpClient, EzOnRailsPasswordResetInstructionsParams } from '../../../http/client/EzOnRailsHttpClient';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -29,13 +29,6 @@ export interface LostPasswordFormProps extends DefaultFormProps {
 }
 
 /**
- * Describes the input fields for the LostPasswordForm.
- */
-interface LostPasswordFormValues {
-    email: string;
-}
-
-/**
  * Component for a form to send a password reset token.
  *
  * @param props
@@ -47,7 +40,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const LostPasswordValidationSchema: SchemaOf<LostPasswordFormValues> = Yup.object()
+    const LostPasswordValidationSchema: SchemaOf<EzOnRailsPasswordResetInstructionsParams> = Yup.object()
         .shape({
             email: Yup.string()
                 .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
@@ -64,7 +57,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
      *
      * @param values
      */
-    const passwordReset = (values: LostPasswordFormValues) => {
+    const passwordReset = (values: EzOnRailsPasswordResetInstructionsParams) => {
         setInProgress(true);
 
         EzOnRailsHttpClient.passwordResetInstructions(values)
@@ -80,7 +73,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
     };
 
     // initial values
-    const initialFormValues: LostPasswordFormValues = {
+    const initialFormValues: EzOnRailsPasswordResetInstructionsParams = {
         email: ''
     };
 

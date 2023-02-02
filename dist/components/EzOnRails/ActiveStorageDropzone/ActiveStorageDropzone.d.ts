@@ -1,6 +1,7 @@
 import React from 'react';
+import { Accept } from 'react-dropzone';
 import './ActiveStorageDropzone.css';
-import { EzOnRailsAuthInfo } from "../../../http/client/EzOnRailsHttpClient";
+import { EzOnRailsAuthInfo } from '../../../http/client/EzOnRailsHttpClient';
 /**
  * Returns the relative url from the backend url to show the blob having the specified signedId and filename from the backend.
  *
@@ -30,8 +31,8 @@ export interface ActiveStorageDropzoneProps {
     onMaxFilesError: (maxFiles: number) => void;
     maxSize: number;
     onMaxSizeError: (maxSize: number) => void;
-    accept?: string;
-    onInvalidTypeError: (accept: string | undefined) => void;
+    accept?: Accept;
+    onInvalidTypeError: (accept: Accept | undefined) => void;
     pasteZone?: boolean;
     customIcon?: React.ReactNode;
     className?: string;

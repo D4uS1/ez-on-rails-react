@@ -1,4 +1,4 @@
-import { RailsFileBlob } from "../../components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone";
+import { RailsFileBlob } from '../../components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone';
 /**
  * Auth information for http requests and responses.
  * If a route is protected and needs authentication, this information must be passed to the http
@@ -19,32 +19,67 @@ export interface EzOnRailsAuthInfo {
  */
 export interface EzOnRailsUser {
     email: string;
-    unconfirmedEmail: string | null;
-    username: string | null;
-    avatar: RailsFileBlob | null;
+    unconfirmedEmail?: string;
+    username?: string;
+    avatar?: RailsFileBlob | null;
 }
 /**
  * Type for a updating an registered in an ez-on-rails system.
  * Used by the actions to get and update the own user.
+ * The unconfirmedEmail is not needed to be submitted, since this is only used to show the user if he
+ * has provided any unconfirmed email yet.
  */
-export declare type EzOnRailsUpdateUserParams = Partial<Omit<EzOnRailsUser, 'avatar' | 'unconfirmedEmail'>> & {
-    avatar?: string | null;
-    password?: string | null;
-    passwordConfirmation?: string | null;
+export type EzOnRailsUpdateUserParams = Partial<Omit<EzOnRailsUser, 'unconfirmedEmail'>> & {
+    password?: string;
+    passwordConfirmation?: string;
 };
 /**
- * Error class for requesting actions via the EzOnRailsHttpClient.
- * Holds an httpStatusCode and message field that is accessible from outside.
+ * Describes the parameters that are needed for signup.
+ * The interface allows any data to be passed, but requires the parameters to be set that are minimum
+ * needed by ez-on-rails for signUp. This makes it possible to append any data on the user model that is also saved
+ * on signUp, but also gets sure that the needed data for registration process is passed.
  */
-export declare class EzOnRailsHttpError extends Error {
-    httpStatusCode: number;
-    /**
-     * Constructor expects th httpStatusCode given by the response of the request and a message.
-     *
-     * @param message
-     * @param httpStatusCode
-     */
-    constructor(message: string, httpStatusCode: number);
+export interface EzOnRailsSignUpParams {
+    email: string;
+    password: string;
+    passwordConfirmation: string;
+    privacyPolicyAccepted: boolean;
+    username?: string;
+    [key: string]: unknown;
+}
+/**
+ * Descibes the parameters needed to sign in.
+ */
+export interface EzOnRailsSignInParams {
+    email: string;
+    password: string;
+}
+/**
+ * Describes the parameters needed for the password reset instructions endpoint.
+ */
+export interface EzOnRailsPasswordResetInstructionsParams {
+    email: string;
+}
+/**
+ * Describes the parameters needed for the password reset endpoint.
+ */
+export interface EzOnRailsPasswordResetParams {
+    password: string;
+    passwordConfirmation: string;
+    resetPasswordToken: string;
+}
+/**
+ * Describes the parameters needed for the endpoint to resend the confirmation instructions.
+ */
+export interface EzOnRailsConfirmationInstructionsParams {
+    email: string;
+}
+/**
+ * Describes the parameters needed to confirm an account using the confirmation link that was
+ * send via email.
+ */
+export interface EzOnRailsConfirmParams {
+    confirmationToken: string;
 }
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
@@ -61,13 +96,6 @@ export declare const defaultHttpHeader: (authInfo?: EzOnRailsAuthInfo | undefine
     'api-version': string;
 };
 /**
- * Checks whether the error returned by some http response from ez-on-rails is
- * an unauthorizes error.
- *
- * @param error
- */
-export declare const isUnauthorizedError: (error: any) => boolean;
-/**
  * Contains some Request related Methods to some EzOnRails api.
  * EzOnRails uses the localStorage to read and write the Configuration.
  * The Storage is expected to contain the followingValues.
@@ -82,7 +110,7 @@ export declare const EzOnRailsHttpClient: {
      *
      * @param data
      */
-    signUp: (data: any) => Promise<any | undefined>;
+    signUp: (data: EzOnRailsSignUpParams) => Promise<void>;
     /**
      * Sends a sign in request to login the user given by the specified data.
      * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
@@ -91,7 +119,7 @@ export declare const EzOnRailsHttpClient: {
      *
      * @param data
      */
-    signIn: (data: any) => Promise<(any & EzOnRailsAuthInfo) | undefined>;
+    signIn: (data: EzOnRailsSignInParams) => Promise<EzOnRailsAuthInfo>;
     /**
      * Sends a signout request for the current user to the ez_on_rails endpoint.
      */
@@ -101,7 +129,7 @@ export declare const EzOnRailsHttpClient: {
      *
      * @param data
      */
-    passwordResetInstructions: (data: any) => Promise<void>;
+    passwordResetInstructions: (data: EzOnRailsPasswordResetInstructionsParams) => Promise<void>;
     /**
      * Sends a request to reset the password to the ez_on_rails endpoint.
      * This is the request to change the password, after the user filled out the form with the new password.
@@ -109,7 +137,7 @@ export declare const EzOnRailsHttpClient: {
      *
      * @param data
      */
-    passwordReset: (data: any) => Promise<void>;
+    passwordReset: (data: EzOnRailsPasswordResetParams) => Promise<void>;
     /**
      * Requests and returns the own user information from the server.
      *
@@ -129,13 +157,13 @@ export declare const EzOnRailsHttpClient: {
      *
      * @param data
      */
-    confirmationInstructions: (data: any) => Promise<void>;
+    confirmationInstructions: (data: EzOnRailsConfirmationInstructionsParams) => Promise<void>;
     /**
      * Sends a request to confirm the account.
      *
      * @param data
      */
-    confirmation: (data: any) => Promise<void>;
+    confirmation: (data: EzOnRailsConfirmParams) => Promise<void>;
     /**
      * Calls a http GET action to the url in the api of the current EzOnRails application.
      * The url is expected to be the path without the system and the api prefix.
@@ -153,7 +181,7 @@ export declare const EzOnRailsHttpClient: {
      * @param authInfo
      * @param beforeRequest
      */
-    get: <T>(url: string, data: any, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T>;
+    get: <TParams, TResponse>(url: string, data: TParams, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
      * Calls a http POST action to the url in the api of the current EzOnRails application.
      * The url is expected to be the path without the system and the api prefix.
@@ -170,7 +198,7 @@ export declare const EzOnRailsHttpClient: {
      * @param authInfo
      * @param beforeRequest
      */
-    post: <T_1>(url: string, data: any, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_1>;
+    post: <TParams_1, TResponse_1>(url: string, data: TParams_1, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_1) => TParams_1) | undefined) => Promise<TResponse_1>;
     /**
      * Calls a http PATCH action to the url in the api of the current EzOnRails application.
      * The url is expected to be the path without the system and the api prefix.
@@ -187,7 +215,7 @@ export declare const EzOnRailsHttpClient: {
      * @param authInfo
      * @param beforeRequest
      */
-    patch: <T_2>(url: string, data: any, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_2>;
+    patch: <TParams_2, TResponse_2>(url: string, data: TParams_2, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
     /**
      * Calls a http PATCH action to the url in the api of the current EzOnRails application.
      * The url is expected to be the path without the system and the api prefix.
@@ -204,7 +232,7 @@ export declare const EzOnRailsHttpClient: {
      * @param authInfo
      * @param beforeRequest
      */
-    put: <T_3>(url: string, data: any, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_3>;
+    put: <TParams_3, TResponse_3>(url: string, data: TParams_3, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
     /**
      * Calls a http DELETE action to the url in the api of the current EzOnRails application.
      * The url is expected to be the path without the system and the api prefix.
@@ -223,12 +251,12 @@ export declare const EzOnRailsHttpClient: {
      * @param authInfo
      * @param beforeRequest
      */
-    delete: <T_4>(url: string, data: any, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: any) => any) | undefined) => Promise<T_4>;
+    delete: <TParams_4, TResponse_4>(url: string, data: TParams_4, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
     /**
      * Returns the default headers used to make an authorized request.
      * Can be used for custom requests without the ez-on-rails-react client..
      *
      * @param authInfo
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo) => any;
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo) => Record<string, string>;
 };

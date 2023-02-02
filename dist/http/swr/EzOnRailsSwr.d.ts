@@ -1,4 +1,4 @@
-import { EzOnRailsAuthInfo } from "../client/EzOnRailsHttpClient";
+import { EzOnRailsAuthInfo } from '../client/EzOnRailsHttpClient';
 /**
  * SWR Fetcher for EzOnRails api calls.
  * The specified key can either be a string or an array.
@@ -17,5 +17,5 @@ import { EzOnRailsAuthInfo } from "../client/EzOnRailsHttpClient";
  * @param key
  */
 export declare const EzOnRailsSwr: {
-    fetcher: <T>(url: string, method?: string, data?: any, authInfo?: EzOnRailsAuthInfo | undefined) => Promise<T>;
+    fetcher: <TParams, TResponse>(url: string, method?: string, data?: TParams | null, authInfo?: EzOnRailsAuthInfo | undefined) => Promise<TResponse>;
 };

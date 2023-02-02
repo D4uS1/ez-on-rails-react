@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import '../EzOnRails.css';
-import { EzOnRailsAuthInfo, EzOnRailsUser } from "../../../http/client/EzOnRailsHttpClient";
-import { DefaultFormProps } from "../shared/Types";
+import { EzOnRailsAuthInfo, EzOnRailsUser } from '../../../http/client/EzOnRailsHttpClient';
+import { DefaultFormProps } from '../shared/Types';
 /**
  * Props for the UpdateUserForm.
  * Used to customize the register form.
@@ -31,7 +31,7 @@ export interface UpdateUserFormProps extends DefaultFormProps {
     maxUsernameLength?: number;
     maxEmailLength?: number;
     onUserUpdateSuccess: (user: EzOnRailsUser) => void;
-    onUserUpdateError: (e: any) => void;
+    onUserUpdateError: (e: unknown) => void;
     avatarMaxSize?: number;
     dropzoneContainerClassName?: string;
     hideUsername?: boolean;

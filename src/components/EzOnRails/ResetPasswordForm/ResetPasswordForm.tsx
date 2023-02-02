@@ -5,8 +5,14 @@ import Button from 'react-bootstrap/Button';
 import { useCallback, useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { EzOnRailsHttpClient, EzOnRailsPasswordResetParams } from '../../../http/client/EzOnRailsHttpClient';
 import { DefaultFormProps } from '../shared/Types';
+
+/**
+ * The form values to reset the password do not hold bthe resetPasswordToken. The token is passed
+ * via the props and merged into the requests params with the provided values.
+ */
+type ResetPasswordFormValues = Omit<EzOnRailsPasswordResetParams, 'resetPasswordToken'>;
 
 /**
  * Props for the RequestPasswordForm component.
@@ -42,14 +48,6 @@ export interface ResetPasswordFormProps extends DefaultFormProps {
 }
 
 /**
- * Describes the input fields for the ResetPasswordForm.
- */
-interface PasswordResetFormValues {
-    password: string;
-    passwordConfirmation: string;
-}
-
-/**
  * Component for a default password reset form via EzOnRails.
  * Customizable with the props via css.
  *
@@ -62,7 +60,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
     /**
      * Valodation scheme for the password reset form.
      */
-    const PasswordResetValidationSchema: SchemaOf<PasswordResetFormValues> = Yup.object()
+    const PasswordResetValidationSchema: SchemaOf<EzOnRailsPasswordResetParams> = Yup.object()
         .shape({
             password: Yup.string()
                 .min(
@@ -87,7 +85,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
      * @param values
      */
     const resetPassword = useCallback(
-        async (values: PasswordResetFormValues) => {
+        async (values: ResetPasswordFormValues) => {
             setInProgress(true);
 
             try {
@@ -106,7 +104,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
     );
 
     // initial values
-    const initialFormValues: PasswordResetFormValues = {
+    const initialFormValues: ResetPasswordFormValues = {
         password: '',
         passwordConfirmation: ''
     };

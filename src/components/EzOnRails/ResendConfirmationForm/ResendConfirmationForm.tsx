@@ -2,7 +2,7 @@ import '../EzOnRails.css';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import { EzOnRailsConfirmationInstructionsParams, EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -29,13 +29,6 @@ export interface ResendConfirmationFormProps extends DefaultFormProps {
 }
 
 /**
- * Describes the input fields for the ResendConfirmationForm.
- */
-interface ResendConfirmationFormValues {
-    email: string;
-}
-
-/**
  * Component for a form to send a resend confirmation email.
  *
  * @param props
@@ -47,7 +40,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const ResendConfirmationValidationSchema: SchemaOf<ResendConfirmationFormValues> = Yup.object()
+    const ResendConfirmationValidationSchema: SchemaOf<EzOnRailsConfirmationInstructionsParams> = Yup.object()
         .shape({
             email: Yup.string()
                 .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
@@ -64,7 +57,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
      *
      * @param values
      */
-    const resendConfirmation = (values: ResendConfirmationFormValues) => {
+    const resendConfirmation = (values: EzOnRailsConfirmationInstructionsParams) => {
         setInProgress(true);
 
         EzOnRailsHttpClient.confirmationInstructions(values)
@@ -80,7 +73,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     };
 
     // initial values
-    const initialFormValues: ResendConfirmationFormValues = {
+    const initialFormValues: EzOnRailsConfirmationInstructionsParams = {
         email: ''
     };
 

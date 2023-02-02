@@ -1,6 +1,6 @@
-import { jsx, jsxs, Fragment as Fragment$1 } from 'react/jsx-runtime';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
 import * as React from 'react';
-import React__default, { createContext, forwardRef, createElement, useContext, useImperativeHandle, useEffect, Children, useRef, useReducer, useCallback, useMemo, Component, useLayoutEffect, useState, Fragment as Fragment$2 } from 'react';
+import React__default, { createContext, forwardRef, createElement, useContext, useImperativeHandle, useEffect, Children, useRef, useReducer, useCallback, useMemo, Component, useLayoutEffect, useState, Fragment as Fragment$1 } from 'react';
 
 /**
   Returns an EzOnRails Object that contains some EzOnRails related configuration Methods.
@@ -16,26 +16,26 @@ var EzOnRailsConfig = {
      * @param options
      */
     init: function (options) {
-        if (!options.baseUrl.endsWith("/")) {
+        if (!options.baseUrl.endsWith('/')) {
             options.baseUrl += '/';
         }
-        localStorage.setItem("EzOnRails.baseUrl", options.baseUrl);
-        localStorage.setItem("EzOnRails.apiUrl", "".concat(options.baseUrl, "api/"));
-        localStorage.setItem("EzOnRails.apiVersion", options.apiVersion);
+        localStorage.setItem('EzOnRails.baseUrl', options.baseUrl);
+        localStorage.setItem('EzOnRails.apiUrl', "".concat(options.baseUrl, "api/"));
+        localStorage.setItem('EzOnRails.apiVersion', options.apiVersion);
     },
     /**
      * Returns the base for the EzOnRails endpoint.
      * If no saved apiUrl was found, null will be returned.
      */
     baseUrl: function () {
-        return localStorage.getItem("EzOnRails.baseUrl");
+        return localStorage.getItem('EzOnRails.baseUrl');
     },
     /**
      * Returns the apiUrl for the EzOnRails api endpoint.
      * If no saved apiUrl was found, null will be returned.
      */
     apiUrl: function () {
-        return localStorage.getItem("EzOnRails.apiUrl");
+        return localStorage.getItem('EzOnRails.apiUrl');
     },
     /**
      * Returns the api version for the EzOnRails api endpoint.
@@ -43,7 +43,7 @@ var EzOnRailsConfig = {
      * If not api version is yet defined, 1.0 will be returned as default.
      */
     apiVersion: function () {
-        return localStorage.getItem("EzOnRails.apiVersion") || '1.0';
+        return localStorage.getItem('EzOnRails.apiVersion') || '1.0';
     }
 };
 
@@ -105,7 +105,7 @@ function __generator(thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -156,13 +156,6 @@ function __read(o, n) {
     return ar;
 }
 
-/** @deprecated */
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
 function __spreadArray(to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -175,23 +168,7 @@ function __spreadArray(to, from, pack) {
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-function createCommonjsModule(fn, basedir, module) {
-	return module = {
-		path: basedir,
-		exports: {},
-		require: function (path, base) {
-			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
-		}
-	}, fn(module, module.exports), module.exports;
-}
-
-function commonjsRequire () {
-	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
-}
+var lib = {};
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -222,7 +199,7 @@ var reIsUint$2 = /^(?:0|[1-9]\d*)$/;
  * @param {Function} iteratee The function invoked per iteration.
  * @returns {Array} Returns the array of results.
  */
-function baseTimes$2(n, iteratee) {
+function baseTimes$3(n, iteratee) {
   var index = -1,
       result = Array(n);
 
@@ -240,7 +217,7 @@ function baseTimes$2(n, iteratee) {
  * @param {Function} transform The argument transform.
  * @returns {Function} Returns the new function.
  */
-function overArg$3(func, transform) {
+function overArg$4(func, transform) {
   return function(arg) {
     return func(transform(arg));
   };
@@ -250,20 +227,20 @@ function overArg$3(func, transform) {
 var objectProto$u = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$n = objectProto$u.hasOwnProperty;
+var hasOwnProperty$m = objectProto$u.hasOwnProperty;
 
 /**
  * Used to resolve the
  * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
  * of values.
  */
-var objectToString$5 = objectProto$u.toString;
+var objectToString$6 = objectProto$u.toString;
 
 /** Built-in value references. */
 var propertyIsEnumerable$4 = objectProto$u.propertyIsEnumerable;
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeKeys$3 = overArg$3(Object.keys, Object);
+var nativeKeys$4 = overArg$4(Object.keys, Object);
 
 /**
  * Creates an array of the enumerable property names of the array-like `value`.
@@ -273,19 +250,19 @@ var nativeKeys$3 = overArg$3(Object.keys, Object);
  * @param {boolean} inherited Specify returning inherited property names.
  * @returns {Array} Returns the array of property names.
  */
-function arrayLikeKeys$2(value, inherited) {
+function arrayLikeKeys$3(value, inherited) {
   // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
   // Safari 9 makes `arguments.length` enumerable in strict mode.
-  var result = (isArray$4(value) || isArguments$3(value))
-    ? baseTimes$2(value.length, String)
+  var result = (isArray$c(value) || isArguments$5(value))
+    ? baseTimes$3(value.length, String)
     : [];
 
   var length = result.length,
       skipIndexes = !!length;
 
   for (var key in value) {
-    if ((inherited || hasOwnProperty$n.call(value, key)) &&
-        !(skipIndexes && (key == 'length' || isIndex$2(key, length)))) {
+    if ((inherited || hasOwnProperty$m.call(value, key)) &&
+        !(skipIndexes && (key == 'length' || isIndex$4(key, length)))) {
       result.push(key);
     }
   }
@@ -303,7 +280,7 @@ function arrayLikeKeys$2(value, inherited) {
  * @param {Function} keysFunc The function to get the keys of `object`.
  * @returns {Object} Returns `object`.
  */
-var baseFor$1 = createBaseFor$1();
+var baseFor$2 = createBaseFor$2();
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -313,8 +290,8 @@ var baseFor$1 = createBaseFor$1();
  * @param {Function} iteratee The function invoked per iteration.
  * @returns {Object} Returns `object`.
  */
-function baseForOwn$1(object, iteratee) {
-  return object && baseFor$1(object, iteratee, keys$2);
+function baseForOwn$3(object, iteratee) {
+  return object && baseFor$2(object, iteratee, keys$5);
 }
 
 /**
@@ -324,13 +301,13 @@ function baseForOwn$1(object, iteratee) {
  * @param {Object} object The object to query.
  * @returns {Array} Returns the array of property names.
  */
-function baseKeys$2(object) {
-  if (!isPrototype$2(object)) {
-    return nativeKeys$3(object);
+function baseKeys$3(object) {
+  if (!isPrototype$3(object)) {
+    return nativeKeys$4(object);
   }
   var result = [];
   for (var key in Object(object)) {
-    if (hasOwnProperty$n.call(object, key) && key != 'constructor') {
+    if (hasOwnProperty$m.call(object, key) && key != 'constructor') {
       result.push(key);
     }
   }
@@ -344,7 +321,7 @@ function baseKeys$2(object) {
  * @param {boolean} [fromRight] Specify iterating from right to left.
  * @returns {Function} Returns the new base function.
  */
-function createBaseFor$1(fromRight) {
+function createBaseFor$2(fromRight) {
   return function(object, iteratee, keysFunc) {
     var index = -1,
         iterable = Object(object),
@@ -369,7 +346,7 @@ function createBaseFor$1(fromRight) {
  * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
  * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
  */
-function isIndex$2(value, length) {
+function isIndex$4(value, length) {
   length = length == null ? MAX_SAFE_INTEGER$4 : length;
   return !!length &&
     (typeof value == 'number' || reIsUint$2.test(value)) &&
@@ -383,7 +360,7 @@ function isIndex$2(value, length) {
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
  */
-function isPrototype$2(value) {
+function isPrototype$3(value) {
   var Ctor = value && value.constructor,
       proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$u;
 
@@ -408,10 +385,10 @@ function isPrototype$2(value) {
  * _.isArguments([1, 2, 3]);
  * // => false
  */
-function isArguments$3(value) {
+function isArguments$5(value) {
   // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
-  return isArrayLikeObject(value) && hasOwnProperty$n.call(value, 'callee') &&
-    (!propertyIsEnumerable$4.call(value, 'callee') || objectToString$5.call(value) == argsTag$6);
+  return isArrayLikeObject(value) && hasOwnProperty$m.call(value, 'callee') &&
+    (!propertyIsEnumerable$4.call(value, 'callee') || objectToString$6.call(value) == argsTag$6);
 }
 
 /**
@@ -437,7 +414,7 @@ function isArguments$3(value) {
  * _.isArray(_.noop);
  * // => false
  */
-var isArray$4 = Array.isArray;
+var isArray$c = Array.isArray;
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -464,8 +441,8 @@ var isArray$4 = Array.isArray;
  * _.isArrayLike(_.noop);
  * // => false
  */
-function isArrayLike$2(value) {
-  return value != null && isLength$2(value.length) && !isFunction$3(value);
+function isArrayLike$3(value) {
+  return value != null && isLength$5(value.length) && !isFunction$5(value);
 }
 
 /**
@@ -494,7 +471,7 @@ function isArrayLike$2(value) {
  * // => false
  */
 function isArrayLikeObject(value) {
-  return isObjectLike$5(value) && isArrayLike$2(value);
+  return isObjectLike$a(value) && isArrayLike$3(value);
 }
 
 /**
@@ -514,10 +491,10 @@ function isArrayLikeObject(value) {
  * _.isFunction(/abc/);
  * // => false
  */
-function isFunction$3(value) {
+function isFunction$5(value) {
   // The use of `Object#toString` avoids issues with the `typeof` operator
   // in Safari 8-9 which returns 'object' for typed array and other constructors.
-  var tag = isObject$5(value) ? objectToString$5.call(value) : '';
+  var tag = isObject$8(value) ? objectToString$6.call(value) : '';
   return tag == funcTag$5 || tag == genTag$3;
 }
 
@@ -547,7 +524,7 @@ function isFunction$3(value) {
  * _.isLength('3');
  * // => false
  */
-function isLength$2(value) {
+function isLength$5(value) {
   return typeof value == 'number' &&
     value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$4;
 }
@@ -577,7 +554,7 @@ function isLength$2(value) {
  * _.isObject(null);
  * // => false
  */
-function isObject$5(value) {
+function isObject$8(value) {
   var type = typeof value;
   return !!value && (type == 'object' || type == 'function');
 }
@@ -606,7 +583,7 @@ function isObject$5(value) {
  * _.isObjectLike(null);
  * // => false
  */
-function isObjectLike$5(value) {
+function isObjectLike$a(value) {
   return !!value && typeof value == 'object';
 }
 
@@ -638,8 +615,8 @@ function isObjectLike$5(value) {
  * });
  * // => Logs 'a' then 'b' (iteration order is not guaranteed).
  */
-function forOwn(object, iteratee) {
-  return object && baseForOwn$1(object, typeof iteratee == 'function' ? iteratee : identity$1);
+function forOwn$1(object, iteratee) {
+  return object && baseForOwn$3(object, typeof iteratee == 'function' ? iteratee : identity$2);
 }
 
 /**
@@ -670,8 +647,8 @@ function forOwn(object, iteratee) {
  * _.keys('hi');
  * // => ['0', '1']
  */
-function keys$2(object) {
-  return isArrayLike$2(object) ? arrayLikeKeys$2(object) : baseKeys$2(object);
+function keys$5(object) {
+  return isArrayLike$3(object) ? arrayLikeKeys$3(object) : baseKeys$3(object);
 }
 
 /**
@@ -690,11 +667,11 @@ function keys$2(object) {
  * console.log(_.identity(object) === object);
  * // => true
  */
-function identity$1(value) {
+function identity$2(value) {
   return value;
 }
 
-var lodash_forown = forOwn;
+var lodash_forown = forOwn$1;
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -847,13 +824,13 @@ var deburredLetters$2 = {
 };
 
 /** Detect free variable `global` from Node.js. */
-var freeGlobal$4 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+var freeGlobal$5 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
 
 /** Detect free variable `self`. */
 var freeSelf$3 = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var root$4 = freeGlobal$4 || freeSelf$3 || Function('return this')();
+var root$c = freeGlobal$5 || freeSelf$3 || Function('return this')();
 
 /**
  * A specialized version of `_.reduce` for arrays without support for
@@ -867,7 +844,7 @@ var root$4 = freeGlobal$4 || freeSelf$3 || Function('return this')();
  *  the initial value.
  * @returns {*} Returns the accumulated value.
  */
-function arrayReduce$2(array, iteratee, accumulator, initAccum) {
+function arrayReduce$3(array, iteratee, accumulator, initAccum) {
   var index = -1,
       length = array ? array.length : 0;
 
@@ -887,7 +864,7 @@ function arrayReduce$2(array, iteratee, accumulator, initAccum) {
  * @param {string} string The string to convert.
  * @returns {Array} Returns the converted array.
  */
-function asciiToArray$1(string) {
+function asciiToArray$2(string) {
   return string.split('');
 }
 
@@ -898,7 +875,7 @@ function asciiToArray$1(string) {
  * @param {string} The string to inspect.
  * @returns {Array} Returns the words of `string`.
  */
-function asciiWords$2(string) {
+function asciiWords$3(string) {
   return string.match(reAsciiWord$2) || [];
 }
 
@@ -909,7 +886,7 @@ function asciiWords$2(string) {
  * @param {Object} object The object to query.
  * @returns {Function} Returns the new accessor function.
  */
-function basePropertyOf$2(object) {
+function basePropertyOf$3(object) {
   return function(key) {
     return object == null ? undefined : object[key];
   };
@@ -923,7 +900,7 @@ function basePropertyOf$2(object) {
  * @param {string} letter The matched letter to deburr.
  * @returns {string} Returns the deburred letter.
  */
-var deburrLetter$2 = basePropertyOf$2(deburredLetters$2);
+var deburrLetter$3 = basePropertyOf$3(deburredLetters$2);
 
 /**
  * Checks if `string` contains Unicode symbols.
@@ -932,7 +909,7 @@ var deburrLetter$2 = basePropertyOf$2(deburredLetters$2);
  * @param {string} string The string to inspect.
  * @returns {boolean} Returns `true` if a symbol is found, else `false`.
  */
-function hasUnicode$1(string) {
+function hasUnicode$3(string) {
   return reHasUnicode$1.test(string);
 }
 
@@ -943,7 +920,7 @@ function hasUnicode$1(string) {
  * @param {string} string The string to inspect.
  * @returns {boolean} Returns `true` if a word is found, else `false`.
  */
-function hasUnicodeWord$2(string) {
+function hasUnicodeWord$3(string) {
   return reHasUnicodeWord$2.test(string);
 }
 
@@ -954,10 +931,10 @@ function hasUnicodeWord$2(string) {
  * @param {string} string The string to convert.
  * @returns {Array} Returns the converted array.
  */
-function stringToArray$1(string) {
-  return hasUnicode$1(string)
-    ? unicodeToArray$1(string)
-    : asciiToArray$1(string);
+function stringToArray$2(string) {
+  return hasUnicode$3(string)
+    ? unicodeToArray$2(string)
+    : asciiToArray$2(string);
 }
 
 /**
@@ -967,7 +944,7 @@ function stringToArray$1(string) {
  * @param {string} string The string to convert.
  * @returns {Array} Returns the converted array.
  */
-function unicodeToArray$1(string) {
+function unicodeToArray$2(string) {
   return string.match(reUnicode$1) || [];
 }
 
@@ -978,7 +955,7 @@ function unicodeToArray$1(string) {
  * @param {string} The string to inspect.
  * @returns {Array} Returns the words of `string`.
  */
-function unicodeWords$2(string) {
+function unicodeWords$3(string) {
   return string.match(reUnicodeWord$2) || [];
 }
 
@@ -990,13 +967,13 @@ var objectProto$t = Object.prototype;
  * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
  * of values.
  */
-var objectToString$4 = objectProto$t.toString;
+var objectToString$5 = objectProto$t.toString;
 
 /** Built-in value references. */
-var Symbol$5 = root$4.Symbol;
+var Symbol$9 = root$c.Symbol;
 
 /** Used to convert symbols to primitives and strings. */
-var symbolProto$5 = Symbol$5 ? Symbol$5.prototype : undefined,
+var symbolProto$5 = Symbol$9 ? Symbol$9.prototype : undefined,
     symbolToString$4 = symbolProto$5 ? symbolProto$5.toString : undefined;
 
 /**
@@ -1008,7 +985,7 @@ var symbolProto$5 = Symbol$5 ? Symbol$5.prototype : undefined,
  * @param {number} [end=array.length] The end position.
  * @returns {Array} Returns the slice of `array`.
  */
-function baseSlice$1(array, start, end) {
+function baseSlice$2(array, start, end) {
   var index = -1,
       length = array.length;
 
@@ -1037,12 +1014,12 @@ function baseSlice$1(array, start, end) {
  * @param {*} value The value to process.
  * @returns {string} Returns the string.
  */
-function baseToString$3(value) {
+function baseToString$4(value) {
   // Exit early for strings to avoid a performance hit in some environments.
   if (typeof value == 'string') {
     return value;
   }
-  if (isSymbol$3(value)) {
+  if (isSymbol$6(value)) {
     return symbolToString$4 ? symbolToString$4.call(value) : '';
   }
   var result = (value + '');
@@ -1058,10 +1035,10 @@ function baseToString$3(value) {
  * @param {number} [end=array.length] The end position.
  * @returns {Array} Returns the cast slice.
  */
-function castSlice$1(array, start, end) {
+function castSlice$2(array, start, end) {
   var length = array.length;
   end = end === undefined ? length : end;
-  return (!start && end >= length) ? array : baseSlice$1(array, start, end);
+  return (!start && end >= length) ? array : baseSlice$2(array, start, end);
 }
 
 /**
@@ -1071,12 +1048,12 @@ function castSlice$1(array, start, end) {
  * @param {string} methodName The name of the `String` case method to use.
  * @returns {Function} Returns the new case function.
  */
-function createCaseFirst$1(methodName) {
+function createCaseFirst$2(methodName) {
   return function(string) {
-    string = toString$4(string);
+    string = toString$9(string);
 
-    var strSymbols = hasUnicode$1(string)
-      ? stringToArray$1(string)
+    var strSymbols = hasUnicode$3(string)
+      ? stringToArray$2(string)
       : undefined;
 
     var chr = strSymbols
@@ -1084,7 +1061,7 @@ function createCaseFirst$1(methodName) {
       : string.charAt(0);
 
     var trailing = strSymbols
-      ? castSlice$1(strSymbols, 1).join('')
+      ? castSlice$2(strSymbols, 1).join('')
       : string.slice(1);
 
     return chr[methodName]() + trailing;
@@ -1098,9 +1075,9 @@ function createCaseFirst$1(methodName) {
  * @param {Function} callback The function to combine each word.
  * @returns {Function} Returns the new compounder function.
  */
-function createCompounder$2(callback) {
+function createCompounder$4(callback) {
   return function(string) {
-    return arrayReduce$2(words$2(deburr$2(string).replace(reApos$2, '')), callback, '');
+    return arrayReduce$3(words$3(deburr$3(string).replace(reApos$2, '')), callback, '');
   };
 }
 
@@ -1128,7 +1105,7 @@ function createCompounder$2(callback) {
  * _.isObjectLike(null);
  * // => false
  */
-function isObjectLike$4(value) {
+function isObjectLike$9(value) {
   return !!value && typeof value == 'object';
 }
 
@@ -1149,9 +1126,9 @@ function isObjectLike$4(value) {
  * _.isSymbol('abc');
  * // => false
  */
-function isSymbol$3(value) {
+function isSymbol$6(value) {
   return typeof value == 'symbol' ||
-    (isObjectLike$4(value) && objectToString$4.call(value) == symbolTag$6);
+    (isObjectLike$9(value) && objectToString$5.call(value) == symbolTag$6);
 }
 
 /**
@@ -1175,8 +1152,8 @@ function isSymbol$3(value) {
  * _.toString([1, 2, 3]);
  * // => '1,2,3'
  */
-function toString$4(value) {
-  return value == null ? '' : baseToString$3(value);
+function toString$9(value) {
+  return value == null ? '' : baseToString$4(value);
 }
 
 /**
@@ -1199,9 +1176,9 @@ function toString$4(value) {
  * _.camelCase('__FOO_BAR__');
  * // => 'fooBar'
  */
-var camelCase$1 = createCompounder$2(function(result, word, index) {
+var camelCase$2 = createCompounder$4(function(result, word, index) {
   word = word.toLowerCase();
-  return result + (index ? capitalize$1(word) : word);
+  return result + (index ? capitalize$2(word) : word);
 });
 
 /**
@@ -1219,8 +1196,8 @@ var camelCase$1 = createCompounder$2(function(result, word, index) {
  * _.capitalize('FRED');
  * // => 'Fred'
  */
-function capitalize$1(string) {
-  return upperFirst$1(toString$4(string).toLowerCase());
+function capitalize$2(string) {
+  return upperFirst$2(toString$9(string).toLowerCase());
 }
 
 /**
@@ -1241,9 +1218,9 @@ function capitalize$1(string) {
  * _.deburr('déjà vu');
  * // => 'deja vu'
  */
-function deburr$2(string) {
-  string = toString$4(string);
-  return string && string.replace(reLatin$2, deburrLetter$2).replace(reComboMark$2, '');
+function deburr$3(string) {
+  string = toString$9(string);
+  return string && string.replace(reLatin$2, deburrLetter$3).replace(reComboMark$2, '');
 }
 
 /**
@@ -1263,7 +1240,7 @@ function deburr$2(string) {
  * _.upperFirst('FRED');
  * // => 'FRED'
  */
-var upperFirst$1 = createCaseFirst$1('toUpperCase');
+var upperFirst$2 = createCaseFirst$2('toUpperCase');
 
 /**
  * Splits `string` into an array of its words.
@@ -1284,17 +1261,17 @@ var upperFirst$1 = createCaseFirst$1('toUpperCase');
  * _.words('fred, barney, & pebbles', /[^, ]+/g);
  * // => ['fred', 'barney', '&', 'pebbles']
  */
-function words$2(string, pattern, guard) {
-  string = toString$4(string);
+function words$3(string, pattern, guard) {
+  string = toString$9(string);
   pattern = guard ? undefined : pattern;
 
   if (pattern === undefined) {
-    return hasUnicodeWord$2(string) ? unicodeWords$2(string) : asciiWords$2(string);
+    return hasUnicodeWord$3(string) ? unicodeWords$3(string) : asciiWords$3(string);
   }
   return string.match(pattern) || [];
 }
 
-var lodash_camelcase = camelCase$1;
+var lodash_camelcase = camelCase$2;
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -1439,13 +1416,13 @@ var deburredLetters$1 = {
 };
 
 /** Detect free variable `global` from Node.js. */
-var freeGlobal$3 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+var freeGlobal$4 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
 
 /** Detect free variable `self`. */
 var freeSelf$2 = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var root$3 = freeGlobal$3 || freeSelf$2 || Function('return this')();
+var root$b = freeGlobal$4 || freeSelf$2 || Function('return this')();
 
 /**
  * A specialized version of `_.reduce` for arrays without support for
@@ -1459,7 +1436,7 @@ var root$3 = freeGlobal$3 || freeSelf$2 || Function('return this')();
  *  the initial value.
  * @returns {*} Returns the accumulated value.
  */
-function arrayReduce$1(array, iteratee, accumulator, initAccum) {
+function arrayReduce$2(array, iteratee, accumulator, initAccum) {
   var index = -1,
       length = array ? array.length : 0;
 
@@ -1479,7 +1456,7 @@ function arrayReduce$1(array, iteratee, accumulator, initAccum) {
  * @param {string} The string to inspect.
  * @returns {Array} Returns the words of `string`.
  */
-function asciiWords$1(string) {
+function asciiWords$2(string) {
   return string.match(reAsciiWord$1) || [];
 }
 
@@ -1490,7 +1467,7 @@ function asciiWords$1(string) {
  * @param {Object} object The object to query.
  * @returns {Function} Returns the new accessor function.
  */
-function basePropertyOf$1(object) {
+function basePropertyOf$2(object) {
   return function(key) {
     return object == null ? undefined : object[key];
   };
@@ -1504,7 +1481,7 @@ function basePropertyOf$1(object) {
  * @param {string} letter The matched letter to deburr.
  * @returns {string} Returns the deburred letter.
  */
-var deburrLetter$1 = basePropertyOf$1(deburredLetters$1);
+var deburrLetter$2 = basePropertyOf$2(deburredLetters$1);
 
 /**
  * Checks if `string` contains a word composed of Unicode symbols.
@@ -1513,7 +1490,7 @@ var deburrLetter$1 = basePropertyOf$1(deburredLetters$1);
  * @param {string} string The string to inspect.
  * @returns {boolean} Returns `true` if a word is found, else `false`.
  */
-function hasUnicodeWord$1(string) {
+function hasUnicodeWord$2(string) {
   return reHasUnicodeWord$1.test(string);
 }
 
@@ -1524,7 +1501,7 @@ function hasUnicodeWord$1(string) {
  * @param {string} The string to inspect.
  * @returns {Array} Returns the words of `string`.
  */
-function unicodeWords$1(string) {
+function unicodeWords$2(string) {
   return string.match(reUnicodeWord$1) || [];
 }
 
@@ -1536,13 +1513,13 @@ var objectProto$s = Object.prototype;
  * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
  * of values.
  */
-var objectToString$3 = objectProto$s.toString;
+var objectToString$4 = objectProto$s.toString;
 
 /** Built-in value references. */
-var Symbol$4 = root$3.Symbol;
+var Symbol$8 = root$b.Symbol;
 
 /** Used to convert symbols to primitives and strings. */
-var symbolProto$4 = Symbol$4 ? Symbol$4.prototype : undefined,
+var symbolProto$4 = Symbol$8 ? Symbol$8.prototype : undefined,
     symbolToString$3 = symbolProto$4 ? symbolProto$4.toString : undefined;
 
 /**
@@ -1553,12 +1530,12 @@ var symbolProto$4 = Symbol$4 ? Symbol$4.prototype : undefined,
  * @param {*} value The value to process.
  * @returns {string} Returns the string.
  */
-function baseToString$2(value) {
+function baseToString$3(value) {
   // Exit early for strings to avoid a performance hit in some environments.
   if (typeof value == 'string') {
     return value;
   }
-  if (isSymbol$2(value)) {
+  if (isSymbol$5(value)) {
     return symbolToString$3 ? symbolToString$3.call(value) : '';
   }
   var result = (value + '');
@@ -1572,9 +1549,9 @@ function baseToString$2(value) {
  * @param {Function} callback The function to combine each word.
  * @returns {Function} Returns the new compounder function.
  */
-function createCompounder$1(callback) {
+function createCompounder$3(callback) {
   return function(string) {
-    return arrayReduce$1(words$1(deburr$1(string).replace(reApos$1, '')), callback, '');
+    return arrayReduce$2(words$2(deburr$2(string).replace(reApos$1, '')), callback, '');
   };
 }
 
@@ -1602,7 +1579,7 @@ function createCompounder$1(callback) {
  * _.isObjectLike(null);
  * // => false
  */
-function isObjectLike$3(value) {
+function isObjectLike$8(value) {
   return !!value && typeof value == 'object';
 }
 
@@ -1623,9 +1600,9 @@ function isObjectLike$3(value) {
  * _.isSymbol('abc');
  * // => false
  */
-function isSymbol$2(value) {
+function isSymbol$5(value) {
   return typeof value == 'symbol' ||
-    (isObjectLike$3(value) && objectToString$3.call(value) == symbolTag$5);
+    (isObjectLike$8(value) && objectToString$4.call(value) == symbolTag$5);
 }
 
 /**
@@ -1649,8 +1626,8 @@ function isSymbol$2(value) {
  * _.toString([1, 2, 3]);
  * // => '1,2,3'
  */
-function toString$3(value) {
-  return value == null ? '' : baseToString$2(value);
+function toString$8(value) {
+  return value == null ? '' : baseToString$3(value);
 }
 
 /**
@@ -1671,9 +1648,9 @@ function toString$3(value) {
  * _.deburr('déjà vu');
  * // => 'deja vu'
  */
-function deburr$1(string) {
-  string = toString$3(string);
-  return string && string.replace(reLatin$1, deburrLetter$1).replace(reComboMark$1, '');
+function deburr$2(string) {
+  string = toString$8(string);
+  return string && string.replace(reLatin$1, deburrLetter$2).replace(reComboMark$1, '');
 }
 
 /**
@@ -1697,7 +1674,7 @@ function deburr$1(string) {
  * _.snakeCase('--FOO-BAR--');
  * // => 'foo_bar'
  */
-var snakeCase$1 = createCompounder$1(function(result, word, index) {
+var snakeCase$2 = createCompounder$3(function(result, word, index) {
   return result + (index ? '_' : '') + word.toLowerCase();
 });
 
@@ -1720,17 +1697,17 @@ var snakeCase$1 = createCompounder$1(function(result, word, index) {
  * _.words('fred, barney, & pebbles', /[^, ]+/g);
  * // => ['fred', 'barney', '&', 'pebbles']
  */
-function words$1(string, pattern, guard) {
-  string = toString$3(string);
+function words$2(string, pattern, guard) {
+  string = toString$8(string);
   pattern = guard ? undefined : pattern;
 
   if (pattern === undefined) {
-    return hasUnicodeWord$1(string) ? unicodeWords$1(string) : asciiWords$1(string);
+    return hasUnicodeWord$2(string) ? unicodeWords$2(string) : asciiWords$2(string);
   }
   return string.match(pattern) || [];
 }
 
-var lodash_snakecase = snakeCase$1;
+var lodash_snakecase = snakeCase$2;
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -1771,7 +1748,7 @@ function isHostObject(value) {
  * @param {Function} transform The argument transform.
  * @returns {Function} Returns the new function.
  */
-function overArg$2(func, transform) {
+function overArg$3(func, transform) {
   return function(arg) {
     return func(transform(arg));
   };
@@ -1785,7 +1762,7 @@ var funcProto$5 = Function.prototype,
 var funcToString$5 = funcProto$5.toString;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$m = objectProto$r.hasOwnProperty;
+var hasOwnProperty$l = objectProto$r.hasOwnProperty;
 
 /** Used to infer the `Object` constructor. */
 var objectCtorString$1 = funcToString$5.call(Object);
@@ -1795,10 +1772,10 @@ var objectCtorString$1 = funcToString$5.call(Object);
  * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
  * of values.
  */
-var objectToString$2 = objectProto$r.toString;
+var objectToString$3 = objectProto$r.toString;
 
 /** Built-in value references. */
-var getPrototype$2 = overArg$2(Object.getPrototypeOf, Object);
+var getPrototype$2 = overArg$3(Object.getPrototypeOf, Object);
 
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -1824,7 +1801,7 @@ var getPrototype$2 = overArg$2(Object.getPrototypeOf, Object);
  * _.isObjectLike(null);
  * // => false
  */
-function isObjectLike$2(value) {
+function isObjectLike$7(value) {
   return !!value && typeof value == 'object';
 }
 
@@ -1856,28 +1833,27 @@ function isObjectLike$2(value) {
  * _.isPlainObject(Object.create(null));
  * // => true
  */
-function isPlainObject$1(value) {
-  if (!isObjectLike$2(value) ||
-      objectToString$2.call(value) != objectTag$7 || isHostObject(value)) {
+function isPlainObject$2(value) {
+  if (!isObjectLike$7(value) ||
+      objectToString$3.call(value) != objectTag$7 || isHostObject(value)) {
     return false;
   }
   var proto = getPrototype$2(value);
   if (proto === null) {
     return true;
   }
-  var Ctor = hasOwnProperty$m.call(proto, 'constructor') && proto.constructor;
+  var Ctor = hasOwnProperty$l.call(proto, 'constructor') && proto.constructor;
   return (typeof Ctor == 'function' &&
     Ctor instanceof Ctor && funcToString$5.call(Ctor) == objectCtorString$1);
 }
 
-var lodash_isplainobject = isPlainObject$1;
+var lodash_isplainobject = isPlainObject$2;
 
-var lib = createCommonjsModule(function (module, exports) {
-Object.defineProperty(exports, "__esModule", { value: true });
-
-
-
-
+Object.defineProperty(lib, "__esModule", { value: true });
+var forOwn = lodash_forown;
+var camelCase$1 = lodash_camelcase;
+var snakeCase$1 = lodash_snakecase;
+var isPlainObject$1 = lodash_isplainobject;
 /**
  * @description walk tree
  * @param {Object | Array} obj
@@ -1886,23 +1862,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 function walk(obj, cb) {
     var x = Array.isArray(obj) ? [] : {};
-    lodash_forown(obj, function (v, k) {
-        if (lodash_isplainobject(v) || Array.isArray(v))
+    forOwn(obj, function (v, k) {
+        if (isPlainObject$1(v) || Array.isArray(v))
             v = walk(v, cb);
         x[cb(k)] = v;
     });
     return x;
 }
 function toCamel(obj) {
-    return walk(obj, function (k) { return lodash_camelcase(k); });
+    return walk(obj, function (k) { return camelCase$1(k); });
 }
-exports.toCamel = toCamel;
+var toCamel_1 = lib.toCamel = toCamel;
 function toSnake(obj) {
-    return walk(obj, function (k) { return lodash_snakecase(k); });
+    return walk(obj, function (k) { return snakeCase$1(k); });
 }
-exports.toSnake = toSnake;
-
-});
+var toSnake_1 = lib.toSnake = toSnake;
 
 /**
  * Returns the full url to the backend having the relative path.
@@ -1931,11 +1905,42 @@ var toApiUrl = function (path) {
     return "".concat(EzOnRailsConfig.apiUrl()).concat(path);
 };
 /**
+ * Converts the object or array into snake_case.
+ */
+var toSnakeCase = function (data) {
+    // Data is not interpretable
+    if (!data)
+        return data;
+    return toSnake_1(data);
+};
+/**
+ * Converts the object or array to camelCase.
+ *
+ * @param data
+ */
+var toCamelCase = function (data) {
+    // Data is not interpretable
+    if (!data)
+        return data;
+    return toCamel_1(data);
+};
+/**
+ * Converts the given parameters object to a get Parameter string.
+ */
+var toGetParameters = function (parameters) {
+    return Object.keys(parameters)
+        .map(function (key) { return key + '=' + parameters[key]; })
+        .join('&');
+};
+/**
  * Contains utils for http access of some EzOnRails Backend.
  */
 var EzOnRailsHttpUtils = {
     toBaseUrl: toBaseUrl,
-    toApiUrl: toApiUrl
+    toApiUrl: toApiUrl,
+    toSnakeCase: toSnakeCase,
+    toCamelCase: toCamelCase,
+    toGetParameters: toGetParameters
 };
 
 /**
@@ -1958,6 +1963,7 @@ var EzOnRailsHttpError = /** @class */ (function (_super) {
     }
     return EzOnRailsHttpError;
 }(Error));
+
 /**
  * Changes the specified authInfo object to an AuthHeader object, that can be passed via the
  * request to the server.
@@ -1972,48 +1978,25 @@ var authInfoToHeader = function (authInfo) {
         uid: authInfo.uid,
         client: authInfo.client,
         expiry: authInfo.expiry,
-        "token-type": authInfo.tokenType,
-        "access-token": authInfo.accessToken
+        'token-type': authInfo.tokenType,
+        'access-token': authInfo.accessToken
     };
-};
-/**
- * Converts the object or array into snake_case.
- */
-var toSnakeCase = function (data) {
-    // Data is not interpretable
-    if (!data)
-        return data;
-    return lib.toSnake(data);
-};
-/**
- * Converts the object or array to camelCase.
- *
- * @param data
- */
-var toCamelCase = function (data) {
-    // Data is not interpretable
-    if (!data)
-        return data;
-    return lib.toCamel(data);
 };
 /**
  * Extracts the authentication information from the specified header and returns
  * a resulting EzOnRailsAuthInfo object. If no auth info are provided, undefined will be
  * returned.
  *
- * @param authHeader
+ * @param headers
  */
 var getAuthInfoFromHeader = function (headers) {
-    if (headers["uid"] && headers["access-token"] && headers["client"] && headers["expiry"] && headers["token-type"] && headers["access-token"]) {
-        return {
-            uid: headers["uid"],
-            client: headers["client"],
-            expiry: headers["expiry"],
-            tokenType: headers["token-type"],
-            accessToken: headers["access-token"]
-        };
-    }
-    return undefined;
+    return {
+        uid: headers['uid'],
+        client: headers['client'],
+        expiry: headers['expiry'],
+        tokenType: headers['token-type'],
+        accessToken: headers['access-token']
+    };
 };
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
@@ -2021,23 +2004,7 @@ var getAuthInfoFromHeader = function (headers) {
  */
 var defaultHttpHeader = function (authInfo) {
     if (authInfo === void 0) { authInfo = undefined; }
-    return __assign({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'api-version': EzOnRailsConfig.apiVersion() }, authInfoToHeader(authInfo));
-};
-/**
- * Converts the given parameters object to a get Parameter string.
- */
-var toGetParameters = function (parameters) {
-    return Object.keys(parameters).map(function (key) { return key + '=' + parameters[key]; }).join('&');
-};
-/**
- * Checks whether the error returned by some http response from ez-on-rails is
- * an unauthorizes error.
- *
- * @param error
- */
-var isUnauthorizedError = function (error) {
-    var _a;
-    return (error === null || error === void 0 ? void 0 : error.status) === 401 || ((_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.status) === 401;
+    return __assign({ 'Content-Type': 'application/json', Accept: 'application/json', 'api-version': EzOnRailsConfig.apiVersion() }, authInfoToHeader(authInfo));
 };
 /**
  * Uses the fetch api to execute a http request specified by the given http method, body and headers.
@@ -2106,15 +2073,14 @@ var EzOnRailsHttpClient = {
      * @param data
      */
     signUp: function (data) { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = toSnakeCase(data);
-                    return [4 /*yield*/, fetchWithThrow('POST', toBaseUrl('users'), { user: data }, defaultHttpHeader())];
+                    data = EzOnRailsHttpUtils.toSnakeCase(data);
+                    return [4 /*yield*/, fetchWithThrow('POST', EzOnRailsHttpUtils.toBaseUrl('users'), { user: data }, defaultHttpHeader())];
                 case 1:
-                    result = _a.sent();
-                    return [2 /*return*/, toCamelCase(result.body)];
+                    _a.sent();
+                    return [2 /*return*/];
             }
         });
     }); },
@@ -2131,11 +2097,11 @@ var EzOnRailsHttpClient = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = toSnakeCase(data);
-                    return [4 /*yield*/, fetchWithThrow('POST', toApiUrl('auth/sign_in'), data, defaultHttpHeader())];
+                    data = EzOnRailsHttpUtils.toSnakeCase(data);
+                    return [4 /*yield*/, fetchWithThrow('POST', EzOnRailsHttpUtils.toApiUrl('auth/sign_in'), data, defaultHttpHeader())];
                 case 1:
                     result = _a.sent();
-                    return [2 /*return*/, __assign(__assign({}, getAuthInfoFromHeader(result.headers)), toCamelCase(result.body))];
+                    return [2 /*return*/, getAuthInfoFromHeader(result.headers)];
             }
         });
     }); },
@@ -2145,7 +2111,7 @@ var EzOnRailsHttpClient = {
     signOut: function (authInfo) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetchWithThrow('DELETE', toApiUrl('auth/sign_out'), null, defaultHttpHeader(authInfo))];
+                case 0: return [4 /*yield*/, fetchWithThrow('DELETE', EzOnRailsHttpUtils.toApiUrl('auth/sign_out'), null, defaultHttpHeader(authInfo))];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -2161,8 +2127,8 @@ var EzOnRailsHttpClient = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = toSnakeCase(data);
-                    return [4 /*yield*/, fetchWithThrow('POST', toBaseUrl('users/password'), { user: data }, defaultHttpHeader())];
+                    data = EzOnRailsHttpUtils.toSnakeCase(data);
+                    return [4 /*yield*/, fetchWithThrow('POST', EzOnRailsHttpUtils.toBaseUrl('users/password'), { user: data }, defaultHttpHeader())];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -2180,8 +2146,8 @@ var EzOnRailsHttpClient = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = toSnakeCase(data);
-                    return [4 /*yield*/, fetchWithThrow('PUT', toBaseUrl('users/password'), { user: data }, defaultHttpHeader())];
+                    data = EzOnRailsHttpUtils.toSnakeCase(data);
+                    return [4 /*yield*/, fetchWithThrow('PUT', EzOnRailsHttpUtils.toBaseUrl('users/password'), { user: data }, defaultHttpHeader())];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -2197,10 +2163,10 @@ var EzOnRailsHttpClient = {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetchWithThrow('GET', toApiUrl('users/me'), null, defaultHttpHeader(authInfo))];
+                case 0: return [4 /*yield*/, fetchWithThrow('GET', EzOnRailsHttpUtils.toApiUrl('users/me'), null, defaultHttpHeader(authInfo))];
                 case 1:
                     result = _a.sent();
-                    return [2 /*return*/, toCamelCase(result.body)];
+                    return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
             }
         });
     }); },
@@ -2211,15 +2177,17 @@ var EzOnRailsHttpClient = {
      * @param authInfo
      */
     updateUser: function (data, authInfo) { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var avatarSignedId, submitData, result;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
-                    data = toSnakeCase(data);
-                    return [4 /*yield*/, fetchWithThrow('PATCH', toApiUrl('users/me'), { user: data }, defaultHttpHeader(authInfo))];
+                    avatarSignedId = (_a = data.avatar) === null || _a === void 0 ? void 0 : _a.signedId;
+                    submitData = __assign(__assign({}, EzOnRailsHttpUtils.toSnakeCase(data)), { avatar: avatarSignedId });
+                    return [4 /*yield*/, fetchWithThrow('PATCH', EzOnRailsHttpUtils.toApiUrl('users/me'), { user: submitData }, defaultHttpHeader(authInfo))];
                 case 1:
-                    result = _a.sent();
-                    return [2 /*return*/, toCamelCase(result.body)];
+                    result = _b.sent();
+                    return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
             }
         });
     }); },
@@ -2233,8 +2201,8 @@ var EzOnRailsHttpClient = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    data = toSnakeCase(data);
-                    return [4 /*yield*/, fetchWithThrow('POST', toBaseUrl('users/confirmation'), { user: data }, defaultHttpHeader())];
+                    data = EzOnRailsHttpUtils.toSnakeCase(data);
+                    return [4 /*yield*/, fetchWithThrow('POST', EzOnRailsHttpUtils.toBaseUrl('users/confirmation'), { user: data }, defaultHttpHeader())];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -2251,9 +2219,10 @@ var EzOnRailsHttpClient = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    url = toBaseUrl('users/confirmation');
-                    data = toSnakeCase(data);
-                    url = "".concat(url, "?").concat(toGetParameters(data));
+                    url = EzOnRailsHttpUtils.toBaseUrl('users/confirmation');
+                    data = EzOnRailsHttpUtils.toSnakeCase(data);
+                    // @ts-ignore This works because the type only is a default json object
+                    url = "".concat(url, "?").concat(EzOnRailsHttpUtils.toGetParameters(data));
                     return [4 /*yield*/, fetchWithThrow('GET', url, null, defaultHttpHeader())];
                 case 1:
                     _a.sent();
@@ -2286,20 +2255,20 @@ var EzOnRailsHttpClient = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = toApiUrl(url);
+                        url = EzOnRailsHttpUtils.toApiUrl(url);
                         if (data) {
-                            data = toSnakeCase(data);
+                            data = EzOnRailsHttpUtils.toSnakeCase(data);
                         }
                         if (beforeRequest) {
                             data = beforeRequest(data);
                         }
                         if (data) {
-                            url = "".concat(url, "?").concat(toGetParameters(data));
+                            url = "".concat(url, "?").concat(EzOnRailsHttpUtils.toGetParameters(data));
                         }
                         return [4 /*yield*/, fetchWithThrow('GET', url, null, defaultHttpHeader(authInfo))];
                     case 1:
                         result = _a.sent();
-                        return [2 /*return*/, toCamelCase(result.body)];
+                        return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
                 }
             });
         });
@@ -2329,15 +2298,15 @@ var EzOnRailsHttpClient = {
                 switch (_a.label) {
                     case 0:
                         if (data) {
-                            data = toSnakeCase(data);
+                            data = EzOnRailsHttpUtils.toSnakeCase(data);
                         }
                         if (beforeRequest) {
                             data = beforeRequest(data);
                         }
-                        return [4 /*yield*/, fetchWithThrow('POST', toApiUrl(url), data, defaultHttpHeader(authInfo))];
+                        return [4 /*yield*/, fetchWithThrow('POST', EzOnRailsHttpUtils.toApiUrl(url), data, defaultHttpHeader(authInfo))];
                     case 1:
                         result = _a.sent();
-                        return [2 /*return*/, toCamelCase(result.body)];
+                        return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
                 }
             });
         });
@@ -2367,15 +2336,15 @@ var EzOnRailsHttpClient = {
                 switch (_a.label) {
                     case 0:
                         if (data) {
-                            data = toSnakeCase(data);
+                            data = EzOnRailsHttpUtils.toSnakeCase(data);
                         }
                         if (beforeRequest) {
                             data = beforeRequest(data);
                         }
-                        return [4 /*yield*/, fetchWithThrow('PATCH', toApiUrl(url), data, defaultHttpHeader(authInfo))];
+                        return [4 /*yield*/, fetchWithThrow('PATCH', EzOnRailsHttpUtils.toApiUrl(url), data, defaultHttpHeader(authInfo))];
                     case 1:
                         result = _a.sent();
-                        return [2 /*return*/, toCamelCase(result.body)];
+                        return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
                 }
             });
         });
@@ -2405,15 +2374,15 @@ var EzOnRailsHttpClient = {
                 switch (_a.label) {
                     case 0:
                         if (data) {
-                            data = toSnakeCase(data);
+                            data = EzOnRailsHttpUtils.toSnakeCase(data);
                         }
                         if (beforeRequest) {
                             data = beforeRequest(data);
                         }
-                        return [4 /*yield*/, fetchWithThrow('PUT', toApiUrl(url), data, defaultHttpHeader(authInfo))];
+                        return [4 /*yield*/, fetchWithThrow('PUT', EzOnRailsHttpUtils.toApiUrl(url), data, defaultHttpHeader(authInfo))];
                     case 1:
                         result = _a.sent();
-                        return [2 /*return*/, toCamelCase(result.body)];
+                        return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
                 }
             });
         });
@@ -2444,20 +2413,20 @@ var EzOnRailsHttpClient = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        url = toApiUrl(url);
+                        url = EzOnRailsHttpUtils.toApiUrl(url);
                         if (data) {
-                            data = toSnakeCase(data);
+                            data = EzOnRailsHttpUtils.toSnakeCase(data);
                         }
                         if (beforeRequest) {
                             data = beforeRequest(data);
                         }
                         if (data) {
-                            url = "".concat(url, "?").concat(toGetParameters(data));
+                            url = "".concat(url, "?").concat(EzOnRailsHttpUtils.toGetParameters(data));
                         }
                         return [4 /*yield*/, fetchWithThrow('DELETE', url, null, defaultHttpHeader(authInfo))];
                     case 1:
                         result = _a.sent();
-                        return [2 /*return*/, toCamelCase(result.body)];
+                        return [2 /*return*/, EzOnRailsHttpUtils.toCamelCase(result.body)];
                 }
             });
         });
@@ -2626,7 +2595,7 @@ function clone$1 (src) {
   return baseClone$1(src, [], [])
 }
 
-const toString$2 = Object.prototype.toString;
+const toString$7 = Object.prototype.toString;
 const errorToString = Error.prototype.toString;
 const regExpToString = RegExp.prototype.toString;
 const symbolToString$2 = typeof Symbol !== 'undefined' ? Symbol.prototype.toString : () => '';
@@ -2645,7 +2614,7 @@ function printSimpleValue(val, quoteStrings = false) {
   if (typeOf === 'string') return quoteStrings ? `"${val}"` : val;
   if (typeOf === 'function') return '[Function ' + (val.name || 'anonymous') + ']';
   if (typeOf === 'symbol') return symbolToString$2.call(val).replace(SYMBOL_REGEXP, 'Symbol($1)');
-  const tag = toString$2.call(val).slice(8, -1);
+  const tag = toString$7.call(val).slice(8, -1);
   if (tag === 'Date') return isNaN(val.getTime()) ? '' + val : val.toISOString(val);
   if (tag === 'Error' || val instanceof Error) return '[' + errorToString.call(val) + ']';
   if (tag === 'RegExp') return regExpToString.call(val);
@@ -2715,7 +2684,7 @@ let boolean = {
 let object = {
   noUnknown: '${path} field has unspecified keys: ${unknown}'
 };
-let array$1 = {
+let array = {
   min: '${path} field must have at least ${min} items',
   max: '${path} field must have less than or equal to ${max} items',
   length: '${path} must have ${length} items'
@@ -2726,15 +2695,16 @@ Object.assign(Object.create(null), {
   number,
   date,
   object,
-  array: array$1,
+  array,
   boolean
 });
 
 /** Used for built-in method references. */
+
 var objectProto$q = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$l = objectProto$q.hasOwnProperty;
+var hasOwnProperty$k = objectProto$q.hasOwnProperty;
 
 /**
  * The base implementation of `_.has` without support for deep paths.
@@ -2744,11 +2714,11 @@ var hasOwnProperty$l = objectProto$q.hasOwnProperty;
  * @param {Array|string} key The key to check.
  * @returns {boolean} Returns `true` if `key` exists, else `false`.
  */
-function baseHas(object, key) {
-  return object != null && hasOwnProperty$l.call(object, key);
+function baseHas$1(object, key) {
+  return object != null && hasOwnProperty$k.call(object, key);
 }
 
-var _baseHas = baseHas;
+var _baseHas = baseHas$1;
 
 /**
  * Checks if `value` is classified as an `Array` object.
@@ -2773,33 +2743,41 @@ var _baseHas = baseHas;
  * _.isArray(_.noop);
  * // => false
  */
-var isArray$3 = Array.isArray;
 
-var isArray_1 = isArray$3;
+var isArray$b = Array.isArray;
+
+var isArray_1 = isArray$b;
 
 /** Detect free variable `global` from Node.js. */
-var freeGlobal$2 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
 
-var _freeGlobal = freeGlobal$2;
+var freeGlobal$3 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+var _freeGlobal = freeGlobal$3;
+
+var freeGlobal$2 = _freeGlobal;
 
 /** Detect free variable `self`. */
 var freeSelf$1 = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var root$2 = _freeGlobal || freeSelf$1 || Function('return this')();
+var root$a = freeGlobal$2 || freeSelf$1 || Function('return this')();
 
-var _root = root$2;
+var _root = root$a;
+
+var root$9 = _root;
 
 /** Built-in value references. */
-var Symbol$3 = _root.Symbol;
+var Symbol$7 = root$9.Symbol;
 
-var _Symbol = Symbol$3;
+var _Symbol = Symbol$7;
+
+var Symbol$6 = _Symbol;
 
 /** Used for built-in method references. */
 var objectProto$p = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$k = objectProto$p.hasOwnProperty;
+var hasOwnProperty$j = objectProto$p.hasOwnProperty;
 
 /**
  * Used to resolve the
@@ -2809,7 +2787,7 @@ var hasOwnProperty$k = objectProto$p.hasOwnProperty;
 var nativeObjectToString$3 = objectProto$p.toString;
 
 /** Built-in value references. */
-var symToStringTag$3 = _Symbol ? _Symbol.toStringTag : undefined;
+var symToStringTag$3 = Symbol$6 ? Symbol$6.toStringTag : undefined;
 
 /**
  * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
@@ -2818,8 +2796,8 @@ var symToStringTag$3 = _Symbol ? _Symbol.toStringTag : undefined;
  * @param {*} value The value to query.
  * @returns {string} Returns the raw `toStringTag`.
  */
-function getRawTag$1(value) {
-  var isOwn = hasOwnProperty$k.call(value, symToStringTag$3),
+function getRawTag$2(value) {
+  var isOwn = hasOwnProperty$j.call(value, symToStringTag$3),
       tag = value[symToStringTag$3];
 
   try {
@@ -2838,9 +2816,10 @@ function getRawTag$1(value) {
   return result;
 }
 
-var _getRawTag = getRawTag$1;
+var _getRawTag = getRawTag$2;
 
 /** Used for built-in method references. */
+
 var objectProto$o = Object.prototype;
 
 /**
@@ -2857,18 +2836,22 @@ var nativeObjectToString$2 = objectProto$o.toString;
  * @param {*} value The value to convert.
  * @returns {string} Returns the converted string.
  */
-function objectToString$1(value) {
+function objectToString$2(value) {
   return nativeObjectToString$2.call(value);
 }
 
-var _objectToString = objectToString$1;
+var _objectToString = objectToString$2;
+
+var Symbol$5 = _Symbol,
+    getRawTag$1 = _getRawTag,
+    objectToString$1 = _objectToString;
 
 /** `Object#toString` result references. */
 var nullTag$1 = '[object Null]',
     undefinedTag$1 = '[object Undefined]';
 
 /** Built-in value references. */
-var symToStringTag$2 = _Symbol ? _Symbol.toStringTag : undefined;
+var symToStringTag$2 = Symbol$5 ? Symbol$5.toStringTag : undefined;
 
 /**
  * The base implementation of `getTag` without fallbacks for buggy environments.
@@ -2877,16 +2860,16 @@ var symToStringTag$2 = _Symbol ? _Symbol.toStringTag : undefined;
  * @param {*} value The value to query.
  * @returns {string} Returns the `toStringTag`.
  */
-function baseGetTag$1(value) {
+function baseGetTag$6(value) {
   if (value == null) {
     return value === undefined ? undefinedTag$1 : nullTag$1;
   }
   return (symToStringTag$2 && symToStringTag$2 in Object(value))
-    ? _getRawTag(value)
-    : _objectToString(value);
+    ? getRawTag$1(value)
+    : objectToString$1(value);
 }
 
-var _baseGetTag = baseGetTag$1;
+var _baseGetTag = baseGetTag$6;
 
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -2912,11 +2895,15 @@ var _baseGetTag = baseGetTag$1;
  * _.isObjectLike(null);
  * // => false
  */
-function isObjectLike$1(value) {
+
+function isObjectLike$6(value) {
   return value != null && typeof value == 'object';
 }
 
-var isObjectLike_1 = isObjectLike$1;
+var isObjectLike_1 = isObjectLike$6;
+
+var baseGetTag$5 = _baseGetTag,
+    isObjectLike$5 = isObjectLike_1;
 
 /** `Object#toString` result references. */
 var symbolTag$4 = '[object Symbol]';
@@ -2938,12 +2925,15 @@ var symbolTag$4 = '[object Symbol]';
  * _.isSymbol('abc');
  * // => false
  */
-function isSymbol$1(value) {
+function isSymbol$4(value) {
   return typeof value == 'symbol' ||
-    (isObjectLike_1(value) && _baseGetTag(value) == symbolTag$4);
+    (isObjectLike$5(value) && baseGetTag$5(value) == symbolTag$4);
 }
 
-var isSymbol_1 = isSymbol$1;
+var isSymbol_1 = isSymbol$4;
+
+var isArray$a = isArray_1,
+    isSymbol$3 = isSymbol_1;
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -2957,20 +2947,20 @@ var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
  * @param {Object} [object] The object to query keys on.
  * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
  */
-function isKey(value, object) {
-  if (isArray_1(value)) {
+function isKey$3(value, object) {
+  if (isArray$a(value)) {
     return false;
   }
   var type = typeof value;
   if (type == 'number' || type == 'symbol' || type == 'boolean' ||
-      value == null || isSymbol_1(value)) {
+      value == null || isSymbol$3(value)) {
     return true;
   }
   return reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
     (object != null && value in Object(object));
 }
 
-var _isKey = isKey;
+var _isKey = isKey$3;
 
 /**
  * Checks if `value` is the
@@ -2997,12 +2987,16 @@ var _isKey = isKey;
  * _.isObject(null);
  * // => false
  */
-function isObject$4(value) {
+
+function isObject$7(value) {
   var type = typeof value;
   return value != null && (type == 'object' || type == 'function');
 }
 
-var isObject_1 = isObject$4;
+var isObject_1 = isObject$7;
+
+var baseGetTag$4 = _baseGetTag,
+    isObject$6 = isObject_1;
 
 /** `Object#toString` result references. */
 var asyncTag$1 = '[object AsyncFunction]',
@@ -3027,26 +3021,30 @@ var asyncTag$1 = '[object AsyncFunction]',
  * _.isFunction(/abc/);
  * // => false
  */
-function isFunction$2(value) {
-  if (!isObject_1(value)) {
+function isFunction$4(value) {
+  if (!isObject$6(value)) {
     return false;
   }
   // The use of `Object#toString` avoids issues with the `typeof` operator
   // in Safari 9 which returns 'object' for typed arrays and other constructors.
-  var tag = _baseGetTag(value);
+  var tag = baseGetTag$4(value);
   return tag == funcTag$4 || tag == genTag$2 || tag == asyncTag$1 || tag == proxyTag$1;
 }
 
-var isFunction_1 = isFunction$2;
+var isFunction_1 = isFunction$4;
+
+var root$8 = _root;
 
 /** Used to detect overreaching core-js shims. */
-var coreJsData$2 = _root['__core-js_shared__'];
+var coreJsData$3 = root$8['__core-js_shared__'];
 
-var _coreJsData = coreJsData$2;
+var _coreJsData = coreJsData$3;
+
+var coreJsData$2 = _coreJsData;
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey$1 = (function() {
-  var uid = /[^.]+$/.exec(_coreJsData && _coreJsData.keys && _coreJsData.keys.IE_PROTO || '');
+  var uid = /[^.]+$/.exec(coreJsData$2 && coreJsData$2.keys && coreJsData$2.keys.IE_PROTO || '');
   return uid ? ('Symbol(src)_1.' + uid) : '';
 }());
 
@@ -3057,13 +3055,14 @@ var maskSrcKey$1 = (function() {
  * @param {Function} func The function to check.
  * @returns {boolean} Returns `true` if `func` is masked, else `false`.
  */
-function isMasked$1(func) {
+function isMasked$2(func) {
   return !!maskSrcKey$1 && (maskSrcKey$1 in func);
 }
 
-var _isMasked = isMasked$1;
+var _isMasked = isMasked$2;
 
 /** Used for built-in method references. */
+
 var funcProto$4 = Function.prototype;
 
 /** Used to resolve the decompiled source of functions. */
@@ -3076,7 +3075,7 @@ var funcToString$4 = funcProto$4.toString;
  * @param {Function} func The function to convert.
  * @returns {string} Returns the source code.
  */
-function toSource$1(func) {
+function toSource$3(func) {
   if (func != null) {
     try {
       return funcToString$4.call(func);
@@ -3088,7 +3087,12 @@ function toSource$1(func) {
   return '';
 }
 
-var _toSource = toSource$1;
+var _toSource = toSource$3;
+
+var isFunction$3 = isFunction_1,
+    isMasked$1 = _isMasked,
+    isObject$5 = isObject_1,
+    toSource$2 = _toSource;
 
 /**
  * Used to match `RegExp`
@@ -3107,11 +3111,11 @@ var funcProto$3 = Function.prototype,
 var funcToString$3 = funcProto$3.toString;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$j = objectProto$n.hasOwnProperty;
+var hasOwnProperty$i = objectProto$n.hasOwnProperty;
 
 /** Used to detect if a method is native. */
 var reIsNative$1 = RegExp('^' +
-  funcToString$3.call(hasOwnProperty$j).replace(reRegExpChar$1, '\\$&')
+  funcToString$3.call(hasOwnProperty$i).replace(reRegExpChar$1, '\\$&')
   .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 );
 
@@ -3123,15 +3127,15 @@ var reIsNative$1 = RegExp('^' +
  * @returns {boolean} Returns `true` if `value` is a native function,
  *  else `false`.
  */
-function baseIsNative$1(value) {
-  if (!isObject_1(value) || _isMasked(value)) {
+function baseIsNative$2(value) {
+  if (!isObject$5(value) || isMasked$1(value)) {
     return false;
   }
-  var pattern = isFunction_1(value) ? reIsNative$1 : reIsHostCtor$1;
-  return pattern.test(_toSource(value));
+  var pattern = isFunction$3(value) ? reIsNative$1 : reIsHostCtor$1;
+  return pattern.test(toSource$2(value));
 }
 
-var _baseIsNative = baseIsNative$1;
+var _baseIsNative = baseIsNative$2;
 
 /**
  * Gets the value at `key` of `object`.
@@ -3141,11 +3145,15 @@ var _baseIsNative = baseIsNative$1;
  * @param {string} key The key of the property to get.
  * @returns {*} Returns the property value.
  */
-function getValue$1(object, key) {
+
+function getValue$2(object, key) {
   return object == null ? undefined : object[key];
 }
 
-var _getValue = getValue$1;
+var _getValue = getValue$2;
+
+var baseIsNative$1 = _baseIsNative,
+    getValue$1 = _getValue;
 
 /**
  * Gets the native function at `key` of `object`.
@@ -3155,17 +3163,21 @@ var _getValue = getValue$1;
  * @param {string} key The key of the method to get.
  * @returns {*} Returns the function if it's native, else `undefined`.
  */
-function getNative$1(object, key) {
-  var value = _getValue(object, key);
-  return _baseIsNative(value) ? value : undefined;
+function getNative$8(object, key) {
+  var value = getValue$1(object, key);
+  return baseIsNative$1(value) ? value : undefined;
 }
 
-var _getNative = getNative$1;
+var _getNative = getNative$8;
+
+var getNative$7 = _getNative;
 
 /* Built-in method references that are verified to be native. */
-var nativeCreate$2 = _getNative(Object, 'create');
+var nativeCreate$6 = getNative$7(Object, 'create');
 
-var _nativeCreate = nativeCreate$2;
+var _nativeCreate = nativeCreate$6;
+
+var nativeCreate$5 = _nativeCreate;
 
 /**
  * Removes all key-value entries from the hash.
@@ -3174,12 +3186,12 @@ var _nativeCreate = nativeCreate$2;
  * @name clear
  * @memberOf Hash
  */
-function hashClear$1() {
-  this.__data__ = _nativeCreate ? _nativeCreate(null) : {};
+function hashClear$2() {
+  this.__data__ = nativeCreate$5 ? nativeCreate$5(null) : {};
   this.size = 0;
 }
 
-var _hashClear = hashClear$1;
+var _hashClear = hashClear$2;
 
 /**
  * Removes `key` and its value from the hash.
@@ -3191,13 +3203,16 @@ var _hashClear = hashClear$1;
  * @param {string} key The key of the value to remove.
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
-function hashDelete$1(key) {
+
+function hashDelete$2(key) {
   var result = this.has(key) && delete this.__data__[key];
   this.size -= result ? 1 : 0;
   return result;
 }
 
-var _hashDelete = hashDelete$1;
+var _hashDelete = hashDelete$2;
+
+var nativeCreate$4 = _nativeCreate;
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED$4 = '__lodash_hash_undefined__';
@@ -3206,7 +3221,7 @@ var HASH_UNDEFINED$4 = '__lodash_hash_undefined__';
 var objectProto$m = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$i = objectProto$m.hasOwnProperty;
+var hasOwnProperty$h = objectProto$m.hasOwnProperty;
 
 /**
  * Gets the hash value for `key`.
@@ -3217,22 +3232,24 @@ var hasOwnProperty$i = objectProto$m.hasOwnProperty;
  * @param {string} key The key of the value to get.
  * @returns {*} Returns the entry value.
  */
-function hashGet$1(key) {
+function hashGet$2(key) {
   var data = this.__data__;
-  if (_nativeCreate) {
+  if (nativeCreate$4) {
     var result = data[key];
     return result === HASH_UNDEFINED$4 ? undefined : result;
   }
-  return hasOwnProperty$i.call(data, key) ? data[key] : undefined;
+  return hasOwnProperty$h.call(data, key) ? data[key] : undefined;
 }
 
-var _hashGet = hashGet$1;
+var _hashGet = hashGet$2;
+
+var nativeCreate$3 = _nativeCreate;
 
 /** Used for built-in method references. */
 var objectProto$l = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$h = objectProto$l.hasOwnProperty;
+var hasOwnProperty$g = objectProto$l.hasOwnProperty;
 
 /**
  * Checks if a hash value for `key` exists.
@@ -3243,12 +3260,14 @@ var hasOwnProperty$h = objectProto$l.hasOwnProperty;
  * @param {string} key The key of the entry to check.
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
-function hashHas$1(key) {
+function hashHas$2(key) {
   var data = this.__data__;
-  return _nativeCreate ? (data[key] !== undefined) : hasOwnProperty$h.call(data, key);
+  return nativeCreate$3 ? (data[key] !== undefined) : hasOwnProperty$g.call(data, key);
 }
 
-var _hashHas = hashHas$1;
+var _hashHas = hashHas$2;
+
+var nativeCreate$2 = _nativeCreate;
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED$3 = '__lodash_hash_undefined__';
@@ -3263,14 +3282,20 @@ var HASH_UNDEFINED$3 = '__lodash_hash_undefined__';
  * @param {*} value The value to set.
  * @returns {Object} Returns the hash instance.
  */
-function hashSet$1(key, value) {
+function hashSet$2(key, value) {
   var data = this.__data__;
   this.size += this.has(key) ? 0 : 1;
-  data[key] = (_nativeCreate && value === undefined) ? HASH_UNDEFINED$3 : value;
+  data[key] = (nativeCreate$2 && value === undefined) ? HASH_UNDEFINED$3 : value;
   return this;
 }
 
-var _hashSet = hashSet$1;
+var _hashSet = hashSet$2;
+
+var hashClear$1 = _hashClear,
+    hashDelete$1 = _hashDelete,
+    hashGet$1 = _hashGet,
+    hashHas$1 = _hashHas,
+    hashSet$1 = _hashSet;
 
 /**
  * Creates a hash object.
@@ -3279,7 +3304,7 @@ var _hashSet = hashSet$1;
  * @constructor
  * @param {Array} [entries] The key-value pairs to cache.
  */
-function Hash$1(entries) {
+function Hash$2(entries) {
   var index = -1,
       length = entries == null ? 0 : entries.length;
 
@@ -3291,13 +3316,13 @@ function Hash$1(entries) {
 }
 
 // Add methods to `Hash`.
-Hash$1.prototype.clear = _hashClear;
-Hash$1.prototype['delete'] = _hashDelete;
-Hash$1.prototype.get = _hashGet;
-Hash$1.prototype.has = _hashHas;
-Hash$1.prototype.set = _hashSet;
+Hash$2.prototype.clear = hashClear$1;
+Hash$2.prototype['delete'] = hashDelete$1;
+Hash$2.prototype.get = hashGet$1;
+Hash$2.prototype.has = hashHas$1;
+Hash$2.prototype.set = hashSet$1;
 
-var _Hash = Hash$1;
+var _Hash = Hash$2;
 
 /**
  * Removes all key-value entries from the list cache.
@@ -3306,12 +3331,13 @@ var _Hash = Hash$1;
  * @name clear
  * @memberOf ListCache
  */
-function listCacheClear$1() {
+
+function listCacheClear$2() {
   this.__data__ = [];
   this.size = 0;
 }
 
-var _listCacheClear = listCacheClear$1;
+var _listCacheClear = listCacheClear$2;
 
 /**
  * Performs a
@@ -3345,11 +3371,14 @@ var _listCacheClear = listCacheClear$1;
  * _.eq(NaN, NaN);
  * // => true
  */
-function eq$1(value, other) {
+
+function eq$3(value, other) {
   return value === other || (value !== value && other !== other);
 }
 
-var eq_1 = eq$1;
+var eq_1 = eq$3;
+
+var eq$2 = eq_1;
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -3359,17 +3388,19 @@ var eq_1 = eq$1;
  * @param {*} key The key to search for.
  * @returns {number} Returns the index of the matched value, else `-1`.
  */
-function assocIndexOf$1(array, key) {
+function assocIndexOf$5(array, key) {
   var length = array.length;
   while (length--) {
-    if (eq_1(array[length][0], key)) {
+    if (eq$2(array[length][0], key)) {
       return length;
     }
   }
   return -1;
 }
 
-var _assocIndexOf = assocIndexOf$1;
+var _assocIndexOf = assocIndexOf$5;
+
+var assocIndexOf$4 = _assocIndexOf;
 
 /** Used for built-in method references. */
 var arrayProto$1 = Array.prototype;
@@ -3386,9 +3417,9 @@ var splice$1 = arrayProto$1.splice;
  * @param {string} key The key of the value to remove.
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
-function listCacheDelete$1(key) {
+function listCacheDelete$2(key) {
   var data = this.__data__,
-      index = _assocIndexOf(data, key);
+      index = assocIndexOf$4(data, key);
 
   if (index < 0) {
     return false;
@@ -3403,7 +3434,9 @@ function listCacheDelete$1(key) {
   return true;
 }
 
-var _listCacheDelete = listCacheDelete$1;
+var _listCacheDelete = listCacheDelete$2;
+
+var assocIndexOf$3 = _assocIndexOf;
 
 /**
  * Gets the list cache value for `key`.
@@ -3414,14 +3447,16 @@ var _listCacheDelete = listCacheDelete$1;
  * @param {string} key The key of the value to get.
  * @returns {*} Returns the entry value.
  */
-function listCacheGet$1(key) {
+function listCacheGet$2(key) {
   var data = this.__data__,
-      index = _assocIndexOf(data, key);
+      index = assocIndexOf$3(data, key);
 
   return index < 0 ? undefined : data[index][1];
 }
 
-var _listCacheGet = listCacheGet$1;
+var _listCacheGet = listCacheGet$2;
+
+var assocIndexOf$2 = _assocIndexOf;
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -3432,11 +3467,13 @@ var _listCacheGet = listCacheGet$1;
  * @param {string} key The key of the entry to check.
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
-function listCacheHas$1(key) {
-  return _assocIndexOf(this.__data__, key) > -1;
+function listCacheHas$2(key) {
+  return assocIndexOf$2(this.__data__, key) > -1;
 }
 
-var _listCacheHas = listCacheHas$1;
+var _listCacheHas = listCacheHas$2;
+
+var assocIndexOf$1 = _assocIndexOf;
 
 /**
  * Sets the list cache `key` to `value`.
@@ -3448,9 +3485,9 @@ var _listCacheHas = listCacheHas$1;
  * @param {*} value The value to set.
  * @returns {Object} Returns the list cache instance.
  */
-function listCacheSet$1(key, value) {
+function listCacheSet$2(key, value) {
   var data = this.__data__,
-      index = _assocIndexOf(data, key);
+      index = assocIndexOf$1(data, key);
 
   if (index < 0) {
     ++this.size;
@@ -3461,7 +3498,13 @@ function listCacheSet$1(key, value) {
   return this;
 }
 
-var _listCacheSet = listCacheSet$1;
+var _listCacheSet = listCacheSet$2;
+
+var listCacheClear$1 = _listCacheClear,
+    listCacheDelete$1 = _listCacheDelete,
+    listCacheGet$1 = _listCacheGet,
+    listCacheHas$1 = _listCacheHas,
+    listCacheSet$1 = _listCacheSet;
 
 /**
  * Creates an list cache object.
@@ -3470,7 +3513,7 @@ var _listCacheSet = listCacheSet$1;
  * @constructor
  * @param {Array} [entries] The key-value pairs to cache.
  */
-function ListCache$1(entries) {
+function ListCache$5(entries) {
   var index = -1,
       length = entries == null ? 0 : entries.length;
 
@@ -3482,18 +3525,25 @@ function ListCache$1(entries) {
 }
 
 // Add methods to `ListCache`.
-ListCache$1.prototype.clear = _listCacheClear;
-ListCache$1.prototype['delete'] = _listCacheDelete;
-ListCache$1.prototype.get = _listCacheGet;
-ListCache$1.prototype.has = _listCacheHas;
-ListCache$1.prototype.set = _listCacheSet;
+ListCache$5.prototype.clear = listCacheClear$1;
+ListCache$5.prototype['delete'] = listCacheDelete$1;
+ListCache$5.prototype.get = listCacheGet$1;
+ListCache$5.prototype.has = listCacheHas$1;
+ListCache$5.prototype.set = listCacheSet$1;
 
-var _ListCache = ListCache$1;
+var _ListCache = ListCache$5;
+
+var getNative$6 = _getNative,
+    root$7 = _root;
 
 /* Built-in method references that are verified to be native. */
-var Map$3 = _getNative(_root, 'Map');
+var Map$6 = getNative$6(root$7, 'Map');
 
-var _Map = Map$3;
+var _Map = Map$6;
+
+var Hash$1 = _Hash,
+    ListCache$4 = _ListCache,
+    Map$5 = _Map;
 
 /**
  * Removes all key-value entries from the map.
@@ -3502,16 +3552,16 @@ var _Map = Map$3;
  * @name clear
  * @memberOf MapCache
  */
-function mapCacheClear$1() {
+function mapCacheClear$2() {
   this.size = 0;
   this.__data__ = {
-    'hash': new _Hash,
-    'map': new (_Map || _ListCache),
-    'string': new _Hash
+    'hash': new Hash$1,
+    'map': new (Map$5 || ListCache$4),
+    'string': new Hash$1
   };
 }
 
-var _mapCacheClear = mapCacheClear$1;
+var _mapCacheClear = mapCacheClear$2;
 
 /**
  * Checks if `value` is suitable for use as unique object key.
@@ -3520,14 +3570,17 @@ var _mapCacheClear = mapCacheClear$1;
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
  */
-function isKeyable$1(value) {
+
+function isKeyable$2(value) {
   var type = typeof value;
   return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
     ? (value !== '__proto__')
     : (value === null);
 }
 
-var _isKeyable = isKeyable$1;
+var _isKeyable = isKeyable$2;
+
+var isKeyable$1 = _isKeyable;
 
 /**
  * Gets the data for `map`.
@@ -3537,14 +3590,16 @@ var _isKeyable = isKeyable$1;
  * @param {string} key The reference key.
  * @returns {*} Returns the map data.
  */
-function getMapData$1(map, key) {
+function getMapData$5(map, key) {
   var data = map.__data__;
-  return _isKeyable(key)
+  return isKeyable$1(key)
     ? data[typeof key == 'string' ? 'string' : 'hash']
     : data.map;
 }
 
-var _getMapData = getMapData$1;
+var _getMapData = getMapData$5;
+
+var getMapData$4 = _getMapData;
 
 /**
  * Removes `key` and its value from the map.
@@ -3555,13 +3610,15 @@ var _getMapData = getMapData$1;
  * @param {string} key The key of the value to remove.
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
-function mapCacheDelete$1(key) {
-  var result = _getMapData(this, key)['delete'](key);
+function mapCacheDelete$2(key) {
+  var result = getMapData$4(this, key)['delete'](key);
   this.size -= result ? 1 : 0;
   return result;
 }
 
-var _mapCacheDelete = mapCacheDelete$1;
+var _mapCacheDelete = mapCacheDelete$2;
+
+var getMapData$3 = _getMapData;
 
 /**
  * Gets the map value for `key`.
@@ -3572,11 +3629,13 @@ var _mapCacheDelete = mapCacheDelete$1;
  * @param {string} key The key of the value to get.
  * @returns {*} Returns the entry value.
  */
-function mapCacheGet$1(key) {
-  return _getMapData(this, key).get(key);
+function mapCacheGet$2(key) {
+  return getMapData$3(this, key).get(key);
 }
 
-var _mapCacheGet = mapCacheGet$1;
+var _mapCacheGet = mapCacheGet$2;
+
+var getMapData$2 = _getMapData;
 
 /**
  * Checks if a map value for `key` exists.
@@ -3587,11 +3646,13 @@ var _mapCacheGet = mapCacheGet$1;
  * @param {string} key The key of the entry to check.
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
-function mapCacheHas$1(key) {
-  return _getMapData(this, key).has(key);
+function mapCacheHas$2(key) {
+  return getMapData$2(this, key).has(key);
 }
 
-var _mapCacheHas = mapCacheHas$1;
+var _mapCacheHas = mapCacheHas$2;
+
+var getMapData$1 = _getMapData;
 
 /**
  * Sets the map `key` to `value`.
@@ -3603,8 +3664,8 @@ var _mapCacheHas = mapCacheHas$1;
  * @param {*} value The value to set.
  * @returns {Object} Returns the map cache instance.
  */
-function mapCacheSet$1(key, value) {
-  var data = _getMapData(this, key),
+function mapCacheSet$2(key, value) {
+  var data = getMapData$1(this, key),
       size = data.size;
 
   data.set(key, value);
@@ -3612,7 +3673,13 @@ function mapCacheSet$1(key, value) {
   return this;
 }
 
-var _mapCacheSet = mapCacheSet$1;
+var _mapCacheSet = mapCacheSet$2;
+
+var mapCacheClear$1 = _mapCacheClear,
+    mapCacheDelete$1 = _mapCacheDelete,
+    mapCacheGet$1 = _mapCacheGet,
+    mapCacheHas$1 = _mapCacheHas,
+    mapCacheSet$1 = _mapCacheSet;
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -3621,7 +3688,7 @@ var _mapCacheSet = mapCacheSet$1;
  * @constructor
  * @param {Array} [entries] The key-value pairs to cache.
  */
-function MapCache$1(entries) {
+function MapCache$4(entries) {
   var index = -1,
       length = entries == null ? 0 : entries.length;
 
@@ -3633,13 +3700,15 @@ function MapCache$1(entries) {
 }
 
 // Add methods to `MapCache`.
-MapCache$1.prototype.clear = _mapCacheClear;
-MapCache$1.prototype['delete'] = _mapCacheDelete;
-MapCache$1.prototype.get = _mapCacheGet;
-MapCache$1.prototype.has = _mapCacheHas;
-MapCache$1.prototype.set = _mapCacheSet;
+MapCache$4.prototype.clear = mapCacheClear$1;
+MapCache$4.prototype['delete'] = mapCacheDelete$1;
+MapCache$4.prototype.get = mapCacheGet$1;
+MapCache$4.prototype.has = mapCacheHas$1;
+MapCache$4.prototype.set = mapCacheSet$1;
 
-var _MapCache = MapCache$1;
+var _MapCache = MapCache$4;
+
+var MapCache$3 = _MapCache;
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT$1 = 'Expected a function';
@@ -3688,7 +3757,7 @@ var FUNC_ERROR_TEXT$1 = 'Expected a function';
  * // Replace `_.memoize.Cache`.
  * _.memoize.Cache = WeakMap;
  */
-function memoize$1(func, resolver) {
+function memoize$2(func, resolver) {
   if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
     throw new TypeError(FUNC_ERROR_TEXT$1);
   }
@@ -3704,14 +3773,16 @@ function memoize$1(func, resolver) {
     memoized.cache = cache.set(key, result) || cache;
     return result;
   };
-  memoized.cache = new (memoize$1.Cache || _MapCache);
+  memoized.cache = new (memoize$2.Cache || MapCache$3);
   return memoized;
 }
 
 // Expose `MapCache`.
-memoize$1.Cache = _MapCache;
+memoize$2.Cache = MapCache$3;
 
-var memoize_1 = memoize$1;
+var memoize_1 = memoize$2;
+
+var memoize$1 = memoize_1;
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE$1 = 500;
@@ -3724,8 +3795,8 @@ var MAX_MEMOIZE_SIZE$1 = 500;
  * @param {Function} func The function to have its output memoized.
  * @returns {Function} Returns the new memoized function.
  */
-function memoizeCapped$1(func) {
-  var result = memoize_1(func, function(key) {
+function memoizeCapped$2(func) {
+  var result = memoize$1(func, function(key) {
     if (cache.size === MAX_MEMOIZE_SIZE$1) {
       cache.clear();
     }
@@ -3736,7 +3807,9 @@ function memoizeCapped$1(func) {
   return result;
 }
 
-var _memoizeCapped = memoizeCapped$1;
+var _memoizeCapped = memoizeCapped$2;
+
+var memoizeCapped$1 = _memoizeCapped;
 
 /** Used to match property names within property paths. */
 var rePropName$1 = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -3751,7 +3824,7 @@ var reEscapeChar$1 = /\\(\\)?/g;
  * @param {string} string The string to convert.
  * @returns {Array} Returns the property path array.
  */
-var stringToPath$2 = _memoizeCapped(function(string) {
+var stringToPath$3 = memoizeCapped$1(function(string) {
   var result = [];
   if (string.charCodeAt(0) === 46 /* . */) {
     result.push('');
@@ -3762,7 +3835,7 @@ var stringToPath$2 = _memoizeCapped(function(string) {
   return result;
 });
 
-var _stringToPath = stringToPath$2;
+var _stringToPath = stringToPath$3;
 
 /**
  * A specialized version of `_.map` for arrays without support for iteratee
@@ -3773,7 +3846,8 @@ var _stringToPath = stringToPath$2;
  * @param {Function} iteratee The function invoked per iteration.
  * @returns {Array} Returns the new mapped array.
  */
-function arrayMap$1(array, iteratee) {
+
+function arrayMap$2(array, iteratee) {
   var index = -1,
       length = array == null ? 0 : array.length,
       result = Array(length);
@@ -3784,13 +3858,18 @@ function arrayMap$1(array, iteratee) {
   return result;
 }
 
-var _arrayMap = arrayMap$1;
+var _arrayMap = arrayMap$2;
+
+var Symbol$4 = _Symbol,
+    arrayMap$1 = _arrayMap,
+    isArray$9 = isArray_1,
+    isSymbol$2 = isSymbol_1;
 
 /** Used as references for various `Number` constants. */
 var INFINITY$3 = 1 / 0;
 
 /** Used to convert symbols to primitives and strings. */
-var symbolProto$3 = _Symbol ? _Symbol.prototype : undefined,
+var symbolProto$3 = Symbol$4 ? Symbol$4.prototype : undefined,
     symbolToString$1 = symbolProto$3 ? symbolProto$3.toString : undefined;
 
 /**
@@ -3801,23 +3880,25 @@ var symbolProto$3 = _Symbol ? _Symbol.prototype : undefined,
  * @param {*} value The value to process.
  * @returns {string} Returns the string.
  */
-function baseToString$1(value) {
+function baseToString$2(value) {
   // Exit early for strings to avoid a performance hit in some environments.
   if (typeof value == 'string') {
     return value;
   }
-  if (isArray_1(value)) {
+  if (isArray$9(value)) {
     // Recursively convert values (susceptible to call stack limits).
-    return _arrayMap(value, baseToString$1) + '';
+    return arrayMap$1(value, baseToString$2) + '';
   }
-  if (isSymbol_1(value)) {
+  if (isSymbol$2(value)) {
     return symbolToString$1 ? symbolToString$1.call(value) : '';
   }
   var result = (value + '');
   return (result == '0' && (1 / value) == -INFINITY$3) ? '-0' : result;
 }
 
-var _baseToString = baseToString$1;
+var _baseToString = baseToString$2;
+
+var baseToString$1 = _baseToString;
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -3840,11 +3921,16 @@ var _baseToString = baseToString$1;
  * _.toString([1, 2, 3]);
  * // => '1,2,3'
  */
-function toString$1(value) {
-  return value == null ? '' : _baseToString(value);
+function toString$6(value) {
+  return value == null ? '' : baseToString$1(value);
 }
 
-var toString_1 = toString$1;
+var toString_1 = toString$6;
+
+var isArray$8 = isArray_1,
+    isKey$2 = _isKey,
+    stringToPath$2 = _stringToPath,
+    toString$5 = toString_1;
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -3854,14 +3940,17 @@ var toString_1 = toString$1;
  * @param {Object} [object] The object to query keys on.
  * @returns {Array} Returns the cast property path array.
  */
-function castPath(value, object) {
-  if (isArray_1(value)) {
+function castPath$2(value, object) {
+  if (isArray$8(value)) {
     return value;
   }
-  return _isKey(value, object) ? [value] : _stringToPath(toString_1(value));
+  return isKey$2(value, object) ? [value] : stringToPath$2(toString$5(value));
 }
 
-var _castPath = castPath;
+var _castPath = castPath$2;
+
+var baseGetTag$3 = _baseGetTag,
+    isObjectLike$4 = isObjectLike_1;
 
 /** `Object#toString` result references. */
 var argsTag$5 = '[object Arguments]';
@@ -3873,17 +3962,20 @@ var argsTag$5 = '[object Arguments]';
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is an `arguments` object,
  */
-function baseIsArguments$1(value) {
-  return isObjectLike_1(value) && _baseGetTag(value) == argsTag$5;
+function baseIsArguments$2(value) {
+  return isObjectLike$4(value) && baseGetTag$3(value) == argsTag$5;
 }
 
-var _baseIsArguments = baseIsArguments$1;
+var _baseIsArguments = baseIsArguments$2;
+
+var baseIsArguments$1 = _baseIsArguments,
+    isObjectLike$3 = isObjectLike_1;
 
 /** Used for built-in method references. */
 var objectProto$k = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$g = objectProto$k.hasOwnProperty;
+var hasOwnProperty$f = objectProto$k.hasOwnProperty;
 
 /** Built-in value references. */
 var propertyIsEnumerable$3 = objectProto$k.propertyIsEnumerable;
@@ -3906,14 +3998,15 @@ var propertyIsEnumerable$3 = objectProto$k.propertyIsEnumerable;
  * _.isArguments([1, 2, 3]);
  * // => false
  */
-var isArguments$2 = _baseIsArguments(function() { return arguments; }()) ? _baseIsArguments : function(value) {
-  return isObjectLike_1(value) && hasOwnProperty$g.call(value, 'callee') &&
+var isArguments$4 = baseIsArguments$1(function() { return arguments; }()) ? baseIsArguments$1 : function(value) {
+  return isObjectLike$3(value) && hasOwnProperty$f.call(value, 'callee') &&
     !propertyIsEnumerable$3.call(value, 'callee');
 };
 
-var isArguments_1 = isArguments$2;
+var isArguments_1 = isArguments$4;
 
 /** Used as references for various `Number` constants. */
+
 var MAX_SAFE_INTEGER$3 = 9007199254740991;
 
 /** Used to detect unsigned integer values. */
@@ -3927,7 +4020,7 @@ var reIsUint$1 = /^(?:0|[1-9]\d*)$/;
  * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
  * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
  */
-function isIndex$1(value, length) {
+function isIndex$3(value, length) {
   var type = typeof value;
   length = length == null ? MAX_SAFE_INTEGER$3 : length;
 
@@ -3937,9 +4030,10 @@ function isIndex$1(value, length) {
         (value > -1 && value % 1 == 0 && value < length);
 }
 
-var _isIndex = isIndex$1;
+var _isIndex = isIndex$3;
 
 /** Used as references for various `Number` constants. */
+
 var MAX_SAFE_INTEGER$2 = 9007199254740991;
 
 /**
@@ -3968,12 +4062,14 @@ var MAX_SAFE_INTEGER$2 = 9007199254740991;
  * _.isLength('3');
  * // => false
  */
-function isLength$1(value) {
+function isLength$4(value) {
   return typeof value == 'number' &&
     value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER$2;
 }
 
-var isLength_1 = isLength$1;
+var isLength_1 = isLength$4;
+
+var isSymbol$1 = isSymbol_1;
 
 /** Used as references for various `Number` constants. */
 var INFINITY$2 = 1 / 0;
@@ -3985,15 +4081,22 @@ var INFINITY$2 = 1 / 0;
  * @param {*} value The value to inspect.
  * @returns {string|symbol} Returns the key.
  */
-function toKey$1(value) {
-  if (typeof value == 'string' || isSymbol_1(value)) {
+function toKey$5(value) {
+  if (typeof value == 'string' || isSymbol$1(value)) {
     return value;
   }
   var result = (value + '');
   return (result == '0' && (1 / value) == -INFINITY$2) ? '-0' : result;
 }
 
-var _toKey = toKey$1;
+var _toKey = toKey$5;
+
+var castPath$1 = _castPath,
+    isArguments$3 = isArguments_1,
+    isArray$7 = isArray_1,
+    isIndex$2 = _isIndex,
+    isLength$3 = isLength_1,
+    toKey$4 = _toKey;
 
 /**
  * Checks if `path` exists on `object`.
@@ -4004,15 +4107,15 @@ var _toKey = toKey$1;
  * @param {Function} hasFunc The function to check properties.
  * @returns {boolean} Returns `true` if `path` exists, else `false`.
  */
-function hasPath(object, path, hasFunc) {
-  path = _castPath(path, object);
+function hasPath$2(object, path, hasFunc) {
+  path = castPath$1(path, object);
 
   var index = -1,
       length = path.length,
       result = false;
 
   while (++index < length) {
-    var key = _toKey(path[index]);
+    var key = toKey$4(path[index]);
     if (!(result = object != null && hasFunc(object, key))) {
       break;
     }
@@ -4022,11 +4125,14 @@ function hasPath(object, path, hasFunc) {
     return result;
   }
   length = object == null ? 0 : object.length;
-  return !!length && isLength_1(length) && _isIndex(key, length) &&
-    (isArray_1(object) || isArguments_1(object));
+  return !!length && isLength$3(length) && isIndex$2(key, length) &&
+    (isArray$7(object) || isArguments$3(object));
 }
 
-var _hasPath = hasPath;
+var _hasPath = hasPath$2;
+
+var baseHas = _baseHas,
+    hasPath$1 = _hasPath;
 
 /**
  * Checks if `path` is a direct property of `object`.
@@ -4055,11 +4161,11 @@ var _hasPath = hasPath;
  * _.has(other, 'a');
  * // => false
  */
-function has$3(object, path) {
-  return object != null && _hasPath(object, path, _baseHas);
+function has$1(object, path) {
+  return object != null && hasPath$1(object, path, baseHas);
 }
 
-var has_1 = has$3;
+var has_1 = has$1;
 
 const isSchema = obj => obj && obj.__isYupSchema__;
 
@@ -4103,7 +4209,7 @@ class Condition {
 
 }
 
-function toArray(value) {
+function toArray$1(value) {
   return value == null ? [] : [].concat(value);
 }
 
@@ -4138,7 +4244,7 @@ class ValidationError extends Error {
     this.type = type;
     this.errors = [];
     this.inner = [];
-    toArray(errorOrErrors).forEach(err => {
+    toArray$1(errorOrErrors).forEach(err => {
       if (ValidationError.isError(err)) {
         this.errors.push(...err.errors);
         this.inner = this.inner.concat(err.inner.length ? err.inner : err);
@@ -4213,15 +4319,19 @@ function runTests(options, cb) {
   }
 }
 
-var defineProperty$2 = (function() {
+var getNative$5 = _getNative;
+
+var defineProperty$3 = (function() {
   try {
-    var func = _getNative(Object, 'defineProperty');
+    var func = getNative$5(Object, 'defineProperty');
     func({}, '', {});
     return func;
   } catch (e) {}
 }());
 
-var _defineProperty$2 = defineProperty$2;
+var _defineProperty$2 = defineProperty$3;
+
+var defineProperty$2 = _defineProperty$2;
 
 /**
  * The base implementation of `assignValue` and `assignMergeValue` without
@@ -4232,9 +4342,9 @@ var _defineProperty$2 = defineProperty$2;
  * @param {string} key The key of the property to assign.
  * @param {*} value The value to assign.
  */
-function baseAssignValue$1(object, key, value) {
-  if (key == '__proto__' && _defineProperty$2) {
-    _defineProperty$2(object, key, {
+function baseAssignValue$3(object, key, value) {
+  if (key == '__proto__' && defineProperty$2) {
+    defineProperty$2(object, key, {
       'configurable': true,
       'enumerable': true,
       'value': value,
@@ -4245,7 +4355,7 @@ function baseAssignValue$1(object, key, value) {
   }
 }
 
-var _baseAssignValue = baseAssignValue$1;
+var _baseAssignValue = baseAssignValue$3;
 
 /**
  * Creates a base function for methods like `_.forIn` and `_.forOwn`.
@@ -4254,7 +4364,8 @@ var _baseAssignValue = baseAssignValue$1;
  * @param {boolean} [fromRight] Specify iterating from right to left.
  * @returns {Function} Returns the new base function.
  */
-function createBaseFor(fromRight) {
+
+function createBaseFor$1(fromRight) {
   return function(object, iteratee, keysFunc) {
     var index = -1,
         iterable = Object(object),
@@ -4271,7 +4382,9 @@ function createBaseFor(fromRight) {
   };
 }
 
-var _createBaseFor = createBaseFor;
+var _createBaseFor = createBaseFor$1;
+
+var createBaseFor = _createBaseFor;
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -4284,9 +4397,9 @@ var _createBaseFor = createBaseFor;
  * @param {Function} keysFunc The function to get the keys of `object`.
  * @returns {Object} Returns `object`.
  */
-var baseFor = _createBaseFor();
+var baseFor$1 = createBaseFor();
 
-var _baseFor = baseFor;
+var _baseFor = baseFor$1;
 
 /**
  * The base implementation of `_.times` without support for iteratee shorthands
@@ -4297,7 +4410,8 @@ var _baseFor = baseFor;
  * @param {Function} iteratee The function invoked per iteration.
  * @returns {Array} Returns the array of results.
  */
-function baseTimes$1(n, iteratee) {
+
+function baseTimes$2(n, iteratee) {
   var index = -1,
       result = Array(n);
 
@@ -4307,7 +4421,13 @@ function baseTimes$1(n, iteratee) {
   return result;
 }
 
-var _baseTimes = baseTimes$1;
+var _baseTimes = baseTimes$2;
+
+var isBufferExports = {};
+var isBuffer$4 = {
+  get exports(){ return isBufferExports; },
+  set exports(v){ isBufferExports = v; },
+};
 
 /**
  * This method returns `false`.
@@ -4322,49 +4442,57 @@ var _baseTimes = baseTimes$1;
  * _.times(2, _.stubFalse);
  * // => [false, false]
  */
+
 function stubFalse$1() {
   return false;
 }
 
 var stubFalse_1 = stubFalse$1;
 
-var isBuffer_1 = createCommonjsModule(function (module, exports) {
-/** Detect free variable `exports`. */
-var freeExports = exports && !exports.nodeType && exports;
+(function (module, exports) {
+	var root = _root,
+	    stubFalse = stubFalse_1;
 
-/** Detect free variable `module`. */
-var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+	/** Detect free variable `exports`. */
+	var freeExports = exports && !exports.nodeType && exports;
 
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
+	/** Detect free variable `module`. */
+	var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
 
-/** Built-in value references. */
-var Buffer = moduleExports ? _root.Buffer : undefined;
+	/** Detect the popular CommonJS extension `module.exports`. */
+	var moduleExports = freeModule && freeModule.exports === freeExports;
 
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+	/** Built-in value references. */
+	var Buffer = moduleExports ? root.Buffer : undefined;
 
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse_1;
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 
-module.exports = isBuffer;
-});
+	/**
+	 * Checks if `value` is a buffer.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.3.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+	 * @example
+	 *
+	 * _.isBuffer(new Buffer(2));
+	 * // => true
+	 *
+	 * _.isBuffer(new Uint8Array(2));
+	 * // => false
+	 */
+	var isBuffer = nativeIsBuffer || stubFalse;
+
+	module.exports = isBuffer;
+} (isBuffer$4, isBufferExports));
+
+var baseGetTag$2 = _baseGetTag,
+    isLength$2 = isLength_1,
+    isObjectLike$2 = isObjectLike_1;
 
 /** `Object#toString` result references. */
 var argsTag$4 = '[object Arguments]',
@@ -4416,12 +4544,12 @@ typedArrayTags$1[weakMapTag$4] = false;
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
  */
-function baseIsTypedArray$1(value) {
-  return isObjectLike_1(value) &&
-    isLength_1(value.length) && !!typedArrayTags$1[_baseGetTag(value)];
+function baseIsTypedArray$2(value) {
+  return isObjectLike$2(value) &&
+    isLength$2(value.length) && !!typedArrayTags$1[baseGetTag$2(value)];
 }
 
-var _baseIsTypedArray = baseIsTypedArray$1;
+var _baseIsTypedArray = baseIsTypedArray$2;
 
 /**
  * The base implementation of `_.unary` without support for storing metadata.
@@ -4430,47 +4558,60 @@ var _baseIsTypedArray = baseIsTypedArray$1;
  * @param {Function} func The function to cap arguments for.
  * @returns {Function} Returns the new capped function.
  */
-function baseUnary$1(func) {
+
+function baseUnary$2(func) {
   return function(value) {
     return func(value);
   };
 }
 
-var _baseUnary = baseUnary$1;
+var _baseUnary = baseUnary$2;
 
-var _nodeUtil = createCommonjsModule(function (module, exports) {
-/** Detect free variable `exports`. */
-var freeExports = exports && !exports.nodeType && exports;
+var _nodeUtilExports = {};
+var _nodeUtil = {
+  get exports(){ return _nodeUtilExports; },
+  set exports(v){ _nodeUtilExports = v; },
+};
 
-/** Detect free variable `module`. */
-var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+(function (module, exports) {
+	var freeGlobal = _freeGlobal;
 
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
+	/** Detect free variable `exports`. */
+	var freeExports = exports && !exports.nodeType && exports;
 
-/** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports && _freeGlobal.process;
+	/** Detect free variable `module`. */
+	var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
 
-/** Used to access faster Node.js helpers. */
-var nodeUtil = (function() {
-  try {
-    // Use `util.types` for Node.js 10+.
-    var types = freeModule && freeModule.require && freeModule.require('util').types;
+	/** Detect the popular CommonJS extension `module.exports`. */
+	var moduleExports = freeModule && freeModule.exports === freeExports;
 
-    if (types) {
-      return types;
-    }
+	/** Detect free variable `process` from Node.js. */
+	var freeProcess = moduleExports && freeGlobal.process;
 
-    // Legacy `process.binding('util')` for Node.js < 10.
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
-}());
+	/** Used to access faster Node.js helpers. */
+	var nodeUtil = (function() {
+	  try {
+	    // Use `util.types` for Node.js 10+.
+	    var types = freeModule && freeModule.require && freeModule.require('util').types;
 
-module.exports = nodeUtil;
-});
+	    if (types) {
+	      return types;
+	    }
+
+	    // Legacy `process.binding('util')` for Node.js < 10.
+	    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+	  } catch (e) {}
+	}());
+
+	module.exports = nodeUtil;
+} (_nodeUtil, _nodeUtilExports));
+
+var baseIsTypedArray$1 = _baseIsTypedArray,
+    baseUnary$1 = _baseUnary,
+    nodeUtil$2 = _nodeUtilExports;
 
 /* Node.js helper references. */
-var nodeIsTypedArray$1 = _nodeUtil && _nodeUtil.isTypedArray;
+var nodeIsTypedArray$1 = nodeUtil$2 && nodeUtil$2.isTypedArray;
 
 /**
  * Checks if `value` is classified as a typed array.
@@ -4489,15 +4630,22 @@ var nodeIsTypedArray$1 = _nodeUtil && _nodeUtil.isTypedArray;
  * _.isTypedArray([]);
  * // => false
  */
-var isTypedArray$2 = nodeIsTypedArray$1 ? _baseUnary(nodeIsTypedArray$1) : _baseIsTypedArray;
+var isTypedArray$4 = nodeIsTypedArray$1 ? baseUnary$1(nodeIsTypedArray$1) : baseIsTypedArray$1;
 
-var isTypedArray_1 = isTypedArray$2;
+var isTypedArray_1 = isTypedArray$4;
+
+var baseTimes$1 = _baseTimes,
+    isArguments$2 = isArguments_1,
+    isArray$6 = isArray_1,
+    isBuffer$3 = isBufferExports,
+    isIndex$1 = _isIndex,
+    isTypedArray$3 = isTypedArray_1;
 
 /** Used for built-in method references. */
 var objectProto$j = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$f = objectProto$j.hasOwnProperty;
+var hasOwnProperty$e = objectProto$j.hasOwnProperty;
 
 /**
  * Creates an array of the enumerable property names of the array-like `value`.
@@ -4507,17 +4655,17 @@ var hasOwnProperty$f = objectProto$j.hasOwnProperty;
  * @param {boolean} inherited Specify returning inherited property names.
  * @returns {Array} Returns the array of property names.
  */
-function arrayLikeKeys$1(value, inherited) {
-  var isArr = isArray_1(value),
-      isArg = !isArr && isArguments_1(value),
-      isBuff = !isArr && !isArg && isBuffer_1(value),
-      isType = !isArr && !isArg && !isBuff && isTypedArray_1(value),
+function arrayLikeKeys$2(value, inherited) {
+  var isArr = isArray$6(value),
+      isArg = !isArr && isArguments$2(value),
+      isBuff = !isArr && !isArg && isBuffer$3(value),
+      isType = !isArr && !isArg && !isBuff && isTypedArray$3(value),
       skipIndexes = isArr || isArg || isBuff || isType,
-      result = skipIndexes ? _baseTimes(value.length, String) : [],
+      result = skipIndexes ? baseTimes$1(value.length, String) : [],
       length = result.length;
 
   for (var key in value) {
-    if ((inherited || hasOwnProperty$f.call(value, key)) &&
+    if ((inherited || hasOwnProperty$e.call(value, key)) &&
         !(skipIndexes && (
            // Safari 9 has enumerable `arguments.length` in strict mode.
            key == 'length' ||
@@ -4526,7 +4674,7 @@ function arrayLikeKeys$1(value, inherited) {
            // PhantomJS 2 has enumerable non-index properties on typed arrays.
            (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
            // Skip index properties.
-           _isIndex(key, length)
+           isIndex$1(key, length)
         ))) {
       result.push(key);
     }
@@ -4534,9 +4682,10 @@ function arrayLikeKeys$1(value, inherited) {
   return result;
 }
 
-var _arrayLikeKeys = arrayLikeKeys$1;
+var _arrayLikeKeys = arrayLikeKeys$2;
 
 /** Used for built-in method references. */
+
 var objectProto$i = Object.prototype;
 
 /**
@@ -4546,14 +4695,14 @@ var objectProto$i = Object.prototype;
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
  */
-function isPrototype$1(value) {
+function isPrototype$2(value) {
   var Ctor = value && value.constructor,
       proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$i;
 
   return value === proto;
 }
 
-var _isPrototype = isPrototype$1;
+var _isPrototype = isPrototype$2;
 
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
@@ -4563,24 +4712,30 @@ var _isPrototype = isPrototype$1;
  * @param {Function} transform The argument transform.
  * @returns {Function} Returns the new function.
  */
-function overArg$1(func, transform) {
+
+function overArg$2(func, transform) {
   return function(arg) {
     return func(transform(arg));
   };
 }
 
-var _overArg = overArg$1;
+var _overArg = overArg$2;
+
+var overArg$1 = _overArg;
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeKeys$2 = _overArg(Object.keys, Object);
+var nativeKeys$3 = overArg$1(Object.keys, Object);
 
-var _nativeKeys = nativeKeys$2;
+var _nativeKeys = nativeKeys$3;
+
+var isPrototype$1 = _isPrototype,
+    nativeKeys$2 = _nativeKeys;
 
 /** Used for built-in method references. */
 var objectProto$h = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$e = objectProto$h.hasOwnProperty;
+var hasOwnProperty$d = objectProto$h.hasOwnProperty;
 
 /**
  * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
@@ -4589,20 +4744,23 @@ var hasOwnProperty$e = objectProto$h.hasOwnProperty;
  * @param {Object} object The object to query.
  * @returns {Array} Returns the array of property names.
  */
-function baseKeys$1(object) {
-  if (!_isPrototype(object)) {
-    return _nativeKeys(object);
+function baseKeys$2(object) {
+  if (!isPrototype$1(object)) {
+    return nativeKeys$2(object);
   }
   var result = [];
   for (var key in Object(object)) {
-    if (hasOwnProperty$e.call(object, key) && key != 'constructor') {
+    if (hasOwnProperty$d.call(object, key) && key != 'constructor') {
       result.push(key);
     }
   }
   return result;
 }
 
-var _baseKeys = baseKeys$1;
+var _baseKeys = baseKeys$2;
+
+var isFunction$2 = isFunction_1,
+    isLength$1 = isLength_1;
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -4629,11 +4787,15 @@ var _baseKeys = baseKeys$1;
  * _.isArrayLike(_.noop);
  * // => false
  */
-function isArrayLike$1(value) {
-  return value != null && isLength_1(value.length) && !isFunction_1(value);
+function isArrayLike$2(value) {
+  return value != null && isLength$1(value.length) && !isFunction$2(value);
 }
 
-var isArrayLike_1 = isArrayLike$1;
+var isArrayLike_1 = isArrayLike$2;
+
+var arrayLikeKeys$1 = _arrayLikeKeys,
+    baseKeys$1 = _baseKeys,
+    isArrayLike$1 = isArrayLike_1;
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -4663,11 +4825,14 @@ var isArrayLike_1 = isArrayLike$1;
  * _.keys('hi');
  * // => ['0', '1']
  */
-function keys$1(object) {
-  return isArrayLike_1(object) ? _arrayLikeKeys(object) : _baseKeys(object);
+function keys$4(object) {
+  return isArrayLike$1(object) ? arrayLikeKeys$1(object) : baseKeys$1(object);
 }
 
-var keys_1 = keys$1;
+var keys_1 = keys$4;
+
+var baseFor = _baseFor,
+    keys$3 = keys_1;
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -4677,11 +4842,13 @@ var keys_1 = keys$1;
  * @param {Function} iteratee The function invoked per iteration.
  * @returns {Object} Returns `object`.
  */
-function baseForOwn(object, iteratee) {
-  return object && _baseFor(object, iteratee, keys_1);
+function baseForOwn$2(object, iteratee) {
+  return object && baseFor(object, iteratee, keys$3);
 }
 
-var _baseForOwn = baseForOwn;
+var _baseForOwn = baseForOwn$2;
+
+var ListCache$3 = _ListCache;
 
 /**
  * Removes all key-value entries from the stack.
@@ -4690,12 +4857,12 @@ var _baseForOwn = baseForOwn;
  * @name clear
  * @memberOf Stack
  */
-function stackClear$1() {
-  this.__data__ = new _ListCache;
+function stackClear$2() {
+  this.__data__ = new ListCache$3;
   this.size = 0;
 }
 
-var _stackClear = stackClear$1;
+var _stackClear = stackClear$2;
 
 /**
  * Removes `key` and its value from the stack.
@@ -4706,7 +4873,8 @@ var _stackClear = stackClear$1;
  * @param {string} key The key of the value to remove.
  * @returns {boolean} Returns `true` if the entry was removed, else `false`.
  */
-function stackDelete$1(key) {
+
+function stackDelete$2(key) {
   var data = this.__data__,
       result = data['delete'](key);
 
@@ -4714,7 +4882,7 @@ function stackDelete$1(key) {
   return result;
 }
 
-var _stackDelete = stackDelete$1;
+var _stackDelete = stackDelete$2;
 
 /**
  * Gets the stack value for `key`.
@@ -4725,11 +4893,12 @@ var _stackDelete = stackDelete$1;
  * @param {string} key The key of the value to get.
  * @returns {*} Returns the entry value.
  */
-function stackGet$1(key) {
+
+function stackGet$2(key) {
   return this.__data__.get(key);
 }
 
-var _stackGet = stackGet$1;
+var _stackGet = stackGet$2;
 
 /**
  * Checks if a stack value for `key` exists.
@@ -4740,11 +4909,16 @@ var _stackGet = stackGet$1;
  * @param {string} key The key of the entry to check.
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
-function stackHas$1(key) {
+
+function stackHas$2(key) {
   return this.__data__.has(key);
 }
 
-var _stackHas = stackHas$1;
+var _stackHas = stackHas$2;
+
+var ListCache$2 = _ListCache,
+    Map$4 = _Map,
+    MapCache$2 = _MapCache;
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE$1 = 200;
@@ -4759,23 +4933,30 @@ var LARGE_ARRAY_SIZE$1 = 200;
  * @param {*} value The value to set.
  * @returns {Object} Returns the stack cache instance.
  */
-function stackSet$1(key, value) {
+function stackSet$2(key, value) {
   var data = this.__data__;
-  if (data instanceof _ListCache) {
+  if (data instanceof ListCache$2) {
     var pairs = data.__data__;
-    if (!_Map || (pairs.length < LARGE_ARRAY_SIZE$1 - 1)) {
+    if (!Map$4 || (pairs.length < LARGE_ARRAY_SIZE$1 - 1)) {
       pairs.push([key, value]);
       this.size = ++data.size;
       return this;
     }
-    data = this.__data__ = new _MapCache(pairs);
+    data = this.__data__ = new MapCache$2(pairs);
   }
   data.set(key, value);
   this.size = data.size;
   return this;
 }
 
-var _stackSet = stackSet$1;
+var _stackSet = stackSet$2;
+
+var ListCache$1 = _ListCache,
+    stackClear$1 = _stackClear,
+    stackDelete$1 = _stackDelete,
+    stackGet$1 = _stackGet,
+    stackHas$1 = _stackHas,
+    stackSet$1 = _stackSet;
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -4784,21 +4965,22 @@ var _stackSet = stackSet$1;
  * @constructor
  * @param {Array} [entries] The key-value pairs to cache.
  */
-function Stack$1(entries) {
-  var data = this.__data__ = new _ListCache(entries);
+function Stack$3(entries) {
+  var data = this.__data__ = new ListCache$1(entries);
   this.size = data.size;
 }
 
 // Add methods to `Stack`.
-Stack$1.prototype.clear = _stackClear;
-Stack$1.prototype['delete'] = _stackDelete;
-Stack$1.prototype.get = _stackGet;
-Stack$1.prototype.has = _stackHas;
-Stack$1.prototype.set = _stackSet;
+Stack$3.prototype.clear = stackClear$1;
+Stack$3.prototype['delete'] = stackDelete$1;
+Stack$3.prototype.get = stackGet$1;
+Stack$3.prototype.has = stackHas$1;
+Stack$3.prototype.set = stackSet$1;
 
-var _Stack = Stack$1;
+var _Stack = Stack$3;
 
 /** Used to stand-in for `undefined` hash values. */
+
 var HASH_UNDEFINED$2 = '__lodash_hash_undefined__';
 
 /**
@@ -4811,12 +4993,12 @@ var HASH_UNDEFINED$2 = '__lodash_hash_undefined__';
  * @param {*} value The value to cache.
  * @returns {Object} Returns the cache instance.
  */
-function setCacheAdd(value) {
+function setCacheAdd$1(value) {
   this.__data__.set(value, HASH_UNDEFINED$2);
   return this;
 }
 
-var _setCacheAdd = setCacheAdd;
+var _setCacheAdd = setCacheAdd$1;
 
 /**
  * Checks if `value` is in the array cache.
@@ -4827,11 +5009,16 @@ var _setCacheAdd = setCacheAdd;
  * @param {*} value The value to search for.
  * @returns {number} Returns `true` if `value` is found, else `false`.
  */
-function setCacheHas(value) {
+
+function setCacheHas$1(value) {
   return this.__data__.has(value);
 }
 
-var _setCacheHas = setCacheHas;
+var _setCacheHas = setCacheHas$1;
+
+var MapCache$1 = _MapCache,
+    setCacheAdd = _setCacheAdd,
+    setCacheHas = _setCacheHas;
 
 /**
  *
@@ -4841,21 +5028,21 @@ var _setCacheHas = setCacheHas;
  * @constructor
  * @param {Array} [values] The values to cache.
  */
-function SetCache(values) {
+function SetCache$1(values) {
   var index = -1,
       length = values == null ? 0 : values.length;
 
-  this.__data__ = new _MapCache;
+  this.__data__ = new MapCache$1;
   while (++index < length) {
     this.add(values[index]);
   }
 }
 
 // Add methods to `SetCache`.
-SetCache.prototype.add = SetCache.prototype.push = _setCacheAdd;
-SetCache.prototype.has = _setCacheHas;
+SetCache$1.prototype.add = SetCache$1.prototype.push = setCacheAdd;
+SetCache$1.prototype.has = setCacheHas;
 
-var _SetCache = SetCache;
+var _SetCache = SetCache$1;
 
 /**
  * A specialized version of `_.some` for arrays without support for iteratee
@@ -4867,7 +5054,8 @@ var _SetCache = SetCache;
  * @returns {boolean} Returns `true` if any element passes the predicate check,
  *  else `false`.
  */
-function arraySome(array, predicate) {
+
+function arraySome$1(array, predicate) {
   var index = -1,
       length = array == null ? 0 : array.length;
 
@@ -4879,7 +5067,7 @@ function arraySome(array, predicate) {
   return false;
 }
 
-var _arraySome = arraySome;
+var _arraySome = arraySome$1;
 
 /**
  * Checks if a `cache` value for `key` exists.
@@ -4889,11 +5077,16 @@ var _arraySome = arraySome;
  * @param {string} key The key of the entry to check.
  * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
  */
-function cacheHas(cache, key) {
+
+function cacheHas$1(cache, key) {
   return cache.has(key);
 }
 
-var _cacheHas = cacheHas;
+var _cacheHas = cacheHas$1;
+
+var SetCache = _SetCache,
+    arraySome = _arraySome,
+    cacheHas = _cacheHas;
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG$5 = 1,
@@ -4912,7 +5105,7 @@ var COMPARE_PARTIAL_FLAG$5 = 1,
  * @param {Object} stack Tracks traversed `array` and `other` objects.
  * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
  */
-function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
+function equalArrays$2(array, other, bitmask, customizer, equalFunc, stack) {
   var isPartial = bitmask & COMPARE_PARTIAL_FLAG$5,
       arrLength = array.length,
       othLength = other.length;
@@ -4928,7 +5121,7 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
   }
   var index = -1,
       result = true,
-      seen = (bitmask & COMPARE_UNORDERED_FLAG$3) ? new _SetCache : undefined;
+      seen = (bitmask & COMPARE_UNORDERED_FLAG$3) ? new SetCache : undefined;
 
   stack.set(array, other);
   stack.set(other, array);
@@ -4952,8 +5145,8 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
     }
     // Recursively compare arrays (susceptible to call stack limits).
     if (seen) {
-      if (!_arraySome(other, function(othValue, othIndex) {
-            if (!_cacheHas(seen, othIndex) &&
+      if (!arraySome(other, function(othValue, othIndex) {
+            if (!cacheHas(seen, othIndex) &&
                 (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
               return seen.push(othIndex);
             }
@@ -4974,12 +5167,14 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
   return result;
 }
 
-var _equalArrays = equalArrays;
+var _equalArrays = equalArrays$2;
+
+var root$6 = _root;
 
 /** Built-in value references. */
-var Uint8Array$3 = _root.Uint8Array;
+var Uint8Array$4 = root$6.Uint8Array;
 
-var _Uint8Array = Uint8Array$3;
+var _Uint8Array = Uint8Array$4;
 
 /**
  * Converts `map` to its key-value pairs.
@@ -4988,7 +5183,8 @@ var _Uint8Array = Uint8Array$3;
  * @param {Object} map The map to convert.
  * @returns {Array} Returns the key-value pairs.
  */
-function mapToArray(map) {
+
+function mapToArray$1(map) {
   var index = -1,
       result = Array(map.size);
 
@@ -4998,7 +5194,7 @@ function mapToArray(map) {
   return result;
 }
 
-var _mapToArray = mapToArray;
+var _mapToArray = mapToArray$1;
 
 /**
  * Converts `set` to an array of its values.
@@ -5007,7 +5203,8 @@ var _mapToArray = mapToArray;
  * @param {Object} set The set to convert.
  * @returns {Array} Returns the values.
  */
-function setToArray(set) {
+
+function setToArray$1(set) {
   var index = -1,
       result = Array(set.size);
 
@@ -5017,7 +5214,14 @@ function setToArray(set) {
   return result;
 }
 
-var _setToArray = setToArray;
+var _setToArray = setToArray$1;
+
+var Symbol$3 = _Symbol,
+    Uint8Array$3 = _Uint8Array,
+    eq$1 = eq_1,
+    equalArrays$1 = _equalArrays,
+    mapToArray = _mapToArray,
+    setToArray = _setToArray;
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG$4 = 1,
@@ -5038,7 +5242,7 @@ var arrayBufferTag$3 = '[object ArrayBuffer]',
     dataViewTag$5 = '[object DataView]';
 
 /** Used to convert symbols to primitives and strings. */
-var symbolProto$2 = _Symbol ? _Symbol.prototype : undefined,
+var symbolProto$2 = Symbol$3 ? Symbol$3.prototype : undefined,
     symbolValueOf$1 = symbolProto$2 ? symbolProto$2.valueOf : undefined;
 
 /**
@@ -5058,7 +5262,7 @@ var symbolProto$2 = _Symbol ? _Symbol.prototype : undefined,
  * @param {Object} stack Tracks traversed `object` and `other` objects.
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
-function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
+function equalByTag$1(object, other, tag, bitmask, customizer, equalFunc, stack) {
   switch (tag) {
     case dataViewTag$5:
       if ((object.byteLength != other.byteLength) ||
@@ -5070,7 +5274,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 
     case arrayBufferTag$3:
       if ((object.byteLength != other.byteLength) ||
-          !equalFunc(new _Uint8Array(object), new _Uint8Array(other))) {
+          !equalFunc(new Uint8Array$3(object), new Uint8Array$3(other))) {
         return false;
       }
       return true;
@@ -5080,7 +5284,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
     case numberTag$3:
       // Coerce booleans to `1` or `0` and dates to milliseconds.
       // Invalid dates are coerced to `NaN`.
-      return eq_1(+object, +other);
+      return eq$1(+object, +other);
 
     case errorTag$2:
       return object.name == other.name && object.message == other.message;
@@ -5093,11 +5297,11 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
       return object == (other + '');
 
     case mapTag$6:
-      var convert = _mapToArray;
+      var convert = mapToArray;
 
     case setTag$6:
       var isPartial = bitmask & COMPARE_PARTIAL_FLAG$4;
-      convert || (convert = _setToArray);
+      convert || (convert = setToArray);
 
       if (object.size != other.size && !isPartial) {
         return false;
@@ -5111,7 +5315,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 
       // Recursively compare objects (susceptible to call stack limits).
       stack.set(object, other);
-      var result = _equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
+      var result = equalArrays$1(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
       stack['delete'](object);
       return result;
 
@@ -5123,7 +5327,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
   return false;
 }
 
-var _equalByTag = equalByTag;
+var _equalByTag = equalByTag$1;
 
 /**
  * Appends the elements of `values` to `array`.
@@ -5133,7 +5337,8 @@ var _equalByTag = equalByTag;
  * @param {Array} values The values to append.
  * @returns {Array} Returns `array`.
  */
-function arrayPush$1(array, values) {
+
+function arrayPush$2(array, values) {
   var index = -1,
       length = values.length,
       offset = array.length;
@@ -5144,7 +5349,10 @@ function arrayPush$1(array, values) {
   return array;
 }
 
-var _arrayPush = arrayPush$1;
+var _arrayPush = arrayPush$2;
+
+var arrayPush$1 = _arrayPush,
+    isArray$5 = isArray_1;
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -5157,12 +5365,12 @@ var _arrayPush = arrayPush$1;
  * @param {Function} symbolsFunc The function to get the symbols of `object`.
  * @returns {Array} Returns the array of property names and symbols.
  */
-function baseGetAllKeys$1(object, keysFunc, symbolsFunc) {
+function baseGetAllKeys$2(object, keysFunc, symbolsFunc) {
   var result = keysFunc(object);
-  return isArray_1(object) ? result : _arrayPush(result, symbolsFunc(object));
+  return isArray$5(object) ? result : arrayPush$1(result, symbolsFunc(object));
 }
 
-var _baseGetAllKeys = baseGetAllKeys$1;
+var _baseGetAllKeys = baseGetAllKeys$2;
 
 /**
  * A specialized version of `_.filter` for arrays without support for
@@ -5173,7 +5381,8 @@ var _baseGetAllKeys = baseGetAllKeys$1;
  * @param {Function} predicate The function invoked per iteration.
  * @returns {Array} Returns the new filtered array.
  */
-function arrayFilter$1(array, predicate) {
+
+function arrayFilter$2(array, predicate) {
   var index = -1,
       length = array == null ? 0 : array.length,
       resIndex = 0,
@@ -5188,7 +5397,7 @@ function arrayFilter$1(array, predicate) {
   return result;
 }
 
-var _arrayFilter = arrayFilter$1;
+var _arrayFilter = arrayFilter$2;
 
 /**
  * This method returns a new empty array.
@@ -5208,11 +5417,15 @@ var _arrayFilter = arrayFilter$1;
  * console.log(arrays[0] === arrays[1]);
  * // => false
  */
-function stubArray$1() {
+
+function stubArray$2() {
   return [];
 }
 
-var stubArray_1 = stubArray$1;
+var stubArray_1 = stubArray$2;
+
+var arrayFilter$1 = _arrayFilter,
+    stubArray$1 = stubArray_1;
 
 /** Used for built-in method references. */
 var objectProto$g = Object.prototype;
@@ -5230,17 +5443,21 @@ var nativeGetSymbols$2 = Object.getOwnPropertySymbols;
  * @param {Object} object The object to query.
  * @returns {Array} Returns the array of symbols.
  */
-var getSymbols$2 = !nativeGetSymbols$2 ? stubArray_1 : function(object) {
+var getSymbols$3 = !nativeGetSymbols$2 ? stubArray$1 : function(object) {
   if (object == null) {
     return [];
   }
   object = Object(object);
-  return _arrayFilter(nativeGetSymbols$2(object), function(symbol) {
+  return arrayFilter$1(nativeGetSymbols$2(object), function(symbol) {
     return propertyIsEnumerable$2.call(object, symbol);
   });
 };
 
-var _getSymbols = getSymbols$2;
+var _getSymbols = getSymbols$3;
+
+var baseGetAllKeys$1 = _baseGetAllKeys,
+    getSymbols$2 = _getSymbols,
+    keys$2 = keys_1;
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -5249,11 +5466,13 @@ var _getSymbols = getSymbols$2;
  * @param {Object} object The object to query.
  * @returns {Array} Returns the array of property names and symbols.
  */
-function getAllKeys$1(object) {
-  return _baseGetAllKeys(object, keys_1, _getSymbols);
+function getAllKeys$2(object) {
+  return baseGetAllKeys$1(object, keys$2, getSymbols$2);
 }
 
-var _getAllKeys = getAllKeys$1;
+var _getAllKeys = getAllKeys$2;
+
+var getAllKeys$1 = _getAllKeys;
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG$3 = 1;
@@ -5262,7 +5481,7 @@ var COMPARE_PARTIAL_FLAG$3 = 1;
 var objectProto$f = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$d = objectProto$f.hasOwnProperty;
+var hasOwnProperty$c = objectProto$f.hasOwnProperty;
 
 /**
  * A specialized version of `baseIsEqualDeep` for objects with support for
@@ -5277,11 +5496,11 @@ var hasOwnProperty$d = objectProto$f.hasOwnProperty;
  * @param {Object} stack Tracks traversed `object` and `other` objects.
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
-function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
+function equalObjects$1(object, other, bitmask, customizer, equalFunc, stack) {
   var isPartial = bitmask & COMPARE_PARTIAL_FLAG$3,
-      objProps = _getAllKeys(object),
+      objProps = getAllKeys$1(object),
       objLength = objProps.length,
-      othProps = _getAllKeys(other),
+      othProps = getAllKeys$1(other),
       othLength = othProps.length;
 
   if (objLength != othLength && !isPartial) {
@@ -5290,7 +5509,7 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
   var index = objLength;
   while (index--) {
     var key = objProps[index];
-    if (!(isPartial ? key in other : hasOwnProperty$d.call(other, key))) {
+    if (!(isPartial ? key in other : hasOwnProperty$c.call(other, key))) {
       return false;
     }
   }
@@ -5342,27 +5561,47 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
   return result;
 }
 
-var _equalObjects = equalObjects;
+var _equalObjects = equalObjects$1;
+
+var getNative$4 = _getNative,
+    root$5 = _root;
 
 /* Built-in method references that are verified to be native. */
-var DataView$2 = _getNative(_root, 'DataView');
+var DataView$3 = getNative$4(root$5, 'DataView');
 
-var _DataView = DataView$2;
+var _DataView = DataView$3;
 
-/* Built-in method references that are verified to be native. */
-var Promise$3 = _getNative(_root, 'Promise');
-
-var _Promise = Promise$3;
+var getNative$3 = _getNative,
+    root$4 = _root;
 
 /* Built-in method references that are verified to be native. */
-var Set$3 = _getNative(_root, 'Set');
+var Promise$4 = getNative$3(root$4, 'Promise');
 
-var _Set = Set$3;
+var _Promise = Promise$4;
+
+var getNative$2 = _getNative,
+    root$3 = _root;
 
 /* Built-in method references that are verified to be native. */
-var WeakMap$3 = _getNative(_root, 'WeakMap');
+var Set$4 = getNative$2(root$3, 'Set');
 
-var _WeakMap = WeakMap$3;
+var _Set = Set$4;
+
+var getNative$1 = _getNative,
+    root$2 = _root;
+
+/* Built-in method references that are verified to be native. */
+var WeakMap$4 = getNative$1(root$2, 'WeakMap');
+
+var _WeakMap = WeakMap$4;
+
+var DataView$2 = _DataView,
+    Map$3 = _Map,
+    Promise$3 = _Promise,
+    Set$3 = _Set,
+    WeakMap$3 = _WeakMap,
+    baseGetTag$1 = _baseGetTag,
+    toSource$1 = _toSource;
 
 /** `Object#toString` result references. */
 var mapTag$5 = '[object Map]',
@@ -5374,11 +5613,11 @@ var mapTag$5 = '[object Map]',
 var dataViewTag$4 = '[object DataView]';
 
 /** Used to detect maps, sets, and weakmaps. */
-var dataViewCtorString$1 = _toSource(_DataView),
-    mapCtorString$1 = _toSource(_Map),
-    promiseCtorString$1 = _toSource(_Promise),
-    setCtorString$1 = _toSource(_Set),
-    weakMapCtorString$1 = _toSource(_WeakMap);
+var dataViewCtorString$1 = toSource$1(DataView$2),
+    mapCtorString$1 = toSource$1(Map$3),
+    promiseCtorString$1 = toSource$1(Promise$3),
+    setCtorString$1 = toSource$1(Set$3),
+    weakMapCtorString$1 = toSource$1(WeakMap$3);
 
 /**
  * Gets the `toStringTag` of `value`.
@@ -5387,18 +5626,18 @@ var dataViewCtorString$1 = _toSource(_DataView),
  * @param {*} value The value to query.
  * @returns {string} Returns the `toStringTag`.
  */
-var getTag$2 = _baseGetTag;
+var getTag$3 = baseGetTag$1;
 
 // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if ((_DataView && getTag$2(new _DataView(new ArrayBuffer(1))) != dataViewTag$4) ||
-    (_Map && getTag$2(new _Map) != mapTag$5) ||
-    (_Promise && getTag$2(_Promise.resolve()) != promiseTag$1) ||
-    (_Set && getTag$2(new _Set) != setTag$5) ||
-    (_WeakMap && getTag$2(new _WeakMap) != weakMapTag$3)) {
-  getTag$2 = function(value) {
-    var result = _baseGetTag(value),
+if ((DataView$2 && getTag$3(new DataView$2(new ArrayBuffer(1))) != dataViewTag$4) ||
+    (Map$3 && getTag$3(new Map$3) != mapTag$5) ||
+    (Promise$3 && getTag$3(Promise$3.resolve()) != promiseTag$1) ||
+    (Set$3 && getTag$3(new Set$3) != setTag$5) ||
+    (WeakMap$3 && getTag$3(new WeakMap$3) != weakMapTag$3)) {
+  getTag$3 = function(value) {
+    var result = baseGetTag$1(value),
         Ctor = result == objectTag$5 ? value.constructor : undefined,
-        ctorString = Ctor ? _toSource(Ctor) : '';
+        ctorString = Ctor ? toSource$1(Ctor) : '';
 
     if (ctorString) {
       switch (ctorString) {
@@ -5413,7 +5652,16 @@ if ((_DataView && getTag$2(new _DataView(new ArrayBuffer(1))) != dataViewTag$4) 
   };
 }
 
-var _getTag = getTag$2;
+var _getTag = getTag$3;
+
+var Stack$2 = _Stack,
+    equalArrays = _equalArrays,
+    equalByTag = _equalByTag,
+    equalObjects = _equalObjects,
+    getTag$2 = _getTag,
+    isArray$4 = isArray_1,
+    isBuffer$2 = isBufferExports,
+    isTypedArray$2 = isTypedArray_1;
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG$2 = 1;
@@ -5427,7 +5675,7 @@ var argsTag$3 = '[object Arguments]',
 var objectProto$e = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$c = objectProto$e.hasOwnProperty;
+var hasOwnProperty$b = objectProto$e.hasOwnProperty;
 
 /**
  * A specialized version of `baseIsEqual` for arrays and objects which performs
@@ -5443,11 +5691,11 @@ var hasOwnProperty$c = objectProto$e.hasOwnProperty;
  * @param {Object} [stack] Tracks traversed `object` and `other` objects.
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
-function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
-  var objIsArr = isArray_1(object),
-      othIsArr = isArray_1(other),
-      objTag = objIsArr ? arrayTag$2 : _getTag(object),
-      othTag = othIsArr ? arrayTag$2 : _getTag(other);
+function baseIsEqualDeep$1(object, other, bitmask, customizer, equalFunc, stack) {
+  var objIsArr = isArray$4(object),
+      othIsArr = isArray$4(other),
+      objTag = objIsArr ? arrayTag$2 : getTag$2(object),
+      othTag = othIsArr ? arrayTag$2 : getTag$2(other);
 
   objTag = objTag == argsTag$3 ? objectTag$4 : objTag;
   othTag = othTag == argsTag$3 ? objectTag$4 : othTag;
@@ -5456,39 +5704,42 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
       othIsObj = othTag == objectTag$4,
       isSameTag = objTag == othTag;
 
-  if (isSameTag && isBuffer_1(object)) {
-    if (!isBuffer_1(other)) {
+  if (isSameTag && isBuffer$2(object)) {
+    if (!isBuffer$2(other)) {
       return false;
     }
     objIsArr = true;
     objIsObj = false;
   }
   if (isSameTag && !objIsObj) {
-    stack || (stack = new _Stack);
-    return (objIsArr || isTypedArray_1(object))
-      ? _equalArrays(object, other, bitmask, customizer, equalFunc, stack)
-      : _equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
+    stack || (stack = new Stack$2);
+    return (objIsArr || isTypedArray$2(object))
+      ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
+      : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
   }
   if (!(bitmask & COMPARE_PARTIAL_FLAG$2)) {
-    var objIsWrapped = objIsObj && hasOwnProperty$c.call(object, '__wrapped__'),
-        othIsWrapped = othIsObj && hasOwnProperty$c.call(other, '__wrapped__');
+    var objIsWrapped = objIsObj && hasOwnProperty$b.call(object, '__wrapped__'),
+        othIsWrapped = othIsObj && hasOwnProperty$b.call(other, '__wrapped__');
 
     if (objIsWrapped || othIsWrapped) {
       var objUnwrapped = objIsWrapped ? object.value() : object,
           othUnwrapped = othIsWrapped ? other.value() : other;
 
-      stack || (stack = new _Stack);
+      stack || (stack = new Stack$2);
       return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
     }
   }
   if (!isSameTag) {
     return false;
   }
-  stack || (stack = new _Stack);
-  return _equalObjects(object, other, bitmask, customizer, equalFunc, stack);
+  stack || (stack = new Stack$2);
+  return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
 }
 
-var _baseIsEqualDeep = baseIsEqualDeep;
+var _baseIsEqualDeep = baseIsEqualDeep$1;
+
+var baseIsEqualDeep = _baseIsEqualDeep,
+    isObjectLike$1 = isObjectLike_1;
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -5504,17 +5755,20 @@ var _baseIsEqualDeep = baseIsEqualDeep;
  * @param {Object} [stack] Tracks traversed `value` and `other` objects.
  * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
  */
-function baseIsEqual(value, other, bitmask, customizer, stack) {
+function baseIsEqual$2(value, other, bitmask, customizer, stack) {
   if (value === other) {
     return true;
   }
-  if (value == null || other == null || (!isObjectLike_1(value) && !isObjectLike_1(other))) {
+  if (value == null || other == null || (!isObjectLike$1(value) && !isObjectLike$1(other))) {
     return value !== value && other !== other;
   }
-  return _baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
+  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual$2, stack);
 }
 
-var _baseIsEqual = baseIsEqual;
+var _baseIsEqual = baseIsEqual$2;
+
+var Stack$1 = _Stack,
+    baseIsEqual$1 = _baseIsEqual;
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG$1 = 1,
@@ -5530,7 +5784,7 @@ var COMPARE_PARTIAL_FLAG$1 = 1,
  * @param {Function} [customizer] The function to customize comparisons.
  * @returns {boolean} Returns `true` if `object` is a match, else `false`.
  */
-function baseIsMatch(object, source, matchData, customizer) {
+function baseIsMatch$1(object, source, matchData, customizer) {
   var index = matchData.length,
       length = index,
       noCustomizer = !customizer;
@@ -5559,12 +5813,12 @@ function baseIsMatch(object, source, matchData, customizer) {
         return false;
       }
     } else {
-      var stack = new _Stack;
+      var stack = new Stack$1;
       if (customizer) {
         var result = customizer(objValue, srcValue, key, object, source, stack);
       }
       if (!(result === undefined
-            ? _baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG$1 | COMPARE_UNORDERED_FLAG$1, customizer, stack)
+            ? baseIsEqual$1(srcValue, objValue, COMPARE_PARTIAL_FLAG$1 | COMPARE_UNORDERED_FLAG$1, customizer, stack)
             : result
           )) {
         return false;
@@ -5574,7 +5828,9 @@ function baseIsMatch(object, source, matchData, customizer) {
   return true;
 }
 
-var _baseIsMatch = baseIsMatch;
+var _baseIsMatch = baseIsMatch$1;
+
+var isObject$4 = isObject_1;
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -5584,11 +5840,14 @@ var _baseIsMatch = baseIsMatch;
  * @returns {boolean} Returns `true` if `value` if suitable for strict
  *  equality comparisons, else `false`.
  */
-function isStrictComparable(value) {
-  return value === value && !isObject_1(value);
+function isStrictComparable$2(value) {
+  return value === value && !isObject$4(value);
 }
 
-var _isStrictComparable = isStrictComparable;
+var _isStrictComparable = isStrictComparable$2;
+
+var isStrictComparable$1 = _isStrictComparable,
+    keys$1 = keys_1;
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -5597,20 +5856,20 @@ var _isStrictComparable = isStrictComparable;
  * @param {Object} object The object to query.
  * @returns {Array} Returns the match data of `object`.
  */
-function getMatchData(object) {
-  var result = keys_1(object),
+function getMatchData$1(object) {
+  var result = keys$1(object),
       length = result.length;
 
   while (length--) {
     var key = result[length],
         value = object[key];
 
-    result[length] = [key, value, _isStrictComparable(value)];
+    result[length] = [key, value, isStrictComparable$1(value)];
   }
   return result;
 }
 
-var _getMatchData = getMatchData;
+var _getMatchData = getMatchData$1;
 
 /**
  * A specialized version of `matchesProperty` for source values suitable
@@ -5621,7 +5880,8 @@ var _getMatchData = getMatchData;
  * @param {*} srcValue The value to match.
  * @returns {Function} Returns the new spec function.
  */
-function matchesStrictComparable(key, srcValue) {
+
+function matchesStrictComparable$2(key, srcValue) {
   return function(object) {
     if (object == null) {
       return false;
@@ -5631,7 +5891,11 @@ function matchesStrictComparable(key, srcValue) {
   };
 }
 
-var _matchesStrictComparable = matchesStrictComparable;
+var _matchesStrictComparable = matchesStrictComparable$2;
+
+var baseIsMatch = _baseIsMatch,
+    getMatchData = _getMatchData,
+    matchesStrictComparable$1 = _matchesStrictComparable;
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -5640,17 +5904,20 @@ var _matchesStrictComparable = matchesStrictComparable;
  * @param {Object} source The object of property values to match.
  * @returns {Function} Returns the new spec function.
  */
-function baseMatches(source) {
-  var matchData = _getMatchData(source);
+function baseMatches$1(source) {
+  var matchData = getMatchData(source);
   if (matchData.length == 1 && matchData[0][2]) {
-    return _matchesStrictComparable(matchData[0][0], matchData[0][1]);
+    return matchesStrictComparable$1(matchData[0][0], matchData[0][1]);
   }
   return function(object) {
-    return object === source || _baseIsMatch(object, source, matchData);
+    return object === source || baseIsMatch(object, source, matchData);
   };
 }
 
-var _baseMatches = baseMatches;
+var _baseMatches = baseMatches$1;
+
+var castPath = _castPath,
+    toKey$3 = _toKey;
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -5660,19 +5927,21 @@ var _baseMatches = baseMatches;
  * @param {Array|string} path The path of the property to get.
  * @returns {*} Returns the resolved value.
  */
-function baseGet(object, path) {
-  path = _castPath(path, object);
+function baseGet$2(object, path) {
+  path = castPath(path, object);
 
   var index = 0,
       length = path.length;
 
   while (object != null && index < length) {
-    object = object[_toKey(path[index++])];
+    object = object[toKey$3(path[index++])];
   }
   return (index && index == length) ? object : undefined;
 }
 
-var _baseGet = baseGet;
+var _baseGet = baseGet$2;
+
+var baseGet$1 = _baseGet;
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -5699,12 +5968,12 @@ var _baseGet = baseGet;
  * _.get(object, 'a.b.c', 'default');
  * // => 'default'
  */
-function get(object, path, defaultValue) {
-  var result = object == null ? undefined : _baseGet(object, path);
+function get$1(object, path, defaultValue) {
+  var result = object == null ? undefined : baseGet$1(object, path);
   return result === undefined ? defaultValue : result;
 }
 
-var get_1 = get;
+var get_1 = get$1;
 
 /**
  * The base implementation of `_.hasIn` without support for deep paths.
@@ -5714,11 +5983,15 @@ var get_1 = get;
  * @param {Array|string} key The key to check.
  * @returns {boolean} Returns `true` if `key` exists, else `false`.
  */
-function baseHasIn(object, key) {
+
+function baseHasIn$1(object, key) {
   return object != null && key in Object(object);
 }
 
-var _baseHasIn = baseHasIn;
+var _baseHasIn = baseHasIn$1;
+
+var baseHasIn = _baseHasIn,
+    hasPath = _hasPath;
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -5746,11 +6019,19 @@ var _baseHasIn = baseHasIn;
  * _.hasIn(object, 'b');
  * // => false
  */
-function hasIn(object, path) {
-  return object != null && _hasPath(object, path, _baseHasIn);
+function hasIn$1(object, path) {
+  return object != null && hasPath(object, path, baseHasIn);
 }
 
-var hasIn_1 = hasIn;
+var hasIn_1 = hasIn$1;
+
+var baseIsEqual = _baseIsEqual,
+    get = get_1,
+    hasIn = hasIn_1,
+    isKey$1 = _isKey,
+    isStrictComparable = _isStrictComparable,
+    matchesStrictComparable = _matchesStrictComparable,
+    toKey$2 = _toKey;
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -5764,19 +6045,19 @@ var COMPARE_PARTIAL_FLAG = 1,
  * @param {*} srcValue The value to match.
  * @returns {Function} Returns the new spec function.
  */
-function baseMatchesProperty(path, srcValue) {
-  if (_isKey(path) && _isStrictComparable(srcValue)) {
-    return _matchesStrictComparable(_toKey(path), srcValue);
+function baseMatchesProperty$1(path, srcValue) {
+  if (isKey$1(path) && isStrictComparable(srcValue)) {
+    return matchesStrictComparable(toKey$2(path), srcValue);
   }
   return function(object) {
-    var objValue = get_1(object, path);
+    var objValue = get(object, path);
     return (objValue === undefined && objValue === srcValue)
-      ? hasIn_1(object, path)
-      : _baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
+      ? hasIn(object, path)
+      : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
   };
 }
 
-var _baseMatchesProperty = baseMatchesProperty;
+var _baseMatchesProperty = baseMatchesProperty$1;
 
 /**
  * This method returns the first argument it receives.
@@ -5794,11 +6075,12 @@ var _baseMatchesProperty = baseMatchesProperty;
  * console.log(_.identity(object) === object);
  * // => true
  */
-function identity(value) {
+
+function identity$1(value) {
   return value;
 }
 
-var identity_1 = identity;
+var identity_1 = identity$1;
 
 /**
  * The base implementation of `_.property` without support for deep paths.
@@ -5807,13 +6089,16 @@ var identity_1 = identity;
  * @param {string} key The key of the property to get.
  * @returns {Function} Returns the new accessor function.
  */
-function baseProperty(key) {
+
+function baseProperty$1(key) {
   return function(object) {
     return object == null ? undefined : object[key];
   };
 }
 
-var _baseProperty = baseProperty;
+var _baseProperty = baseProperty$1;
+
+var baseGet = _baseGet;
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -5822,13 +6107,18 @@ var _baseProperty = baseProperty;
  * @param {Array|string} path The path of the property to get.
  * @returns {Function} Returns the new accessor function.
  */
-function basePropertyDeep(path) {
+function basePropertyDeep$1(path) {
   return function(object) {
-    return _baseGet(object, path);
+    return baseGet(object, path);
   };
 }
 
-var _basePropertyDeep = basePropertyDeep;
+var _basePropertyDeep = basePropertyDeep$1;
+
+var baseProperty = _baseProperty,
+    basePropertyDeep = _basePropertyDeep,
+    isKey = _isKey,
+    toKey$1 = _toKey;
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -5852,11 +6142,17 @@ var _basePropertyDeep = basePropertyDeep;
  * _.map(_.sortBy(objects, _.property(['a', 'b'])), 'a.b');
  * // => [1, 2]
  */
-function property(path) {
-  return _isKey(path) ? _baseProperty(_toKey(path)) : _basePropertyDeep(path);
+function property$1(path) {
+  return isKey(path) ? baseProperty(toKey$1(path)) : basePropertyDeep(path);
 }
 
-var property_1 = property;
+var property_1 = property$1;
+
+var baseMatches = _baseMatches,
+    baseMatchesProperty = _baseMatchesProperty,
+    identity = identity_1,
+    isArray$3 = isArray_1,
+    property = property_1;
 
 /**
  * The base implementation of `_.iteratee`.
@@ -5865,24 +6161,28 @@ var property_1 = property;
  * @param {*} [value=_.identity] The value to convert to an iteratee.
  * @returns {Function} Returns the iteratee.
  */
-function baseIteratee(value) {
+function baseIteratee$2(value) {
   // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
   // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
   if (typeof value == 'function') {
     return value;
   }
   if (value == null) {
-    return identity_1;
+    return identity;
   }
   if (typeof value == 'object') {
-    return isArray_1(value)
-      ? _baseMatchesProperty(value[0], value[1])
-      : _baseMatches(value);
+    return isArray$3(value)
+      ? baseMatchesProperty(value[0], value[1])
+      : baseMatches(value);
   }
-  return property_1(value);
+  return property(value);
 }
 
-var _baseIteratee = baseIteratee;
+var _baseIteratee = baseIteratee$2;
+
+var baseAssignValue$2 = _baseAssignValue,
+    baseForOwn$1 = _baseForOwn,
+    baseIteratee$1 = _baseIteratee;
 
 /**
  * Creates an object with the same keys as `object` and values generated
@@ -5914,10 +6214,10 @@ var _baseIteratee = baseIteratee;
  */
 function mapValues(object, iteratee) {
   var result = {};
-  iteratee = _baseIteratee(iteratee);
+  iteratee = baseIteratee$1(iteratee);
 
-  _baseForOwn(object, function(value, key, object) {
-    _baseAssignValue(result, key, iteratee(value, key, object));
+  baseForOwn$1(object, function(value, key, object) {
+    baseAssignValue$2(result, key, iteratee(value, key, object));
   });
   return result;
 }
@@ -6773,7 +7073,7 @@ class BaseSchema {
     }
 
     let next = this.clone();
-    let deps = toArray(keys).map(key => new Reference(key));
+    let deps = toArray$1(keys).map(key => new Reference(key));
     deps.forEach(dep => {
       // @ts-ignore
       if (dep.isSibling) next.deps.push(dep.key);
@@ -6903,6 +7203,10 @@ for (const alias of ['equals', 'is']) BaseSchema.prototype[alias] = BaseSchema.p
 for (const alias of ['not', 'nope']) BaseSchema.prototype[alias] = BaseSchema.prototype.notOneOf;
 
 BaseSchema.prototype.optional = BaseSchema.prototype.notRequired;
+
+const Mixed = BaseSchema;
+
+Mixed.prototype;
 
 const isAbsent = value => value == null;
 
@@ -7251,6 +7555,7 @@ class DateSchema extends BaseSchema {
 
 }
 DateSchema.INVALID_DATE = invalidDate;
+DateSchema.prototype;
 
 /**
  * A specialized version of `_.reduce` for arrays without support for
@@ -7264,7 +7569,8 @@ DateSchema.INVALID_DATE = invalidDate;
  *  the initial value.
  * @returns {*} Returns the accumulated value.
  */
-function arrayReduce(array, iteratee, accumulator, initAccum) {
+
+function arrayReduce$1(array, iteratee, accumulator, initAccum) {
   var index = -1,
       length = array == null ? 0 : array.length;
 
@@ -7277,7 +7583,7 @@ function arrayReduce(array, iteratee, accumulator, initAccum) {
   return accumulator;
 }
 
-var _arrayReduce = arrayReduce;
+var _arrayReduce = arrayReduce$1;
 
 /**
  * The base implementation of `_.propertyOf` without support for deep paths.
@@ -7286,13 +7592,16 @@ var _arrayReduce = arrayReduce;
  * @param {Object} object The object to query.
  * @returns {Function} Returns the new accessor function.
  */
-function basePropertyOf(object) {
+
+function basePropertyOf$1(object) {
   return function(key) {
     return object == null ? undefined : object[key];
   };
 }
 
-var _basePropertyOf = basePropertyOf;
+var _basePropertyOf = basePropertyOf$1;
+
+var basePropertyOf = _basePropertyOf;
 
 /** Used to map Latin Unicode letters to basic Latin letters. */
 var deburredLetters = {
@@ -7360,9 +7669,12 @@ var deburredLetters = {
  * @param {string} letter The matched letter to deburr.
  * @returns {string} Returns the deburred letter.
  */
-var deburrLetter = _basePropertyOf(deburredLetters);
+var deburrLetter$1 = basePropertyOf(deburredLetters);
 
-var _deburrLetter = deburrLetter;
+var _deburrLetter = deburrLetter$1;
+
+var deburrLetter = _deburrLetter,
+    toString$4 = toString_1;
 
 /** Used to match Latin Unicode letters (excluding mathematical operators). */
 var reLatin = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;
@@ -7400,14 +7712,15 @@ var reComboMark = RegExp(rsCombo$2, 'g');
  * _.deburr('déjà vu');
  * // => 'deja vu'
  */
-function deburr(string) {
-  string = toString_1(string);
-  return string && string.replace(reLatin, _deburrLetter).replace(reComboMark, '');
+function deburr$1(string) {
+  string = toString$4(string);
+  return string && string.replace(reLatin, deburrLetter).replace(reComboMark, '');
 }
 
-var deburr_1 = deburr;
+var deburr_1 = deburr$1;
 
 /** Used to match words composed of alphanumeric characters. */
+
 var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
 
 /**
@@ -7417,13 +7730,14 @@ var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
  * @param {string} The string to inspect.
  * @returns {Array} Returns the words of `string`.
  */
-function asciiWords(string) {
+function asciiWords$1(string) {
   return string.match(reAsciiWord) || [];
 }
 
-var _asciiWords = asciiWords;
+var _asciiWords = asciiWords$1;
 
 /** Used to detect strings that need a more robust regexp to match words. */
+
 var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
 /**
@@ -7433,13 +7747,14 @@ var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a
  * @param {string} string The string to inspect.
  * @returns {boolean} Returns `true` if a word is found, else `false`.
  */
-function hasUnicodeWord(string) {
+function hasUnicodeWord$1(string) {
   return reHasUnicodeWord.test(string);
 }
 
-var _hasUnicodeWord = hasUnicodeWord;
+var _hasUnicodeWord = hasUnicodeWord$1;
 
 /** Used to compose unicode character classes. */
+
 var rsAstralRange$2 = '\\ud800-\\udfff',
     rsComboMarksRange$2 = '\\u0300-\\u036f',
     reComboHalfMarksRange$2 = '\\ufe20-\\ufe2f',
@@ -7503,11 +7818,16 @@ var reUnicodeWord = RegExp([
  * @param {string} The string to inspect.
  * @returns {Array} Returns the words of `string`.
  */
-function unicodeWords(string) {
+function unicodeWords$1(string) {
   return string.match(reUnicodeWord) || [];
 }
 
-var _unicodeWords = unicodeWords;
+var _unicodeWords = unicodeWords$1;
+
+var asciiWords = _asciiWords,
+    hasUnicodeWord = _hasUnicodeWord,
+    toString$3 = toString_1,
+    unicodeWords = _unicodeWords;
 
 /**
  * Splits `string` into an array of its words.
@@ -7528,17 +7848,21 @@ var _unicodeWords = unicodeWords;
  * _.words('fred, barney, & pebbles', /[^, ]+/g);
  * // => ['fred', 'barney', '&', 'pebbles']
  */
-function words(string, pattern, guard) {
-  string = toString_1(string);
+function words$1(string, pattern, guard) {
+  string = toString$3(string);
   pattern = guard ? undefined : pattern;
 
   if (pattern === undefined) {
-    return _hasUnicodeWord(string) ? _unicodeWords(string) : _asciiWords(string);
+    return hasUnicodeWord(string) ? unicodeWords(string) : asciiWords(string);
   }
   return string.match(pattern) || [];
 }
 
-var words_1 = words;
+var words_1 = words$1;
+
+var arrayReduce = _arrayReduce,
+    deburr = deburr_1,
+    words = words_1;
 
 /** Used to compose unicode capture groups. */
 var rsApos = "['\u2019]";
@@ -7553,13 +7877,15 @@ var reApos = RegExp(rsApos, 'g');
  * @param {Function} callback The function to combine each word.
  * @returns {Function} Returns the new compounder function.
  */
-function createCompounder(callback) {
+function createCompounder$2(callback) {
   return function(string) {
-    return _arrayReduce(words_1(deburr_1(string).replace(reApos, '')), callback, '');
+    return arrayReduce(words(deburr(string).replace(reApos, '')), callback, '');
   };
 }
 
-var _createCompounder = createCompounder;
+var _createCompounder = createCompounder$2;
+
+var createCompounder$1 = _createCompounder;
 
 /**
  * Converts `string` to
@@ -7582,7 +7908,7 @@ var _createCompounder = createCompounder;
  * _.snakeCase('--FOO-BAR--');
  * // => 'foo_bar'
  */
-var snakeCase = _createCompounder(function(result, word, index) {
+var snakeCase = createCompounder$1(function(result, word, index) {
   return result + (index ? '_' : '') + word.toLowerCase();
 });
 
@@ -7597,7 +7923,8 @@ var snakeCase_1 = snakeCase;
  * @param {number} [end=array.length] The end position.
  * @returns {Array} Returns the slice of `array`.
  */
-function baseSlice(array, start, end) {
+
+function baseSlice$1(array, start, end) {
   var index = -1,
       length = array.length;
 
@@ -7618,7 +7945,9 @@ function baseSlice(array, start, end) {
   return result;
 }
 
-var _baseSlice = baseSlice;
+var _baseSlice = baseSlice$1;
+
+var baseSlice = _baseSlice;
 
 /**
  * Casts `array` to a slice if it's needed.
@@ -7629,15 +7958,16 @@ var _baseSlice = baseSlice;
  * @param {number} [end=array.length] The end position.
  * @returns {Array} Returns the cast slice.
  */
-function castSlice(array, start, end) {
+function castSlice$1(array, start, end) {
   var length = array.length;
   end = end === undefined ? length : end;
-  return (!start && end >= length) ? array : _baseSlice(array, start, end);
+  return (!start && end >= length) ? array : baseSlice(array, start, end);
 }
 
-var _castSlice = castSlice;
+var _castSlice = castSlice$1;
 
 /** Used to compose unicode character classes. */
+
 var rsAstralRange$1 = '\\ud800-\\udfff',
     rsComboMarksRange$1 = '\\u0300-\\u036f',
     reComboHalfMarksRange$1 = '\\ufe20-\\ufe2f',
@@ -7658,11 +7988,11 @@ var reHasUnicode = RegExp('[' + rsZWJ$1 + rsAstralRange$1  + rsComboRange$1 + rs
  * @param {string} string The string to inspect.
  * @returns {boolean} Returns `true` if a symbol is found, else `false`.
  */
-function hasUnicode(string) {
+function hasUnicode$2(string) {
   return reHasUnicode.test(string);
 }
 
-var _hasUnicode = hasUnicode;
+var _hasUnicode = hasUnicode$2;
 
 /**
  * Converts an ASCII `string` to an array.
@@ -7671,13 +8001,15 @@ var _hasUnicode = hasUnicode;
  * @param {string} string The string to convert.
  * @returns {Array} Returns the converted array.
  */
-function asciiToArray(string) {
+
+function asciiToArray$1(string) {
   return string.split('');
 }
 
-var _asciiToArray = asciiToArray;
+var _asciiToArray = asciiToArray$1;
 
 /** Used to compose unicode character classes. */
+
 var rsAstralRange = '\\ud800-\\udfff',
     rsComboMarksRange = '\\u0300-\\u036f',
     reComboHalfMarksRange = '\\ufe20-\\ufe2f',
@@ -7712,11 +8044,15 @@ var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
  * @param {string} string The string to convert.
  * @returns {Array} Returns the converted array.
  */
-function unicodeToArray(string) {
+function unicodeToArray$1(string) {
   return string.match(reUnicode) || [];
 }
 
-var _unicodeToArray = unicodeToArray;
+var _unicodeToArray = unicodeToArray$1;
+
+var asciiToArray = _asciiToArray,
+    hasUnicode$1 = _hasUnicode,
+    unicodeToArray = _unicodeToArray;
 
 /**
  * Converts `string` to an array.
@@ -7725,13 +8061,18 @@ var _unicodeToArray = unicodeToArray;
  * @param {string} string The string to convert.
  * @returns {Array} Returns the converted array.
  */
-function stringToArray(string) {
-  return _hasUnicode(string)
-    ? _unicodeToArray(string)
-    : _asciiToArray(string);
+function stringToArray$1(string) {
+  return hasUnicode$1(string)
+    ? unicodeToArray(string)
+    : asciiToArray(string);
 }
 
-var _stringToArray = stringToArray;
+var _stringToArray = stringToArray$1;
+
+var castSlice = _castSlice,
+    hasUnicode = _hasUnicode,
+    stringToArray = _stringToArray,
+    toString$2 = toString_1;
 
 /**
  * Creates a function like `_.lowerFirst`.
@@ -7740,12 +8081,12 @@ var _stringToArray = stringToArray;
  * @param {string} methodName The name of the `String` case method to use.
  * @returns {Function} Returns the new case function.
  */
-function createCaseFirst(methodName) {
+function createCaseFirst$1(methodName) {
   return function(string) {
-    string = toString_1(string);
+    string = toString$2(string);
 
-    var strSymbols = _hasUnicode(string)
-      ? _stringToArray(string)
+    var strSymbols = hasUnicode(string)
+      ? stringToArray(string)
       : undefined;
 
     var chr = strSymbols
@@ -7753,14 +8094,16 @@ function createCaseFirst(methodName) {
       : string.charAt(0);
 
     var trailing = strSymbols
-      ? _castSlice(strSymbols, 1).join('')
+      ? castSlice(strSymbols, 1).join('')
       : string.slice(1);
 
     return chr[methodName]() + trailing;
   };
 }
 
-var _createCaseFirst = createCaseFirst;
+var _createCaseFirst = createCaseFirst$1;
+
+var createCaseFirst = _createCaseFirst;
 
 /**
  * Converts the first character of `string` to upper case.
@@ -7779,9 +8122,12 @@ var _createCaseFirst = createCaseFirst;
  * _.upperFirst('FRED');
  * // => 'FRED'
  */
-var upperFirst = _createCaseFirst('toUpperCase');
+var upperFirst$1 = createCaseFirst('toUpperCase');
 
-var upperFirst_1 = upperFirst;
+var upperFirst_1 = upperFirst$1;
+
+var toString$1 = toString_1,
+    upperFirst = upperFirst_1;
 
 /**
  * Converts the first character of `string` to upper case and the remaining
@@ -7798,11 +8144,14 @@ var upperFirst_1 = upperFirst;
  * _.capitalize('FRED');
  * // => 'Fred'
  */
-function capitalize(string) {
-  return upperFirst_1(toString_1(string).toLowerCase());
+function capitalize$1(string) {
+  return upperFirst(toString$1(string).toLowerCase());
 }
 
-var capitalize_1 = capitalize;
+var capitalize_1 = capitalize$1;
+
+var capitalize = capitalize_1,
+    createCompounder = _createCompounder;
 
 /**
  * Converts `string` to [camel case](https://en.wikipedia.org/wiki/CamelCase).
@@ -7824,12 +8173,16 @@ var capitalize_1 = capitalize;
  * _.camelCase('__FOO_BAR__');
  * // => 'fooBar'
  */
-var camelCase = _createCompounder(function(result, word, index) {
+var camelCase = createCompounder(function(result, word, index) {
   word = word.toLowerCase();
-  return result + (index ? capitalize_1(word) : word);
+  return result + (index ? capitalize(word) : word);
 });
 
 var camelCase_1 = camelCase;
+
+var baseAssignValue$1 = _baseAssignValue,
+    baseForOwn = _baseForOwn,
+    baseIteratee = _baseIteratee;
 
 /**
  * The opposite of `_.mapValues`; this method creates an object with the
@@ -7854,15 +8207,21 @@ var camelCase_1 = camelCase;
  */
 function mapKeys(object, iteratee) {
   var result = {};
-  iteratee = _baseIteratee(iteratee);
+  iteratee = baseIteratee(iteratee);
 
-  _baseForOwn(object, function(value, key, object) {
-    _baseAssignValue(result, iteratee(value, key, object), value);
+  baseForOwn(object, function(value, key, object) {
+    baseAssignValue$1(result, iteratee(value, key, object), value);
   });
   return result;
 }
 
 var mapKeys_1 = mapKeys;
+
+var toposortExports = {};
+var toposort$1 = {
+  get exports(){ return toposortExports; },
+  set exports(v){ toposortExports = v; },
+};
 
 /**
  * Topological sorting function
@@ -7871,11 +8230,11 @@ var mapKeys_1 = mapKeys;
  * @returns {Array}
  */
 
-var toposort_1 = function(edges) {
+toposort$1.exports = function(edges) {
   return toposort(uniqueNodes(edges), edges)
 };
 
-var array = toposort;
+toposortExports.array = toposort;
 
 function toposort(nodes, edges) {
   var cursor = nodes.length
@@ -7961,7 +8320,6 @@ function makeNodesHash(arr){
   }
   return res
 }
-toposort_1.array = array;
 
 function sortFields(fields, excludedEdges = []) {
   let edges = [];
@@ -7980,7 +8338,7 @@ function sortFields(fields, excludedEdges = []) {
     if (Reference.isRef(value) && value.isSibling) addNode(value.path, key);else if (isSchema(value) && 'deps' in value) value.deps.forEach(path => addNode(path, key));
   }
 
-  return toposort_1.array(Array.from(nodes), edges).reverse();
+  return toposortExports.array(Array.from(nodes), edges).reverse();
 }
 
 function findIndex(arr, err) {
@@ -8545,7 +8903,7 @@ var Symbol$2 = Symbol$1;
 var objectProto$d = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$b = objectProto$d.hasOwnProperty;
+var hasOwnProperty$a = objectProto$d.hasOwnProperty;
 
 /**
  * Used to resolve the
@@ -8565,7 +8923,7 @@ var symToStringTag$1 = Symbol$2 ? Symbol$2.toStringTag : undefined;
  * @returns {string} Returns the raw `toStringTag`.
  */
 function getRawTag(value) {
-  var isOwn = hasOwnProperty$b.call(value, symToStringTag$1),
+  var isOwn = hasOwnProperty$a.call(value, symToStringTag$1),
       tag = value[symToStringTag$1];
 
   try {
@@ -8686,7 +9044,7 @@ var funcProto$2 = Function.prototype,
 var funcToString$2 = funcProto$2.toString;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$a = objectProto$b.hasOwnProperty;
+var hasOwnProperty$9 = objectProto$b.hasOwnProperty;
 
 /** Used to infer the `Object` constructor. */
 var objectCtorString = funcToString$2.call(Object);
@@ -8727,7 +9085,7 @@ function isPlainObject(value) {
   if (proto === null) {
     return true;
   }
-  var Ctor = hasOwnProperty$a.call(proto, 'constructor') && proto.constructor;
+  var Ctor = hasOwnProperty$9.call(proto, 'constructor') && proto.constructor;
   return typeof Ctor == 'function' && Ctor instanceof Ctor &&
     funcToString$2.call(Ctor) == objectCtorString;
 }
@@ -9089,11 +9447,11 @@ var funcProto = Function.prototype,
 var funcToString = funcProto.toString;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$9 = objectProto$a.hasOwnProperty;
+var hasOwnProperty$8 = objectProto$a.hasOwnProperty;
 
 /** Used to detect if a method is native. */
 var reIsNative = RegExp('^' +
-  funcToString.call(hasOwnProperty$9).replace(reRegExpChar, '\\$&')
+  funcToString.call(hasOwnProperty$8).replace(reRegExpChar, '\\$&')
   .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 );
 
@@ -9183,7 +9541,7 @@ var HASH_UNDEFINED$1 = '__lodash_hash_undefined__';
 var objectProto$9 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$8 = objectProto$9.hasOwnProperty;
+var hasOwnProperty$7 = objectProto$9.hasOwnProperty;
 
 /**
  * Gets the hash value for `key`.
@@ -9200,14 +9558,14 @@ function hashGet(key) {
     var result = data[key];
     return result === HASH_UNDEFINED$1 ? undefined : result;
   }
-  return hasOwnProperty$8.call(data, key) ? data[key] : undefined;
+  return hasOwnProperty$7.call(data, key) ? data[key] : undefined;
 }
 
 /** Used for built-in method references. */
 var objectProto$8 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$7 = objectProto$8.hasOwnProperty;
+var hasOwnProperty$6 = objectProto$8.hasOwnProperty;
 
 /**
  * Checks if a hash value for `key` exists.
@@ -9220,7 +9578,7 @@ var hasOwnProperty$7 = objectProto$8.hasOwnProperty;
  */
 function hashHas(key) {
   var data = this.__data__;
-  return nativeCreate$1 ? (data[key] !== undefined) : hasOwnProperty$7.call(data, key);
+  return nativeCreate$1 ? (data[key] !== undefined) : hasOwnProperty$6.call(data, key);
 }
 
 /** Used to stand-in for `undefined` hash values. */
@@ -9503,7 +9861,7 @@ function baseAssignValue(object, key, value) {
 var objectProto$7 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$6 = objectProto$7.hasOwnProperty;
+var hasOwnProperty$5 = objectProto$7.hasOwnProperty;
 
 /**
  * Assigns `value` to `key` of `object` if the existing value is not equivalent
@@ -9517,7 +9875,7 @@ var hasOwnProperty$6 = objectProto$7.hasOwnProperty;
  */
 function assignValue(object, key, value) {
   var objValue = object[key];
-  if (!(hasOwnProperty$6.call(object, key) && eq(objValue, value)) ||
+  if (!(hasOwnProperty$5.call(object, key) && eq(objValue, value)) ||
       (value === undefined && !(key in object))) {
     baseAssignValue(object, key, value);
   }
@@ -9596,7 +9954,7 @@ function baseIsArguments(value) {
 var objectProto$6 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$5 = objectProto$6.hasOwnProperty;
+var hasOwnProperty$4 = objectProto$6.hasOwnProperty;
 
 /** Built-in value references. */
 var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
@@ -9620,7 +9978,7 @@ var propertyIsEnumerable$1 = objectProto$6.propertyIsEnumerable;
  * // => false
  */
 var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty$5.call(value, 'callee') &&
+  return isObjectLike(value) && hasOwnProperty$4.call(value, 'callee') &&
     !propertyIsEnumerable$1.call(value, 'callee');
 };
 
@@ -9889,7 +10247,7 @@ var isTypedArray$1 = isTypedArray;
 var objectProto$5 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$4 = objectProto$5.hasOwnProperty;
+var hasOwnProperty$3 = objectProto$5.hasOwnProperty;
 
 /**
  * Creates an array of the enumerable property names of the array-like `value`.
@@ -9909,7 +10267,7 @@ function arrayLikeKeys(value, inherited) {
       length = result.length;
 
   for (var key in value) {
-    if ((inherited || hasOwnProperty$4.call(value, key)) &&
+    if ((inherited || hasOwnProperty$3.call(value, key)) &&
         !(skipIndexes && (
            // Safari 9 has enumerable `arguments.length` in strict mode.
            key == 'length' ||
@@ -9952,7 +10310,7 @@ var nativeKeys$1 = nativeKeys;
 var objectProto$3 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$3 = objectProto$3.hasOwnProperty;
+var hasOwnProperty$2 = objectProto$3.hasOwnProperty;
 
 /**
  * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
@@ -9967,7 +10325,7 @@ function baseKeys(object) {
   }
   var result = [];
   for (var key in Object(object)) {
-    if (hasOwnProperty$3.call(object, key) && key != 'constructor') {
+    if (hasOwnProperty$2.call(object, key) && key != 'constructor') {
       result.push(key);
     }
   }
@@ -10071,7 +10429,7 @@ function nativeKeysIn(object) {
 var objectProto$2 = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$2 = objectProto$2.hasOwnProperty;
+var hasOwnProperty$1 = objectProto$2.hasOwnProperty;
 
 /**
  * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
@@ -10088,7 +10446,7 @@ function baseKeysIn(object) {
       result = [];
 
   for (var key in object) {
-    if (!(key == 'constructor' && (isProto || !hasOwnProperty$2.call(object, key)))) {
+    if (!(key == 'constructor' && (isProto || !hasOwnProperty$1.call(object, key)))) {
       result.push(key);
     }
   }
@@ -10438,7 +10796,7 @@ var getTag$1 = getTag;
 var objectProto = Object.prototype;
 
 /** Used to check objects for own properties. */
-var hasOwnProperty$1 = objectProto.hasOwnProperty;
+var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
  * Initializes an array clone.
@@ -10452,7 +10810,7 @@ function initCloneArray(array) {
       result = new array.constructor(length);
 
   // Add properties assigned by `RegExp#exec`.
-  if (length && typeof array[0] == 'string' && hasOwnProperty$1.call(array, 'index')) {
+  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
     result.index = array.index;
     result.input = array.input;
   }
@@ -11178,6 +11536,14 @@ function warning$1(condition, message) {
   }
 }
 
+var reactIsExports = {};
+var reactIs$1 = {
+  get exports(){ return reactIsExports; },
+  set exports(v){ reactIsExports = v; },
+};
+
+var reactIs_production_min = {};
+
 /** @license React v16.13.1
  * react-is.production.min.js
  *
@@ -11186,226 +11552,227 @@ function warning$1(condition, message) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+var hasRequiredReactIs_production_min;
+
+function requireReactIs_production_min () {
+	if (hasRequiredReactIs_production_min) return reactIs_production_min;
+	hasRequiredReactIs_production_min = 1;
 var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
-Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}var AsyncMode=l;var ConcurrentMode=m;var ContextConsumer=k;var ContextProvider=h;var Element$1=c;var ForwardRef=n;var Fragment=e;var Lazy=t;var Memo=r;var Portal=d;
-var Profiler=g;var StrictMode=f;var Suspense=p;var isAsyncMode=function(a){return A(a)||z(a)===l};var isConcurrentMode=A;var isContextConsumer=function(a){return z(a)===k};var isContextProvider=function(a){return z(a)===h};var isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};var isForwardRef=function(a){return z(a)===n};var isFragment=function(a){return z(a)===e};var isLazy=function(a){return z(a)===t};
-var isMemo=function(a){return z(a)===r};var isPortal=function(a){return z(a)===d};var isProfiler=function(a){return z(a)===g};var isStrictMode=function(a){return z(a)===f};var isSuspense=function(a){return z(a)===p};
-var isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};var typeOf=z;
-
-var reactIs_production_min = {
-	AsyncMode: AsyncMode,
-	ConcurrentMode: ConcurrentMode,
-	ContextConsumer: ContextConsumer,
-	ContextProvider: ContextProvider,
-	Element: Element$1,
-	ForwardRef: ForwardRef,
-	Fragment: Fragment,
-	Lazy: Lazy,
-	Memo: Memo,
-	Portal: Portal,
-	Profiler: Profiler,
-	StrictMode: StrictMode,
-	Suspense: Suspense,
-	isAsyncMode: isAsyncMode,
-	isConcurrentMode: isConcurrentMode,
-	isContextConsumer: isContextConsumer,
-	isContextProvider: isContextProvider,
-	isElement: isElement,
-	isForwardRef: isForwardRef,
-	isFragment: isFragment,
-	isLazy: isLazy,
-	isMemo: isMemo,
-	isPortal: isPortal,
-	isProfiler: isProfiler,
-	isStrictMode: isStrictMode,
-	isSuspense: isSuspense,
-	isValidElementType: isValidElementType,
-	typeOf: typeOf
-};
-
-var reactIs_development = createCommonjsModule(function (module, exports) {
-
-
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-// (unstable) APIs that have been removed. Can we remove the symbols?
-
-var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+	Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
+	function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}reactIs_production_min.AsyncMode=l;reactIs_production_min.ConcurrentMode=m;reactIs_production_min.ContextConsumer=k;reactIs_production_min.ContextProvider=h;reactIs_production_min.Element=c;reactIs_production_min.ForwardRef=n;reactIs_production_min.Fragment=e;reactIs_production_min.Lazy=t;reactIs_production_min.Memo=r;reactIs_production_min.Portal=d;
+	reactIs_production_min.Profiler=g;reactIs_production_min.StrictMode=f;reactIs_production_min.Suspense=p;reactIs_production_min.isAsyncMode=function(a){return A(a)||z(a)===l};reactIs_production_min.isConcurrentMode=A;reactIs_production_min.isContextConsumer=function(a){return z(a)===k};reactIs_production_min.isContextProvider=function(a){return z(a)===h};reactIs_production_min.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};reactIs_production_min.isForwardRef=function(a){return z(a)===n};reactIs_production_min.isFragment=function(a){return z(a)===e};reactIs_production_min.isLazy=function(a){return z(a)===t};
+	reactIs_production_min.isMemo=function(a){return z(a)===r};reactIs_production_min.isPortal=function(a){return z(a)===d};reactIs_production_min.isProfiler=function(a){return z(a)===g};reactIs_production_min.isStrictMode=function(a){return z(a)===f};reactIs_production_min.isSuspense=function(a){return z(a)===p};
+	reactIs_production_min.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};reactIs_production_min.typeOf=z;
+	return reactIs_production_min;
 }
 
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
+var reactIs_development = {};
 
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
-        switch (type) {
-          case REACT_ASYNC_MODE_TYPE:
-          case REACT_CONCURRENT_MODE_TYPE:
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-          case REACT_SUSPENSE_TYPE:
-            return type;
+var hasRequiredReactIs_development;
 
-          default:
-            var $$typeofType = type && type.$$typeof;
+function requireReactIs_development () {
+	if (hasRequiredReactIs_development) return reactIs_development;
+	hasRequiredReactIs_development = 1;
 
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
 
-              default:
-                return $$typeof;
-            }
 
-        }
+	if (process.env.NODE_ENV !== "production") {
+	  (function() {
 
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
+	// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+	// nor polyfill, then a plain number is used for performance.
+	var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+	var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+	var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+	var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+	var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+	var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+	var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+	var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+	// (unstable) APIs that have been removed. Can we remove the symbols?
 
-  return undefined;
-} // AsyncMode is deprecated along with isAsyncMode
+	var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+	var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+	var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+	var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+	var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+	var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+	var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+	var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+	var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+	var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+	var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
 
-var AsyncMode = REACT_ASYNC_MODE_TYPE;
-var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Lazy = REACT_LAZY_TYPE;
-var Memo = REACT_MEMO_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+	function isValidElementType(type) {
+	  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+	  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+	}
 
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+	function typeOf(object) {
+	  if (typeof object === 'object' && object !== null) {
+	    var $$typeof = object.$$typeof;
 
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-    }
-  }
+	    switch ($$typeof) {
+	      case REACT_ELEMENT_TYPE:
+	        var type = object.type;
 
-  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+	        switch (type) {
+	          case REACT_ASYNC_MODE_TYPE:
+	          case REACT_CONCURRENT_MODE_TYPE:
+	          case REACT_FRAGMENT_TYPE:
+	          case REACT_PROFILER_TYPE:
+	          case REACT_STRICT_MODE_TYPE:
+	          case REACT_SUSPENSE_TYPE:
+	            return type;
+
+	          default:
+	            var $$typeofType = type && type.$$typeof;
+
+	            switch ($$typeofType) {
+	              case REACT_CONTEXT_TYPE:
+	              case REACT_FORWARD_REF_TYPE:
+	              case REACT_LAZY_TYPE:
+	              case REACT_MEMO_TYPE:
+	              case REACT_PROVIDER_TYPE:
+	                return $$typeofType;
+
+	              default:
+	                return $$typeof;
+	            }
+
+	        }
+
+	      case REACT_PORTAL_TYPE:
+	        return $$typeof;
+	    }
+	  }
+
+	  return undefined;
+	} // AsyncMode is deprecated along with isAsyncMode
+
+	var AsyncMode = REACT_ASYNC_MODE_TYPE;
+	var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+	var ContextConsumer = REACT_CONTEXT_TYPE;
+	var ContextProvider = REACT_PROVIDER_TYPE;
+	var Element = REACT_ELEMENT_TYPE;
+	var ForwardRef = REACT_FORWARD_REF_TYPE;
+	var Fragment = REACT_FRAGMENT_TYPE;
+	var Lazy = REACT_LAZY_TYPE;
+	var Memo = REACT_MEMO_TYPE;
+	var Portal = REACT_PORTAL_TYPE;
+	var Profiler = REACT_PROFILER_TYPE;
+	var StrictMode = REACT_STRICT_MODE_TYPE;
+	var Suspense = REACT_SUSPENSE_TYPE;
+	var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+	function isAsyncMode(object) {
+	  {
+	    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+	      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+	      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+	    }
+	  }
+
+	  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+	}
+	function isConcurrentMode(object) {
+	  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+	}
+	function isContextConsumer(object) {
+	  return typeOf(object) === REACT_CONTEXT_TYPE;
+	}
+	function isContextProvider(object) {
+	  return typeOf(object) === REACT_PROVIDER_TYPE;
+	}
+	function isElement(object) {
+	  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+	}
+	function isForwardRef(object) {
+	  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+	}
+	function isFragment(object) {
+	  return typeOf(object) === REACT_FRAGMENT_TYPE;
+	}
+	function isLazy(object) {
+	  return typeOf(object) === REACT_LAZY_TYPE;
+	}
+	function isMemo(object) {
+	  return typeOf(object) === REACT_MEMO_TYPE;
+	}
+	function isPortal(object) {
+	  return typeOf(object) === REACT_PORTAL_TYPE;
+	}
+	function isProfiler(object) {
+	  return typeOf(object) === REACT_PROFILER_TYPE;
+	}
+	function isStrictMode(object) {
+	  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+	}
+	function isSuspense(object) {
+	  return typeOf(object) === REACT_SUSPENSE_TYPE;
+	}
+
+	reactIs_development.AsyncMode = AsyncMode;
+	reactIs_development.ConcurrentMode = ConcurrentMode;
+	reactIs_development.ContextConsumer = ContextConsumer;
+	reactIs_development.ContextProvider = ContextProvider;
+	reactIs_development.Element = Element;
+	reactIs_development.ForwardRef = ForwardRef;
+	reactIs_development.Fragment = Fragment;
+	reactIs_development.Lazy = Lazy;
+	reactIs_development.Memo = Memo;
+	reactIs_development.Portal = Portal;
+	reactIs_development.Profiler = Profiler;
+	reactIs_development.StrictMode = StrictMode;
+	reactIs_development.Suspense = Suspense;
+	reactIs_development.isAsyncMode = isAsyncMode;
+	reactIs_development.isConcurrentMode = isConcurrentMode;
+	reactIs_development.isContextConsumer = isContextConsumer;
+	reactIs_development.isContextProvider = isContextProvider;
+	reactIs_development.isElement = isElement;
+	reactIs_development.isForwardRef = isForwardRef;
+	reactIs_development.isFragment = isFragment;
+	reactIs_development.isLazy = isLazy;
+	reactIs_development.isMemo = isMemo;
+	reactIs_development.isPortal = isPortal;
+	reactIs_development.isProfiler = isProfiler;
+	reactIs_development.isStrictMode = isStrictMode;
+	reactIs_development.isSuspense = isSuspense;
+	reactIs_development.isValidElementType = isValidElementType;
+	reactIs_development.typeOf = typeOf;
+	  })();
+	}
+	return reactIs_development;
 }
-function isConcurrentMode(object) {
-  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isLazy(object) {
-  return typeOf(object) === REACT_LAZY_TYPE;
-}
-function isMemo(object) {
-  return typeOf(object) === REACT_MEMO_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-function isSuspense(object) {
-  return typeOf(object) === REACT_SUSPENSE_TYPE;
+
+var hasRequiredReactIs;
+
+function requireReactIs () {
+	if (hasRequiredReactIs) return reactIsExports;
+	hasRequiredReactIs = 1;
+	(function (module) {
+
+		if (process.env.NODE_ENV === 'production') {
+		  module.exports = requireReactIs_production_min();
+		} else {
+		  module.exports = requireReactIs_development();
+		}
+} (reactIs$1));
+	return reactIsExports;
 }
 
-exports.AsyncMode = AsyncMode;
-exports.ConcurrentMode = ConcurrentMode;
-exports.ContextConsumer = ContextConsumer;
-exports.ContextProvider = ContextProvider;
-exports.Element = Element;
-exports.ForwardRef = ForwardRef;
-exports.Fragment = Fragment;
-exports.Lazy = Lazy;
-exports.Memo = Memo;
-exports.Portal = Portal;
-exports.Profiler = Profiler;
-exports.StrictMode = StrictMode;
-exports.Suspense = Suspense;
-exports.isAsyncMode = isAsyncMode;
-exports.isConcurrentMode = isConcurrentMode;
-exports.isContextConsumer = isContextConsumer;
-exports.isContextProvider = isContextProvider;
-exports.isElement = isElement;
-exports.isForwardRef = isForwardRef;
-exports.isFragment = isFragment;
-exports.isLazy = isLazy;
-exports.isMemo = isMemo;
-exports.isPortal = isPortal;
-exports.isProfiler = isProfiler;
-exports.isStrictMode = isStrictMode;
-exports.isSuspense = isSuspense;
-exports.isValidElementType = isValidElementType;
-exports.typeOf = typeOf;
-  })();
-}
-});
-
-var reactIs = createCommonjsModule(function (module) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = reactIs_production_min;
-} else {
-  module.exports = reactIs_development;
-}
-});
-
+var reactIs = requireReactIs();
 var FORWARD_REF_STATICS = {
   '$$typeof': true,
   render: true,
@@ -13002,67 +13369,78 @@ FieldArrayInner.defaultProps = {
   validateOnChange: true
 };
 
-var classnames = createCommonjsModule(function (module) {
+var classnamesExports = {};
+var classnames = {
+  get exports(){ return classnamesExports; },
+  set exports(v){ classnamesExports = v; },
+};
+
 /*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
 */
-/* global define */
 
-(function () {
+(function (module) {
+	/* global define */
 
-	var hasOwn = {}.hasOwnProperty;
+	(function () {
 
-	function classNames() {
-		var classes = [];
+		var hasOwn = {}.hasOwnProperty;
 
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
+		function classNames() {
+			var classes = [];
 
-			var argType = typeof arg;
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
 
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				if (arg.length) {
-					var inner = classNames.apply(null, arg);
-					if (inner) {
-						classes.push(inner);
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					if (arg.length) {
+						var inner = classNames.apply(null, arg);
+						if (inner) {
+							classes.push(inner);
+						}
 					}
-				}
-			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
+				} else if (argType === 'object') {
+					if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+						classes.push(arg.toString());
+						continue;
+					}
+
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
 							classes.push(key);
 						}
 					}
-				} else {
-					classes.push(arg.toString());
 				}
 			}
+
+			return classes.join(' ');
 		}
 
-		return classes.join(' ');
-	}
+		if (module.exports) {
+			classNames.default = classNames;
+			module.exports = classNames;
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+} (classnames));
 
-	if (module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else {
-		window.classNames = classNames;
-	}
-}());
-});
+var classNames = classnamesExports;
 
 const DEFAULT_BREAKPOINTS = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'];
+const DEFAULT_MIN_BREAKPOINT = 'xs';
 const ThemeContext = /*#__PURE__*/React.createContext({
   prefixes: {},
-  breakpoints: DEFAULT_BREAKPOINTS
+  breakpoints: DEFAULT_BREAKPOINTS,
+  minBreakpoint: DEFAULT_MIN_BREAKPOINT
 });
-
 function useBootstrapPrefix(prefix, defaultPrefix) {
   const {
     prefixes
@@ -13075,95 +13453,257 @@ function useBootstrapBreakpoints() {
   } = useContext(ThemeContext);
   return breakpoints;
 }
+function useBootstrapMinBreakpoint() {
+  const {
+    minBreakpoint
+  } = useContext(ThemeContext);
+  return minBreakpoint;
+}
+
+var propTypesExports = {};
+var propTypes$2 = {
+  get exports(){ return propTypesExports; },
+  set exports(v){ propTypesExports = v; },
+};
 
 /*
 object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
+var objectAssign;
+var hasRequiredObjectAssign;
+
+function requireObjectAssign () {
+	if (hasRequiredObjectAssign) return objectAssign;
+	hasRequiredObjectAssign = 1;
+	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+
+		return Object(val);
 	}
 
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
+	function shouldUseNative() {
+		try {
+			if (!Object.assign) {
+				return false;
 			}
-		}
 
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
+			// Detect buggy property enumeration order in older V8 versions.
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			test1[5] = 'de';
+			if (Object.getOwnPropertyNames(test1)[0] === '5') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test2 = {};
+			for (var i = 0; i < 10; i++) {
+				test2['_' + String.fromCharCode(i)] = i;
+			}
+			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+				return test2[n];
+			});
+			if (order2.join('') !== '0123456789') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test3 = {};
+			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+				test3[letter] = letter;
+			});
+			if (Object.keys(Object.assign({}, test3)).join('') !==
+					'abcdefghijklmnopqrst') {
+				return false;
+			}
+
+			return true;
+		} catch (err) {
+			// We don't expect any of the above to throw, but better to be safe.
+			return false;
+		}
+	}
+
+	objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+		var from;
+		var to = toObject(target);
+		var symbols;
+
+		for (var s = 1; s < arguments.length; s++) {
+			from = Object(arguments[s]);
+
+			for (var key in from) {
+				if (hasOwnProperty.call(from, key)) {
+					to[key] = from[key];
+				}
+			}
+
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
+				for (var i = 0; i < symbols.length; i++) {
+					if (propIsEnumerable.call(from, symbols[i])) {
+						to[symbols[i]] = from[symbols[i]];
+					}
 				}
 			}
 		}
+
+		return to;
+	};
+	return objectAssign;
+}
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret_1;
+var hasRequiredReactPropTypesSecret;
+
+function requireReactPropTypesSecret () {
+	if (hasRequiredReactPropTypesSecret) return ReactPropTypesSecret_1;
+	hasRequiredReactPropTypesSecret = 1;
+
+	var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+	ReactPropTypesSecret_1 = ReactPropTypesSecret;
+	return ReactPropTypesSecret_1;
+}
+
+var has;
+var hasRequiredHas;
+
+function requireHas () {
+	if (hasRequiredHas) return has;
+	hasRequiredHas = 1;
+	has = Function.call.bind(Object.prototype.hasOwnProperty);
+	return has;
+}
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var checkPropTypes_1;
+var hasRequiredCheckPropTypes;
+
+function requireCheckPropTypes () {
+	if (hasRequiredCheckPropTypes) return checkPropTypes_1;
+	hasRequiredCheckPropTypes = 1;
+
+	var printWarning = function() {};
+
+	if (process.env.NODE_ENV !== 'production') {
+	  var ReactPropTypesSecret = requireReactPropTypesSecret();
+	  var loggedTypeFailures = {};
+	  var has = requireHas();
+
+	  printWarning = function(text) {
+	    var message = 'Warning: ' + text;
+	    if (typeof console !== 'undefined') {
+	      console.error(message);
+	    }
+	    try {
+	      // --- Welcome to debugging React ---
+	      // This error was thrown as a convenience so that you can use this stack
+	      // to find the callsite that caused this warning to fire.
+	      throw new Error(message);
+	    } catch (x) { /**/ }
+	  };
 	}
 
-	return to;
-};
+	/**
+	 * Assert that the values match with the type specs.
+	 * Error messages are memorized and will only be shown once.
+	 *
+	 * @param {object} typeSpecs Map of name to a ReactPropType
+	 * @param {object} values Runtime values that need to be type-checked
+	 * @param {string} location e.g. "prop", "context", "child context"
+	 * @param {string} componentName Name of the component for error messages.
+	 * @param {?Function} getStack Returns the component stack.
+	 * @private
+	 */
+	function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    for (var typeSpecName in typeSpecs) {
+	      if (has(typeSpecs, typeSpecName)) {
+	        var error;
+	        // Prop type validation may throw. In case they do, we don't want to
+	        // fail the render phase where it didn't fail before. So we log it.
+	        // After these have been cleaned up, we'll let them throw.
+	        try {
+	          // This is intentionally an invariant that gets caught. It's the same
+	          // behavior as without this statement except with a better message.
+	          if (typeof typeSpecs[typeSpecName] !== 'function') {
+	            var err = Error(
+	              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+	              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+	              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
+	            );
+	            err.name = 'Invariant Violation';
+	            throw err;
+	          }
+	          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+	        } catch (ex) {
+	          error = ex;
+	        }
+	        if (error && !(error instanceof Error)) {
+	          printWarning(
+	            (componentName || 'React class') + ': type specification of ' +
+	            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+	            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+	            'You may have forgotten to pass an argument to the type checker ' +
+	            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+	            'shape all require an argument).'
+	          );
+	        }
+	        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+	          // Only monitor this failure once because there tends to be a lot of the
+	          // same error.
+	          loggedTypeFailures[error.message] = true;
+
+	          var stack = getStack ? getStack() : '';
+
+	          printWarning(
+	            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+	          );
+	        }
+	      }
+	    }
+	  }
+	}
+
+	/**
+	 * Resets warning cache when testing.
+	 *
+	 * @private
+	 */
+	checkPropTypes.resetWarningCache = function() {
+	  if (process.env.NODE_ENV !== 'production') {
+	    loggedTypeFailures = {};
+	  }
+	};
+
+	checkPropTypes_1 = checkPropTypes;
+	return checkPropTypes_1;
+}
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -13172,766 +13712,688 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var factoryWithTypeCheckers;
+var hasRequiredFactoryWithTypeCheckers;
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$2;
+function requireFactoryWithTypeCheckers () {
+	if (hasRequiredFactoryWithTypeCheckers) return factoryWithTypeCheckers;
+	hasRequiredFactoryWithTypeCheckers = 1;
 
-var has$2 = Function.call.bind(Object.prototype.hasOwnProperty);
+	var ReactIs = requireReactIs();
+	var assign = requireObjectAssign();
 
-var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+	var ReactPropTypesSecret = requireReactPropTypesSecret();
+	var has = requireHas();
+	var checkPropTypes = requireCheckPropTypes();
 
-var has$1 = has$2;
+	var printWarning = function() {};
 
-var printWarning$2 = function() {};
+	if (process.env.NODE_ENV !== 'production') {
+	  printWarning = function(text) {
+	    var message = 'Warning: ' + text;
+	    if (typeof console !== 'undefined') {
+	      console.error(message);
+	    }
+	    try {
+	      // --- Welcome to debugging React ---
+	      // This error was thrown as a convenience so that you can use this stack
+	      // to find the callsite that caused this warning to fire.
+	      throw new Error(message);
+	    } catch (x) {}
+	  };
+	}
 
-if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = ReactPropTypesSecret$1;
-  var loggedTypeFailures = {};
-  var has = has$1;
+	function emptyFunctionThatReturnsNull() {
+	  return null;
+	}
 
-  printWarning$2 = function(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) { /**/ }
-  };
+	factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
+	  /* global Symbol */
+	  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+	  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+	  /**
+	   * Returns the iterator method function contained on the iterable object.
+	   *
+	   * Be sure to invoke the function with the iterable as context:
+	   *
+	   *     var iteratorFn = getIteratorFn(myIterable);
+	   *     if (iteratorFn) {
+	   *       var iterator = iteratorFn.call(myIterable);
+	   *       ...
+	   *     }
+	   *
+	   * @param {?object} maybeIterable
+	   * @return {?function}
+	   */
+	  function getIteratorFn(maybeIterable) {
+	    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+	    if (typeof iteratorFn === 'function') {
+	      return iteratorFn;
+	    }
+	  }
+
+	  /**
+	   * Collection of methods that allow declaration and validation of props that are
+	   * supplied to React components. Example usage:
+	   *
+	   *   var Props = require('ReactPropTypes');
+	   *   var MyArticle = React.createClass({
+	   *     propTypes: {
+	   *       // An optional string prop named "description".
+	   *       description: Props.string,
+	   *
+	   *       // A required enum prop named "category".
+	   *       category: Props.oneOf(['News','Photos']).isRequired,
+	   *
+	   *       // A prop named "dialog" that requires an instance of Dialog.
+	   *       dialog: Props.instanceOf(Dialog).isRequired
+	   *     },
+	   *     render: function() { ... }
+	   *   });
+	   *
+	   * A more formal specification of how these methods are used:
+	   *
+	   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+	   *   decl := ReactPropTypes.{type}(.isRequired)?
+	   *
+	   * Each and every declaration produces a function with the same signature. This
+	   * allows the creation of custom validation functions. For example:
+	   *
+	   *  var MyLink = React.createClass({
+	   *    propTypes: {
+	   *      // An optional string or URI prop named "href".
+	   *      href: function(props, propName, componentName) {
+	   *        var propValue = props[propName];
+	   *        if (propValue != null && typeof propValue !== 'string' &&
+	   *            !(propValue instanceof URI)) {
+	   *          return new Error(
+	   *            'Expected a string or an URI for ' + propName + ' in ' +
+	   *            componentName
+	   *          );
+	   *        }
+	   *      }
+	   *    },
+	   *    render: function() {...}
+	   *  });
+	   *
+	   * @internal
+	   */
+
+	  var ANONYMOUS = '<<anonymous>>';
+
+	  // Important!
+	  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+	  var ReactPropTypes = {
+	    array: createPrimitiveTypeChecker('array'),
+	    bigint: createPrimitiveTypeChecker('bigint'),
+	    bool: createPrimitiveTypeChecker('boolean'),
+	    func: createPrimitiveTypeChecker('function'),
+	    number: createPrimitiveTypeChecker('number'),
+	    object: createPrimitiveTypeChecker('object'),
+	    string: createPrimitiveTypeChecker('string'),
+	    symbol: createPrimitiveTypeChecker('symbol'),
+
+	    any: createAnyTypeChecker(),
+	    arrayOf: createArrayOfTypeChecker,
+	    element: createElementTypeChecker(),
+	    elementType: createElementTypeTypeChecker(),
+	    instanceOf: createInstanceTypeChecker,
+	    node: createNodeChecker(),
+	    objectOf: createObjectOfTypeChecker,
+	    oneOf: createEnumTypeChecker,
+	    oneOfType: createUnionTypeChecker,
+	    shape: createShapeTypeChecker,
+	    exact: createStrictShapeTypeChecker,
+	  };
+
+	  /**
+	   * inlined Object.is polyfill to avoid requiring consumers ship their own
+	   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+	   */
+	  /*eslint-disable no-self-compare*/
+	  function is(x, y) {
+	    // SameValue algorithm
+	    if (x === y) {
+	      // Steps 1-5, 7-10
+	      // Steps 6.b-6.e: +0 != -0
+	      return x !== 0 || 1 / x === 1 / y;
+	    } else {
+	      // Step 6.a: NaN == NaN
+	      return x !== x && y !== y;
+	    }
+	  }
+	  /*eslint-enable no-self-compare*/
+
+	  /**
+	   * We use an Error-like object for backward compatibility as people may call
+	   * PropTypes directly and inspect their output. However, we don't use real
+	   * Errors anymore. We don't inspect their stack anyway, and creating them
+	   * is prohibitively expensive if they are created too often, such as what
+	   * happens in oneOfType() for any type before the one that matched.
+	   */
+	  function PropTypeError(message, data) {
+	    this.message = message;
+	    this.data = data && typeof data === 'object' ? data: {};
+	    this.stack = '';
+	  }
+	  // Make `instanceof Error` still work for returned errors.
+	  PropTypeError.prototype = Error.prototype;
+
+	  function createChainableTypeChecker(validate) {
+	    if (process.env.NODE_ENV !== 'production') {
+	      var manualPropTypeCallCache = {};
+	      var manualPropTypeWarningCount = 0;
+	    }
+	    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+	      componentName = componentName || ANONYMOUS;
+	      propFullName = propFullName || propName;
+
+	      if (secret !== ReactPropTypesSecret) {
+	        if (throwOnDirectAccess) {
+	          // New behavior only for users of `prop-types` package
+	          var err = new Error(
+	            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+	            'Use `PropTypes.checkPropTypes()` to call them. ' +
+	            'Read more at http://fb.me/use-check-prop-types'
+	          );
+	          err.name = 'Invariant Violation';
+	          throw err;
+	        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+	          // Old behavior for people using React.PropTypes
+	          var cacheKey = componentName + ':' + propName;
+	          if (
+	            !manualPropTypeCallCache[cacheKey] &&
+	            // Avoid spamming the console because they are often not actionable except for lib authors
+	            manualPropTypeWarningCount < 3
+	          ) {
+	            printWarning(
+	              'You are manually calling a React.PropTypes validation ' +
+	              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
+	              'and will throw in the standalone `prop-types` package. ' +
+	              'You may be seeing this warning due to a third-party PropTypes ' +
+	              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+	            );
+	            manualPropTypeCallCache[cacheKey] = true;
+	            manualPropTypeWarningCount++;
+	          }
+	        }
+	      }
+	      if (props[propName] == null) {
+	        if (isRequired) {
+	          if (props[propName] === null) {
+	            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+	          }
+	          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+	        }
+	        return null;
+	      } else {
+	        return validate(props, propName, componentName, location, propFullName);
+	      }
+	    }
+
+	    var chainedCheckType = checkType.bind(null, false);
+	    chainedCheckType.isRequired = checkType.bind(null, true);
+
+	    return chainedCheckType;
+	  }
+
+	  function createPrimitiveTypeChecker(expectedType) {
+	    function validate(props, propName, componentName, location, propFullName, secret) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== expectedType) {
+	        // `propValue` being instance of, say, date/regexp, pass the 'object'
+	        // check, but we can offer a more precise error message here rather than
+	        // 'of type `object`'.
+	        var preciseType = getPreciseType(propValue);
+
+	        return new PropTypeError(
+	          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+	          {expectedType: expectedType}
+	        );
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createAnyTypeChecker() {
+	    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+	  }
+
+	  function createArrayOfTypeChecker(typeChecker) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (typeof typeChecker !== 'function') {
+	        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+	      }
+	      var propValue = props[propName];
+	      if (!Array.isArray(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+	      }
+	      for (var i = 0; i < propValue.length; i++) {
+	        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+	        if (error instanceof Error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createElementTypeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      if (!isValidElement(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createElementTypeTypeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      if (!ReactIs.isValidElementType(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createInstanceTypeChecker(expectedClass) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (!(props[propName] instanceof expectedClass)) {
+	        var expectedClassName = expectedClass.name || ANONYMOUS;
+	        var actualClassName = getClassName(props[propName]);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createEnumTypeChecker(expectedValues) {
+	    if (!Array.isArray(expectedValues)) {
+	      if (process.env.NODE_ENV !== 'production') {
+	        if (arguments.length > 1) {
+	          printWarning(
+	            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+	            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+	          );
+	        } else {
+	          printWarning('Invalid argument supplied to oneOf, expected an array.');
+	        }
+	      }
+	      return emptyFunctionThatReturnsNull;
+	    }
+
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      for (var i = 0; i < expectedValues.length; i++) {
+	        if (is(propValue, expectedValues[i])) {
+	          return null;
+	        }
+	      }
+
+	      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+	        var type = getPreciseType(value);
+	        if (type === 'symbol') {
+	          return String(value);
+	        }
+	        return value;
+	      });
+	      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createObjectOfTypeChecker(typeChecker) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (typeof typeChecker !== 'function') {
+	        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+	      }
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+	      }
+	      for (var key in propValue) {
+	        if (has(propValue, key)) {
+	          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	          if (error instanceof Error) {
+	            return error;
+	          }
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createUnionTypeChecker(arrayOfTypeCheckers) {
+	    if (!Array.isArray(arrayOfTypeCheckers)) {
+	      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+	      return emptyFunctionThatReturnsNull;
+	    }
+
+	    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+	      var checker = arrayOfTypeCheckers[i];
+	      if (typeof checker !== 'function') {
+	        printWarning(
+	          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+	          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+	        );
+	        return emptyFunctionThatReturnsNull;
+	      }
+	    }
+
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var expectedTypes = [];
+	      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+	        var checker = arrayOfTypeCheckers[i];
+	        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+	        if (checkerResult == null) {
+	          return null;
+	        }
+	        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+	          expectedTypes.push(checkerResult.data.expectedType);
+	        }
+	      }
+	      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+	      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createNodeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (!isNode(props[propName])) {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function invalidValidatorError(componentName, location, propFullName, key, type) {
+	    return new PropTypeError(
+	      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+	      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+	    );
+	  }
+
+	  function createShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      for (var key in shapeTypes) {
+	        var checker = shapeTypes[key];
+	        if (typeof checker !== 'function') {
+	          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createStrictShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      // We need to check all keys in case some are required but missing from props.
+	      var allKeys = assign({}, props[propName], shapeTypes);
+	      for (var key in allKeys) {
+	        var checker = shapeTypes[key];
+	        if (has(shapeTypes, key) && typeof checker !== 'function') {
+	          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+	        }
+	        if (!checker) {
+	          return new PropTypeError(
+	            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+	            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+	            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
+	          );
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function isNode(propValue) {
+	    switch (typeof propValue) {
+	      case 'number':
+	      case 'string':
+	      case 'undefined':
+	        return true;
+	      case 'boolean':
+	        return !propValue;
+	      case 'object':
+	        if (Array.isArray(propValue)) {
+	          return propValue.every(isNode);
+	        }
+	        if (propValue === null || isValidElement(propValue)) {
+	          return true;
+	        }
+
+	        var iteratorFn = getIteratorFn(propValue);
+	        if (iteratorFn) {
+	          var iterator = iteratorFn.call(propValue);
+	          var step;
+	          if (iteratorFn !== propValue.entries) {
+	            while (!(step = iterator.next()).done) {
+	              if (!isNode(step.value)) {
+	                return false;
+	              }
+	            }
+	          } else {
+	            // Iterator will provide entry [k,v] tuples rather than values.
+	            while (!(step = iterator.next()).done) {
+	              var entry = step.value;
+	              if (entry) {
+	                if (!isNode(entry[1])) {
+	                  return false;
+	                }
+	              }
+	            }
+	          }
+	        } else {
+	          return false;
+	        }
+
+	        return true;
+	      default:
+	        return false;
+	    }
+	  }
+
+	  function isSymbol(propType, propValue) {
+	    // Native Symbol.
+	    if (propType === 'symbol') {
+	      return true;
+	    }
+
+	    // falsy value can't be a Symbol
+	    if (!propValue) {
+	      return false;
+	    }
+
+	    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+	    if (propValue['@@toStringTag'] === 'Symbol') {
+	      return true;
+	    }
+
+	    // Fallback for non-spec compliant Symbols which are polyfilled.
+	    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+	      return true;
+	    }
+
+	    return false;
+	  }
+
+	  // Equivalent of `typeof` but with special handling for array and regexp.
+	  function getPropType(propValue) {
+	    var propType = typeof propValue;
+	    if (Array.isArray(propValue)) {
+	      return 'array';
+	    }
+	    if (propValue instanceof RegExp) {
+	      // Old webkits (at least until Android 4.0) return 'function' rather than
+	      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+	      // passes PropTypes.object.
+	      return 'object';
+	    }
+	    if (isSymbol(propType, propValue)) {
+	      return 'symbol';
+	    }
+	    return propType;
+	  }
+
+	  // This handles more types than `getPropType`. Only used for error messages.
+	  // See `createPrimitiveTypeChecker`.
+	  function getPreciseType(propValue) {
+	    if (typeof propValue === 'undefined' || propValue === null) {
+	      return '' + propValue;
+	    }
+	    var propType = getPropType(propValue);
+	    if (propType === 'object') {
+	      if (propValue instanceof Date) {
+	        return 'date';
+	      } else if (propValue instanceof RegExp) {
+	        return 'regexp';
+	      }
+	    }
+	    return propType;
+	  }
+
+	  // Returns a string that is postfixed to a warning about an invalid type.
+	  // For example, "undefined" or "of type array"
+	  function getPostfixForTypeWarning(value) {
+	    var type = getPreciseType(value);
+	    switch (type) {
+	      case 'array':
+	      case 'object':
+	        return 'an ' + type;
+	      case 'boolean':
+	      case 'date':
+	      case 'regexp':
+	        return 'a ' + type;
+	      default:
+	        return type;
+	    }
+	  }
+
+	  // Returns class name of the object, if any.
+	  function getClassName(propValue) {
+	    if (!propValue.constructor || !propValue.constructor.name) {
+	      return ANONYMOUS;
+	    }
+	    return propValue.constructor.name;
+	  }
+
+	  ReactPropTypes.checkPropTypes = checkPropTypes;
+	  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+
+	  return ReactPropTypes;
+	};
+	return factoryWithTypeCheckers;
 }
 
 /**
- * Assert that the values match with the type specs.
- * Error messages are memorized and will only be shown once.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * @param {object} typeSpecs Map of name to a ReactPropType
- * @param {object} values Runtime values that need to be type-checked
- * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
- * @private
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
-function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
-  if (process.env.NODE_ENV !== 'production') {
-    for (var typeSpecName in typeSpecs) {
-      if (has(typeSpecs, typeSpecName)) {
-        var error;
-        // Prop type validation may throw. In case they do, we don't want to
-        // fail the render phase where it didn't fail before. So we log it.
-        // After these have been cleaned up, we'll let them throw.
-        try {
-          // This is intentionally an invariant that gets caught. It's the same
-          // behavior as without this statement except with a better message.
-          if (typeof typeSpecs[typeSpecName] !== 'function') {
-            var err = Error(
-              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
-              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
-              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
-            );
-            err.name = 'Invariant Violation';
-            throw err;
-          }
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
-        } catch (ex) {
-          error = ex;
-        }
-        if (error && !(error instanceof Error)) {
-          printWarning$2(
-            (componentName || 'React class') + ': type specification of ' +
-            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
-            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
-            'You may have forgotten to pass an argument to the type checker ' +
-            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
-            'shape all require an argument).'
-          );
-        }
-        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-          // Only monitor this failure once because there tends to be a lot of the
-          // same error.
-          loggedTypeFailures[error.message] = true;
 
-          var stack = getStack ? getStack() : '';
+var factoryWithThrowingShims;
+var hasRequiredFactoryWithThrowingShims;
 
-          printWarning$2(
-            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
-          );
-        }
-      }
-    }
-  }
+function requireFactoryWithThrowingShims () {
+	if (hasRequiredFactoryWithThrowingShims) return factoryWithThrowingShims;
+	hasRequiredFactoryWithThrowingShims = 1;
+
+	var ReactPropTypesSecret = requireReactPropTypesSecret();
+
+	function emptyFunction() {}
+	function emptyFunctionWithReset() {}
+	emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+	factoryWithThrowingShims = function() {
+	  function shim(props, propName, componentName, location, propFullName, secret) {
+	    if (secret === ReactPropTypesSecret) {
+	      // It is still safe when called from React.
+	      return;
+	    }
+	    var err = new Error(
+	      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+	      'Use PropTypes.checkPropTypes() to call them. ' +
+	      'Read more at http://fb.me/use-check-prop-types'
+	    );
+	    err.name = 'Invariant Violation';
+	    throw err;
+	  }	  shim.isRequired = shim;
+	  function getShim() {
+	    return shim;
+	  }	  // Important!
+	  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+	  var ReactPropTypes = {
+	    array: shim,
+	    bigint: shim,
+	    bool: shim,
+	    func: shim,
+	    number: shim,
+	    object: shim,
+	    string: shim,
+	    symbol: shim,
+
+	    any: shim,
+	    arrayOf: getShim,
+	    element: shim,
+	    elementType: shim,
+	    instanceOf: getShim,
+	    node: shim,
+	    objectOf: getShim,
+	    oneOf: getShim,
+	    oneOfType: getShim,
+	    shape: getShim,
+	    exact: getShim,
+
+	    checkPropTypes: emptyFunctionWithReset,
+	    resetWarningCache: emptyFunction
+	  };
+
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+
+	  return ReactPropTypes;
+	};
+	return factoryWithThrowingShims;
 }
 
-/**
- * Resets warning cache when testing.
- *
- * @private
- */
-checkPropTypes$1.resetWarningCache = function() {
-  if (process.env.NODE_ENV !== 'production') {
-    loggedTypeFailures = {};
-  }
-};
-
-var checkPropTypes_1 = checkPropTypes$1;
-
-var checkPropTypes = checkPropTypes_1;
-
-var printWarning$1 = function() {};
-
-if (process.env.NODE_ENV !== 'production') {
-  printWarning$1 = function(text) {
-    var message = 'Warning: ' + text;
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-
-function emptyFunctionThatReturnsNull() {
-  return null;
-}
-
-var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
-  /* global Symbol */
-  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-
-  /**
-   * Returns the iterator method function contained on the iterable object.
-   *
-   * Be sure to invoke the function with the iterable as context:
-   *
-   *     var iteratorFn = getIteratorFn(myIterable);
-   *     if (iteratorFn) {
-   *       var iterator = iteratorFn.call(myIterable);
-   *       ...
-   *     }
-   *
-   * @param {?object} maybeIterable
-   * @return {?function}
-   */
-  function getIteratorFn(maybeIterable) {
-    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
-    if (typeof iteratorFn === 'function') {
-      return iteratorFn;
-    }
-  }
-
-  /**
-   * Collection of methods that allow declaration and validation of props that are
-   * supplied to React components. Example usage:
-   *
-   *   var Props = require('ReactPropTypes');
-   *   var MyArticle = React.createClass({
-   *     propTypes: {
-   *       // An optional string prop named "description".
-   *       description: Props.string,
-   *
-   *       // A required enum prop named "category".
-   *       category: Props.oneOf(['News','Photos']).isRequired,
-   *
-   *       // A prop named "dialog" that requires an instance of Dialog.
-   *       dialog: Props.instanceOf(Dialog).isRequired
-   *     },
-   *     render: function() { ... }
-   *   });
-   *
-   * A more formal specification of how these methods are used:
-   *
-   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-   *   decl := ReactPropTypes.{type}(.isRequired)?
-   *
-   * Each and every declaration produces a function with the same signature. This
-   * allows the creation of custom validation functions. For example:
-   *
-   *  var MyLink = React.createClass({
-   *    propTypes: {
-   *      // An optional string or URI prop named "href".
-   *      href: function(props, propName, componentName) {
-   *        var propValue = props[propName];
-   *        if (propValue != null && typeof propValue !== 'string' &&
-   *            !(propValue instanceof URI)) {
-   *          return new Error(
-   *            'Expected a string or an URI for ' + propName + ' in ' +
-   *            componentName
-   *          );
-   *        }
-   *      }
-   *    },
-   *    render: function() {...}
-   *  });
-   *
-   * @internal
-   */
-
-  var ANONYMOUS = '<<anonymous>>';
-
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
-  var ReactPropTypes = {
-    array: createPrimitiveTypeChecker('array'),
-    bigint: createPrimitiveTypeChecker('bigint'),
-    bool: createPrimitiveTypeChecker('boolean'),
-    func: createPrimitiveTypeChecker('function'),
-    number: createPrimitiveTypeChecker('number'),
-    object: createPrimitiveTypeChecker('object'),
-    string: createPrimitiveTypeChecker('string'),
-    symbol: createPrimitiveTypeChecker('symbol'),
-
-    any: createAnyTypeChecker(),
-    arrayOf: createArrayOfTypeChecker,
-    element: createElementTypeChecker(),
-    elementType: createElementTypeTypeChecker(),
-    instanceOf: createInstanceTypeChecker,
-    node: createNodeChecker(),
-    objectOf: createObjectOfTypeChecker,
-    oneOf: createEnumTypeChecker,
-    oneOfType: createUnionTypeChecker,
-    shape: createShapeTypeChecker,
-    exact: createStrictShapeTypeChecker,
-  };
-
-  /**
-   * inlined Object.is polyfill to avoid requiring consumers ship their own
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-   */
-  /*eslint-disable no-self-compare*/
-  function is(x, y) {
-    // SameValue algorithm
-    if (x === y) {
-      // Steps 1-5, 7-10
-      // Steps 6.b-6.e: +0 != -0
-      return x !== 0 || 1 / x === 1 / y;
-    } else {
-      // Step 6.a: NaN == NaN
-      return x !== x && y !== y;
-    }
-  }
-  /*eslint-enable no-self-compare*/
-
-  /**
-   * We use an Error-like object for backward compatibility as people may call
-   * PropTypes directly and inspect their output. However, we don't use real
-   * Errors anymore. We don't inspect their stack anyway, and creating them
-   * is prohibitively expensive if they are created too often, such as what
-   * happens in oneOfType() for any type before the one that matched.
-   */
-  function PropTypeError(message, data) {
-    this.message = message;
-    this.data = data && typeof data === 'object' ? data: {};
-    this.stack = '';
-  }
-  // Make `instanceof Error` still work for returned errors.
-  PropTypeError.prototype = Error.prototype;
-
-  function createChainableTypeChecker(validate) {
-    if (process.env.NODE_ENV !== 'production') {
-      var manualPropTypeCallCache = {};
-      var manualPropTypeWarningCount = 0;
-    }
-    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-      componentName = componentName || ANONYMOUS;
-      propFullName = propFullName || propName;
-
-      if (secret !== ReactPropTypesSecret$1) {
-        if (throwOnDirectAccess) {
-          // New behavior only for users of `prop-types` package
-          var err = new Error(
-            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
-            'Use `PropTypes.checkPropTypes()` to call them. ' +
-            'Read more at http://fb.me/use-check-prop-types'
-          );
-          err.name = 'Invariant Violation';
-          throw err;
-        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
-          // Old behavior for people using React.PropTypes
-          var cacheKey = componentName + ':' + propName;
-          if (
-            !manualPropTypeCallCache[cacheKey] &&
-            // Avoid spamming the console because they are often not actionable except for lib authors
-            manualPropTypeWarningCount < 3
-          ) {
-            printWarning$1(
-              'You are manually calling a React.PropTypes validation ' +
-              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
-              'and will throw in the standalone `prop-types` package. ' +
-              'You may be seeing this warning due to a third-party PropTypes ' +
-              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
-            );
-            manualPropTypeCallCache[cacheKey] = true;
-            manualPropTypeWarningCount++;
-          }
-        }
-      }
-      if (props[propName] == null) {
-        if (isRequired) {
-          if (props[propName] === null) {
-            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
-          }
-          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
-        }
-        return null;
-      } else {
-        return validate(props, propName, componentName, location, propFullName);
-      }
-    }
-
-    var chainedCheckType = checkType.bind(null, false);
-    chainedCheckType.isRequired = checkType.bind(null, true);
-
-    return chainedCheckType;
-  }
-
-  function createPrimitiveTypeChecker(expectedType) {
-    function validate(props, propName, componentName, location, propFullName, secret) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== expectedType) {
-        // `propValue` being instance of, say, date/regexp, pass the 'object'
-        // check, but we can offer a more precise error message here rather than
-        // 'of type `object`'.
-        var preciseType = getPreciseType(propValue);
-
-        return new PropTypeError(
-          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
-          {expectedType: expectedType}
-        );
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
-  }
-
-  function createArrayOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-      }
-      var propValue = props[propName];
-      if (!Array.isArray(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-      }
-      for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret$1);
-        if (error instanceof Error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!isValidElement(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createElementTypeTypeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      if (!reactIs.isValidElementType(propValue)) {
-        var propType = getPropType(propValue);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createInstanceTypeChecker(expectedClass) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!(props[propName] instanceof expectedClass)) {
-        var expectedClassName = expectedClass.name || ANONYMOUS;
-        var actualClassName = getClassName(props[propName]);
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createEnumTypeChecker(expectedValues) {
-    if (!Array.isArray(expectedValues)) {
-      if (process.env.NODE_ENV !== 'production') {
-        if (arguments.length > 1) {
-          printWarning$1(
-            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
-            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
-          );
-        } else {
-          printWarning$1('Invalid argument supplied to oneOf, expected an array.');
-        }
-      }
-      return emptyFunctionThatReturnsNull;
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      for (var i = 0; i < expectedValues.length; i++) {
-        if (is(propValue, expectedValues[i])) {
-          return null;
-        }
-      }
-
-      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
-        var type = getPreciseType(value);
-        if (type === 'symbol') {
-          return String(value);
-        }
-        return value;
-      });
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createObjectOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (typeof typeChecker !== 'function') {
-        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-      }
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-      }
-      for (var key in propValue) {
-        if (has$1(propValue, key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
-          if (error instanceof Error) {
-            return error;
-          }
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createUnionTypeChecker(arrayOfTypeCheckers) {
-    if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning$1('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunctionThatReturnsNull;
-    }
-
-    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-      var checker = arrayOfTypeCheckers[i];
-      if (typeof checker !== 'function') {
-        printWarning$1(
-          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
-          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
-        );
-        return emptyFunctionThatReturnsNull;
-      }
-    }
-
-    function validate(props, propName, componentName, location, propFullName) {
-      var expectedTypes = [];
-      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-        var checker = arrayOfTypeCheckers[i];
-        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret$1);
-        if (checkerResult == null) {
-          return null;
-        }
-        if (checkerResult.data && has$1(checkerResult.data, 'expectedType')) {
-          expectedTypes.push(checkerResult.data.expectedType);
-        }
-      }
-      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createNodeChecker() {
-    function validate(props, propName, componentName, location, propFullName) {
-      if (!isNode(props[propName])) {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function invalidValidatorError(componentName, location, propFullName, key, type) {
-    return new PropTypeError(
-      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
-      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
-    );
-  }
-
-  function createShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      for (var key in shapeTypes) {
-        var checker = shapeTypes[key];
-        if (typeof checker !== 'function') {
-          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-    return createChainableTypeChecker(validate);
-  }
-
-  function createStrictShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location, propFullName) {
-      var propValue = props[propName];
-      var propType = getPropType(propValue);
-      if (propType !== 'object') {
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-      }
-      // We need to check all keys in case some are required but missing from props.
-      var allKeys = objectAssign({}, props[propName], shapeTypes);
-      for (var key in allKeys) {
-        var checker = shapeTypes[key];
-        if (has$1(shapeTypes, key) && typeof checker !== 'function') {
-          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
-        }
-        if (!checker) {
-          return new PropTypeError(
-            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
-            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
-            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
-          );
-        }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret$1);
-        if (error) {
-          return error;
-        }
-      }
-      return null;
-    }
-
-    return createChainableTypeChecker(validate);
-  }
-
-  function isNode(propValue) {
-    switch (typeof propValue) {
-      case 'number':
-      case 'string':
-      case 'undefined':
-        return true;
-      case 'boolean':
-        return !propValue;
-      case 'object':
-        if (Array.isArray(propValue)) {
-          return propValue.every(isNode);
-        }
-        if (propValue === null || isValidElement(propValue)) {
-          return true;
-        }
-
-        var iteratorFn = getIteratorFn(propValue);
-        if (iteratorFn) {
-          var iterator = iteratorFn.call(propValue);
-          var step;
-          if (iteratorFn !== propValue.entries) {
-            while (!(step = iterator.next()).done) {
-              if (!isNode(step.value)) {
-                return false;
-              }
-            }
-          } else {
-            // Iterator will provide entry [k,v] tuples rather than values.
-            while (!(step = iterator.next()).done) {
-              var entry = step.value;
-              if (entry) {
-                if (!isNode(entry[1])) {
-                  return false;
-                }
-              }
-            }
-          }
-        } else {
-          return false;
-        }
-
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  function isSymbol(propType, propValue) {
-    // Native Symbol.
-    if (propType === 'symbol') {
-      return true;
-    }
-
-    // falsy value can't be a Symbol
-    if (!propValue) {
-      return false;
-    }
-
-    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-    if (propValue['@@toStringTag'] === 'Symbol') {
-      return true;
-    }
-
-    // Fallback for non-spec compliant Symbols which are polyfilled.
-    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-      return true;
-    }
-
-    return false;
-  }
-
-  // Equivalent of `typeof` but with special handling for array and regexp.
-  function getPropType(propValue) {
-    var propType = typeof propValue;
-    if (Array.isArray(propValue)) {
-      return 'array';
-    }
-    if (propValue instanceof RegExp) {
-      // Old webkits (at least until Android 4.0) return 'function' rather than
-      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-      // passes PropTypes.object.
-      return 'object';
-    }
-    if (isSymbol(propType, propValue)) {
-      return 'symbol';
-    }
-    return propType;
-  }
-
-  // This handles more types than `getPropType`. Only used for error messages.
-  // See `createPrimitiveTypeChecker`.
-  function getPreciseType(propValue) {
-    if (typeof propValue === 'undefined' || propValue === null) {
-      return '' + propValue;
-    }
-    var propType = getPropType(propValue);
-    if (propType === 'object') {
-      if (propValue instanceof Date) {
-        return 'date';
-      } else if (propValue instanceof RegExp) {
-        return 'regexp';
-      }
-    }
-    return propType;
-  }
-
-  // Returns a string that is postfixed to a warning about an invalid type.
-  // For example, "undefined" or "of type array"
-  function getPostfixForTypeWarning(value) {
-    var type = getPreciseType(value);
-    switch (type) {
-      case 'array':
-      case 'object':
-        return 'an ' + type;
-      case 'boolean':
-      case 'date':
-      case 'regexp':
-        return 'a ' + type;
-      default:
-        return type;
-    }
-  }
-
-  // Returns class name of the object, if any.
-  function getClassName(propValue) {
-    if (!propValue.constructor || !propValue.constructor.name) {
-      return ANONYMOUS;
-    }
-    return propValue.constructor.name;
-  }
-
-  ReactPropTypes.checkPropTypes = checkPropTypes;
-  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-
-function emptyFunction() {}
-function emptyFunctionWithReset() {}
-emptyFunctionWithReset.resetWarningCache = emptyFunction;
-
-var factoryWithThrowingShims = function() {
-  function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret$1) {
-      // It is still safe when called from React.
-      return;
-    }
-    var err = new Error(
-      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
-      'Use PropTypes.checkPropTypes() to call them. ' +
-      'Read more at http://fb.me/use-check-prop-types'
-    );
-    err.name = 'Invariant Violation';
-    throw err;
-  }  shim.isRequired = shim;
-  function getShim() {
-    return shim;
-  }  // Important!
-  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
-  var ReactPropTypes = {
-    array: shim,
-    bigint: shim,
-    bool: shim,
-    func: shim,
-    number: shim,
-    object: shim,
-    string: shim,
-    symbol: shim,
-
-    any: shim,
-    arrayOf: getShim,
-    element: shim,
-    elementType: shim,
-    instanceOf: getShim,
-    node: shim,
-    objectOf: getShim,
-    oneOf: getShim,
-    oneOfType: getShim,
-    shape: getShim,
-    exact: getShim,
-
-    checkPropTypes: emptyFunctionWithReset,
-    resetWarningCache: emptyFunction
-  };
-
-  ReactPropTypes.PropTypes = ReactPropTypes;
-
-  return ReactPropTypes;
-};
-
-var require$$1 = factoryWithTypeCheckers;
-
-var require$$2 = factoryWithThrowingShims;
-
-var propTypes$2 = createCommonjsModule(function (module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -13940,23 +14402,19 @@ var propTypes$2 = createCommonjsModule(function (module) {
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = reactIs;
+  var ReactIs = requireReactIs();
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = require$$1(ReactIs.isElement, throwOnDirectAccess);
+  propTypes$2.exports = requireFactoryWithTypeCheckers()(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = require$$2();
+  propTypes$2.exports = requireFactoryWithThrowingShims()();
 }
-});
-
-var PropTypes = propTypes$2;
 
 const _excluded$1 = ["as", "disabled"];
-
 function _objectWithoutPropertiesLoose$1(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 function isTrivialHref(href) {
   return !href || href.trim() === '#';
@@ -13967,6 +14425,7 @@ function useButtonProps({
   href,
   target,
   rel,
+  role,
   onClick,
   tabIndex = 0,
   type
@@ -13978,49 +14437,40 @@ function useButtonProps({
       tagName = 'button';
     }
   }
-
   const meta = {
     tagName
   };
-
   if (tagName === 'button') {
     return [{
       type: type || 'button',
       disabled
     }, meta];
   }
-
   const handleClick = event => {
     if (disabled || tagName === 'a' && isTrivialHref(href)) {
       event.preventDefault();
     }
-
     if (disabled) {
       event.stopPropagation();
       return;
     }
-
     onClick == null ? void 0 : onClick(event);
   };
-
   const handleKeyDown = event => {
     if (event.key === ' ') {
       event.preventDefault();
       handleClick(event);
     }
   };
-
   if (tagName === 'a') {
     // Ensure there's a href so Enter can trigger anchor button.
     href || (href = '#');
-
     if (disabled) {
       href = undefined;
     }
   }
-
   return [{
-    role: 'button',
+    role: role != null ? role : 'button',
     // explicitly undefined so that it overrides the props disabled in a spread
     // e.g. <Tag {...props} {...hookProps} />
     disabled: undefined,
@@ -14033,13 +14483,12 @@ function useButtonProps({
     onKeyDown: handleKeyDown
   }, meta];
 }
-const Button$1 = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+const Button$2 = /*#__PURE__*/React.forwardRef((_ref, ref) => {
   let {
-    as: asProp,
-    disabled
-  } = _ref,
-      props = _objectWithoutPropertiesLoose$1(_ref, _excluded$1);
-
+      as: asProp,
+      disabled
+    } = _ref,
+    props = _objectWithoutPropertiesLoose$1(_ref, _excluded$1);
   const [buttonProps, {
     tagName: Component
   }] = useButtonProps(Object.assign({
@@ -14050,7 +14499,7 @@ const Button$1 = /*#__PURE__*/React.forwardRef((_ref, ref) => {
     ref: ref
   }));
 });
-Button$1.displayName = 'Button';
+Button$2.displayName = 'Button';
 
 var rHyphen = /-(.)/g;
 function camelize(string) {
@@ -14060,7 +14509,6 @@ function camelize(string) {
 }
 
 const pascalCase = str => str[0].toUpperCase() + camelize(str).slice(1);
-
 // TODO: emstricten & fix the typing here! `createWithBsPrefix<TElementType>...`
 function createWithBsPrefix(prefix, {
   displayName = pascalCase(prefix),
@@ -14076,7 +14524,7 @@ function createWithBsPrefix(prefix, {
     const resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix);
     return /*#__PURE__*/jsx(Tag, {
       ref: ref,
-      className: classnames(className, resolvedPrefix),
+      className: classNames(className, resolvedPrefix),
       ...props
     });
   });
@@ -14107,21 +14555,21 @@ const Button = /*#__PURE__*/React.forwardRef(({
     ...props
   });
   const Component = tagName;
-  return /*#__PURE__*/jsx(Component, { ...buttonProps,
+  return /*#__PURE__*/jsx(Component, {
+    ...buttonProps,
     ...props,
     ref: ref,
-    className: classnames(className, prefix, active && 'active', variant && `${prefix}-${variant}`, size && `${prefix}-${size}`, props.href && props.disabled && 'disabled')
+    className: classNames(className, prefix, active && 'active', variant && `${prefix}-${variant}`, size && `${prefix}-${size}`, props.href && props.disabled && 'disabled')
   });
 });
 Button.displayName = 'Button';
 Button.defaultProps = defaultProps$2;
+var Button$1 = Button;
 
 /**
  * Finds whether a component's `children` prop includes a React element of the
  * specified type.
  */
-
-
 function hasChildOfType(children, type) {
   return React.Children.toArray(children).some(child => /*#__PURE__*/React.isValidElement(child) && child.type === type);
 }
@@ -14134,6 +14582,7 @@ function useCol({
 }) {
   bsPrefix = useBootstrapPrefix(bsPrefix, 'col');
   const breakpoints = useBootstrapBreakpoints();
+  const minBreakpoint = useBootstrapMinBreakpoint();
   const spans = [];
   const classes = [];
   breakpoints.forEach(brkPoint => {
@@ -14142,7 +14591,6 @@ function useCol({
     let span;
     let offset;
     let order;
-
     if (typeof propValue === 'object' && propValue != null) {
       ({
         span,
@@ -14152,21 +14600,22 @@ function useCol({
     } else {
       span = propValue;
     }
-
-    const infix = brkPoint !== 'xs' ? `-${brkPoint}` : '';
+    const infix = brkPoint !== minBreakpoint ? `-${brkPoint}` : '';
     if (span) spans.push(span === true ? `${bsPrefix}${infix}` : `${bsPrefix}${infix}-${span}`);
     if (order != null) classes.push(`order${infix}-${order}`);
     if (offset != null) classes.push(`offset${infix}-${offset}`);
   });
-  return [{ ...props,
-    className: classnames(className, ...spans, ...classes)
+  return [{
+    ...props,
+    className: classNames(className, ...spans, ...classes)
   }, {
     as,
     bsPrefix,
     spans
   }];
 }
-const Col = /*#__PURE__*/React.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+const Col = /*#__PURE__*/React.forwardRef(
+// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 (props, ref) => {
   const [{
     className,
@@ -14176,9 +14625,10 @@ const Col = /*#__PURE__*/React.forwardRef( // Need to define the default "as" du
     bsPrefix,
     spans
   }] = useCol(props);
-  return /*#__PURE__*/jsx(Component, { ...colProps,
+  return /*#__PURE__*/jsx(Component, {
+    ...colProps,
     ref: ref,
-    className: classnames(className, !spans.length && bsPrefix)
+    className: classNames(className, !spans.length && bsPrefix)
   });
 });
 Col.displayName = 'Col';
@@ -14251,26 +14701,29 @@ const propTypes$1 = {
    *
    * @type {('valid'|'invalid')}
    */
-  type: PropTypes.string,
-
+  type: propTypesExports.string,
   /** Display feedback as a tooltip. */
-  tooltip: PropTypes.bool,
-  as: PropTypes.elementType
+  tooltip: propTypesExports.bool,
+  as: propTypesExports.elementType
 };
-const Feedback = /*#__PURE__*/React.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+const Feedback = /*#__PURE__*/React.forwardRef(
+// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 ({
   as: Component = 'div',
   className,
   type = 'valid',
   tooltip = false,
   ...props
-}, ref) => /*#__PURE__*/jsx(Component, { ...props,
+}, ref) => /*#__PURE__*/jsx(Component, {
+  ...props,
   ref: ref,
-  className: classnames(className, `${type}-${tooltip ? 'tooltip' : 'feedback'}`)
+  className: classNames(className, `${type}-${tooltip ? 'tooltip' : 'feedback'}`)
 }));
 Feedback.displayName = 'Feedback';
 Feedback.propTypes = propTypes$1;
 var Feedback$1 = Feedback;
+
+// TODO
 
 const FormContext = /*#__PURE__*/React.createContext({});
 var FormContext$1 = FormContext;
@@ -14290,11 +14743,12 @@ const FormCheckInput = /*#__PURE__*/React.forwardRef(({
     controlId
   } = useContext(FormContext$1);
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-check-input');
-  return /*#__PURE__*/jsx(Component, { ...props,
+  return /*#__PURE__*/jsx(Component, {
+    ...props,
     ref: ref,
     type: type,
     id: id || controlId,
-    className: classnames(className, bsPrefix, isValid && 'is-valid', isInvalid && 'is-invalid')
+    className: classNames(className, bsPrefix, isValid && 'is-valid', isInvalid && 'is-invalid')
   });
 });
 FormCheckInput.displayName = 'FormCheckInput';
@@ -14310,10 +14764,11 @@ const FormCheckLabel = /*#__PURE__*/React.forwardRef(({
     controlId
   } = useContext(FormContext$1);
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-check-label');
-  return /*#__PURE__*/jsx("label", { ...props,
+  return /*#__PURE__*/jsx("label", {
+    ...props,
     ref: ref,
     htmlFor: htmlFor || controlId,
-    className: classnames(className, bsPrefix)
+    className: classNames(className, bsPrefix)
   });
 });
 FormCheckLabel.displayName = 'FormCheckLabel';
@@ -14324,6 +14779,7 @@ const FormCheck = /*#__PURE__*/React.forwardRef(({
   bsPrefix,
   bsSwitchPrefix,
   inline = false,
+  reverse = false,
   disabled = false,
   isValid = false,
   isInvalid = false,
@@ -14349,8 +14805,8 @@ const FormCheck = /*#__PURE__*/React.forwardRef(({
     controlId: id || controlId
   }), [controlId, id]);
   const hasLabel = !children && label != null && label !== false || hasChildOfType(children, FormCheckLabel$1);
-
-  const input = /*#__PURE__*/jsx(FormCheckInput$1, { ...props,
+  const input = /*#__PURE__*/jsx(FormCheckInput$1, {
+    ...props,
     type: type === 'switch' ? 'checkbox' : type,
     ref: ref,
     isValid: isValid,
@@ -14358,13 +14814,12 @@ const FormCheck = /*#__PURE__*/React.forwardRef(({
     disabled: disabled,
     as: as
   });
-
   return /*#__PURE__*/jsx(FormContext$1.Provider, {
     value: innerFormContext,
     children: /*#__PURE__*/jsx("div", {
       style: style,
-      className: classnames(className, hasLabel && bsPrefix, inline && `${bsPrefix}-inline`, type === 'switch' && bsSwitchPrefix),
-      children: children || /*#__PURE__*/jsxs(Fragment$1, {
+      className: classNames(className, hasLabel && bsPrefix, inline && `${bsPrefix}-inline`, reverse && `${bsPrefix}-reverse`, type === 'switch' && bsSwitchPrefix),
+      children: children || /*#__PURE__*/jsxs(Fragment, {
         children: [input, hasLabel && /*#__PURE__*/jsx(FormCheckLabel$1, {
           title: title,
           children: label
@@ -14403,7 +14858,6 @@ const FormControl = /*#__PURE__*/React.forwardRef(({
   } = useContext(FormContext$1);
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-control');
   let classes;
-
   if (plaintext) {
     classes = {
       [`${bsPrefix}-plaintext`]: true
@@ -14414,15 +14868,15 @@ const FormControl = /*#__PURE__*/React.forwardRef(({
       [`${bsPrefix}-${size}`]: size
     };
   }
-
   process.env.NODE_ENV !== "production" ? warning_1(controlId == null || !id, '`controlId` is ignored on `<FormControl>` when `id` is specified.') : void 0;
-  return /*#__PURE__*/jsx(Component, { ...props,
+  return /*#__PURE__*/jsx(Component, {
+    ...props,
     type: type,
     size: htmlSize,
     ref: ref,
     readOnly: readOnly,
     id: id || controlId,
-    className: classnames(className, classes, isValid && `is-valid`, isInvalid && `is-invalid`, type === 'color' && `${bsPrefix}-color`)
+    className: classNames(className, classes, isValid && `is-valid`, isInvalid && `is-invalid`, type === 'color' && `${bsPrefix}-color`)
   });
 });
 FormControl.displayName = 'FormControl';
@@ -14443,7 +14897,8 @@ const FormGroup = /*#__PURE__*/React.forwardRef(({
   }), [controlId]);
   return /*#__PURE__*/jsx(FormContext$1.Provider, {
     value: context,
-    children: /*#__PURE__*/jsx(Component, { ...props,
+    children: /*#__PURE__*/jsx(Component, {
+      ...props,
       ref: ref
     })
   });
@@ -14471,7 +14926,7 @@ const FormLabel = /*#__PURE__*/React.forwardRef(({
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-label');
   let columnClass = 'col-form-label';
   if (typeof column === 'string') columnClass = `${columnClass} ${columnClass}-${column}`;
-  const classes = classnames(className, bsPrefix, visuallyHidden && 'visually-hidden', column && columnClass);
+  const classes = classNames(className, bsPrefix, visuallyHidden && 'visually-hidden', column && columnClass);
   process.env.NODE_ENV !== "production" ? warning_1(controlId == null || !htmlFor, '`controlId` is ignored on `<FormLabel>` when `htmlFor` is specified.') : void 0;
   htmlFor = htmlFor || controlId;
   if (column) return /*#__PURE__*/jsx(Col$1, {
@@ -14506,10 +14961,11 @@ const FormRange = /*#__PURE__*/React.forwardRef(({
     controlId
   } = useContext(FormContext$1);
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-range');
-  return /*#__PURE__*/jsx("input", { ...props,
+  return /*#__PURE__*/jsx("input", {
+    ...props,
     type: "range",
     ref: ref,
-    className: classnames(className, bsPrefix),
+    className: classNames(className, bsPrefix),
     id: id || controlId
   });
 });
@@ -14530,17 +14986,19 @@ const FormSelect = /*#__PURE__*/React.forwardRef(({
     controlId
   } = useContext(FormContext$1);
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-select');
-  return /*#__PURE__*/jsx("select", { ...props,
+  return /*#__PURE__*/jsx("select", {
+    ...props,
     size: htmlSize,
     ref: ref,
-    className: classnames(className, bsPrefix, size && `${bsPrefix}-${size}`, isValid && `is-valid`, isInvalid && `is-invalid`),
+    className: classNames(className, bsPrefix, size && `${bsPrefix}-${size}`, isValid && `is-valid`, isInvalid && `is-invalid`),
     id: id || controlId
   });
 });
 FormSelect.displayName = 'FormSelect';
 var FormSelect$1 = FormSelect;
 
-const FormText = /*#__PURE__*/React.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+const FormText = /*#__PURE__*/React.forwardRef(
+// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
 ({
   bsPrefix,
   className,
@@ -14549,15 +15007,17 @@ const FormText = /*#__PURE__*/React.forwardRef( // Need to define the default "a
   ...props
 }, ref) => {
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-text');
-  return /*#__PURE__*/jsx(Component, { ...props,
+  return /*#__PURE__*/jsx(Component, {
+    ...props,
     ref: ref,
-    className: classnames(className, bsPrefix, muted && 'text-muted')
+    className: classNames(className, bsPrefix, muted && 'text-muted')
   });
 });
 FormText.displayName = 'FormText';
 var FormText$1 = FormText;
 
-const Switch = /*#__PURE__*/React.forwardRef((props, ref) => /*#__PURE__*/jsx(FormCheck$1, { ...props,
+const Switch = /*#__PURE__*/React.forwardRef((props, ref) => /*#__PURE__*/jsx(FormCheck$1, {
+  ...props,
   ref: ref,
   type: "switch"
 }));
@@ -14578,7 +15038,7 @@ const FloatingLabel = /*#__PURE__*/React.forwardRef(({
   bsPrefix = useBootstrapPrefix(bsPrefix, 'form-floating');
   return /*#__PURE__*/jsxs(FormGroup$1, {
     ref: ref,
-    className: classnames(className, bsPrefix),
+    className: classNames(className, bsPrefix),
     controlId: controlId,
     ...props,
     children: [children, /*#__PURE__*/jsx("label", {
@@ -14599,14 +15059,13 @@ const propTypes = {
    * @type {ReactRef}
    * @alias ref
    */
-  _ref: PropTypes.any,
-
+  _ref: propTypesExports.any,
   /**
    * Mark a form as having been validated. Setting it to `true` will
    * toggle any validation styles on the forms elements.
    */
-  validated: PropTypes.bool,
-  as: PropTypes.elementType
+  validated: propTypesExports.bool,
+  as: propTypesExports.elementType
 };
 const Form = /*#__PURE__*/React.forwardRef(({
   className,
@@ -14614,9 +15073,10 @@ const Form = /*#__PURE__*/React.forwardRef(({
   // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
   as: Component = 'form',
   ...props
-}, ref) => /*#__PURE__*/jsx(Component, { ...props,
+}, ref) => /*#__PURE__*/jsx(Component, {
+  ...props,
   ref: ref,
-  className: classnames(className, validated && 'was-validated')
+  className: classNames(className, validated && 'was-validated')
 }));
 Form.displayName = 'Form';
 Form.propTypes = propTypes;
@@ -14678,20 +15138,27 @@ var RegistrationForm = function (props) {
     /**
      * Validation Schema for registration values.
      */
-    var RegistrationValidationSchema = create().shape({
+    var RegistrationValidationSchema = create()
+        .shape({
         username: create$1()
-            .min(props.minUsernameLength || 5, props.usernameToShortErrorText || 'Der Benutzername ist zu kurz. Er muss mindestens 4 Zeichen lang sein. ')
-            .max(props.maxUsernameLength || 50, props.usernameToLongErrorText || 'Der Benutzername ist zu lang. Er darf maximal 50 Zeichen lang sein.')
+            .min(props.minUsernameLength || 5, props.usernameToShortErrorText ||
+            'Der Benutzername ist zu kurz. Er muss mindestens 4 Zeichen lang sein. ')
+            .max(props.maxUsernameLength || 50, props.usernameToLongErrorText ||
+            'Der Benutzername ist zu lang. Er darf maximal 50 Zeichen lang sein.')
             .required(props.usernameRequiredErrorText || 'Der Benutzername ist erforderlich.'),
-        email: create$1().email(props.emailInvalidErrorText || 'Ungültige E-Mail Adresse.')
+        email: create$1()
+            .email(props.emailInvalidErrorText || 'Ungültige E-Mail Adresse.')
             .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
-            .max(props.maxEmailLength || 100, props.emailToLongErrorText || 'Die E-Mail Adresse ist zu lang. Sie darf maximal 100 Zeichen lang sein.'),
-        password: create$1().min(props.minPasswordLength || 8, props.passwordToShortErrorText || 'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
+            .max(props.maxEmailLength || 100, props.emailToLongErrorText ||
+            'Die E-Mail Adresse ist zu lang. Sie darf maximal 100 Zeichen lang sein.'),
+        password: create$1()
+            .min(props.minPasswordLength || 8, props.passwordToShortErrorText ||
+            'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
             .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich'),
-        passwordConfirmation: create$1()
-            .oneOf([create$3('password')], props.passwordsMustMatchErrorText || 'Die Passwörter müssen übereinstimmen.'),
+        passwordConfirmation: create$1().oneOf([create$3('password')], props.passwordsMustMatchErrorText || 'Die Passwörter müssen übereinstimmen.'),
         privacyPolicyAccepted: create$2().isTrue(props.privacyPolicyNotAcceptedErrorText || 'Die Datenschutzerklärung muss akzeptiert werden.')
-    }).defined();
+    })
+        .defined();
     // initial values of the formular
     var initialFormValues = {
         username: '',
@@ -14704,8 +15171,7 @@ var RegistrationForm = function (props) {
             register(values);
         } }, { children: function (_a) {
             var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: 'username-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' })), jsx(Form$1.Control, { id: 'username', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", onChange: handleChange, isInvalid: !!errors.username }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.username }))] })), jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: 'email', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", onChange: handleChange, isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.email }))] })), jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: 'password', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.password }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.password }))] })), jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' })), jsx(Form$1.Control, { id: 'passwordConfirmation', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.passwordConfirmation }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.passwordConfirmation }))] })), jsx(Form$1.Group, __assign({ id: 'privacy-policy-accepted-container', className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsx(Form$1.Check, { id: 'privacyPolicyAccepted', className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelPrivacyPolicyAccepted ||
-                                jsxs("span", { children: ["Ich habe die ", jsx("a", __assign({ href: props.privacyPolicyUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "Datenschutzerkl\u00E4rung" })), " und ", jsx("a", __assign({ href: props.generalTermsUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "allgemeinen Gesch\u00E4ftsbedingungen" })), " gelesen und akzeptiere diese."] }), onChange: handleChange, isInvalid: !!errors.privacyPolicyAccepted, feedbackType: 'invalid', feedback: errors.privacyPolicyAccepted }) })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button, __assign({ className: props.submitButtonClassName || 'ez-on-rails-form-submit-button', type: "submit", variant: "primary" }, { children: props.labelSubmitButton || "Registrieren" })) })))] })));
+            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "username-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' })), jsx(Form$1.Control, { id: "username", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", onChange: handleChange, isInvalid: !!errors.username }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.username }))] })), jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", onChange: handleChange, isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.email }))] })), jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: "password", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.password }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.password }))] })), jsxs(Form$1.Group, __assign({ id: "password-confirmation-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' })), jsx(Form$1.Control, { id: "passwordConfirmation", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", onChange: handleChange, isInvalid: !!errors.passwordConfirmation }), jsx(Form$1.Control.Feedback, __assign({ className: props.fieldErrorClassName || 'ez-on-rails-form-field-error', type: "invalid" }, { children: errors.passwordConfirmation }))] })), jsx(Form$1.Group, __assign({ id: "privacy-policy-accepted-container", className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsx(Form$1.Check, { id: "privacyPolicyAccepted", className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelPrivacyPolicyAccepted || (jsxs("span", { children: ["Ich habe die", ' ', jsx("a", __assign({ href: props.privacyPolicyUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "Datenschutzerkl\u00E4rung" })), ' ', "und", ' ', jsx("a", __assign({ href: props.generalTermsUrl, target: "_blank", rel: "noopener noreferrer" }, { children: "allgemeinen Gesch\u00E4ftsbedingungen" })), ' ', "gelesen und akzeptiere diese."] })), onChange: handleChange, isInvalid: !!errors.privacyPolicyAccepted, feedbackType: "invalid", feedback: errors.privacyPolicyAccepted }) })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button$1, __assign({ className: props.submitButtonClassName || 'ez-on-rails-form-submit-button', type: "submit", variant: "primary" }, { children: props.labelSubmitButton || 'Registrieren' })) })))] })));
         } })));
 };
 
@@ -14721,12 +15187,17 @@ var LoginForm = function (props) {
     /**
      * Valodation scheme for the login form.
      */
-    var LoginValidationSchema = create().shape({
-        email: create$1().email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
+    var LoginValidationSchema = create()
+        .shape({
+        email: create$1()
+            .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
             .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.'),
-        password: create$1().min(props.minPasswordLength || 8, props.passwordToShortErrorText || 'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
+        password: create$1()
+            .min(props.minPasswordLength || 8, props.passwordToShortErrorText ||
+            'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
             .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich')
-    }).defined();
+    })
+        .defined();
     /**
      * Tries to log in the user given by the form values.
      * If the login was successful, the onLoginSuccess callback in the props will be called.
@@ -14774,8 +15245,7 @@ var LoginForm = function (props) {
             login(values);
         }, validationSchema: LoginValidationSchema }, { children: function (_a) {
             var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: "password", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), !props.hideStayLoggedIn &&
-                        jsx(Form$1.Group, __assign({ id: "stay-logged-in-container", className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsx(Form$1.Check, { id: "stayLoggedIn", className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben', onChange: handleChange }) })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Login' })) })))] })));
+            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: "password", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), !props.hideStayLoggedIn && (jsx(Form$1.Group, __assign({ id: "stay-logged-in-container", className: props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container' }, { children: jsx(Form$1.Check, { id: "stayLoggedIn", className: props.fieldCheckboxInputClassName || 'ez-on-rails-form-field', type: "checkbox", label: props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben', onChange: handleChange }) }))), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button$1, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Login' })) })))] })));
         } })));
 };
 
@@ -14790,10 +15260,13 @@ var LostPasswordForm = function (props) {
     /**
      * Valodation scheme for the login form.
      */
-    var LostPasswordValidationSchema = create().shape({
-        email: create$1().email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
+    var LostPasswordValidationSchema = create()
+        .shape({
+        email: create$1()
+            .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
             .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
-    }).defined();
+    })
+        .defined();
     /**
      * Tries to send a password reset request to the server by the form values.
      * If the request was successfull, the onPasswordResetSuccess callback in the props will be called.
@@ -14805,23 +15278,25 @@ var LostPasswordForm = function (props) {
      */
     var passwordReset = function (values) {
         setInProgress(true);
-        EzOnRailsHttpClient.passwordResetInstructions(values).then(function () {
+        EzOnRailsHttpClient.passwordResetInstructions(values)
+            .then(function () {
             props.onLostPasswordSuccess(values.email);
             setInProgress(false);
-        }).catch(function (e) {
+        })
+            .catch(function (e) {
             props.onLostPasswordError(e);
             setInProgress(false);
         });
     };
     // initial values
     var initialFormValues = {
-        email: '',
+        email: ''
     };
     return (jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
             passwordReset(values);
         }, validationSchema: LostPasswordValidationSchema }, { children: function (_a) {
             var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: 'email', type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Passwort zurücksetzen" })) })))] })));
+            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button$1, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort zurücksetzen' })) })))] })));
         } })));
 };
 
@@ -14836,10 +15311,13 @@ var ResendConfirmationForm = function (props) {
     /**
      * Valodation scheme for the login form.
      */
-    var ResendConfirmationValidationSchema = create().shape({
-        email: create$1().email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
+    var ResendConfirmationValidationSchema = create()
+        .shape({
+        email: create$1()
+            .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
             .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
-    }).defined();
+    })
+        .defined();
     /**
      * Tries to send a resend confirmation email request to the server by the form values.
      * If the request was successfull, the onResendConfirmationSuccess callback in the props will be called.
@@ -14851,23 +15329,25 @@ var ResendConfirmationForm = function (props) {
      */
     var resendConfirmation = function (values) {
         setInProgress(true);
-        EzOnRailsHttpClient.confirmationInstructions(values).then(function () {
+        EzOnRailsHttpClient.confirmationInstructions(values)
+            .then(function () {
             props.onResendConfirmationSuccess(values.email);
             setInProgress(false);
-        }).catch(function (e) {
+        })
+            .catch(function (e) {
             props.onResendConfirmationError(e);
             setInProgress(false);
         });
     };
     // initial values
     var initialFormValues = {
-        email: '',
+        email: ''
     };
     return (jsx(Formik, __assign({ initialValues: initialFormValues, onSubmit: function (values) {
             resendConfirmation(values);
         }, validationSchema: ResendConfirmationValidationSchema }, { children: function (_a) {
             var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort zurücksetzen' })) })))] })));
+            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", type: "email", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.email }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button$1, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort zurücksetzen' })) })))] })));
         } })));
 };
 
@@ -14903,952 +15383,851 @@ var DevelopmentHint = function (props) {
         setVisible(false);
         setTimeout(dismissTimeout, props.dismissTimeout || 20000);
     };
-    return visible ? jsx("div", __assign({ onClick: onClickContainer, className: 'development-hint-container' }, { children: jsx("span", __assign({ className: 'development-hint-text' }, { children: "development" })) })) : null;
+    return visible ? (jsx("div", __assign({ onClick: onClickContainer, className: "development-hint-container" }, { children: jsx("span", __assign({ className: "development-hint-text" }, { children: "development" })) }))) : null;
 };
 
-var activestorage = createCommonjsModule(function (module, exports) {
-(function(global, factory) {
-  factory(exports) ;
-})(commonjsGlobal, function(exports) {
-  function createCommonjsModule(fn, module) {
-    return module = {
-      exports: {}
-    }, fn(module, module.exports), module.exports;
-  }
-  var sparkMd5 = createCommonjsModule(function(module, exports) {
-    (function(factory) {
-      {
-        module.exports = factory();
+var sparkMd5 = {
+  exports: {}
+};
+
+(function(module, exports) {
+  (function(factory) {
+    {
+      module.exports = factory();
+    }
+  })((function(undefined$1) {
+    var hex_chr = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" ];
+    function md5cycle(x, k) {
+      var a = x[0], b = x[1], c = x[2], d = x[3];
+      a += (b & c | ~b & d) + k[0] - 680876936 | 0;
+      a = (a << 7 | a >>> 25) + b | 0;
+      d += (a & b | ~a & c) + k[1] - 389564586 | 0;
+      d = (d << 12 | d >>> 20) + a | 0;
+      c += (d & a | ~d & b) + k[2] + 606105819 | 0;
+      c = (c << 17 | c >>> 15) + d | 0;
+      b += (c & d | ~c & a) + k[3] - 1044525330 | 0;
+      b = (b << 22 | b >>> 10) + c | 0;
+      a += (b & c | ~b & d) + k[4] - 176418897 | 0;
+      a = (a << 7 | a >>> 25) + b | 0;
+      d += (a & b | ~a & c) + k[5] + 1200080426 | 0;
+      d = (d << 12 | d >>> 20) + a | 0;
+      c += (d & a | ~d & b) + k[6] - 1473231341 | 0;
+      c = (c << 17 | c >>> 15) + d | 0;
+      b += (c & d | ~c & a) + k[7] - 45705983 | 0;
+      b = (b << 22 | b >>> 10) + c | 0;
+      a += (b & c | ~b & d) + k[8] + 1770035416 | 0;
+      a = (a << 7 | a >>> 25) + b | 0;
+      d += (a & b | ~a & c) + k[9] - 1958414417 | 0;
+      d = (d << 12 | d >>> 20) + a | 0;
+      c += (d & a | ~d & b) + k[10] - 42063 | 0;
+      c = (c << 17 | c >>> 15) + d | 0;
+      b += (c & d | ~c & a) + k[11] - 1990404162 | 0;
+      b = (b << 22 | b >>> 10) + c | 0;
+      a += (b & c | ~b & d) + k[12] + 1804603682 | 0;
+      a = (a << 7 | a >>> 25) + b | 0;
+      d += (a & b | ~a & c) + k[13] - 40341101 | 0;
+      d = (d << 12 | d >>> 20) + a | 0;
+      c += (d & a | ~d & b) + k[14] - 1502002290 | 0;
+      c = (c << 17 | c >>> 15) + d | 0;
+      b += (c & d | ~c & a) + k[15] + 1236535329 | 0;
+      b = (b << 22 | b >>> 10) + c | 0;
+      a += (b & d | c & ~d) + k[1] - 165796510 | 0;
+      a = (a << 5 | a >>> 27) + b | 0;
+      d += (a & c | b & ~c) + k[6] - 1069501632 | 0;
+      d = (d << 9 | d >>> 23) + a | 0;
+      c += (d & b | a & ~b) + k[11] + 643717713 | 0;
+      c = (c << 14 | c >>> 18) + d | 0;
+      b += (c & a | d & ~a) + k[0] - 373897302 | 0;
+      b = (b << 20 | b >>> 12) + c | 0;
+      a += (b & d | c & ~d) + k[5] - 701558691 | 0;
+      a = (a << 5 | a >>> 27) + b | 0;
+      d += (a & c | b & ~c) + k[10] + 38016083 | 0;
+      d = (d << 9 | d >>> 23) + a | 0;
+      c += (d & b | a & ~b) + k[15] - 660478335 | 0;
+      c = (c << 14 | c >>> 18) + d | 0;
+      b += (c & a | d & ~a) + k[4] - 405537848 | 0;
+      b = (b << 20 | b >>> 12) + c | 0;
+      a += (b & d | c & ~d) + k[9] + 568446438 | 0;
+      a = (a << 5 | a >>> 27) + b | 0;
+      d += (a & c | b & ~c) + k[14] - 1019803690 | 0;
+      d = (d << 9 | d >>> 23) + a | 0;
+      c += (d & b | a & ~b) + k[3] - 187363961 | 0;
+      c = (c << 14 | c >>> 18) + d | 0;
+      b += (c & a | d & ~a) + k[8] + 1163531501 | 0;
+      b = (b << 20 | b >>> 12) + c | 0;
+      a += (b & d | c & ~d) + k[13] - 1444681467 | 0;
+      a = (a << 5 | a >>> 27) + b | 0;
+      d += (a & c | b & ~c) + k[2] - 51403784 | 0;
+      d = (d << 9 | d >>> 23) + a | 0;
+      c += (d & b | a & ~b) + k[7] + 1735328473 | 0;
+      c = (c << 14 | c >>> 18) + d | 0;
+      b += (c & a | d & ~a) + k[12] - 1926607734 | 0;
+      b = (b << 20 | b >>> 12) + c | 0;
+      a += (b ^ c ^ d) + k[5] - 378558 | 0;
+      a = (a << 4 | a >>> 28) + b | 0;
+      d += (a ^ b ^ c) + k[8] - 2022574463 | 0;
+      d = (d << 11 | d >>> 21) + a | 0;
+      c += (d ^ a ^ b) + k[11] + 1839030562 | 0;
+      c = (c << 16 | c >>> 16) + d | 0;
+      b += (c ^ d ^ a) + k[14] - 35309556 | 0;
+      b = (b << 23 | b >>> 9) + c | 0;
+      a += (b ^ c ^ d) + k[1] - 1530992060 | 0;
+      a = (a << 4 | a >>> 28) + b | 0;
+      d += (a ^ b ^ c) + k[4] + 1272893353 | 0;
+      d = (d << 11 | d >>> 21) + a | 0;
+      c += (d ^ a ^ b) + k[7] - 155497632 | 0;
+      c = (c << 16 | c >>> 16) + d | 0;
+      b += (c ^ d ^ a) + k[10] - 1094730640 | 0;
+      b = (b << 23 | b >>> 9) + c | 0;
+      a += (b ^ c ^ d) + k[13] + 681279174 | 0;
+      a = (a << 4 | a >>> 28) + b | 0;
+      d += (a ^ b ^ c) + k[0] - 358537222 | 0;
+      d = (d << 11 | d >>> 21) + a | 0;
+      c += (d ^ a ^ b) + k[3] - 722521979 | 0;
+      c = (c << 16 | c >>> 16) + d | 0;
+      b += (c ^ d ^ a) + k[6] + 76029189 | 0;
+      b = (b << 23 | b >>> 9) + c | 0;
+      a += (b ^ c ^ d) + k[9] - 640364487 | 0;
+      a = (a << 4 | a >>> 28) + b | 0;
+      d += (a ^ b ^ c) + k[12] - 421815835 | 0;
+      d = (d << 11 | d >>> 21) + a | 0;
+      c += (d ^ a ^ b) + k[15] + 530742520 | 0;
+      c = (c << 16 | c >>> 16) + d | 0;
+      b += (c ^ d ^ a) + k[2] - 995338651 | 0;
+      b = (b << 23 | b >>> 9) + c | 0;
+      a += (c ^ (b | ~d)) + k[0] - 198630844 | 0;
+      a = (a << 6 | a >>> 26) + b | 0;
+      d += (b ^ (a | ~c)) + k[7] + 1126891415 | 0;
+      d = (d << 10 | d >>> 22) + a | 0;
+      c += (a ^ (d | ~b)) + k[14] - 1416354905 | 0;
+      c = (c << 15 | c >>> 17) + d | 0;
+      b += (d ^ (c | ~a)) + k[5] - 57434055 | 0;
+      b = (b << 21 | b >>> 11) + c | 0;
+      a += (c ^ (b | ~d)) + k[12] + 1700485571 | 0;
+      a = (a << 6 | a >>> 26) + b | 0;
+      d += (b ^ (a | ~c)) + k[3] - 1894986606 | 0;
+      d = (d << 10 | d >>> 22) + a | 0;
+      c += (a ^ (d | ~b)) + k[10] - 1051523 | 0;
+      c = (c << 15 | c >>> 17) + d | 0;
+      b += (d ^ (c | ~a)) + k[1] - 2054922799 | 0;
+      b = (b << 21 | b >>> 11) + c | 0;
+      a += (c ^ (b | ~d)) + k[8] + 1873313359 | 0;
+      a = (a << 6 | a >>> 26) + b | 0;
+      d += (b ^ (a | ~c)) + k[15] - 30611744 | 0;
+      d = (d << 10 | d >>> 22) + a | 0;
+      c += (a ^ (d | ~b)) + k[6] - 1560198380 | 0;
+      c = (c << 15 | c >>> 17) + d | 0;
+      b += (d ^ (c | ~a)) + k[13] + 1309151649 | 0;
+      b = (b << 21 | b >>> 11) + c | 0;
+      a += (c ^ (b | ~d)) + k[4] - 145523070 | 0;
+      a = (a << 6 | a >>> 26) + b | 0;
+      d += (b ^ (a | ~c)) + k[11] - 1120210379 | 0;
+      d = (d << 10 | d >>> 22) + a | 0;
+      c += (a ^ (d | ~b)) + k[2] + 718787259 | 0;
+      c = (c << 15 | c >>> 17) + d | 0;
+      b += (d ^ (c | ~a)) + k[9] - 343485551 | 0;
+      b = (b << 21 | b >>> 11) + c | 0;
+      x[0] = a + x[0] | 0;
+      x[1] = b + x[1] | 0;
+      x[2] = c + x[2] | 0;
+      x[3] = d + x[3] | 0;
+    }
+    function md5blk(s) {
+      var md5blks = [], i;
+      for (i = 0; i < 64; i += 4) {
+        md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
       }
-    })(function(undefined$1) {
-      var hex_chr = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" ];
-      function md5cycle(x, k) {
-        var a = x[0], b = x[1], c = x[2], d = x[3];
-        a += (b & c | ~b & d) + k[0] - 680876936 | 0;
-        a = (a << 7 | a >>> 25) + b | 0;
-        d += (a & b | ~a & c) + k[1] - 389564586 | 0;
-        d = (d << 12 | d >>> 20) + a | 0;
-        c += (d & a | ~d & b) + k[2] + 606105819 | 0;
-        c = (c << 17 | c >>> 15) + d | 0;
-        b += (c & d | ~c & a) + k[3] - 1044525330 | 0;
-        b = (b << 22 | b >>> 10) + c | 0;
-        a += (b & c | ~b & d) + k[4] - 176418897 | 0;
-        a = (a << 7 | a >>> 25) + b | 0;
-        d += (a & b | ~a & c) + k[5] + 1200080426 | 0;
-        d = (d << 12 | d >>> 20) + a | 0;
-        c += (d & a | ~d & b) + k[6] - 1473231341 | 0;
-        c = (c << 17 | c >>> 15) + d | 0;
-        b += (c & d | ~c & a) + k[7] - 45705983 | 0;
-        b = (b << 22 | b >>> 10) + c | 0;
-        a += (b & c | ~b & d) + k[8] + 1770035416 | 0;
-        a = (a << 7 | a >>> 25) + b | 0;
-        d += (a & b | ~a & c) + k[9] - 1958414417 | 0;
-        d = (d << 12 | d >>> 20) + a | 0;
-        c += (d & a | ~d & b) + k[10] - 42063 | 0;
-        c = (c << 17 | c >>> 15) + d | 0;
-        b += (c & d | ~c & a) + k[11] - 1990404162 | 0;
-        b = (b << 22 | b >>> 10) + c | 0;
-        a += (b & c | ~b & d) + k[12] + 1804603682 | 0;
-        a = (a << 7 | a >>> 25) + b | 0;
-        d += (a & b | ~a & c) + k[13] - 40341101 | 0;
-        d = (d << 12 | d >>> 20) + a | 0;
-        c += (d & a | ~d & b) + k[14] - 1502002290 | 0;
-        c = (c << 17 | c >>> 15) + d | 0;
-        b += (c & d | ~c & a) + k[15] + 1236535329 | 0;
-        b = (b << 22 | b >>> 10) + c | 0;
-        a += (b & d | c & ~d) + k[1] - 165796510 | 0;
-        a = (a << 5 | a >>> 27) + b | 0;
-        d += (a & c | b & ~c) + k[6] - 1069501632 | 0;
-        d = (d << 9 | d >>> 23) + a | 0;
-        c += (d & b | a & ~b) + k[11] + 643717713 | 0;
-        c = (c << 14 | c >>> 18) + d | 0;
-        b += (c & a | d & ~a) + k[0] - 373897302 | 0;
-        b = (b << 20 | b >>> 12) + c | 0;
-        a += (b & d | c & ~d) + k[5] - 701558691 | 0;
-        a = (a << 5 | a >>> 27) + b | 0;
-        d += (a & c | b & ~c) + k[10] + 38016083 | 0;
-        d = (d << 9 | d >>> 23) + a | 0;
-        c += (d & b | a & ~b) + k[15] - 660478335 | 0;
-        c = (c << 14 | c >>> 18) + d | 0;
-        b += (c & a | d & ~a) + k[4] - 405537848 | 0;
-        b = (b << 20 | b >>> 12) + c | 0;
-        a += (b & d | c & ~d) + k[9] + 568446438 | 0;
-        a = (a << 5 | a >>> 27) + b | 0;
-        d += (a & c | b & ~c) + k[14] - 1019803690 | 0;
-        d = (d << 9 | d >>> 23) + a | 0;
-        c += (d & b | a & ~b) + k[3] - 187363961 | 0;
-        c = (c << 14 | c >>> 18) + d | 0;
-        b += (c & a | d & ~a) + k[8] + 1163531501 | 0;
-        b = (b << 20 | b >>> 12) + c | 0;
-        a += (b & d | c & ~d) + k[13] - 1444681467 | 0;
-        a = (a << 5 | a >>> 27) + b | 0;
-        d += (a & c | b & ~c) + k[2] - 51403784 | 0;
-        d = (d << 9 | d >>> 23) + a | 0;
-        c += (d & b | a & ~b) + k[7] + 1735328473 | 0;
-        c = (c << 14 | c >>> 18) + d | 0;
-        b += (c & a | d & ~a) + k[12] - 1926607734 | 0;
-        b = (b << 20 | b >>> 12) + c | 0;
-        a += (b ^ c ^ d) + k[5] - 378558 | 0;
-        a = (a << 4 | a >>> 28) + b | 0;
-        d += (a ^ b ^ c) + k[8] - 2022574463 | 0;
-        d = (d << 11 | d >>> 21) + a | 0;
-        c += (d ^ a ^ b) + k[11] + 1839030562 | 0;
-        c = (c << 16 | c >>> 16) + d | 0;
-        b += (c ^ d ^ a) + k[14] - 35309556 | 0;
-        b = (b << 23 | b >>> 9) + c | 0;
-        a += (b ^ c ^ d) + k[1] - 1530992060 | 0;
-        a = (a << 4 | a >>> 28) + b | 0;
-        d += (a ^ b ^ c) + k[4] + 1272893353 | 0;
-        d = (d << 11 | d >>> 21) + a | 0;
-        c += (d ^ a ^ b) + k[7] - 155497632 | 0;
-        c = (c << 16 | c >>> 16) + d | 0;
-        b += (c ^ d ^ a) + k[10] - 1094730640 | 0;
-        b = (b << 23 | b >>> 9) + c | 0;
-        a += (b ^ c ^ d) + k[13] + 681279174 | 0;
-        a = (a << 4 | a >>> 28) + b | 0;
-        d += (a ^ b ^ c) + k[0] - 358537222 | 0;
-        d = (d << 11 | d >>> 21) + a | 0;
-        c += (d ^ a ^ b) + k[3] - 722521979 | 0;
-        c = (c << 16 | c >>> 16) + d | 0;
-        b += (c ^ d ^ a) + k[6] + 76029189 | 0;
-        b = (b << 23 | b >>> 9) + c | 0;
-        a += (b ^ c ^ d) + k[9] - 640364487 | 0;
-        a = (a << 4 | a >>> 28) + b | 0;
-        d += (a ^ b ^ c) + k[12] - 421815835 | 0;
-        d = (d << 11 | d >>> 21) + a | 0;
-        c += (d ^ a ^ b) + k[15] + 530742520 | 0;
-        c = (c << 16 | c >>> 16) + d | 0;
-        b += (c ^ d ^ a) + k[2] - 995338651 | 0;
-        b = (b << 23 | b >>> 9) + c | 0;
-        a += (c ^ (b | ~d)) + k[0] - 198630844 | 0;
-        a = (a << 6 | a >>> 26) + b | 0;
-        d += (b ^ (a | ~c)) + k[7] + 1126891415 | 0;
-        d = (d << 10 | d >>> 22) + a | 0;
-        c += (a ^ (d | ~b)) + k[14] - 1416354905 | 0;
-        c = (c << 15 | c >>> 17) + d | 0;
-        b += (d ^ (c | ~a)) + k[5] - 57434055 | 0;
-        b = (b << 21 | b >>> 11) + c | 0;
-        a += (c ^ (b | ~d)) + k[12] + 1700485571 | 0;
-        a = (a << 6 | a >>> 26) + b | 0;
-        d += (b ^ (a | ~c)) + k[3] - 1894986606 | 0;
-        d = (d << 10 | d >>> 22) + a | 0;
-        c += (a ^ (d | ~b)) + k[10] - 1051523 | 0;
-        c = (c << 15 | c >>> 17) + d | 0;
-        b += (d ^ (c | ~a)) + k[1] - 2054922799 | 0;
-        b = (b << 21 | b >>> 11) + c | 0;
-        a += (c ^ (b | ~d)) + k[8] + 1873313359 | 0;
-        a = (a << 6 | a >>> 26) + b | 0;
-        d += (b ^ (a | ~c)) + k[15] - 30611744 | 0;
-        d = (d << 10 | d >>> 22) + a | 0;
-        c += (a ^ (d | ~b)) + k[6] - 1560198380 | 0;
-        c = (c << 15 | c >>> 17) + d | 0;
-        b += (d ^ (c | ~a)) + k[13] + 1309151649 | 0;
-        b = (b << 21 | b >>> 11) + c | 0;
-        a += (c ^ (b | ~d)) + k[4] - 145523070 | 0;
-        a = (a << 6 | a >>> 26) + b | 0;
-        d += (b ^ (a | ~c)) + k[11] - 1120210379 | 0;
-        d = (d << 10 | d >>> 22) + a | 0;
-        c += (a ^ (d | ~b)) + k[2] + 718787259 | 0;
-        c = (c << 15 | c >>> 17) + d | 0;
-        b += (d ^ (c | ~a)) + k[9] - 343485551 | 0;
-        b = (b << 21 | b >>> 11) + c | 0;
-        x[0] = a + x[0] | 0;
-        x[1] = b + x[1] | 0;
-        x[2] = c + x[2] | 0;
-        x[3] = d + x[3] | 0;
+      return md5blks;
+    }
+    function md5blk_array(a) {
+      var md5blks = [], i;
+      for (i = 0; i < 64; i += 4) {
+        md5blks[i >> 2] = a[i] + (a[i + 1] << 8) + (a[i + 2] << 16) + (a[i + 3] << 24);
       }
-      function md5blk(s) {
-        var md5blks = [], i;
-        for (i = 0; i < 64; i += 4) {
-          md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
-        }
-        return md5blks;
+      return md5blks;
+    }
+    function md51(s) {
+      var n = s.length, state = [ 1732584193, -271733879, -1732584194, 271733878 ], i, length, tail, tmp, lo, hi;
+      for (i = 64; i <= n; i += 64) {
+        md5cycle(state, md5blk(s.substring(i - 64, i)));
       }
-      function md5blk_array(a) {
-        var md5blks = [], i;
-        for (i = 0; i < 64; i += 4) {
-          md5blks[i >> 2] = a[i] + (a[i + 1] << 8) + (a[i + 2] << 16) + (a[i + 3] << 24);
-        }
-        return md5blks;
+      s = s.substring(i - 64);
+      length = s.length;
+      tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+      for (i = 0; i < length; i += 1) {
+        tail[i >> 2] |= s.charCodeAt(i) << (i % 4 << 3);
       }
-      function md51(s) {
-        var n = s.length, state = [ 1732584193, -271733879, -1732584194, 271733878 ], i, length, tail, tmp, lo, hi;
-        for (i = 64; i <= n; i += 64) {
-          md5cycle(state, md5blk(s.substring(i - 64, i)));
-        }
-        s = s.substring(i - 64);
-        length = s.length;
-        tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-        for (i = 0; i < length; i += 1) {
-          tail[i >> 2] |= s.charCodeAt(i) << (i % 4 << 3);
-        }
-        tail[i >> 2] |= 128 << (i % 4 << 3);
-        if (i > 55) {
-          md5cycle(state, tail);
-          for (i = 0; i < 16; i += 1) {
-            tail[i] = 0;
-          }
-        }
-        tmp = n * 8;
-        tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
-        lo = parseInt(tmp[2], 16);
-        hi = parseInt(tmp[1], 16) || 0;
-        tail[14] = lo;
-        tail[15] = hi;
+      tail[i >> 2] |= 128 << (i % 4 << 3);
+      if (i > 55) {
         md5cycle(state, tail);
-        return state;
+        for (i = 0; i < 16; i += 1) {
+          tail[i] = 0;
+        }
       }
-      function md51_array(a) {
-        var n = a.length, state = [ 1732584193, -271733879, -1732584194, 271733878 ], i, length, tail, tmp, lo, hi;
-        for (i = 64; i <= n; i += 64) {
-          md5cycle(state, md5blk_array(a.subarray(i - 64, i)));
-        }
-        a = i - 64 < n ? a.subarray(i - 64) : new Uint8Array(0);
-        length = a.length;
-        tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-        for (i = 0; i < length; i += 1) {
-          tail[i >> 2] |= a[i] << (i % 4 << 3);
-        }
-        tail[i >> 2] |= 128 << (i % 4 << 3);
-        if (i > 55) {
-          md5cycle(state, tail);
-          for (i = 0; i < 16; i += 1) {
-            tail[i] = 0;
-          }
-        }
-        tmp = n * 8;
-        tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
-        lo = parseInt(tmp[2], 16);
-        hi = parseInt(tmp[1], 16) || 0;
-        tail[14] = lo;
-        tail[15] = hi;
+      tmp = n * 8;
+      tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
+      lo = parseInt(tmp[2], 16);
+      hi = parseInt(tmp[1], 16) || 0;
+      tail[14] = lo;
+      tail[15] = hi;
+      md5cycle(state, tail);
+      return state;
+    }
+    function md51_array(a) {
+      var n = a.length, state = [ 1732584193, -271733879, -1732584194, 271733878 ], i, length, tail, tmp, lo, hi;
+      for (i = 64; i <= n; i += 64) {
+        md5cycle(state, md5blk_array(a.subarray(i - 64, i)));
+      }
+      a = i - 64 < n ? a.subarray(i - 64) : new Uint8Array(0);
+      length = a.length;
+      tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+      for (i = 0; i < length; i += 1) {
+        tail[i >> 2] |= a[i] << (i % 4 << 3);
+      }
+      tail[i >> 2] |= 128 << (i % 4 << 3);
+      if (i > 55) {
         md5cycle(state, tail);
-        return state;
-      }
-      function rhex(n) {
-        var s = "", j;
-        for (j = 0; j < 4; j += 1) {
-          s += hex_chr[n >> j * 8 + 4 & 15] + hex_chr[n >> j * 8 & 15];
+        for (i = 0; i < 16; i += 1) {
+          tail[i] = 0;
         }
-        return s;
       }
-      function hex(x) {
-        var i;
-        for (i = 0; i < x.length; i += 1) {
-          x[i] = rhex(x[i]);
-        }
-        return x.join("");
+      tmp = n * 8;
+      tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
+      lo = parseInt(tmp[2], 16);
+      hi = parseInt(tmp[1], 16) || 0;
+      tail[14] = lo;
+      tail[15] = hi;
+      md5cycle(state, tail);
+      return state;
+    }
+    function rhex(n) {
+      var s = "", j;
+      for (j = 0; j < 4; j += 1) {
+        s += hex_chr[n >> j * 8 + 4 & 15] + hex_chr[n >> j * 8 & 15];
       }
-      if (hex(md51("hello")) !== "5d41402abc4b2a76b9719d911017c592") ;
-      if (typeof ArrayBuffer !== "undefined" && !ArrayBuffer.prototype.slice) {
-        (function() {
-          function clamp(val, length) {
-            val = val | 0 || 0;
-            if (val < 0) {
-              return Math.max(val + length, 0);
-            }
-            return Math.min(val, length);
+      return s;
+    }
+    function hex(x) {
+      var i;
+      for (i = 0; i < x.length; i += 1) {
+        x[i] = rhex(x[i]);
+      }
+      return x.join("");
+    }
+    if (hex(md51("hello")) !== "5d41402abc4b2a76b9719d911017c592") ;
+    if (typeof ArrayBuffer !== "undefined" && !ArrayBuffer.prototype.slice) {
+      (function() {
+        function clamp(val, length) {
+          val = val | 0 || 0;
+          if (val < 0) {
+            return Math.max(val + length, 0);
           }
-          ArrayBuffer.prototype.slice = function(from, to) {
-            var length = this.byteLength, begin = clamp(from, length), end = length, num, target, targetArray, sourceArray;
-            if (to !== undefined$1) {
-              end = clamp(to, length);
-            }
-            if (begin > end) {
-              return new ArrayBuffer(0);
-            }
-            num = end - begin;
-            target = new ArrayBuffer(num);
-            targetArray = new Uint8Array(target);
-            sourceArray = new Uint8Array(this, begin, num);
-            targetArray.set(sourceArray);
-            return target;
-          };
-        })();
-      }
-      function toUtf8(str) {
-        if (/[\u0080-\uFFFF]/.test(str)) {
-          str = unescape(encodeURIComponent(str));
+          return Math.min(val, length);
         }
-        return str;
-      }
-      function utf8Str2ArrayBuffer(str, returnUInt8Array) {
-        var length = str.length, buff = new ArrayBuffer(length), arr = new Uint8Array(buff), i;
-        for (i = 0; i < length; i += 1) {
-          arr[i] = str.charCodeAt(i);
-        }
-        return returnUInt8Array ? arr : buff;
-      }
-      function arrayBuffer2Utf8Str(buff) {
-        return String.fromCharCode.apply(null, new Uint8Array(buff));
-      }
-      function concatenateArrayBuffers(first, second, returnUInt8Array) {
-        var result = new Uint8Array(first.byteLength + second.byteLength);
-        result.set(new Uint8Array(first));
-        result.set(new Uint8Array(second), first.byteLength);
-        return returnUInt8Array ? result : result.buffer;
-      }
-      function hexToBinaryString(hex) {
-        var bytes = [], length = hex.length, x;
-        for (x = 0; x < length - 1; x += 2) {
-          bytes.push(parseInt(hex.substr(x, 2), 16));
-        }
-        return String.fromCharCode.apply(String, bytes);
-      }
-      function SparkMD5() {
-        this.reset();
-      }
-      SparkMD5.prototype.append = function(str) {
-        this.appendBinary(toUtf8(str));
-        return this;
-      };
-      SparkMD5.prototype.appendBinary = function(contents) {
-        this._buff += contents;
-        this._length += contents.length;
-        var length = this._buff.length, i;
-        for (i = 64; i <= length; i += 64) {
-          md5cycle(this._hash, md5blk(this._buff.substring(i - 64, i)));
-        }
-        this._buff = this._buff.substring(i - 64);
-        return this;
-      };
-      SparkMD5.prototype.end = function(raw) {
-        var buff = this._buff, length = buff.length, i, tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], ret;
-        for (i = 0; i < length; i += 1) {
-          tail[i >> 2] |= buff.charCodeAt(i) << (i % 4 << 3);
-        }
-        this._finish(tail, length);
-        ret = hex(this._hash);
-        if (raw) {
-          ret = hexToBinaryString(ret);
-        }
-        this.reset();
-        return ret;
-      };
-      SparkMD5.prototype.reset = function() {
-        this._buff = "";
-        this._length = 0;
-        this._hash = [ 1732584193, -271733879, -1732584194, 271733878 ];
-        return this;
-      };
-      SparkMD5.prototype.getState = function() {
-        return {
-          buff: this._buff,
-          length: this._length,
-          hash: this._hash
+        ArrayBuffer.prototype.slice = function(from, to) {
+          var length = this.byteLength, begin = clamp(from, length), end = length, num, target, targetArray, sourceArray;
+          if (to !== undefined$1) {
+            end = clamp(to, length);
+          }
+          if (begin > end) {
+            return new ArrayBuffer(0);
+          }
+          num = end - begin;
+          target = new ArrayBuffer(num);
+          targetArray = new Uint8Array(target);
+          sourceArray = new Uint8Array(this, begin, num);
+          targetArray.set(sourceArray);
+          return target;
         };
-      };
-      SparkMD5.prototype.setState = function(state) {
-        this._buff = state.buff;
-        this._length = state.length;
-        this._hash = state.hash;
-        return this;
-      };
-      SparkMD5.prototype.destroy = function() {
-        delete this._hash;
-        delete this._buff;
-        delete this._length;
-      };
-      SparkMD5.prototype._finish = function(tail, length) {
-        var i = length, tmp, lo, hi;
-        tail[i >> 2] |= 128 << (i % 4 << 3);
-        if (i > 55) {
-          md5cycle(this._hash, tail);
-          for (i = 0; i < 16; i += 1) {
-            tail[i] = 0;
-          }
-        }
-        tmp = this._length * 8;
-        tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
-        lo = parseInt(tmp[2], 16);
-        hi = parseInt(tmp[1], 16) || 0;
-        tail[14] = lo;
-        tail[15] = hi;
-        md5cycle(this._hash, tail);
-      };
-      SparkMD5.hash = function(str, raw) {
-        return SparkMD5.hashBinary(toUtf8(str), raw);
-      };
-      SparkMD5.hashBinary = function(content, raw) {
-        var hash = md51(content), ret = hex(hash);
-        return raw ? hexToBinaryString(ret) : ret;
-      };
-      SparkMD5.ArrayBuffer = function() {
-        this.reset();
-      };
-      SparkMD5.ArrayBuffer.prototype.append = function(arr) {
-        var buff = concatenateArrayBuffers(this._buff.buffer, arr, true), length = buff.length, i;
-        this._length += arr.byteLength;
-        for (i = 64; i <= length; i += 64) {
-          md5cycle(this._hash, md5blk_array(buff.subarray(i - 64, i)));
-        }
-        this._buff = i - 64 < length ? new Uint8Array(buff.buffer.slice(i - 64)) : new Uint8Array(0);
-        return this;
-      };
-      SparkMD5.ArrayBuffer.prototype.end = function(raw) {
-        var buff = this._buff, length = buff.length, tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], i, ret;
-        for (i = 0; i < length; i += 1) {
-          tail[i >> 2] |= buff[i] << (i % 4 << 3);
-        }
-        this._finish(tail, length);
-        ret = hex(this._hash);
-        if (raw) {
-          ret = hexToBinaryString(ret);
-        }
-        this.reset();
-        return ret;
-      };
-      SparkMD5.ArrayBuffer.prototype.reset = function() {
-        this._buff = new Uint8Array(0);
-        this._length = 0;
-        this._hash = [ 1732584193, -271733879, -1732584194, 271733878 ];
-        return this;
-      };
-      SparkMD5.ArrayBuffer.prototype.getState = function() {
-        var state = SparkMD5.prototype.getState.call(this);
-        state.buff = arrayBuffer2Utf8Str(state.buff);
-        return state;
-      };
-      SparkMD5.ArrayBuffer.prototype.setState = function(state) {
-        state.buff = utf8Str2ArrayBuffer(state.buff, true);
-        return SparkMD5.prototype.setState.call(this, state);
-      };
-      SparkMD5.ArrayBuffer.prototype.destroy = SparkMD5.prototype.destroy;
-      SparkMD5.ArrayBuffer.prototype._finish = SparkMD5.prototype._finish;
-      SparkMD5.ArrayBuffer.hash = function(arr, raw) {
-        var hash = md51_array(new Uint8Array(arr)), ret = hex(hash);
-        return raw ? hexToBinaryString(ret) : ret;
-      };
-      return SparkMD5;
-    });
-  });
-  var classCallCheck = function(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
+      })();
     }
-  };
-  var createClass = function() {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
+    function toUtf8(str) {
+      if (/[\u0080-\uFFFF]/.test(str)) {
+        str = unescape(encodeURIComponent(str));
       }
+      return str;
     }
-    return function(Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
+    function utf8Str2ArrayBuffer(str, returnUInt8Array) {
+      var length = str.length, buff = new ArrayBuffer(length), arr = new Uint8Array(buff), i;
+      for (i = 0; i < length; i += 1) {
+        arr[i] = str.charCodeAt(i);
+      }
+      return returnUInt8Array ? arr : buff;
+    }
+    function arrayBuffer2Utf8Str(buff) {
+      return String.fromCharCode.apply(null, new Uint8Array(buff));
+    }
+    function concatenateArrayBuffers(first, second, returnUInt8Array) {
+      var result = new Uint8Array(first.byteLength + second.byteLength);
+      result.set(new Uint8Array(first));
+      result.set(new Uint8Array(second), first.byteLength);
+      return returnUInt8Array ? result : result.buffer;
+    }
+    function hexToBinaryString(hex) {
+      var bytes = [], length = hex.length, x;
+      for (x = 0; x < length - 1; x += 2) {
+        bytes.push(parseInt(hex.substr(x, 2), 16));
+      }
+      return String.fromCharCode.apply(String, bytes);
+    }
+    function SparkMD5() {
+      this.reset();
+    }
+    SparkMD5.prototype.append = function(str) {
+      this.appendBinary(toUtf8(str));
+      return this;
     };
-  }();
-  var fileSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
-  var FileChecksum = function() {
-    createClass(FileChecksum, null, [ {
-      key: "create",
-      value: function create(file, callback) {
-        var instance = new FileChecksum(file);
-        instance.create(callback);
+    SparkMD5.prototype.appendBinary = function(contents) {
+      this._buff += contents;
+      this._length += contents.length;
+      var length = this._buff.length, i;
+      for (i = 64; i <= length; i += 64) {
+        md5cycle(this._hash, md5blk(this._buff.substring(i - 64, i)));
       }
-    } ]);
-    function FileChecksum(file) {
-      classCallCheck(this, FileChecksum);
-      this.file = file;
-      this.chunkSize = 2097152;
-      this.chunkCount = Math.ceil(this.file.size / this.chunkSize);
-      this.chunkIndex = 0;
-    }
-    createClass(FileChecksum, [ {
-      key: "create",
-      value: function create(callback) {
-        var _this = this;
-        this.callback = callback;
-        this.md5Buffer = new sparkMd5.ArrayBuffer();
-        this.fileReader = new FileReader();
-        this.fileReader.addEventListener("load", function(event) {
-          return _this.fileReaderDidLoad(event);
-        });
-        this.fileReader.addEventListener("error", function(event) {
-          return _this.fileReaderDidError(event);
-        });
-        this.readNextChunk();
+      this._buff = this._buff.substring(i - 64);
+      return this;
+    };
+    SparkMD5.prototype.end = function(raw) {
+      var buff = this._buff, length = buff.length, i, tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], ret;
+      for (i = 0; i < length; i += 1) {
+        tail[i >> 2] |= buff.charCodeAt(i) << (i % 4 << 3);
       }
-    }, {
-      key: "fileReaderDidLoad",
-      value: function fileReaderDidLoad(event) {
-        this.md5Buffer.append(event.target.result);
-        if (!this.readNextChunk()) {
-          var binaryDigest = this.md5Buffer.end(true);
-          var base64digest = btoa(binaryDigest);
-          this.callback(null, base64digest);
-        }
+      this._finish(tail, length);
+      ret = hex(this._hash);
+      if (raw) {
+        ret = hexToBinaryString(ret);
       }
-    }, {
-      key: "fileReaderDidError",
-      value: function fileReaderDidError(event) {
-        this.callback("Error reading " + this.file.name);
-      }
-    }, {
-      key: "readNextChunk",
-      value: function readNextChunk() {
-        if (this.chunkIndex < this.chunkCount || this.chunkIndex == 0 && this.chunkCount == 0) {
-          var start = this.chunkIndex * this.chunkSize;
-          var end = Math.min(start + this.chunkSize, this.file.size);
-          var bytes = fileSlice.call(this.file, start, end);
-          this.fileReader.readAsArrayBuffer(bytes);
-          this.chunkIndex++;
-          return true;
-        } else {
-          return false;
-        }
-      }
-    } ]);
-    return FileChecksum;
-  }();
-  function getMetaValue(name) {
-    var element = findElement(document.head, 'meta[name="' + name + '"]');
-    if (element) {
-      return element.getAttribute("content");
-    }
-  }
-  function findElements(root, selector) {
-    if (typeof root == "string") {
-      selector = root;
-      root = document;
-    }
-    var elements = root.querySelectorAll(selector);
-    return toArray$1(elements);
-  }
-  function findElement(root, selector) {
-    if (typeof root == "string") {
-      selector = root;
-      root = document;
-    }
-    return root.querySelector(selector);
-  }
-  function dispatchEvent(element, type) {
-    var eventInit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    var disabled = element.disabled;
-    var bubbles = eventInit.bubbles, cancelable = eventInit.cancelable, detail = eventInit.detail;
-    var event = document.createEvent("Event");
-    event.initEvent(type, bubbles || true, cancelable || true);
-    event.detail = detail || {};
-    try {
-      element.disabled = false;
-      element.dispatchEvent(event);
-    } finally {
-      element.disabled = disabled;
-    }
-    return event;
-  }
-  function toArray$1(value) {
-    if (Array.isArray(value)) {
-      return value;
-    } else if (Array.from) {
-      return Array.from(value);
-    } else {
-      return [].slice.call(value);
-    }
-  }
-  var BlobRecord = function() {
-    function BlobRecord(file, checksum, url) {
-      var _this = this;
-      classCallCheck(this, BlobRecord);
-      this.file = file;
-      this.attributes = {
-        filename: file.name,
-        content_type: file.type || "application/octet-stream",
-        byte_size: file.size,
-        checksum: checksum
+      this.reset();
+      return ret;
+    };
+    SparkMD5.prototype.reset = function() {
+      this._buff = "";
+      this._length = 0;
+      this._hash = [ 1732584193, -271733879, -1732584194, 271733878 ];
+      return this;
+    };
+    SparkMD5.prototype.getState = function() {
+      return {
+        buff: this._buff,
+        length: this._length,
+        hash: this._hash.slice()
       };
-      this.xhr = new XMLHttpRequest();
-      this.xhr.open("POST", url, true);
-      this.xhr.responseType = "json";
-      this.xhr.setRequestHeader("Content-Type", "application/json");
-      this.xhr.setRequestHeader("Accept", "application/json");
-      this.xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-      var csrfToken = getMetaValue("csrf-token");
-      if (csrfToken != undefined) {
-        this.xhr.setRequestHeader("X-CSRF-Token", csrfToken);
+    };
+    SparkMD5.prototype.setState = function(state) {
+      this._buff = state.buff;
+      this._length = state.length;
+      this._hash = state.hash;
+      return this;
+    };
+    SparkMD5.prototype.destroy = function() {
+      delete this._hash;
+      delete this._buff;
+      delete this._length;
+    };
+    SparkMD5.prototype._finish = function(tail, length) {
+      var i = length, tmp, lo, hi;
+      tail[i >> 2] |= 128 << (i % 4 << 3);
+      if (i > 55) {
+        md5cycle(this._hash, tail);
+        for (i = 0; i < 16; i += 1) {
+          tail[i] = 0;
+        }
       }
-      this.xhr.addEventListener("load", function(event) {
-        return _this.requestDidLoad(event);
-      });
-      this.xhr.addEventListener("error", function(event) {
-        return _this.requestDidError(event);
-      });
+      tmp = this._length * 8;
+      tmp = tmp.toString(16).match(/(.*?)(.{0,8})$/);
+      lo = parseInt(tmp[2], 16);
+      hi = parseInt(tmp[1], 16) || 0;
+      tail[14] = lo;
+      tail[15] = hi;
+      md5cycle(this._hash, tail);
+    };
+    SparkMD5.hash = function(str, raw) {
+      return SparkMD5.hashBinary(toUtf8(str), raw);
+    };
+    SparkMD5.hashBinary = function(content, raw) {
+      var hash = md51(content), ret = hex(hash);
+      return raw ? hexToBinaryString(ret) : ret;
+    };
+    SparkMD5.ArrayBuffer = function() {
+      this.reset();
+    };
+    SparkMD5.ArrayBuffer.prototype.append = function(arr) {
+      var buff = concatenateArrayBuffers(this._buff.buffer, arr, true), length = buff.length, i;
+      this._length += arr.byteLength;
+      for (i = 64; i <= length; i += 64) {
+        md5cycle(this._hash, md5blk_array(buff.subarray(i - 64, i)));
+      }
+      this._buff = i - 64 < length ? new Uint8Array(buff.buffer.slice(i - 64)) : new Uint8Array(0);
+      return this;
+    };
+    SparkMD5.ArrayBuffer.prototype.end = function(raw) {
+      var buff = this._buff, length = buff.length, tail = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], i, ret;
+      for (i = 0; i < length; i += 1) {
+        tail[i >> 2] |= buff[i] << (i % 4 << 3);
+      }
+      this._finish(tail, length);
+      ret = hex(this._hash);
+      if (raw) {
+        ret = hexToBinaryString(ret);
+      }
+      this.reset();
+      return ret;
+    };
+    SparkMD5.ArrayBuffer.prototype.reset = function() {
+      this._buff = new Uint8Array(0);
+      this._length = 0;
+      this._hash = [ 1732584193, -271733879, -1732584194, 271733878 ];
+      return this;
+    };
+    SparkMD5.ArrayBuffer.prototype.getState = function() {
+      var state = SparkMD5.prototype.getState.call(this);
+      state.buff = arrayBuffer2Utf8Str(state.buff);
+      return state;
+    };
+    SparkMD5.ArrayBuffer.prototype.setState = function(state) {
+      state.buff = utf8Str2ArrayBuffer(state.buff, true);
+      return SparkMD5.prototype.setState.call(this, state);
+    };
+    SparkMD5.ArrayBuffer.prototype.destroy = SparkMD5.prototype.destroy;
+    SparkMD5.ArrayBuffer.prototype._finish = SparkMD5.prototype._finish;
+    SparkMD5.ArrayBuffer.hash = function(arr, raw) {
+      var hash = md51_array(new Uint8Array(arr)), ret = hex(hash);
+      return raw ? hexToBinaryString(ret) : ret;
+    };
+    return SparkMD5;
+  }));
+})(sparkMd5);
+
+var SparkMD5 = sparkMd5.exports;
+
+const fileSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+
+class FileChecksum {
+  static create(file, callback) {
+    const instance = new FileChecksum(file);
+    instance.create(callback);
+  }
+  constructor(file) {
+    this.file = file;
+    this.chunkSize = 2097152;
+    this.chunkCount = Math.ceil(this.file.size / this.chunkSize);
+    this.chunkIndex = 0;
+  }
+  create(callback) {
+    this.callback = callback;
+    this.md5Buffer = new SparkMD5.ArrayBuffer;
+    this.fileReader = new FileReader;
+    this.fileReader.addEventListener("load", (event => this.fileReaderDidLoad(event)));
+    this.fileReader.addEventListener("error", (event => this.fileReaderDidError(event)));
+    this.readNextChunk();
+  }
+  fileReaderDidLoad(event) {
+    this.md5Buffer.append(event.target.result);
+    if (!this.readNextChunk()) {
+      const binaryDigest = this.md5Buffer.end(true);
+      const base64digest = btoa(binaryDigest);
+      this.callback(null, base64digest);
     }
-    createClass(BlobRecord, [ {
-      key: "create",
-      value: function create(callback) {
-        this.callback = callback;
-        this.xhr.send(JSON.stringify({
-          blob: this.attributes
-        }));
-      }
-    }, {
-      key: "requestDidLoad",
-      value: function requestDidLoad(event) {
-        if (this.status >= 200 && this.status < 300) {
-          var response = this.response;
-          var direct_upload = response.direct_upload;
-          delete response.direct_upload;
-          this.attributes = response;
-          this.directUploadData = direct_upload;
-          this.callback(null, this.toJSON());
-        } else {
-          this.requestDidError(event);
-        }
-      }
-    }, {
-      key: "requestDidError",
-      value: function requestDidError(event) {
-        this.callback('Error creating Blob for "' + this.file.name + '". Status: ' + this.status);
-      }
-    }, {
-      key: "toJSON",
-      value: function toJSON() {
-        var result = {};
-        for (var key in this.attributes) {
-          result[key] = this.attributes[key];
-        }
-        return result;
-      }
-    }, {
-      key: "status",
-      get: function get$$1() {
-        return this.xhr.status;
-      }
-    }, {
-      key: "response",
-      get: function get$$1() {
-        var _xhr = this.xhr, responseType = _xhr.responseType, response = _xhr.response;
-        if (responseType == "json") {
-          return response;
-        } else {
-          return JSON.parse(response);
-        }
-      }
-    } ]);
-    return BlobRecord;
-  }();
-  var BlobUpload = function() {
-    function BlobUpload(blob) {
-      var _this = this;
-      classCallCheck(this, BlobUpload);
-      this.blob = blob;
-      this.file = blob.file;
-      var _blob$directUploadDat = blob.directUploadData, url = _blob$directUploadDat.url, headers = _blob$directUploadDat.headers;
-      this.xhr = new XMLHttpRequest();
-      this.xhr.open("PUT", url, true);
-      this.xhr.responseType = "text";
-      for (var key in headers) {
-        this.xhr.setRequestHeader(key, headers[key]);
-      }
-      this.xhr.addEventListener("load", function(event) {
-        return _this.requestDidLoad(event);
-      });
-      this.xhr.addEventListener("error", function(event) {
-        return _this.requestDidError(event);
-      });
+  }
+  fileReaderDidError(event) {
+    this.callback(`Error reading ${this.file.name}`);
+  }
+  readNextChunk() {
+    if (this.chunkIndex < this.chunkCount || this.chunkIndex == 0 && this.chunkCount == 0) {
+      const start = this.chunkIndex * this.chunkSize;
+      const end = Math.min(start + this.chunkSize, this.file.size);
+      const bytes = fileSlice.call(this.file, start, end);
+      this.fileReader.readAsArrayBuffer(bytes);
+      this.chunkIndex++;
+      return true;
+    } else {
+      return false;
     }
-    createClass(BlobUpload, [ {
-      key: "create",
-      value: function create(callback) {
-        this.callback = callback;
-        this.xhr.send(this.file.slice());
-      }
-    }, {
-      key: "requestDidLoad",
-      value: function requestDidLoad(event) {
-        var _xhr = this.xhr, status = _xhr.status, response = _xhr.response;
-        if (status >= 200 && status < 300) {
-          this.callback(null, response);
-        } else {
-          this.requestDidError(event);
-        }
-      }
-    }, {
-      key: "requestDidError",
-      value: function requestDidError(event) {
-        this.callback('Error storing "' + this.file.name + '". Status: ' + this.xhr.status);
-      }
-    } ]);
-    return BlobUpload;
-  }();
-  var id = 0;
-  var DirectUpload = function() {
-    function DirectUpload(file, url, delegate) {
-      classCallCheck(this, DirectUpload);
-      this.id = ++id;
-      this.file = file;
-      this.url = url;
-      this.delegate = delegate;
+  }
+}
+
+function getMetaValue(name) {
+  const element = findElement(document.head, `meta[name="${name}"]`);
+  if (element) {
+    return element.getAttribute("content");
+  }
+}
+
+function findElements(root, selector) {
+  if (typeof root == "string") {
+    selector = root;
+    root = document;
+  }
+  const elements = root.querySelectorAll(selector);
+  return toArray(elements);
+}
+
+function findElement(root, selector) {
+  if (typeof root == "string") {
+    selector = root;
+    root = document;
+  }
+  return root.querySelector(selector);
+}
+
+function dispatchEvent(element, type, eventInit = {}) {
+  const {disabled: disabled} = element;
+  const {bubbles: bubbles, cancelable: cancelable, detail: detail} = eventInit;
+  const event = document.createEvent("Event");
+  event.initEvent(type, bubbles || true, cancelable || true);
+  event.detail = detail || {};
+  try {
+    element.disabled = false;
+    element.dispatchEvent(event);
+  } finally {
+    element.disabled = disabled;
+  }
+  return event;
+}
+
+function toArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  } else if (Array.from) {
+    return Array.from(value);
+  } else {
+    return [].slice.call(value);
+  }
+}
+
+class BlobRecord {
+  constructor(file, checksum, url) {
+    this.file = file;
+    this.attributes = {
+      filename: file.name,
+      content_type: file.type || "application/octet-stream",
+      byte_size: file.size,
+      checksum: checksum
+    };
+    this.xhr = new XMLHttpRequest;
+    this.xhr.open("POST", url, true);
+    this.xhr.responseType = "json";
+    this.xhr.setRequestHeader("Content-Type", "application/json");
+    this.xhr.setRequestHeader("Accept", "application/json");
+    this.xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    const csrfToken = getMetaValue("csrf-token");
+    if (csrfToken != undefined) {
+      this.xhr.setRequestHeader("X-CSRF-Token", csrfToken);
     }
-    createClass(DirectUpload, [ {
-      key: "create",
-      value: function create(callback) {
-        var _this = this;
-        FileChecksum.create(this.file, function(error, checksum) {
-          if (error) {
-            callback(error);
-            return;
-          }
-          var blob = new BlobRecord(_this.file, checksum, _this.url);
-          notify(_this.delegate, "directUploadWillCreateBlobWithXHR", blob.xhr);
-          blob.create(function(error) {
+    this.xhr.addEventListener("load", (event => this.requestDidLoad(event)));
+    this.xhr.addEventListener("error", (event => this.requestDidError(event)));
+  }
+  get status() {
+    return this.xhr.status;
+  }
+  get response() {
+    const {responseType: responseType, response: response} = this.xhr;
+    if (responseType == "json") {
+      return response;
+    } else {
+      return JSON.parse(response);
+    }
+  }
+  create(callback) {
+    this.callback = callback;
+    this.xhr.send(JSON.stringify({
+      blob: this.attributes
+    }));
+  }
+  requestDidLoad(event) {
+    if (this.status >= 200 && this.status < 300) {
+      const {response: response} = this;
+      const {direct_upload: direct_upload} = response;
+      delete response.direct_upload;
+      this.attributes = response;
+      this.directUploadData = direct_upload;
+      this.callback(null, this.toJSON());
+    } else {
+      this.requestDidError(event);
+    }
+  }
+  requestDidError(event) {
+    this.callback(`Error creating Blob for "${this.file.name}". Status: ${this.status}`);
+  }
+  toJSON() {
+    const result = {};
+    for (const key in this.attributes) {
+      result[key] = this.attributes[key];
+    }
+    return result;
+  }
+}
+
+class BlobUpload {
+  constructor(blob) {
+    this.blob = blob;
+    this.file = blob.file;
+    const {url: url, headers: headers} = blob.directUploadData;
+    this.xhr = new XMLHttpRequest;
+    this.xhr.open("PUT", url, true);
+    this.xhr.responseType = "text";
+    for (const key in headers) {
+      this.xhr.setRequestHeader(key, headers[key]);
+    }
+    this.xhr.addEventListener("load", (event => this.requestDidLoad(event)));
+    this.xhr.addEventListener("error", (event => this.requestDidError(event)));
+  }
+  create(callback) {
+    this.callback = callback;
+    this.xhr.send(this.file.slice());
+  }
+  requestDidLoad(event) {
+    const {status: status, response: response} = this.xhr;
+    if (status >= 200 && status < 300) {
+      this.callback(null, response);
+    } else {
+      this.requestDidError(event);
+    }
+  }
+  requestDidError(event) {
+    this.callback(`Error storing "${this.file.name}". Status: ${this.xhr.status}`);
+  }
+}
+
+let id = 0;
+
+class DirectUpload {
+  constructor(file, url, delegate) {
+    this.id = ++id;
+    this.file = file;
+    this.url = url;
+    this.delegate = delegate;
+  }
+  create(callback) {
+    FileChecksum.create(this.file, ((error, checksum) => {
+      if (error) {
+        callback(error);
+        return;
+      }
+      const blob = new BlobRecord(this.file, checksum, this.url);
+      notify(this.delegate, "directUploadWillCreateBlobWithXHR", blob.xhr);
+      blob.create((error => {
+        if (error) {
+          callback(error);
+        } else {
+          const upload = new BlobUpload(blob);
+          notify(this.delegate, "directUploadWillStoreFileWithXHR", upload.xhr);
+          upload.create((error => {
             if (error) {
               callback(error);
             } else {
-              var upload = new BlobUpload(blob);
-              notify(_this.delegate, "directUploadWillStoreFileWithXHR", upload.xhr);
-              upload.create(function(error) {
-                if (error) {
-                  callback(error);
-                } else {
-                  callback(null, blob.toJSON());
-                }
-              });
+              callback(null, blob.toJSON());
             }
-          });
-        });
-      }
-    } ]);
-    return DirectUpload;
-  }();
-  function notify(object, methodName) {
-    if (object && typeof object[methodName] == "function") {
-      for (var _len = arguments.length, messages = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-        messages[_key - 2] = arguments[_key];
-      }
-      return object[methodName].apply(object, messages);
-    }
+          }));
+        }
+      }));
+    }));
   }
-  var DirectUploadController = function() {
-    function DirectUploadController(input, file) {
-      classCallCheck(this, DirectUploadController);
-      this.input = input;
-      this.file = file;
-      this.directUpload = new DirectUpload(this.file, this.url, this);
-      this.dispatch("initialize");
-    }
-    createClass(DirectUploadController, [ {
-      key: "start",
-      value: function start(callback) {
-        var _this = this;
-        var hiddenInput = document.createElement("input");
-        hiddenInput.type = "hidden";
-        hiddenInput.name = this.input.name;
-        this.input.insertAdjacentElement("beforebegin", hiddenInput);
-        this.dispatch("start");
-        this.directUpload.create(function(error, attributes) {
-          if (error) {
-            hiddenInput.parentNode.removeChild(hiddenInput);
-            _this.dispatchError(error);
-          } else {
-            hiddenInput.value = attributes.signed_id;
-          }
-          _this.dispatch("end");
-          callback(error);
-        });
+}
+
+function notify(object, methodName, ...messages) {
+  if (object && typeof object[methodName] == "function") {
+    return object[methodName](...messages);
+  }
+}
+
+class DirectUploadController {
+  constructor(input, file) {
+    this.input = input;
+    this.file = file;
+    this.directUpload = new DirectUpload(this.file, this.url, this);
+    this.dispatch("initialize");
+  }
+  start(callback) {
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = this.input.name;
+    this.input.insertAdjacentElement("beforebegin", hiddenInput);
+    this.dispatch("start");
+    this.directUpload.create(((error, attributes) => {
+      if (error) {
+        hiddenInput.parentNode.removeChild(hiddenInput);
+        this.dispatchError(error);
+      } else {
+        hiddenInput.value = attributes.signed_id;
       }
-    }, {
-      key: "uploadRequestDidProgress",
-      value: function uploadRequestDidProgress(event) {
-        var progress = event.loaded / event.total * 100;
-        if (progress) {
-          this.dispatch("progress", {
-            progress: progress
-          });
-        }
-      }
-    }, {
-      key: "dispatch",
-      value: function dispatch(name) {
-        var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        detail.file = this.file;
-        detail.id = this.directUpload.id;
-        return dispatchEvent(this.input, "direct-upload:" + name, {
-          detail: detail
-        });
-      }
-    }, {
-      key: "dispatchError",
-      value: function dispatchError(error) {
-        var event = this.dispatch("error", {
-          error: error
-        });
-        if (!event.defaultPrevented) {
-          alert(error);
-        }
-      }
-    }, {
-      key: "directUploadWillCreateBlobWithXHR",
-      value: function directUploadWillCreateBlobWithXHR(xhr) {
-        this.dispatch("before-blob-request", {
-          xhr: xhr
-        });
-      }
-    }, {
-      key: "directUploadWillStoreFileWithXHR",
-      value: function directUploadWillStoreFileWithXHR(xhr) {
-        var _this2 = this;
-        this.dispatch("before-storage-request", {
-          xhr: xhr
-        });
-        xhr.upload.addEventListener("progress", function(event) {
-          return _this2.uploadRequestDidProgress(event);
-        });
-      }
-    }, {
-      key: "url",
-      get: function get$$1() {
-        return this.input.getAttribute("data-direct-upload-url");
-      }
-    } ]);
-    return DirectUploadController;
-  }();
-  var inputSelector = "input[type=file][data-direct-upload-url]:not([disabled])";
-  var DirectUploadsController = function() {
-    function DirectUploadsController(form) {
-      classCallCheck(this, DirectUploadsController);
-      this.form = form;
-      this.inputs = findElements(form, inputSelector).filter(function(input) {
-        return input.files.length;
+      this.dispatch("end");
+      callback(error);
+    }));
+  }
+  uploadRequestDidProgress(event) {
+    const progress = event.loaded / event.total * 100;
+    if (progress) {
+      this.dispatch("progress", {
+        progress: progress
       });
     }
-    createClass(DirectUploadsController, [ {
-      key: "start",
-      value: function start(callback) {
-        var _this = this;
-        var controllers = this.createDirectUploadControllers();
-        var startNextController = function startNextController() {
-          var controller = controllers.shift();
-          if (controller) {
-            controller.start(function(error) {
-              if (error) {
-                callback(error);
-                _this.dispatch("end");
-              } else {
-                startNextController();
-              }
-            });
+  }
+  get url() {
+    return this.input.getAttribute("data-direct-upload-url");
+  }
+  dispatch(name, detail = {}) {
+    detail.file = this.file;
+    detail.id = this.directUpload.id;
+    return dispatchEvent(this.input, `direct-upload:${name}`, {
+      detail: detail
+    });
+  }
+  dispatchError(error) {
+    const event = this.dispatch("error", {
+      error: error
+    });
+    if (!event.defaultPrevented) {
+      alert(error);
+    }
+  }
+  directUploadWillCreateBlobWithXHR(xhr) {
+    this.dispatch("before-blob-request", {
+      xhr: xhr
+    });
+  }
+  directUploadWillStoreFileWithXHR(xhr) {
+    this.dispatch("before-storage-request", {
+      xhr: xhr
+    });
+    xhr.upload.addEventListener("progress", (event => this.uploadRequestDidProgress(event)));
+  }
+}
+
+const inputSelector = "input[type=file][data-direct-upload-url]:not([disabled])";
+
+class DirectUploadsController {
+  constructor(form) {
+    this.form = form;
+    this.inputs = findElements(form, inputSelector).filter((input => input.files.length));
+  }
+  start(callback) {
+    const controllers = this.createDirectUploadControllers();
+    const startNextController = () => {
+      const controller = controllers.shift();
+      if (controller) {
+        controller.start((error => {
+          if (error) {
+            callback(error);
+            this.dispatch("end");
           } else {
-            callback();
-            _this.dispatch("end");
+            startNextController();
           }
-        };
-        this.dispatch("start");
-        startNextController();
+        }));
+      } else {
+        callback();
+        this.dispatch("end");
       }
-    }, {
-      key: "createDirectUploadControllers",
-      value: function createDirectUploadControllers() {
-        var controllers = [];
-        this.inputs.forEach(function(input) {
-          toArray$1(input.files).forEach(function(file) {
-            var controller = new DirectUploadController(input, file);
-            controllers.push(controller);
-          });
-        });
-        return controllers;
-      }
-    }, {
-      key: "dispatch",
-      value: function dispatch(name) {
-        var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        return dispatchEvent(this.form, "direct-uploads:" + name, {
-          detail: detail
-        });
-      }
-    } ]);
-    return DirectUploadsController;
-  }();
-  var processingAttribute = "data-direct-uploads-processing";
-  var submitButtonsByForm = new WeakMap();
-  var started = false;
-  function start() {
-    if (!started) {
-      started = true;
-      document.addEventListener("click", didClick, true);
-      document.addEventListener("submit", didSubmitForm);
-      document.addEventListener("ajax:before", didSubmitRemoteElement);
-    }
+    };
+    this.dispatch("start");
+    startNextController();
   }
-  function didClick(event) {
-    var target = event.target;
-    if ((target.tagName == "INPUT" || target.tagName == "BUTTON") && target.type == "submit" && target.form) {
-      submitButtonsByForm.set(target.form, target);
-    }
+  createDirectUploadControllers() {
+    const controllers = [];
+    this.inputs.forEach((input => {
+      toArray(input.files).forEach((file => {
+        const controller = new DirectUploadController(input, file);
+        controllers.push(controller);
+      }));
+    }));
+    return controllers;
   }
-  function didSubmitForm(event) {
+  dispatch(name, detail = {}) {
+    return dispatchEvent(this.form, `direct-uploads:${name}`, {
+      detail: detail
+    });
+  }
+}
+
+const processingAttribute = "data-direct-uploads-processing";
+
+const submitButtonsByForm = new WeakMap;
+
+let started = false;
+
+function start() {
+  if (!started) {
+    started = true;
+    document.addEventListener("click", didClick, true);
+    document.addEventListener("submit", didSubmitForm, true);
+    document.addEventListener("ajax:before", didSubmitRemoteElement);
+  }
+}
+
+function didClick(event) {
+  const {target: target} = event;
+  if ((target.tagName == "INPUT" || target.tagName == "BUTTON") && target.type == "submit" && target.form) {
+    submitButtonsByForm.set(target.form, target);
+  }
+}
+
+function didSubmitForm(event) {
+  handleFormSubmissionEvent(event);
+}
+
+function didSubmitRemoteElement(event) {
+  if (event.target.tagName == "FORM") {
     handleFormSubmissionEvent(event);
   }
-  function didSubmitRemoteElement(event) {
-    if (event.target.tagName == "FORM") {
-      handleFormSubmissionEvent(event);
-    }
+}
+
+function handleFormSubmissionEvent(event) {
+  const form = event.target;
+  if (form.hasAttribute(processingAttribute)) {
+    event.preventDefault();
+    return;
   }
-  function handleFormSubmissionEvent(event) {
-    var form = event.target;
-    if (form.hasAttribute(processingAttribute)) {
-      event.preventDefault();
-      return;
-    }
-    var controller = new DirectUploadsController(form);
-    var inputs = controller.inputs;
-    if (inputs.length) {
-      event.preventDefault();
-      form.setAttribute(processingAttribute, "");
-      inputs.forEach(disable);
-      controller.start(function(error) {
-        form.removeAttribute(processingAttribute);
-        if (error) {
-          inputs.forEach(enable);
-        } else {
-          submitForm(form);
-        }
-      });
-    }
+  const controller = new DirectUploadsController(form);
+  const {inputs: inputs} = controller;
+  if (inputs.length) {
+    event.preventDefault();
+    form.setAttribute(processingAttribute, "");
+    inputs.forEach(disable);
+    controller.start((error => {
+      form.removeAttribute(processingAttribute);
+      if (error) {
+        inputs.forEach(enable);
+      } else {
+        submitForm(form);
+      }
+    }));
   }
-  function submitForm(form) {
-    var button = submitButtonsByForm.get(form) || findElement(form, "input[type=submit], button[type=submit]");
-    if (button) {
-      var _button = button, disabled = _button.disabled;
-      button.disabled = false;
-      button.focus();
-      button.click();
-      button.disabled = disabled;
-    } else {
-      button = document.createElement("input");
-      button.type = "submit";
-      button.style.display = "none";
-      form.appendChild(button);
-      button.click();
-      form.removeChild(button);
-    }
-    submitButtonsByForm.delete(form);
+}
+
+function submitForm(form) {
+  let button = submitButtonsByForm.get(form) || findElement(form, "input[type=submit], button[type=submit]");
+  if (button) {
+    const {disabled: disabled} = button;
+    button.disabled = false;
+    button.focus();
+    button.click();
+    button.disabled = disabled;
+  } else {
+    button = document.createElement("input");
+    button.type = "submit";
+    button.style.display = "none";
+    form.appendChild(button);
+    button.click();
+    form.removeChild(button);
   }
-  function disable(input) {
-    input.disabled = true;
+  submitButtonsByForm.delete(form);
+}
+
+function disable(input) {
+  input.disabled = true;
+}
+
+function enable(input) {
+  input.disabled = false;
+}
+
+function autostart() {
+  if (window.ActiveStorage) {
+    start();
   }
-  function enable(input) {
-    input.disabled = false;
-  }
-  function autostart() {
-    if (window.ActiveStorage) {
-      start();
-    }
-  }
-  setTimeout(autostart, 1);
-  exports.start = start;
-  exports.DirectUpload = DirectUpload;
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-});
-});
+}
+
+setTimeout(autostart, 1);
 
 var COMMON_MIME_TYPES = new Map([
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
@@ -15991,7 +16370,7 @@ var FILES_TO_IGNORE = [
 function fromEvent(evt) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            if (isObject(evt) && isDataTransfer(evt)) {
+            if (isObject(evt) && isDataTransfer(evt.dataTransfer)) {
                 return [2 /*return*/, getDataTransferFiles(evt.dataTransfer, evt.type)];
             }
             else if (isChangeEvt(evt)) {
@@ -16005,7 +16384,7 @@ function fromEvent(evt) {
     });
 }
 function isDataTransfer(value) {
-    return isObject(value.dataTransfer);
+    return isObject(value);
 }
 function isChangeEvt(value) {
     return isObject(value) && isObject(value.target);
@@ -16036,9 +16415,6 @@ function getDataTransferFiles(dt, type) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (dt === null) {
-                        return [2 /*return*/, []];
-                    }
                     if (!dt.items) return [3 /*break*/, 2];
                     items = fromList(dt.items)
                         .filter(function (item) { return item.kind === 'file'; });
@@ -16091,12 +16467,12 @@ function toFilePromises(item) {
     return fromDataTransferItem(item);
 }
 function flatten(items) {
-    return items.reduce(function (acc, files) { return __spread(acc, (Array.isArray(files) ? flatten(files) : [files])); }, []);
+    return items.reduce(function (acc, files) { return __spreadArray(__spreadArray([], __read(acc), false), __read((Array.isArray(files) ? flatten(files) : [files])), false); }, []);
 }
 function fromDataTransferItem(item) {
     var file = item.getAsFile();
     if (!file) {
-        return Promise.reject(item + " is not a File");
+        return Promise.reject("".concat(item, " is not a File"));
     }
     var fwp = toFileWithPath(file);
     return Promise.resolve(fwp);
@@ -16169,11 +16545,7 @@ function fromFileEntry(entry) {
     });
 }
 
-var es = createCommonjsModule(function (module, exports) {
-
-exports.__esModule = true;
-
-exports.default = function (file, acceptedFiles) {
+var _default = function (file, acceptedFiles) {
   if (file && acceptedFiles) {
     var acceptedFilesArray = Array.isArray(acceptedFiles) ? acceptedFiles : acceptedFiles.split(',');
     var fileName = file.name || '';
@@ -16195,9 +16567,14 @@ exports.default = function (file, acceptedFiles) {
 
   return true;
 };
-});
 
-var accepts = /*@__PURE__*/getDefaultExportFromCjs(es);
+function _toConsumableArray$1(arr) { return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread$1(); }
+
+function _nonIterableSpread$1() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray$1(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) return _arrayLikeToArray$1(arr); }
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -16255,7 +16632,7 @@ var TOO_MANY_FILES_REJECTION = {
 // that MIME type will always be accepted
 
 function fileAccepted(file, accept) {
-  var isAcceptable = file.type === "application/x-moz-file" || accepts(file, accept);
+  var isAcceptable = file.type === "application/x-moz-file" || _default(file, accept);
   return [isAcceptable, isAcceptable ? null : getInvalidTypeRejectionErr(accept)];
 }
 function fileMatchSize(file, minSize, maxSize) {
@@ -16272,6 +16649,19 @@ function fileMatchSize(file, minSize, maxSize) {
 function isDefined(value) {
   return value !== undefined && value !== null;
 }
+/**
+ *
+ * @param {object} options
+ * @param {File[]} options.files
+ * @param {string|string[]} [options.accept]
+ * @param {number} [options.minSize]
+ * @param {number} [options.maxSize]
+ * @param {boolean} [options.multiple]
+ * @param {number} [options.maxFiles]
+ * @param {(f: File) => FileError|FileError[]|null} [options.validator]
+ * @returns
+ */
+
 
 function allFilesAccepted(_ref) {
   var files = _ref.files,
@@ -16279,7 +16669,8 @@ function allFilesAccepted(_ref) {
       minSize = _ref.minSize,
       maxSize = _ref.maxSize,
       multiple = _ref.multiple,
-      maxFiles = _ref.maxFiles;
+      maxFiles = _ref.maxFiles,
+      validator = _ref.validator;
 
   if (!multiple && files.length > 1 || multiple && maxFiles >= 1 && files.length > maxFiles) {
     return false;
@@ -16294,7 +16685,8 @@ function allFilesAccepted(_ref) {
         _fileMatchSize2 = _slicedToArray$1(_fileMatchSize, 1),
         sizeMatch = _fileMatchSize2[0];
 
-    return accepted && sizeMatch;
+    var customErrors = validator ? validator(file) : null;
+    return accepted && sizeMatch && !customErrors;
   });
 } // React's synthetic events has event.isPropagationStopped,
 // but to remain compatibility with other libs (Preact) fall back
@@ -16377,25 +16769,70 @@ function canUseFileSystemAccessAPI() {
   return "showOpenFilePicker" in window;
 }
 /**
- * filePickerOptionsTypes returns the {types} option for https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker
- * based on the accept attr (see https://github.com/react-dropzone/attr-accept)
- * E.g: converts ['image/*', 'text/*'] to {'image/*': [], 'text/*': []}
- * @param {string|string[]} accept
+ * Convert the `{accept}` dropzone prop to the
+ * `{types}` option for https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker
+ *
+ * @param {AcceptProp} accept
+ * @returns {{accept: string[]}[]}
  */
 
-function filePickerOptionsTypes(accept) {
-  accept = typeof accept === "string" ? accept.split(",") : accept;
-  return [{
-    description: "everything",
-    // TODO: Need to handle filtering more elegantly than this!
-    accept: Array.isArray(accept) ? // Accept just MIME types as per spec
-    // NOTE: accept can be https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers
-    accept.filter(function (item) {
-      return item === "audio/*" || item === "video/*" || item === "image/*" || item === "text/*" || /\w+\/[-+.\w]+/g.test(item);
-    }).reduce(function (a, b) {
-      return _objectSpread$1(_objectSpread$1({}, a), {}, _defineProperty$1({}, b, []));
-    }, {}) : {}
-  }];
+function pickerOptionsFromAccept(accept) {
+  if (isDefined(accept)) {
+    var acceptForPicker = Object.entries(accept).filter(function (_ref2) {
+      var _ref3 = _slicedToArray$1(_ref2, 2),
+          mimeType = _ref3[0],
+          ext = _ref3[1];
+
+      var ok = true;
+
+      if (!isMIMEType(mimeType)) {
+        console.warn("Skipped \"".concat(mimeType, "\" because it is not a valid MIME type. Check https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types for a list of valid MIME types."));
+        ok = false;
+      }
+
+      if (!Array.isArray(ext) || !ext.every(isExt)) {
+        console.warn("Skipped \"".concat(mimeType, "\" because an invalid file extension was provided."));
+        ok = false;
+      }
+
+      return ok;
+    }).reduce(function (agg, _ref4) {
+      var _ref5 = _slicedToArray$1(_ref4, 2),
+          mimeType = _ref5[0],
+          ext = _ref5[1];
+
+      return _objectSpread$1(_objectSpread$1({}, agg), {}, _defineProperty$1({}, mimeType, ext));
+    }, {});
+    return [{
+      // description is required due to https://crbug.com/1264708
+      description: "Files",
+      accept: acceptForPicker
+    }];
+  }
+
+  return accept;
+}
+/**
+ * Convert the `{accept}` dropzone prop to an array of MIME types/extensions.
+ * @param {AcceptProp} accept
+ * @returns {string}
+ */
+
+function acceptPropAsAcceptAttr(accept) {
+  if (isDefined(accept)) {
+    return Object.entries(accept).reduce(function (a, _ref6) {
+      var _ref7 = _slicedToArray$1(_ref6, 2),
+          mimeType = _ref7[0],
+          ext = _ref7[1];
+
+      return [].concat(_toConsumableArray$1(a), [mimeType], _toConsumableArray$1(ext));
+    }, []) // Silently discard invalid entries as pickerOptionsFromAccept warns about these
+    .filter(function (v) {
+      return isMIMEType(v) || isExt(v);
+    }).join(",");
+  }
+
+  return undefined;
 }
 /**
  * Check if v is an exception caused by aborting a request (e.g window.showOpenFilePicker()).
@@ -16419,6 +16856,38 @@ function isAbort(v) {
 function isSecurityError(v) {
   return v instanceof DOMException && (v.name === "SecurityError" || v.code === v.SECURITY_ERR);
 }
+/**
+ * Check if v is a MIME type string.
+ *
+ * See accepted format: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers.
+ *
+ * @param {string} v
+ */
+
+function isMIMEType(v) {
+  return v === "audio/*" || v === "video/*" || v === "image/*" || v === "text/*" || /\w+\/[-+.\w]+/g.test(v);
+}
+/**
+ * Check if v is a file extension.
+ * @param {string} v
+ */
+
+function isExt(v) {
+  return /^.*\.[\w]+$/.test(v);
+}
+/**
+ * @typedef {Object.<string, string[]>} AcceptProp
+ */
+
+/**
+ * @typedef {object} FileError
+ * @property {string} message
+ * @property {ErrorCode|string} code
+ */
+
+/**
+ * @typedef {"file-invalid-type"|"file-too-large"|"file-too-small"|"too-many-files"} ErrorCode
+ */
 
 var _excluded = ["children"],
     _excluded2 = ["open"],
@@ -16483,7 +16952,7 @@ var Dropzone = /*#__PURE__*/forwardRef(function (_ref, ref) {
     };
   }, [open]); // TODO: Figure out why react-styleguidist cannot create docs if we don't return a jsx element
 
-  return /*#__PURE__*/React__default.createElement(Fragment$2, null, children(_objectSpread(_objectSpread({}, props), {}, {
+  return /*#__PURE__*/React__default.createElement(Fragment$1, null, children(_objectSpread(_objectSpread({}, props), {}, {
     open: open
   })));
 });
@@ -16502,7 +16971,8 @@ var defaultProps = {
   noDrag: false,
   noDragEventsBubbling: false,
   validator: null,
-  useFsAccessApi: true
+  useFsAccessApi: true,
+  autoFocus: false
 };
 Dropzone.defaultProps = defaultProps;
 Dropzone.propTypes = {
@@ -16518,117 +16988,120 @@ Dropzone.propTypes = {
    * @param {boolean} params.isDragActive Active drag is in progress
    * @param {boolean} params.isDragAccept Dragged files are accepted
    * @param {boolean} params.isDragReject Some dragged files are rejected
-   * @param {File[]} params.draggedFiles Files in active drag
    * @param {File[]} params.acceptedFiles Accepted files
    * @param {FileRejection[]} params.fileRejections Rejected files and why they were rejected
    */
-  children: PropTypes.func,
+  children: propTypesExports.func,
 
   /**
    * Set accepted file types.
-   * See https://github.com/okonet/attr-accept for more information.
+   * Checkout https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker types option for more information.
    * Keep in mind that mime type determination is not reliable across platforms. CSV files,
    * for example, are reported as text/plain under macOS but as application/vnd.ms-excel under
-   * Windows. In some cases there might not be a mime type set at all.
-   * See: https://github.com/react-dropzone/react-dropzone/issues/276
+   * Windows. In some cases there might not be a mime type set at all (https://github.com/react-dropzone/react-dropzone/issues/276).
    */
-  accept: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  accept: propTypesExports.objectOf(propTypesExports.arrayOf(propTypesExports.string)),
 
   /**
    * Allow drag 'n' drop (or selection from the file dialog) of multiple files
    */
-  multiple: PropTypes.bool,
+  multiple: propTypesExports.bool,
 
   /**
    * If false, allow dropped items to take over the current browser window
    */
-  preventDropOnDocument: PropTypes.bool,
+  preventDropOnDocument: propTypesExports.bool,
 
   /**
    * If true, disables click to open the native file selection dialog
    */
-  noClick: PropTypes.bool,
+  noClick: propTypesExports.bool,
 
   /**
    * If true, disables SPACE/ENTER to open the native file selection dialog.
    * Note that it also stops tracking the focus state.
    */
-  noKeyboard: PropTypes.bool,
+  noKeyboard: propTypesExports.bool,
 
   /**
    * If true, disables drag 'n' drop
    */
-  noDrag: PropTypes.bool,
+  noDrag: propTypesExports.bool,
 
   /**
    * If true, stops drag event propagation to parents
    */
-  noDragEventsBubbling: PropTypes.bool,
+  noDragEventsBubbling: propTypesExports.bool,
 
   /**
    * Minimum file size (in bytes)
    */
-  minSize: PropTypes.number,
+  minSize: propTypesExports.number,
 
   /**
    * Maximum file size (in bytes)
    */
-  maxSize: PropTypes.number,
+  maxSize: propTypesExports.number,
 
   /**
    * Maximum accepted number of files
    * The default value is 0 which means there is no limitation to how many files are accepted.
    */
-  maxFiles: PropTypes.number,
+  maxFiles: propTypesExports.number,
 
   /**
    * Enable/disable the dropzone
    */
-  disabled: PropTypes.bool,
+  disabled: propTypesExports.bool,
 
   /**
    * Use this to provide a custom file aggregator
    *
    * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
    */
-  getFilesFromEvent: PropTypes.func,
+  getFilesFromEvent: propTypesExports.func,
 
   /**
    * Cb for when closing the file dialog with no selection
    */
-  onFileDialogCancel: PropTypes.func,
+  onFileDialogCancel: propTypesExports.func,
 
   /**
    * Cb for when opening the file dialog
    */
-  onFileDialogOpen: PropTypes.func,
+  onFileDialogOpen: propTypesExports.func,
 
   /**
    * Set to true to use the https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
    * to open the file picker instead of using an `<input type="file">` click event.
    */
-  useFsAccessApi: PropTypes.bool,
+  useFsAccessApi: propTypesExports.bool,
+
+  /**
+   * Set to true to focus the root element on render
+   */
+  autoFocus: propTypesExports.bool,
 
   /**
    * Cb for when the `dragenter` event occurs.
    *
    * @param {DragEvent} event
    */
-  onDragEnter: PropTypes.func,
+  onDragEnter: propTypesExports.func,
 
   /**
    * Cb for when the `dragleave` event occurs
    *
    * @param {DragEvent} event
    */
-  onDragLeave: PropTypes.func,
+  onDragLeave: propTypesExports.func,
 
   /**
    * Cb for when the `dragover` event occurs
    *
    * @param {DragEvent} event
    */
-  onDragOver: PropTypes.func,
+  onDragOver: propTypesExports.func,
 
   /**
    * Cb for when the `drop` event occurs.
@@ -16660,7 +17133,7 @@ Dropzone.propTypes = {
    * @param {FileRejection[]} fileRejections
    * @param {(DragEvent|Event)} event A drag event or input change event (if files were selected via the file dialog)
    */
-  onDrop: PropTypes.func,
+  onDrop: propTypesExports.func,
 
   /**
    * Cb for when the `drop` event occurs.
@@ -16669,7 +17142,7 @@ Dropzone.propTypes = {
    * @param {File[]} files
    * @param {(DragEvent|Event)} event
    */
-  onDropAccepted: PropTypes.func,
+  onDropAccepted: propTypesExports.func,
 
   /**
    * Cb for when the `drop` event occurs.
@@ -16678,14 +17151,21 @@ Dropzone.propTypes = {
    * @param {FileRejection[]} fileRejections
    * @param {(DragEvent|Event)} event
    */
-  onDropRejected: PropTypes.func,
+  onDropRejected: propTypesExports.func,
 
   /**
-   * Custom validation function
-   * @param {File} file
-   * @returns {FileError|FileError[]}
+   * Cb for when there's some error from any of the promises.
+   *
+   * @param {Error} error
    */
-  validator: PropTypes.func
+  onError: propTypesExports.func,
+
+  /**
+   * Custom validation function. It must return null if there's no errors.
+   * @param {File} file
+   * @returns {FileError|FileError[]|null}
+   */
+  validator: propTypesExports.func
 };
 var Dropzone$1 = Dropzone;
 /**
@@ -16736,20 +17216,25 @@ var Dropzone$1 = Dropzone;
  */
 
 /**
- * An object with the current dropzone state and some helper functions.
+ * An object with the current dropzone state.
  *
  * @typedef {object} DropzoneState
- * @property {Function} getRootProps Returns the props you should apply to the root drop container you render
- * @property {Function} getInputProps Returns the props you should apply to hidden file input you render
- * @property {Function} open Open the native file selection dialog
  * @property {boolean} isFocused Dropzone area is in focus
  * @property {boolean} isFileDialogActive File dialog is opened
  * @property {boolean} isDragActive Active drag is in progress
  * @property {boolean} isDragAccept Dragged files are accepted
  * @property {boolean} isDragReject Some dragged files are rejected
- * @property {File[]} draggedFiles Files in active drag
  * @property {File[]} acceptedFiles Accepted files
  * @property {FileRejection[]} fileRejections Rejected files and why they were rejected
+ */
+
+/**
+ * An object with the dropzone methods.
+ *
+ * @typedef {object} DropzoneMethods
+ * @property {Function} getRootProps Returns the props you should apply to the root drop container you render
+ * @property {Function} getInputProps Returns the props you should apply to hidden file input you render
+ * @property {Function} open Open the native file selection dialog
  */
 
 var initialState = {
@@ -16758,7 +17243,6 @@ var initialState = {
   isDragActive: false,
   isDragAccept: false,
   isDragReject: false,
-  draggedFiles: [],
   acceptedFiles: [],
   fileRejections: []
 };
@@ -16784,12 +17268,11 @@ var initialState = {
  * @function useDropzone
  *
  * @param {object} props
- * @param {string|string[]} [props.accept] Set accepted file types.
- * See https://github.com/okonet/attr-accept for more information.
+ * @param {import("./utils").AcceptProp} [props.accept] Set accepted file types.
+ * Checkout https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker types option for more information.
  * Keep in mind that mime type determination is not reliable across platforms. CSV files,
  * for example, are reported as text/plain under macOS but as application/vnd.ms-excel under
- * Windows. In some cases there might not be a mime type set at all.
- * See: https://github.com/react-dropzone/react-dropzone/issues/276
+ * Windows. In some cases there might not be a mime type set at all (https://github.com/react-dropzone/react-dropzone/issues/276).
  * @param {boolean} [props.multiple=true] Allow drag 'n' drop (or selection from the file dialog) of multiple files
  * @param {boolean} [props.preventDropOnDocument=true] If false, allow dropped items to take over the current browser window
  * @param {boolean} [props.noClick=false] If true, disables click to open the native file selection dialog
@@ -16804,6 +17287,7 @@ var initialState = {
  * @param {Function} [props.onFileDialogCancel] Cb for when closing the file dialog with no selection
  * @param {boolean} [props.useFsAccessApi] Set to true to use the https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
  * to open the file picker instead of using an `<input type="file">` click event.
+ * @param {boolean} autoFocus Set to true to auto focus the root element.
  * @param {Function} [props.onFileDialogOpen] Cb for when opening the file dialog
  * @param {dragCb} [props.onDragEnter] Cb for when the `dragenter` event occurs.
  * @param {dragCb} [props.onDragLeave] Cb for when the `dragleave` event occurs
@@ -16812,7 +17296,7 @@ var initialState = {
  * Note that this callback is invoked after the `getFilesFromEvent` callback is done.
  *
  * Files are accepted or rejected based on the `accept`, `multiple`, `minSize` and `maxSize` props.
- * `accept` must be a valid [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) according to [input element specification](https://www.w3.org/wiki/HTML/Elements/input/file) or a valid file extension.
+ * `accept` must be an object with keys as a valid [MIME type](http://www.iana.org/assignments/media-types/media-types.xhtml) according to [input element specification](https://www.w3.org/wiki/HTML/Elements/input/file) and the value an array of file extensions (optional).
  * If `multiple` is set to false and additional files are dropped,
  * all files besides the first will be rejected.
  * Any file which does not have a size in the [`minSize`, `maxSize`] range, will be rejected as well.
@@ -16834,43 +17318,57 @@ var initialState = {
  * ```
  * @param {dropAcceptedCb} [props.onDropAccepted]
  * @param {dropRejectedCb} [props.onDropRejected]
+ * @param {(error: Error) => void} [props.onError]
  *
- * @returns {DropzoneState}
+ * @returns {DropzoneState & DropzoneMethods}
  */
 
 function useDropzone() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var _defaultProps$options = _objectSpread(_objectSpread({}, defaultProps), options),
-      accept = _defaultProps$options.accept,
-      disabled = _defaultProps$options.disabled,
-      getFilesFromEvent = _defaultProps$options.getFilesFromEvent,
-      maxSize = _defaultProps$options.maxSize,
-      minSize = _defaultProps$options.minSize,
-      multiple = _defaultProps$options.multiple,
-      maxFiles = _defaultProps$options.maxFiles,
-      onDragEnter = _defaultProps$options.onDragEnter,
-      onDragLeave = _defaultProps$options.onDragLeave,
-      onDragOver = _defaultProps$options.onDragOver,
-      onDrop = _defaultProps$options.onDrop,
-      onDropAccepted = _defaultProps$options.onDropAccepted,
-      onDropRejected = _defaultProps$options.onDropRejected,
-      onFileDialogCancel = _defaultProps$options.onFileDialogCancel,
-      onFileDialogOpen = _defaultProps$options.onFileDialogOpen,
-      useFsAccessApi = _defaultProps$options.useFsAccessApi,
-      preventDropOnDocument = _defaultProps$options.preventDropOnDocument,
-      noClick = _defaultProps$options.noClick,
-      noKeyboard = _defaultProps$options.noKeyboard,
-      noDrag = _defaultProps$options.noDrag,
-      noDragEventsBubbling = _defaultProps$options.noDragEventsBubbling,
-      validator = _defaultProps$options.validator;
+  var _defaultProps$props = _objectSpread(_objectSpread({}, defaultProps), props),
+      accept = _defaultProps$props.accept,
+      disabled = _defaultProps$props.disabled,
+      getFilesFromEvent = _defaultProps$props.getFilesFromEvent,
+      maxSize = _defaultProps$props.maxSize,
+      minSize = _defaultProps$props.minSize,
+      multiple = _defaultProps$props.multiple,
+      maxFiles = _defaultProps$props.maxFiles,
+      onDragEnter = _defaultProps$props.onDragEnter,
+      onDragLeave = _defaultProps$props.onDragLeave,
+      onDragOver = _defaultProps$props.onDragOver,
+      onDrop = _defaultProps$props.onDrop,
+      onDropAccepted = _defaultProps$props.onDropAccepted,
+      onDropRejected = _defaultProps$props.onDropRejected,
+      onFileDialogCancel = _defaultProps$props.onFileDialogCancel,
+      onFileDialogOpen = _defaultProps$props.onFileDialogOpen,
+      useFsAccessApi = _defaultProps$props.useFsAccessApi,
+      autoFocus = _defaultProps$props.autoFocus,
+      preventDropOnDocument = _defaultProps$props.preventDropOnDocument,
+      noClick = _defaultProps$props.noClick,
+      noKeyboard = _defaultProps$props.noKeyboard,
+      noDrag = _defaultProps$props.noDrag,
+      noDragEventsBubbling = _defaultProps$props.noDragEventsBubbling,
+      onError = _defaultProps$props.onError,
+      validator = _defaultProps$props.validator;
 
+  var acceptAttr = useMemo(function () {
+    return acceptPropAsAcceptAttr(accept);
+  }, [accept]);
+  var pickerTypes = useMemo(function () {
+    return pickerOptionsFromAccept(accept);
+  }, [accept]);
   var onFileDialogOpenCb = useMemo(function () {
     return typeof onFileDialogOpen === "function" ? onFileDialogOpen : noop;
   }, [onFileDialogOpen]);
   var onFileDialogCancelCb = useMemo(function () {
     return typeof onFileDialogCancel === "function" ? onFileDialogCancel : noop;
   }, [onFileDialogCancel]);
+  /**
+   * @constant
+   * @type {React.MutableRefObject<HTMLElement>}
+   */
+
   var rootRef = useRef(null);
   var inputRef = useRef(null);
 
@@ -16880,8 +17378,7 @@ function useDropzone() {
       dispatch = _useReducer2[1];
 
   var isFocused = state.isFocused,
-      isFileDialogActive = state.isFileDialogActive,
-      draggedFiles = state.draggedFiles;
+      isFileDialogActive = state.isFileDialogActive;
   var fsAccessApiWorksRef = useRef(typeof window !== "undefined" && window.isSecureContext && useFsAccessApi && canUseFileSystemAccessAPI()); // Update file dialog active state when the window is focused on
 
   var onWindowFocus = function onWindowFocus() {
@@ -16932,7 +17429,23 @@ function useDropzone() {
         document.removeEventListener("drop", onDocumentDrop);
       }
     };
-  }, [rootRef, preventDropOnDocument]);
+  }, [rootRef, preventDropOnDocument]); // Auto focus the root when autoFocus is true
+
+  useEffect(function () {
+    if (!disabled && autoFocus && rootRef.current) {
+      rootRef.current.focus();
+    }
+
+    return function () {};
+  }, [rootRef, autoFocus, disabled]);
+  var onErrCb = useCallback(function (e) {
+    if (onError) {
+      onError(e);
+    } else {
+      // Let the user know something's gone wrong if they haven't provided the onError cb.
+      console.error(e);
+    }
+  }, [onError]);
   var onDragEnterCb = useCallback(function (event) {
     event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
 
@@ -16941,13 +17454,25 @@ function useDropzone() {
     dragTargetsRef.current = [].concat(_toConsumableArray(dragTargetsRef.current), [event.target]);
 
     if (isEvtWithFiles(event)) {
-      Promise.resolve(getFilesFromEvent(event)).then(function (draggedFiles) {
+      Promise.resolve(getFilesFromEvent(event)).then(function (files) {
         if (isPropagationStopped(event) && !noDragEventsBubbling) {
           return;
         }
 
+        var fileCount = files.length;
+        var isDragAccept = fileCount > 0 && allFilesAccepted({
+          files: files,
+          accept: acceptAttr,
+          minSize: minSize,
+          maxSize: maxSize,
+          multiple: multiple,
+          maxFiles: maxFiles,
+          validator: validator
+        });
+        var isDragReject = fileCount > 0 && !isDragAccept;
         dispatch({
-          draggedFiles: draggedFiles,
+          isDragAccept: isDragAccept,
+          isDragReject: isDragReject,
           isDragActive: true,
           type: "setDraggedFiles"
         });
@@ -16955,9 +17480,11 @@ function useDropzone() {
         if (onDragEnter) {
           onDragEnter(event);
         }
+      }).catch(function (e) {
+        return onErrCb(e);
       });
     }
-  }, [getFilesFromEvent, onDragEnter, noDragEventsBubbling]);
+  }, [getFilesFromEvent, onDragEnter, onErrCb, noDragEventsBubbling, acceptAttr, minSize, maxSize, multiple, maxFiles, validator]);
   var onDragOverCb = useCallback(function (event) {
     event.preventDefault();
     event.persist();
@@ -17001,9 +17528,10 @@ function useDropzone() {
     }
 
     dispatch({
-      isDragActive: false,
       type: "setDraggedFiles",
-      draggedFiles: []
+      isDragActive: false,
+      isDragAccept: false,
+      isDragReject: false
     });
 
     if (isEvtWithFiles(event) && onDragLeave) {
@@ -17014,7 +17542,7 @@ function useDropzone() {
     var acceptedFiles = [];
     var fileRejections = [];
     files.forEach(function (file) {
-      var _fileAccepted = fileAccepted(file, accept),
+      var _fileAccepted = fileAccepted(file, acceptAttr),
           _fileAccepted2 = _slicedToArray(_fileAccepted, 2),
           accepted = _fileAccepted2[0],
           acceptError = _fileAccepted2[1];
@@ -17072,7 +17600,7 @@ function useDropzone() {
     if (acceptedFiles.length > 0 && onDropAccepted) {
       onDropAccepted(acceptedFiles, event);
     }
-  }, [dispatch, multiple, accept, minSize, maxSize, maxFiles, onDrop, onDropAccepted, onDropRejected, validator]);
+  }, [dispatch, multiple, acceptAttr, minSize, maxSize, maxFiles, onDrop, onDropAccepted, onDropRejected, validator]);
   var onDropCb = useCallback(function (event) {
     event.preventDefault(); // Persist here because we need the event later after getFilesFromEvent() is done
 
@@ -17087,13 +17615,15 @@ function useDropzone() {
         }
 
         setFiles(files, event);
+      }).catch(function (e) {
+        return onErrCb(e);
       });
     }
 
     dispatch({
       type: "reset"
     });
-  }, [getFilesFromEvent, setFiles, noDragEventsBubbling]); // Fn for opening the file dialog programmatically
+  }, [getFilesFromEvent, setFiles, onErrCb, noDragEventsBubbling]); // Fn for opening the file dialog programmatically
 
   var openFileDialog = useCallback(function () {
     // No point to use FS access APIs if context is not secure
@@ -17106,7 +17636,7 @@ function useDropzone() {
 
       var opts = {
         multiple: multiple,
-        types: filePickerOptionsTypes(accept)
+        types: pickerTypes
       };
       window.showOpenFilePicker(opts).then(function (handles) {
         return getFilesFromEvent(handles);
@@ -17129,7 +17659,11 @@ function useDropzone() {
           if (inputRef.current) {
             inputRef.current.value = null;
             inputRef.current.click();
+          } else {
+            onErrCb(new Error("Cannot open the file picker because the https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API is not supported and no <input> was provided."));
           }
+        } else {
+          onErrCb(e);
         }
       });
       return;
@@ -17143,7 +17677,7 @@ function useDropzone() {
       inputRef.current.value = null;
       inputRef.current.click();
     }
-  }, [dispatch, onFileDialogOpenCb, onFileDialogCancelCb, useFsAccessApi, setFiles, accept, multiple]); // Cb to open the file dialog when SPACE/ENTER occurs on the dropzone
+  }, [dispatch, onFileDialogOpenCb, onFileDialogCancelCb, useFsAccessApi, setFiles, onErrCb, pickerTypes, multiple]); // Cb to open the file dialog when SPACE/ENTER occurs on the dropzone
 
   var onKeyDownCb = useCallback(function (event) {
     // Ignore keyboard events bubbling up the DOM tree
@@ -17226,7 +17760,7 @@ function useDropzone() {
         onDragOver: composeDragHandler(composeEventHandlers(onDragOver, onDragOverCb)),
         onDragLeave: composeDragHandler(composeEventHandlers(onDragLeave, onDragLeaveCb)),
         onDrop: composeDragHandler(composeEventHandlers(onDrop, onDropCb)),
-        role: typeof role === "string" && role !== "" ? role : "button"
+        role: typeof role === "string" && role !== "" ? role : "presentation"
       }, refKey, rootRef), !disabled && !noKeyboard ? {
         tabIndex: 0
       } : {}), rest);
@@ -17245,7 +17779,7 @@ function useDropzone() {
           rest = _objectWithoutProperties(_ref3, _excluded4);
 
       var inputProps = _defineProperty({
-        accept: accept,
+        accept: acceptAttr,
         multiple: multiple,
         type: "file",
         style: {
@@ -17259,19 +17793,7 @@ function useDropzone() {
       return _objectSpread(_objectSpread({}, inputProps), rest);
     };
   }, [inputRef, accept, multiple, onDropCb, disabled]);
-  var fileCount = draggedFiles.length;
-  var isDragAccept = fileCount > 0 && allFilesAccepted({
-    files: draggedFiles,
-    accept: accept,
-    minSize: minSize,
-    maxSize: maxSize,
-    multiple: multiple,
-    maxFiles: maxFiles
-  });
-  var isDragReject = fileCount > 0 && !isDragAccept;
   return _objectSpread(_objectSpread({}, state), {}, {
-    isDragAccept: isDragAccept,
-    isDragReject: isDragReject,
     isFocused: isFocused && !disabled,
     getRootProps: getRootProps,
     getInputProps: getInputProps,
@@ -17280,6 +17802,11 @@ function useDropzone() {
     open: composeHandler(openFileDialog)
   });
 }
+/**
+ * @param {DropzoneState} state
+ * @param {{type: string} & DropzoneState} action
+ * @returns {DropzoneState}
+ */
 
 function reducer(state, action) {
   /* istanbul ignore next */
@@ -17305,12 +17832,10 @@ function reducer(state, action) {
       });
 
     case "setDraggedFiles":
-      /* eslint no-case-declarations: 0 */
-      var isDragActive = action.isDragActive,
-          draggedFiles = action.draggedFiles;
       return _objectSpread(_objectSpread({}, state), {}, {
-        draggedFiles: draggedFiles,
-        isDragActive: isDragActive
+        isDragActive: action.isDragActive,
+        isDragAccept: action.isDragAccept,
+        isDragReject: action.isDragReject
       });
 
     case "setFiles":
@@ -17438,7 +17963,7 @@ var ActiveStorageDropzone = function (props) {
         acceptedFiles.forEach(function (acceptedFile) {
             // upload the file to the active storage
             // let uploader = new ActiveStorageUploader(onDirectUploadProgress, props.authInfo)
-            var upload = new activestorage.DirectUpload(acceptedFile, toBaseUrl('api/active_storage/blobs/create_direct_upload'), {
+            var upload = new DirectUpload(acceptedFile, EzOnRailsHttpUtils.toBaseUrl('api/active_storage/blobs/create_direct_upload'), {
                 directUploadWillCreateBlobWithXHR: function (request) {
                     var httpHeader = EzOnRailsHttpClient.defaultHttpHeader(props.authInfo);
                     Object.keys(httpHeader).forEach(function (key) {
@@ -17486,17 +18011,20 @@ var ActiveStorageDropzone = function (props) {
         if (items === undefined)
             return;
         var pastedFiles = [];
+        var _loop_1 = function (item) {
+            // this item is no image
+            if (props.accept && !Object.keys(props.accept).some(function (type) { return item.type.match(type); }))
+                return "continue";
+            var file = item.getAsFile();
+            if (file) {
+                pastedFiles.push(file);
+            }
+        };
         try {
             // @ts-ignore this is nonsense, it is iterable...
             for (var items_1 = __values(items), items_1_1 = items_1.next(); !items_1_1.done; items_1_1 = items_1.next()) {
                 var item = items_1_1.value;
-                // this item is no image
-                if (props.accept && !item.type.match(props.accept))
-                    continue;
-                var file = item.getAsFile();
-                if (file) {
-                    pastedFiles.push(file);
-                }
+                _loop_1(item);
             }
         }
         catch (e_1_1) { e_1 = { error: e_1_1 }; }
@@ -17509,7 +18037,7 @@ var ActiveStorageDropzone = function (props) {
         onDropAccepted(pastedFiles);
     };
     // preview of the current stated files
-    var previews = props.files.map(function (file) { return (jsxs("div", __assign({ className: "card w-25 animate__animated animate__fadeIn mb-4", style: { flex: '0 0 auto' } }, { children: [jsx("div", __assign({ className: 'card-header p-1' }, { children: jsx("button", __assign({ onClick: function (event) { return removeFile(event, file.signedId || ''); }, type: "button", className: "close", "aria-label": "Close" }, { children: jsx("span", __assign({ "aria-hidden": "true" }, { children: "\u00D7" })) })) })), jsx("div", __assign({ className: 'd-flex justify-content-center align-items-center w-100 h-100' }, { children: jsx("img", { src: toBaseUrl(file.path || ''), alt: file.filename, className: 'd-block mw-100 m-auto m-0 rounded p-1' }) }))] }), file.signedId)); });
+    var previews = props.files.map(function (file) { return (jsxs("div", __assign({ className: "card w-25 animate__animated animate__fadeIn mb-4", style: { flex: '0 0 auto' } }, { children: [jsx("div", __assign({ className: 'card-header p-1' }, { children: jsx("button", __assign({ onClick: function (event) { return removeFile(event, file.signedId || ''); }, type: "button", className: "close", "aria-label": "Close" }, { children: jsx("span", __assign({ "aria-hidden": "true" }, { children: "\u00D7" })) })) })), jsx("div", __assign({ className: 'd-flex justify-content-center align-items-center w-100 h-100' }, { children: jsx("img", { src: EzOnRailsHttpUtils.toBaseUrl(file.path || ''), alt: file.filename, className: 'd-block mw-100 m-auto m-0 rounded p-1' }) }))] }), file.signedId)); });
     // shows some indicator for some incoming files
     var progressSpinners = [];
     for (var i = 0; i < uploadsInProgress; i++) {
@@ -17554,12 +18082,15 @@ var ResetPasswordForm = function (props) {
     /**
      * Valodation scheme for the password reset form.
      */
-    var PasswordResetValidationSchema = create().shape({
-        password: create$1().min(props.minPasswordLength || 8, props.passwordToShortErrorText || 'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
+    var PasswordResetValidationSchema = create()
+        .shape({
+        password: create$1()
+            .min(props.minPasswordLength || 8, props.passwordToShortErrorText ||
+            'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.')
             .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich'),
-        passwordConfirmation: create$1()
-            .oneOf([create$3('password')], props.passwordConfirmationMatchErrorText || 'Die Passwörter müssen übereinstimmen.')
-    }).defined();
+        passwordConfirmation: create$1().oneOf([create$3('password')], props.passwordConfirmationMatchErrorText || 'Die Passwörter müssen übereinstimmen.')
+    })
+        .defined();
     /**
      * Tries to reset the password on the server side.
      * If the reset was successful, the onSuccess callback in the props will be called.
@@ -17602,7 +18133,7 @@ var ResetPasswordForm = function (props) {
             resetPassword(values);
         }, validationSchema: PasswordResetValidationSchema }, { children: function (_a) {
             var errors = _a.errors, handleChange = _a.handleChange, handleSubmit = _a.handleSubmit;
-            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: "password", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), jsxs(Form$1.Group, __assign({ id: "password-confirmation-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort' })), jsx(Form$1.Control, { id: "passwordConfirmation", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.passwordConfirmation }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }))] })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort ändern' })) })))] })));
+            return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: "password", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.password }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] })), jsxs(Form$1.Group, __assign({ id: "password-confirmation-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort' })), jsx(Form$1.Control, { id: "passwordConfirmation", type: "password", onChange: handleChange, className: props.fieldInputClassName || 'ez-on-rails-form-field', isInvalid: !!errors.passwordConfirmation }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }))] })), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button$1, __assign({ variant: "primary", type: "submit", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Passwort ändern' })) })))] })));
         } })));
 };
 
@@ -17615,10 +18146,7 @@ var ResetPasswordForm = function (props) {
  * @constructor
  */
 var ProtectedPage = function (props) {
-    return (jsx("div", { children: props.authInfo ?
-            props.children
-            :
-                jsx("div", __assign({ className: props.accessDeniedClassName || 'ez-on-rails-protected-page-access-denied-container' }, { children: props.accessDeniedText || 'Sie müssen eingeloggt sein um diesen Inhalt sehen zu können.' })) }));
+    return (jsx("div", { children: props.authInfo ? (props.children) : (jsx("div", __assign({ className: props.accessDeniedClassName || 'ez-on-rails-protected-page-access-denied-container' }, { children: props.accessDeniedText || 'Sie müssen eingeloggt sein um diesen Inhalt sehen zu können.' }))) }));
 };
 
 /**
@@ -17633,21 +18161,16 @@ var ProtectedPage = function (props) {
 var UpdateUserForm = function (props) {
     var _a = __read(useState(false), 2), inProgress = _a[0], setInProgress = _a[1];
     var _b = __read(useState(null), 2), initialFormData = _b[0], setInitialFormData = _b[1];
+    var _c = __read(useState(undefined), 2), unconfirmedEmail = _c[0], setUnconfirmedEmail = _c[1];
     /**
-     * Converts the specified data returned by an ez-on-rails backend server to form values
-     * that can be passed to the component.
+     * Sets the state values to display the form, holding the user data and unconfirmed email, by setting it
+     * to the values of the specified user object.
      *
-     * @param data
+     * @param user
      */
-    var userResponseToFormValues = function (data) {
-        return {
-            username: data.username || '',
-            email: data.email,
-            unconfirmedEmail: data.unconfirmedEmail,
-            password: '',
-            passwordConfirmation: '',
-            avatar: data.avatar
-        };
+    var setFormDataFromUser = function (user) {
+        setInitialFormData(user);
+        setUnconfirmedEmail(user.unconfirmedEmail);
     };
     /**
      * Called once if the form was rendered.
@@ -17655,13 +18178,14 @@ var UpdateUserForm = function (props) {
      */
     useEffect(function () {
         (function () { return __awaiter(void 0, void 0, void 0, function () {
-            var initialUserData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, EzOnRailsHttpClient.getUser(props.authInfo)];
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = setFormDataFromUser;
+                        return [4 /*yield*/, EzOnRailsHttpClient.getUser(props.authInfo)];
                     case 1:
-                        initialUserData = _a.sent();
-                        setInitialFormData(userResponseToFormValues(initialUserData));
+                        _a.apply(void 0, [_b.sent()]);
                         return [2 /*return*/];
                 }
             });
@@ -17677,34 +18201,20 @@ var UpdateUserForm = function (props) {
      * @param values
      */
     var updateUser = function (values) { return __awaiter(void 0, void 0, void 0, function () {
-        var updateParams, updatedUserData, e_1;
+        var updatedUser, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     setInProgress(true);
-                    updateParams = {};
-                    if (values.email) {
-                        updateParams.email = values.email;
-                    }
-                    if (values.username) {
-                        updateParams.username = values.username;
-                    }
-                    if (values.password) {
-                        updateParams.password = values.password;
-                        updateParams.passwordConfirmation = values.passwordConfirmation;
-                    }
-                    if (values.avatar) {
-                        updateParams.avatar = values.avatar.signedId;
-                    }
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, EzOnRailsHttpClient.updateUser(updateParams, props.authInfo)];
+                    return [4 /*yield*/, EzOnRailsHttpClient.updateUser(values, props.authInfo)];
                 case 2:
-                    updatedUserData = _a.sent();
-                    props.onUserUpdateSuccess(updatedUserData);
+                    updatedUser = _a.sent();
+                    props.onUserUpdateSuccess(updatedUser);
                     // reinitialize form to show possibly unconfirmed email
-                    setInitialFormData(userResponseToFormValues(updatedUserData));
+                    setFormDataFromUser(updatedUser);
                     setInProgress(false);
                     return [3 /*break*/, 4];
                 case 3:
@@ -17719,25 +18229,40 @@ var UpdateUserForm = function (props) {
     /**
      * Validation Schema for registration values.
      */
-    var UpdateUserValidationSchema = create().shape({
+    var UpdateUserValidationSchema = create()
+        .shape({
         username: create$1()
-            .min(props.minUsernameLength || 5, props.usernameToShortErrorText || 'Der Benutzername ist zu kurz. Er muss mindestens 5 Zeichen lang sein. ')
-            .max(props.maxUsernameLength || 50, props.usernameToLongErrorText || 'Der Benutzername ist zu lang. Er darf maximal 50 Zeichen lang sein.')
+            .min(props.minUsernameLength || 5, props.usernameToShortErrorText ||
+            'Der Benutzername ist zu kurz. Er muss mindestens 5 Zeichen lang sein. ')
+            .max(props.maxUsernameLength || 50, props.usernameToLongErrorText ||
+            'Der Benutzername ist zu lang. Er darf maximal 50 Zeichen lang sein.')
             .required(props.usernameRequiredErrorText || 'Der Benutzername ist erforderlich.'),
-        email: create$1().email(props.emailInvalidErrorText || 'Ungültige E-Mail Adresse.')
+        email: create$1()
+            .email(props.emailInvalidErrorText || 'Ungültige E-Mail Adresse.')
             .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
-            .max(props.maxEmailLength || 100, props.emailToLongErrorText || 'Die E-Mail Adresse ist zu lang. Sie darf maximal 100 Zeichen lang sein.'),
+            .max(props.maxEmailLength || 100, props.emailToLongErrorText ||
+            'Die E-Mail Adresse ist zu lang. Sie darf maximal 100 Zeichen lang sein.'),
         password: create$1().min(props.minPasswordLength || 8, props.passwordToShortErrorText || 'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.'),
-        passwordConfirmation: create$1()
-            .oneOf([create$3('password')], props.passwordsMustMatchErrorText || 'Die Passwörter müssen übereinstimmen.')
-    }).defined();
+        passwordConfirmation: create$1().oneOf([create$3('password')], props.passwordsMustMatchErrorText || 'Die Passwörter müssen übereinstimmen.')
+    })
+        .defined();
     return (jsx("div", __assign({ className: "ez-on-rails-form-outer-container" }, { children: initialFormData ? (jsx(Formik, __assign({ initialValues: initialFormData, validationSchema: UpdateUserValidationSchema, enableReinitialize: true, onSubmit: function (values) {
                 updateUser(values);
             } }, { children: function (_a) {
                 var errors = _a.errors, values = _a.values, handleChange = _a.handleChange, setFieldValue = _a.setFieldValue, setFieldError = _a.setFieldError, handleSubmit = _a.handleSubmit;
-                return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [!props.hideUsername && (jsxs(Form$1.Group, __assign({ id: 'username-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' })), jsx(Form$1.Control, { id: 'username', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", value: values.username, onChange: handleChange, isInvalid: !!errors.username }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.username }))] }))), !props.hideEmail && (jsxs(Form$1.Group, __assign({ id: 'email-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: 'email', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", value: values.email, onChange: handleChange, isInvalid: !!errors.email }), values.unconfirmedEmail && (jsxs("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text' }, { children: [props.unconfirmedEmailText || 'Die folgende E-Mail Adresse wurde noch nicht bestätigt: ', " ", values.unconfirmedEmail] }))), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] }))), !props.hidePassword && (jsxs(Form$1.Group, __assign({ id: 'password-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: 'password', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.password, onChange: handleChange, isInvalid: !!errors.password }), jsx("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-password-optional-text' }, { children: props.passwordChangeOptionalText || 'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.' })), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] }))), !props.hidePassword && (jsxs(Form$1.Group, __assign({ id: 'password-confirmation-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' })), jsx(Form$1.Control, { id: 'passwordConfirmation', className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.passwordConfirmation, onChange: handleChange, isInvalid: !!errors.passwordConfirmation }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }))] }))), !props.hideAvatar && (jsxs(Form$1.Group, __assign({ id: 'avatar-container', className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelAvatar || 'Avatar' })), jsx("div", __assign({ className: props.dropzoneContainerClassName || 'ez-on-rails-form-field' }, { children: jsx(ActiveStorageDropzone, { authInfo: props.authInfo, onChange: function (blobs) { return setFieldValue('avatar', blobs.length > 0 ? blobs[0] : null); }, files: values.avatar ? [values.avatar] : [], multiple: false, maxFiles: 1, onMaxFilesError: function () { return setFieldError('avatar', props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.'); }, maxSize: props.avatarMaxSize || 5242880, onMaxSizeError: function () { return setFieldError('avatar', props.avatarToLargeErrorText || 'Es sind maximal 5MB große Bilder erlaubt.'); }, onInvalidTypeError: function () { return setFieldError('avatar', props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.'); } }) })), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.avatar }))] }))), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button, __assign({ ref: props.submitRef, type: "submit", variant: "primary", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || "Speichern" })) })))] })));
-            } }))) :
-            (jsx("div", { children: "Loading..." })) })));
+                return (jsxs("form", __assign({ onSubmit: handleSubmit, className: props.containerClassName || 'ez-on-rails-form-container' }, { children: [!props.hideUsername && (jsxs(Form$1.Group, __assign({ id: "username-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelUsername || 'Benutzername' })), jsx(Form$1.Control, { id: "username", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "text", value: values.username, onChange: handleChange, isInvalid: !!errors.username }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.username }))] }))), !props.hideEmail && (jsxs(Form$1.Group, __assign({ id: "email-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelEmail || 'E-Mail Adresse' })), jsx(Form$1.Control, { id: "email", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "email", value: values.email, onChange: handleChange, isInvalid: !!errors.email }), unconfirmedEmail && (jsxs("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text' }, { children: [props.unconfirmedEmailText ||
+                                            'Die folgende E-Mail Adresse wurde noch nicht bestätigt: ', ' ', unconfirmedEmail] }))), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.email }))] }))), !props.hidePassword && (jsxs(Form$1.Group, __assign({ id: "password-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPassword || 'Passwort' })), jsx(Form$1.Control, { id: "password", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.password, onChange: handleChange, isInvalid: !!errors.password }), jsx("div", __assign({ className: props.fieldInfoClassName || 'ez-on-rails-password-optional-text' }, { children: props.passwordChangeOptionalText ||
+                                        'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.' })), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.password }))] }))), !props.hidePassword && (jsxs(Form$1.Group, __assign({ id: "password-confirmation-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelPasswordConfirmation || 'Passwort wiederholen' })), jsx(Form$1.Control, { id: "passwordConfirmation", className: props.fieldInputClassName || 'ez-on-rails-form-field', type: "password", value: values.passwordConfirmation, onChange: handleChange, isInvalid: !!errors.passwordConfirmation }), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.passwordConfirmation }))] }))), !props.hideAvatar && (jsxs(Form$1.Group, __assign({ id: "avatar-container", className: props.fieldContainerClassName || 'ez-on-rails-form-field-container' }, { children: [jsx(Form$1.Label, __assign({ className: props.fieldLabelClassName || 'ez-on-rails-form-field-label' }, { children: props.labelAvatar || 'Avatar' })), jsx("div", __assign({ className: props.dropzoneContainerClassName || 'ez-on-rails-form-field' }, { children: jsx(ActiveStorageDropzone, { authInfo: props.authInfo, onChange: function (blobs) {
+                                            return setFieldValue('avatar', blobs.length > 0 ? blobs[0] : null);
+                                        }, files: values.avatar ? [values.avatar] : [], multiple: false, maxFiles: 1, onMaxFilesError: function () {
+                                            return setFieldError('avatar', props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.');
+                                        }, maxSize: props.avatarMaxSize || 5242880, onMaxSizeError: function () {
+                                            return setFieldError('avatar', props.avatarToLargeErrorText ||
+                                                'Es sind maximal 5MB große Bilder erlaubt.');
+                                        }, onInvalidTypeError: function () {
+                                            return setFieldError('avatar', props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.');
+                                        } }) })), jsx(Form$1.Control.Feedback, __assign({ type: "invalid", className: props.fieldErrorClassName || 'ez-on-rails-form-field-error' }, { children: errors.avatar }))] }))), !inProgress && (jsx("div", __assign({ className: props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container' }, { children: jsx(Button$1, __assign({ ref: props.submitRef, type: "submit", variant: "primary", className: props.submitButtonClassName || 'ez-on-rails-form-submit-button' }, { children: props.labelSubmitButton || 'Speichern' })) })))] })));
+            } }))) : (jsx("div", { children: "Loading..." })) })));
 };
 
 var EzOnRailsComponents = {
@@ -17759,5 +18284,5 @@ var EzOnRails = {
     components: EzOnRailsComponents
 };
 
-export { ActiveStorageDropzone, DevelopmentHint, EzOnRails, EzOnRailsComponents, EzOnRailsConfig, EzOnRailsHttp, EzOnRailsHttpError, LoginForm, LostPasswordForm, ProtectedPage, RegistrationForm, ResendConfirmationForm, ResetPasswordForm, UpdateUserForm, defaultHttpHeader, isUnauthorizedError };
+export { ActiveStorageDropzone, DevelopmentHint, EzOnRails, EzOnRailsComponents, EzOnRailsConfig, EzOnRailsHttp, EzOnRailsHttpError, LoginForm, LostPasswordForm, ProtectedPage, RegistrationForm, ResendConfirmationForm, ResetPasswordForm, UpdateUserForm, defaultHttpHeader };
 //# sourceMappingURL=index.es.js.map

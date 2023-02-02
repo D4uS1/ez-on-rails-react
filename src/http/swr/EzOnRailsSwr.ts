@@ -18,32 +18,32 @@ import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../client/EzOnRailsHttpC
  * @param key
  */
 export const EzOnRailsSwr = {
-    fetcher: async <T>(
+    fetcher: async <TParams, TResponse>(
         url: string,
         method = 'get',
-        data: unknown = null,
+        data: TParams | null = null,
         authInfo: EzOnRailsAuthInfo | undefined = undefined
-    ): Promise<T> => {
+    ): Promise<TResponse> => {
         method = method.toLowerCase();
         switch (method) {
             case 'post': {
-                return EzOnRailsHttpClient.post<T>(url, data, authInfo);
+                return EzOnRailsHttpClient.post<TParams | null, TResponse>(url, data, authInfo);
             }
 
             case 'put': {
-                return EzOnRailsHttpClient.put<T>(url, data, authInfo);
+                return EzOnRailsHttpClient.put<TParams | null, TResponse>(url, data, authInfo);
             }
 
             case 'patch': {
-                return EzOnRailsHttpClient.patch<T>(url, data, authInfo);
+                return EzOnRailsHttpClient.patch<TParams | null, TResponse>(url, data, authInfo);
             }
 
             case 'delete': {
-                return EzOnRailsHttpClient.delete<T>(url, data, authInfo);
+                return EzOnRailsHttpClient.delete<TParams | null, TResponse>(url, data, authInfo);
             }
 
             default: {
-                return EzOnRailsHttpClient.get<T>(url, data, authInfo);
+                return EzOnRailsHttpClient.get<TParams | null, TResponse>(url, data, authInfo);
             }
         }
     }

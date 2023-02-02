@@ -30,7 +30,6 @@ export { ResendConfirmationForm } from './components/EzOnRails/ResendConfirmatio
 export { DevelopmentHint } from './components/EzOnRails/DevelopmentHint/DevelopmentHint';
 
 // specific functions
-export { isUnauthorizedError } from './http/client/EzOnRailsHttpClient';
 export { defaultHttpHeader } from './http/client/EzOnRailsHttpClient';
 
 // Types

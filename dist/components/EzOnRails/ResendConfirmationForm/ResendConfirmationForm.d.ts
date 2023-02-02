@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import '../EzOnRails.css';
 import { DefaultFormProps } from '../shared/Types';
 /**
@@ -8,7 +9,7 @@ export interface ResendConfirmationFormProps extends DefaultFormProps {
     emailRequiredErrorText?: string;
     labelEmail?: string;
     onResendConfirmationSuccess: (email: string) => void;
-    onResendConfirmationError: (e: any) => void;
+    onResendConfirmationError: (e: unknown) => void;
 }
 /**
  * Component for a form to send a resend confirmation email.
