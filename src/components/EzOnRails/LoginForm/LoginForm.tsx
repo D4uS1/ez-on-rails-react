@@ -1,12 +1,12 @@
-import '../EzOnRails.css';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { EzOnRailsAuthInfo, EzOnRailsHttpClient, EzOnRailsSignInParams } from '../../../http/client/EzOnRailsHttpClient';
-import { DefaultFormProps } from '../shared/Types';
+import { DefaultFormProps } from '../shared/types/Form';
+import formStyles from '../shared/styles/Form.module.css';
 
 /**
  * Adds the stayLoggedIn checkbox to the SignIn values. This value will not be submitted to the server, but
@@ -123,12 +123,12 @@ export const LoginForm = (props: LoginFormProps) => {
             validationSchema={LoginValidationSchema}
         >
             {({ errors, handleChange, handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={props.containerClassName || 'ez-on-rails-form-container'}>
+                <form onSubmit={handleSubmit} className={props.containerClassName || formStyles.container}>
                     <Form.Group
                         id="email-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelEmail || 'E-Mail Adresse'}
                         </Form.Label>
 
@@ -136,12 +136,12 @@ export const LoginForm = (props: LoginFormProps) => {
                             id="email"
                             type="email"
                             onChange={handleChange}
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             isInvalid={!!errors.email}
                         />
                         <Form.Control.Feedback
                             type="invalid"
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                         >
                             {errors.email}
                         </Form.Control.Feedback>
@@ -149,9 +149,9 @@ export const LoginForm = (props: LoginFormProps) => {
 
                     <Form.Group
                         id="password-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelPassword || 'Passwort'}
                         </Form.Label>
 
@@ -159,12 +159,12 @@ export const LoginForm = (props: LoginFormProps) => {
                             id="password"
                             type="password"
                             onChange={handleChange}
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             isInvalid={!!errors.password}
                         />
                         <Form.Control.Feedback
                             type="invalid"
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                         >
                             {errors.password}
                         </Form.Control.Feedback>
@@ -173,11 +173,11 @@ export const LoginForm = (props: LoginFormProps) => {
                     {!props.hideStayLoggedIn && (
                         <Form.Group
                             id="stay-logged-in-container"
-                            className={props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container'}
+                            className={props.fieldCheckboxContainerClassName || formStyles.fieldContainer}
                         >
                             <Form.Check
                                 id="stayLoggedIn"
-                                className={props.fieldCheckboxInputClassName || 'ez-on-rails-form-field'}
+                                className={props.fieldCheckboxInputClassName || formStyles.formField}
                                 type="checkbox"
                                 label={props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben'}
                                 onChange={handleChange}
@@ -190,7 +190,7 @@ export const LoginForm = (props: LoginFormProps) => {
                             <Button
                                 variant="primary"
                                 type="submit"
-                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                                className={props.submitButtonClassName || formStyles.submitButton}
                             >
                                 {props.labelSubmitButton || 'Login'}
                             </Button>

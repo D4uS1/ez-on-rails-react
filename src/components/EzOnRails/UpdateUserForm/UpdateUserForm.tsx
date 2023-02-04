@@ -1,5 +1,4 @@
-import '../EzOnRails.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { Formik } from 'formik';
@@ -11,7 +10,8 @@ import {
 } from '../../../http/client/EzOnRailsHttpClient';
 import { Button, Form } from 'react-bootstrap';
 import { ActiveStorageDropzone } from '../ActiveStorageDropzone/ActiveStorageDropzone';
-import { DefaultFormProps } from '../shared/Types';
+import { DefaultFormProps } from '../shared/types/Form';
+import formStyles from '../shared/styles/Form.module.css';
 
 /**
  * Props for the UpdateUserForm.
@@ -226,19 +226,19 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                     {({ errors, values, handleChange, setFieldValue, setFieldError, handleSubmit }) => (
                         <form
                             onSubmit={handleSubmit}
-                            className={props.containerClassName || 'ez-on-rails-form-container'}
+                            className={props.containerClassName || formStyles.container}
                         >
                             {!props.hideUsername && (
                                 <Form.Group
                                     id="username-container"
-                                    className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                                    className={props.fieldContainerClassName || formStyles.fieldContainer}
                                 >
-                                    <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                    <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                                         {props.labelUsername || 'Benutzername'}
                                     </Form.Label>
                                     <Form.Control
                                         id="username"
-                                        className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                        className={props.fieldInputClassName || formStyles.formField}
                                         type="text"
                                         value={values.username}
                                         onChange={handleChange}
@@ -246,7 +246,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                     />
                                     <Form.Control.Feedback
                                         type="invalid"
-                                        className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                                        className={props.fieldErrorClassName || formStyles.fieldError}
                                     >
                                         {errors.username}
                                     </Form.Control.Feedback>
@@ -256,14 +256,14 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                             {!props.hideEmail && (
                                 <Form.Group
                                     id="email-container"
-                                    className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                                    className={props.fieldContainerClassName || formStyles.fieldContainer}
                                 >
-                                    <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                    <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                                         {props.labelEmail || 'E-Mail Adresse'}
                                     </Form.Label>
                                     <Form.Control
                                         id="email"
-                                        className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                        className={props.fieldInputClassName || formStyles.formField}
                                         type="email"
                                         value={values.email}
                                         onChange={handleChange}
@@ -280,7 +280,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                     )}
                                     <Form.Control.Feedback
                                         type="invalid"
-                                        className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                                        className={props.fieldErrorClassName || formStyles.fieldError}
                                     >
                                         {errors.email}
                                     </Form.Control.Feedback>
@@ -290,14 +290,14 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                             {!props.hidePassword && (
                                 <Form.Group
                                     id="password-container"
-                                    className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                                    className={props.fieldContainerClassName || formStyles.fieldContainer}
                                 >
-                                    <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                    <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                                         {props.labelPassword || 'Passwort'}
                                     </Form.Label>
                                     <Form.Control
                                         id="password"
-                                        className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                        className={props.fieldInputClassName || formStyles.formField}
                                         type="password"
                                         value={values.password}
                                         onChange={handleChange}
@@ -309,7 +309,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                     </div>
                                     <Form.Control.Feedback
                                         type="invalid"
-                                        className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                                        className={props.fieldErrorClassName || formStyles.fieldError}
                                     >
                                         {errors.password}
                                     </Form.Control.Feedback>
@@ -319,14 +319,14 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                             {!props.hidePassword && (
                                 <Form.Group
                                     id="password-confirmation-container"
-                                    className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                                    className={props.fieldContainerClassName || formStyles.fieldContainer}
                                 >
-                                    <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                    <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                                         {props.labelPasswordConfirmation || 'Passwort wiederholen'}
                                     </Form.Label>
                                     <Form.Control
                                         id="passwordConfirmation"
-                                        className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                                        className={props.fieldInputClassName || formStyles.formField}
                                         type="password"
                                         value={values.passwordConfirmation}
                                         onChange={handleChange}
@@ -334,7 +334,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                     />
                                     <Form.Control.Feedback
                                         type="invalid"
-                                        className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                                        className={props.fieldErrorClassName || formStyles.fieldError}
                                     >
                                         {errors.passwordConfirmation}
                                     </Form.Control.Feedback>
@@ -344,12 +344,12 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                             {!props.hideAvatar && (
                                 <Form.Group
                                     id="avatar-container"
-                                    className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                                    className={props.fieldContainerClassName || formStyles.fieldContainer}
                                 >
-                                    <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                                    <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                                         {props.labelAvatar || 'Avatar'}
                                     </Form.Label>
-                                    <div className={props.dropzoneContainerClassName || 'ez-on-rails-form-field'}>
+                                    <div className={props.dropzoneContainerClassName || formStyles.formField}>
                                         <ActiveStorageDropzone
                                             authInfo={props.authInfo}
                                             onChange={(blobs) =>
@@ -382,7 +382,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                     </div>
                                     <Form.Control.Feedback
                                         type="invalid"
-                                        className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                                        className={props.fieldErrorClassName || formStyles.fieldError}
                                     >
                                         {errors.avatar}
                                     </Form.Control.Feedback>
@@ -398,7 +398,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         ref={props.submitRef}
                                         type="submit"
                                         variant="primary"
-                                        className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                                        className={props.submitButtonClassName || formStyles.submitButton}
                                     >
                                         {props.labelSubmitButton || 'Speichern'}
                                     </Button>

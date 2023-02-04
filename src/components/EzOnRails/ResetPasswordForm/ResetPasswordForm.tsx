@@ -1,12 +1,12 @@
-import '../EzOnRails.css';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { EzOnRailsHttpClient, EzOnRailsPasswordResetParams } from '../../../http/client/EzOnRailsHttpClient';
-import { DefaultFormProps } from '../shared/Types';
+import { DefaultFormProps } from '../shared/types/Form';
+import formStyles from '../shared/styles/Form.module.css';
 
 /**
  * The form values to reset the password do not hold bthe resetPasswordToken. The token is passed
@@ -118,12 +118,12 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
             validationSchema={PasswordResetValidationSchema}
         >
             {({ errors, handleChange, handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={props.containerClassName || 'ez-on-rails-form-container'}>
+                <form onSubmit={handleSubmit} className={props.containerClassName || formStyles.container}>
                     <Form.Group
                         id="password-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelPassword || 'Passwort'}
                         </Form.Label>
 
@@ -131,12 +131,12 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                             id="password"
                             type="password"
                             onChange={handleChange}
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             isInvalid={!!errors.password}
                         />
                         <Form.Control.Feedback
                             type="invalid"
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                         >
                             {errors.password}
                         </Form.Control.Feedback>
@@ -144,9 +144,9 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
 
                     <Form.Group
                         id="password-confirmation-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelPasswordConfirmation || 'Passwort'}
                         </Form.Label>
 
@@ -154,12 +154,12 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                             id="passwordConfirmation"
                             type="password"
                             onChange={handleChange}
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             isInvalid={!!errors.passwordConfirmation}
                         />
                         <Form.Control.Feedback
                             type="invalid"
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                         >
                             {errors.passwordConfirmation}
                         </Form.Control.Feedback>
@@ -170,7 +170,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                             <Button
                                 variant="primary"
                                 type="submit"
-                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                                className={props.submitButtonClassName || formStyles.submitButton}
                             >
                                 {props.labelSubmitButton || 'Passwort ändern'}
                             </Button>

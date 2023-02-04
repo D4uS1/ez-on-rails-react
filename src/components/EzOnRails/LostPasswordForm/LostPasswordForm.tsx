@@ -1,12 +1,12 @@
-import '../EzOnRails.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { EzOnRailsHttpClient, EzOnRailsPasswordResetInstructionsParams } from '../../../http/client/EzOnRailsHttpClient';
 import { Formik } from 'formik';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { DefaultFormProps } from '../shared/Types';
+import { DefaultFormProps } from '../shared/types/Form';
+import formStyles from '../shared/styles/Form.module.css';
 
 /**
  * Type for props for the LostPasswordForm component.
@@ -86,24 +86,24 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
             validationSchema={LostPasswordValidationSchema}
         >
             {({ errors, handleChange, handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={props.containerClassName || 'ez-on-rails-form-container'}>
+                <form onSubmit={handleSubmit} className={props.containerClassName || formStyles.container}>
                     <Form.Group
                         id="email-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelEmail || 'E-Mail Adresse'}
                         </Form.Label>
                         <Form.Control
                             id="email"
                             type="email"
                             onChange={handleChange}
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             isInvalid={!!errors.email}
                         />
                         <Form.Control.Feedback
                             type="invalid"
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                         >
                             {errors.email}
                         </Form.Control.Feedback>
@@ -114,7 +114,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
                             <Button
                                 variant="primary"
                                 type="submit"
-                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                                className={props.submitButtonClassName || formStyles.submitButton}
                             >
                                 {props.labelSubmitButton || 'Passwort zurücksetzen'}
                             </Button>

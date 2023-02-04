@@ -1,11 +1,11 @@
-import '../EzOnRails.css';
-import { ReactNode, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { Formik } from 'formik';
 import { EzOnRailsHttpClient, EzOnRailsSignUpParams } from '../../../http/client/EzOnRailsHttpClient';
 import { Button, Form } from 'react-bootstrap';
-import { DefaultFormProps } from '../shared/Types';
+import { DefaultFormProps } from '../shared/types/Form';
+import formStyles from '../shared/styles/Form.module.css';
 
 /**
  * Props for the RegistrationForm.
@@ -174,23 +174,23 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
             }}
         >
             {({ errors, handleChange, handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={props.containerClassName || 'ez-on-rails-form-container'}>
+                <form onSubmit={handleSubmit} className={props.containerClassName || formStyles.container}>
                     <Form.Group
                         id="username-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelUsername || 'Benutzername'}
                         </Form.Label>
                         <Form.Control
                             id="username"
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             type="text"
                             onChange={handleChange}
                             isInvalid={!!errors.username}
                         />
                         <Form.Control.Feedback
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                             type="invalid"
                         >
                             {errors.username}
@@ -198,20 +198,20 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                     </Form.Group>
                     <Form.Group
                         id="email-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelEmail || 'E-Mail Adresse'}
                         </Form.Label>
                         <Form.Control
                             id="email"
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             type="email"
                             onChange={handleChange}
                             isInvalid={!!errors.email}
                         />
                         <Form.Control.Feedback
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                             type="invalid"
                         >
                             {errors.email}
@@ -220,20 +220,20 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
 
                     <Form.Group
                         id="password-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelPassword || 'Passwort'}
                         </Form.Label>
                         <Form.Control
                             id="password"
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             type="password"
                             onChange={handleChange}
                             isInvalid={!!errors.password}
                         />
                         <Form.Control.Feedback
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                             type="invalid"
                         >
                             {errors.password}
@@ -242,20 +242,20 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
 
                     <Form.Group
                         id="password-confirmation-container"
-                        className={props.fieldContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
-                        <Form.Label className={props.fieldLabelClassName || 'ez-on-rails-form-field-label'}>
+                        <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
                             {props.labelPasswordConfirmation || 'Passwort wiederholen'}
                         </Form.Label>
                         <Form.Control
                             id="passwordConfirmation"
-                            className={props.fieldInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldInputClassName || formStyles.formField}
                             type="password"
                             onChange={handleChange}
                             isInvalid={!!errors.passwordConfirmation}
                         />
                         <Form.Control.Feedback
-                            className={props.fieldErrorClassName || 'ez-on-rails-form-field-error'}
+                            className={props.fieldErrorClassName || formStyles.fieldError}
                             type="invalid"
                         >
                             {errors.passwordConfirmation}
@@ -264,11 +264,11 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
 
                     <Form.Group
                         id="privacy-policy-accepted-container"
-                        className={props.fieldCheckboxContainerClassName || 'ez-on-rails-form-field-container'}
+                        className={props.fieldCheckboxContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Check
                             id="privacyPolicyAccepted"
-                            className={props.fieldCheckboxInputClassName || 'ez-on-rails-form-field'}
+                            className={props.fieldCheckboxInputClassName || formStyles.formField}
                             type="checkbox"
                             label={
                                 props.labelPrivacyPolicyAccepted || (
@@ -294,7 +294,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                     {!inProgress && (
                         <div className={props.submitButtonContainerClassName || 'ez-on-rails-form-submit-container'}>
                             <Button
-                                className={props.submitButtonClassName || 'ez-on-rails-form-submit-button'}
+                                className={props.submitButtonClassName || formStyles.submitButton}
                                 type="submit"
                                 variant="primary"
                             >

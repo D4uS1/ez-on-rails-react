@@ -3,9 +3,9 @@ import * as ActiveStorage from '@rails/activestorage';
 import { ReactNode, useState } from 'react';
 import { ClipboardEvent, MouseEvent } from 'react';
 import Dropzone, { Accept, ErrorCode, FileRejection, useDropzone } from 'react-dropzone';
-import './ActiveStorageDropzone.css';
 import { EzOnRailsHttpUtils } from '../../../http/utils/EzOnRailsUtils';
 import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../../../http/client/EzOnRailsHttpClient';
+import styles from './ActiveStorageDropzone.module.css';
 
 /**
  * Returns the relative url from the backend url to show the blob having the specified signedId and filename from the backend.
@@ -335,7 +335,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
             {props.pasteZone && (
                 <input
                     type="text"
-                    className="w-100 active-storage-dropzone-pastezone-container p-2"
+                    className={ `w-100 p-2 ${styles.pastezoneContainer }` }
                     value={props.textPastezone || 'Copy and paste some files here'}
                     onPaste={onPaste}
                     readOnly
@@ -353,7 +353,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
                     <section>
                         <div
                             {...getRootProps()}
-                            className={`active-storage-dropzone-dropzone-container p-4 ${props.className}`}
+                            className={`${styles.dropzoneContainer} p-4 ${props.className}`}
                         >
                             {/* the file input field, but invisible */}
                             <input {...getInputProps()} />

@@ -1,45 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "build",
-    "module": "esnext",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "downlevelIteration": true,
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react-jsx",
-    "declaration": true,
+    "lib": ["dom", "ES2017"],
+    "jsx": "react",
+    "module": "ESNext",
+    "rootDir": "./src",
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "downlevelIteration": true,
+    "declarationDir": "dist/types",
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "noEmitHelpers": true,
-    "noFallthroughCasesInSwitch": true
+    "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
     "node_modules",
-    "build",
-    "dist",
-    "example",
-    "rollup.config.js"
+    "components-test-app",
+    "dist"
   ]
 }

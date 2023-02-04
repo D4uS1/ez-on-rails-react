@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './DevelopmentHint.css';
+import React, { useState } from 'react';
+import styles from './DevelopmentHint.module.css';
 
 /**
  * Props for the DevelopmentHint component.
@@ -45,8 +45,8 @@ export const DevelopmentHint = (props: DevelopmentHintProps) => {
     };
 
     return visible ? (
-        <div onClick={onClickContainer} className="development-hint-container">
-            <span className="development-hint-text">development</span>
+        <div onClick={onClickContainer} className={styles.container}>
+            <span className={styles.text}>development</span>
         </div>
     ) : null;
 };
