@@ -22,7 +22,7 @@ export declare const EzOnRails: {
             patch: <TParams_2, TResponse_2>(url: string, data: TParams_2, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
             put: <TParams_3, TResponse_3>(url: string, data: TParams_3, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
             delete: <TParams_4, TResponse_4>(url: string, data: TParams_4, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
-            defaultHttpHeader: (authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo) => Record<string, string>;
+            defaultHttpHeader: (authInfo: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo, apiVersion?: string | undefined) => Record<string, string>;
         };
         swr: {
             fetcher: <TParams_5, TResponse_5>(url: string, method?: string, data?: TParams_5 | null, authInfo?: import("./http/client/EzOnRailsHttpClient").EzOnRailsAuthInfo | undefined) => Promise<TResponse_5>;

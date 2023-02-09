@@ -607,11 +607,13 @@ export const EzOnRailsHttpClient = {
 
     /**
      * Returns the default headers used to make an authorized request.
-     * Can be used for custom requests without the ez-on-rails-react client..
+     * Can be used for custom requests without the ez-on-rails-react client.
+     * If the apiVersion is not passed, the apiVersion given by the config will be used.
      *
      * @param authInfo
+     * @param apiVersion
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo): Record<string, string> => {
-        return defaultHttpHeader(authInfo);
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo, apiVersion?: string): Record<string, string> => {
+        return defaultHttpHeader(authInfo, apiVersion);
     }
 };
