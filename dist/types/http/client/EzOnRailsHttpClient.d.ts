@@ -84,8 +84,11 @@ export interface EzOnRailsConfirmParams {
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
  * If the authInfo is defined, its information will ba appended to the header of the authentication information, too.
+ *
+ * If the apiVersion is defined, it will be used instead of the value saved in the EzOnRailsConfig, hence this method
+ * can be used to build headers that are accepted by ez-on-rails backends without using the http methods of this package.
  */
-export declare const defaultHttpHeader: (authInfo?: EzOnRailsAuthInfo | undefined) => {
+export declare const defaultHttpHeader: (authInfo?: EzOnRailsAuthInfo | undefined, apiVersion?: string) => {
     uid?: string | undefined;
     client?: string | undefined;
     expiry?: string | undefined;

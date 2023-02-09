@@ -176,12 +176,15 @@ const getAuthInfoFromHeader = (headers: Record<string, string>): EzOnRailsAuthIn
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
  * If the authInfo is defined, its information will ba appended to the header of the authentication information, too.
+ *
+ * If the apiVersion is defined, it will be used instead of the value saved in the EzOnRailsConfig, hence this method
+ * can be used to build headers that are accepted by ez-on-rails backends without using the http methods of this package.
  */
-export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | undefined = undefined) => {
+export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | undefined = undefined, apiVersion?: string) => {
     return {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        'api-version': EzOnRailsConfig.apiVersion(),
+        'api-version': apiVersion || EzOnRailsConfig.apiVersion(),
         ...authInfoToHeader(authInfo)
     };
 };
