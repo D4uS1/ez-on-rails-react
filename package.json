@@ -21,7 +21,8 @@
   "license": "MIT",
   "private": true,
   "peerDependencies": {
-    "react": ">=18.2.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@rails/activestorage": "^7.0.4-2",
@@ -43,7 +44,8 @@
     "typescript": "^4.9.4",
     "yup": "^0.32.11",
     "react-bootstrap": "^2.7.0",
-    "react-dropzone": "^14.2.3"
+    "react-dropzone": "^14.2.3",
+    "@d4us1/remawy": "git+https://github.com/D4uS1/remawy#feature/asset_upload"
   },
   "eslintConfig": {
     "extends": "react-app"

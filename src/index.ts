@@ -1,12 +1,14 @@
 import { EzOnRailsConfig } from './config/EzOnRailsConfig';
 import { EzOnRailsHttp } from './http/EzOnRailsHttp';
 import { EzOnRailsComponents } from './components/EzOnRailsComponents';
+import { EzOnRailsIntegrations } from './integrations/EzOnRailsIntegrations';
 
 // All of EzOnRails in one object
 export const EzOnRails = {
     config: EzOnRailsConfig,
     http: EzOnRailsHttp,
-    components: EzOnRailsComponents
+    components: EzOnRailsComponents,
+    integrations: EzOnRailsIntegrations
 };
 
 // Only config

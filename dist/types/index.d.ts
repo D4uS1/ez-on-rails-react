@@ -46,6 +46,11 @@ export declare const EzOnRails: {
         ResendConfirmationForm: (props: import("./components/EzOnRails/ResendConfirmationForm/ResendConfirmationForm").ResendConfirmationFormProps) => JSX.Element;
         ResetPasswordForm: (props: import("./components/EzOnRails/ResetPasswordForm/ResetPasswordForm").ResetPasswordFormProps) => JSX.Element;
     };
+    integrations: {
+        remawy: {
+            uploader: typeof import("./integrations/remawy/EzOnRailsReMaWyUploader").EzOnRailsReMaWyUploader;
+        };
+    };
 };
 export { EzOnRailsConfig } from './config/EzOnRailsConfig';
 export { EzOnRailsHttp, EzOnRailsHttpError } from './http/EzOnRailsHttp';
