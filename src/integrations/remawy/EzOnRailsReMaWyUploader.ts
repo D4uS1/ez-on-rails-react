@@ -4,6 +4,54 @@ import * as ActiveStorage from '@rails/activestorage';
 import { Blob as ActiveStorageBlob } from '@rails/activestorage';
 
 /**
+ * Helper class to upload files using the active storage package.
+ * This class holds the directUploadWillCreateBlobWithXHR that is used by the active storage direct upload.
+ */
+class ActiveStorageUploaderDelegate {
+    private uploader: EzOnRailsReMaWyUploader;
+    private authInfo: EzOnRailsAuthInfo;
+    private apiVersion: string;
+
+    /**
+     * Constructor takes the uploader that uses the delegate. This is used in directUploadWillCreateBlobWithXHR
+     * to bind the onProgress callback of the uploader to the upload process.
+     * The authInfo are the credentials for the current user.
+     * The apiVersion is the backends api version that must match.
+     *
+     * @param uploader
+     * @param authInfo
+     * @param apiVersion
+     */
+    constructor(uploader: EzOnRailsReMaWyUploader,
+                authInfo: EzOnRailsAuthInfo,
+                apiVersion: string) {
+        this.uploader = uploader;
+        this.authInfo = authInfo;
+        this.apiVersion = apiVersion;
+    }
+
+    /**
+     * Called by the active storage to start the upload.
+     * Appends the authInfo and apiVersion that was given in the constructor.
+     * Binds the onDirectUploadProgress method of the uploader to the progress of the upload.
+     *
+     * @param request
+     */
+    directUploadWillCreateBlobWithXHR(request: XMLHttpRequest) {
+        const httpHeader: { [key: string]: string } = EzOnRailsHttpClient.defaultHttpHeader(
+            this.authInfo,
+            this.apiVersion
+        );
+
+        Object.keys(httpHeader).forEach((key) => {
+            request.setRequestHeader(key, httpHeader[key]);
+        });
+
+        request.upload.addEventListener("progress", (event) => this.uploader.onDirectUploadProgress(event));
+    };
+}
+
+/**
  * Uploader to upload images or other assets to an ez-on-rails backend.
  */
 class EzOnRailsReMaWyUploader extends AbstractUploader {
@@ -37,23 +85,12 @@ class EzOnRailsReMaWyUploader extends AbstractUploader {
      * @param file
      */
     public override startUpload(file: File): Promise<void> {
+        let delegate = new ActiveStorageUploaderDelegate(this, this.authInfo, this.apiVersion)
+
         const upload = new ActiveStorage.DirectUpload(
             file,
             `${this.baseUrl}api/active_storage/blobs/create_direct_upload`,
-            {
-                directUploadWillCreateBlobWithXHR: (request: XMLHttpRequest) => {
-                    const httpHeader: { [key: string]: string } = EzOnRailsHttpClient.defaultHttpHeader(
-                        this.authInfo,
-                        this.apiVersion
-                    );
-
-                    Object.keys(httpHeader).forEach((key) => {
-                        request.setRequestHeader(key, httpHeader[key]);
-                    });
-
-                    request.upload.addEventListener('progress', this.onDirectUploadProgress);
-                }
-            }
+            delegate
         );
 
         upload.create((error: Error, blob: ActiveStorageBlob) => {
