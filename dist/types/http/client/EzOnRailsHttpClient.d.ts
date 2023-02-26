@@ -1,4 +1,4 @@
-import { RailsFileBlob } from '../../components/EzOnRails/ActiveStorageDropzone/ActiveStorageDropzone';
+import { RailsFileBlob } from '../../components/ActiveStorageDropzone/ActiveStorageDropzone';
 /**
  * Auth information for http requests and responses.
  * If a route is protected and needs authentication, this information must be passed to the http
@@ -83,12 +83,8 @@ export interface EzOnRailsConfirmParams {
 }
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
- * If the authInfo is defined, its information will ba appended to the header of the authentication information, too.
- *
- * If the apiVersion is defined, it will be used instead of the value saved in the EzOnRailsConfig, hence this method
- * can be used to build headers that are accepted by ez-on-rails backends without using the http methods of this package.
  */
-export declare const defaultHttpHeader: (authInfo?: EzOnRailsAuthInfo | undefined, apiVersion?: string) => {
+export declare const defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => {
     uid?: string | undefined;
     client?: string | undefined;
     expiry?: string | undefined;
@@ -105,163 +101,217 @@ export declare const defaultHttpHeader: (authInfo?: EzOnRailsAuthInfo | undefine
  */
 export declare const EzOnRailsHttpClient: {
     /**
-     * Sends a signup request to the server.
+     * Sends a signup request to the EzOnRails application at the specified backendUrl.
      * The specified data is the user data passed to the sign_up action of the EzOnRails endpoint.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * Since this differs from service to service, the data is mentioned to be "any" data.
      * This is a async function, hence returning a promise of the response of the action.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param data
+     * @param apiVersion
      */
-    signUp: (data: EzOnRailsSignUpParams) => Promise<void>;
+    signUp: (backendUrl: string, data: EzOnRailsSignUpParams, apiVersion: string) => Promise<void>;
     /**
-     * Sends a sign in request to login the user given by the specified data.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * Sends a sign in request to the EzOnRails application at the specified backendUrl.
+     * The user given by the specified data.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The method returns an EzOnRailsAuthInfo object if the request was successfull and the server responded with authentication
      * information for the next request. This information has to be saved and used by the next request to authenticate.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param data
+     * @param apiVersion
      */
-    signIn: (data: EzOnRailsSignInParams) => Promise<EzOnRailsAuthInfo>;
+    signIn: (backendUrl: string, data: EzOnRailsSignInParams, apiVersion: string) => Promise<EzOnRailsAuthInfo>;
     /**
-     * Sends a signout request for the current user to the ez_on_rails endpoint.
-     */
-    signOut: (authInfo: EzOnRailsAuthInfo) => Promise<void>;
-    /**
-     * Sends a request to send password reset instructions via email.
+     * Sends a signout request for the current user to the EzOnRails application at the specified backendUrl.
+     * The apiVersion is the current api version at the backend that must match.
      *
-     * @param data
+     * @param backendUrl
+     * @param authInfo
+     * @param apiVersion
      */
-    passwordResetInstructions: (data: EzOnRailsPasswordResetInstructionsParams) => Promise<void>;
+    signOut: (backendUrl: string, authInfo: EzOnRailsAuthInfo, apiVersion: string) => Promise<void>;
     /**
-     * Sends a request to reset the password to the ez_on_rails endpoint.
+     * Sends a request to send password reset instructions via email to the EzOnRails application at the specified backendUrl.
+     * The apiVersion is the current api version at the backend that must match.
+     *
+     * @param backendUrl
+     * @param data
+     * @param apiVersion
+     */
+    passwordResetInstructions: (backendUrl: string, data: EzOnRailsPasswordResetInstructionsParams, apiVersion: string) => Promise<void>;
+    /**
+     * Sends a request to reset the password to the EzOnRails application at the specified backendUrl.
      * This is the request to change the password, after the user filled out the form with the new password.
      * This method also clears all auth headers.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param data
+     * @param apiVersion
      */
-    passwordReset: (data: EzOnRailsPasswordResetParams) => Promise<void>;
+    passwordReset: (backendUrl: string, data: EzOnRailsPasswordResetParams, apiVersion: string) => Promise<void>;
     /**
-     * Requests and returns the own user information from the server.
+     * Requests and returns the own user information from the EzOnRails application at the specified backendUrl.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param authInfo
+     * @param apiVersion
      */
-    getUser: (authInfo: EzOnRailsAuthInfo) => Promise<EzOnRailsUser>;
+    getUser: (backendUrl: string, authInfo: EzOnRailsAuthInfo, apiVersion: string) => Promise<EzOnRailsUser>;
     /**
-     * Updates the user with the specified data on the server side and returns the updated profile.
+     * Updates the user with the specified data on the EzOnRails application at the specified backendUrl
+     * side and returns the updated profile.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param data
      * @param authInfo
+     * @param apiVersion
      */
-    updateUser: (data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo) => Promise<EzOnRailsUser>;
+    updateUser: (backendUrl: string, data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo, apiVersion: string) => Promise<EzOnRailsUser>;
     /**
-     * Sends a request to resend the confirmation email to the ez_on_rails endpoint.
+     * Sends a request to resend the confirmation email to the EzOnRails application at the specified backendUrl.
      * This method also clears all auth headers.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param data
+     * @param apiVersion
      */
-    confirmationInstructions: (data: EzOnRailsConfirmationInstructionsParams) => Promise<void>;
+    confirmationInstructions: (backendUrl: string, data: EzOnRailsConfirmationInstructionsParams, apiVersion: string) => Promise<void>;
     /**
-     * Sends a request to confirm the account.
+     * Sends a request to confirm the account to the EzOnRails application at the specified backendUrl.
+     * The apiVersion is the current api version at the backend that must match.
      *
+     * @param backendUrl
      * @param data
+     * @param apiVersion
      */
-    confirmation: (data: EzOnRailsConfirmParams) => Promise<void>;
+    confirmation: (backendUrl: string, data: EzOnRailsConfirmParams, apiVersion: string) => Promise<void>;
     /**
-     * Calls a http GET action to the url in the api of the current EzOnRails application.
-     * The url is expected to be the path without the system and the api prefix.
+     * Calls a http GET action to the api at the specified path of an EzOnRails application at the backendUrl.
+     * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
+     * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
-     * @param url
+     * @param backendUrl
+     * @param path
      * @param data
      * @param authInfo
+     * @param apiVersion
      * @param beforeRequest
      */
-    get: <TParams, TResponse>(url: string, data: TParams, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+    get: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
-     * Calls a http POST action to the url in the api of the current EzOnRails application.
+     * Calls a http POST action to the api at the specified path of an EzOnRails application at the backendUrl.
+     * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
+     * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
-     * @param url
+     * @param backendUrl
+     * @param path
      * @param data
      * @param authInfo
+     * @param apiVersion
      * @param beforeRequest
      */
-    post: <TParams_1, TResponse_1>(url: string, data: TParams_1, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_1) => TParams_1) | undefined) => Promise<TResponse_1>;
+    post: <TParams_1, TResponse_1>(backendUrl: string, path: string, data: TParams_1, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_1) => TParams_1) | undefined) => Promise<TResponse_1>;
     /**
-     * Calls a http PATCH action to the url in the api of the current EzOnRails application.
+     * Calls a http PATCH action to the api at the specified path of an EzOnRails application at the backendUrl.
+     * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
+     * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
-     * @param url
+     * @param backendUrl
+     * @param path
      * @param data
      * @param authInfo
+     * @param apiVersion
      * @param beforeRequest
      */
-    patch: <TParams_2, TResponse_2>(url: string, data: TParams_2, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
+    patch: <TParams_2, TResponse_2>(backendUrl: string, path: string, data: TParams_2, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
     /**
-     * Calls a http PATCH action to the url in the api of the current EzOnRails application.
+     * Calls a http PUT action to the api at the specified path of an EzOnRails application at the backendUrl.
+     * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
+     * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
-     * @param url
+     * @param backendUrl
+     * @param path
      * @param data
      * @param authInfo
+     * @param apiVersion
      * @param beforeRequest
      */
-    put: <TParams_3, TResponse_3>(url: string, data: TParams_3, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
+    put: <TParams_3, TResponse_3>(backendUrl: string, path: string, data: TParams_3, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
     /**
-     * Calls a http DELETE action to the url in the api of the current EzOnRails application.
+     * Calls a http DELETE action to the api at the specified path of an EzOnRails application at the backendUrl.
+     * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The call includes the auth headers for the current user.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
+     * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
-     * @param url
+     * @param backendUrl
+     * @param path
      * @param data
      * @param authInfo
+     * @param apiVersion
      * @param beforeRequest
      */
-    delete: <TParams_4, TResponse_4>(url: string, data: TParams_4, authInfo?: EzOnRailsAuthInfo | undefined, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
+    delete: <TParams_4, TResponse_4>(backendUrl: string, path: string, data: TParams_4, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
     /**
      * Returns the default headers used to make an authorized request.
      * Can be used for custom requests without the ez-on-rails-react client.
-     * If the apiVersion is not passed, the apiVersion given by the config will be used.
      *
      * @param authInfo
      * @param apiVersion
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo, apiVersion?: string) => Record<string, string>;
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => Record<string, string>;
 };

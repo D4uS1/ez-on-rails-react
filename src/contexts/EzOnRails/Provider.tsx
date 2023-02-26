@@ -24,7 +24,7 @@ interface EzOnRailsProps {
  */
 export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
-    const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo | null);
+    const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
 
     /**
@@ -35,7 +35,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const value: EzOnRailsContextValue = useMemo(() => {
         const result = {
             backendUrl: backendUrl,
-            authInfo: authInfo | null,
+            authInfo: authInfo || null,
             apiVersion: apiVersion,
             setBackendUrl: setBackendUrl,
             setAuthInfo: setAuthInfo,
