@@ -80,6 +80,74 @@ const toGetParameters = (parameters: Record<string, string | number | boolean | 
 };
 
 /**
+ * Searches for occurrences of strings having dates and date-times, converts them to date objects and returns the result.
+ * This is done recursively, hence every nested objects or arrays are looked up.
+ *
+ * @param params
+ */
+const toDates = (params: any): any => {
+    if (typeof params === 'string' && /^\d{4}-\d{2}-\d{2}/.test(params)) {
+        return new Date(params);
+    }
+
+    if (Array.isArray(params)) {
+        return params.map((param) => toDates(param))
+    }
+
+    if (typeof params === 'object') {
+        Object.keys(params).forEach((key) => {
+            params[key] = toDates(params[key])
+        })
+    }
+
+    return params;
+}
+
+/**
+ * Searches for occurrences of dates, converts them to strings and returns the result.
+ * This is done recursively, hence every nested objects or arrays are looked up.
+ *
+ * @param params
+ */
+const toDateStrings = (params: any): any => {
+    if (params instanceof Date) {
+        return params.toISOString();
+    }
+
+    if (Array.isArray(params)) {
+        return params.map((param) => toDateStrings(param))
+    }
+
+    if (typeof params === 'object') {
+        Object.keys(params).forEach((key) => {
+            params[key] = toDateStrings(params[key])
+        })
+    }
+
+    return params;
+}
+
+/**
+ * Prepares the specified params for a request to the backend.
+ * Recursively transforms the keys to underscore and the dates to iso strings.
+ *
+ * @param params
+ */
+const toBackendParams = (params: any) => {
+    return toDateStrings(toSnakeCase(params));
+}
+
+/**
+ * Prepares the speciied params for the usage in the frontend.
+ * Recursively transforms the keys to camelCase and the date iso strings to date objects.
+ *
+ * @param params
+ */
+const toFrontendParams = (params: any) => {
+    return toDates(toCamelCase(params));
+}
+
+/**
  * Contains utils for http access of some EzOnRails Backend.
  */
 export const EzOnRailsHttpUtils = {
@@ -87,5 +155,9 @@ export const EzOnRailsHttpUtils = {
     toApiUrl: toApiUrl,
     toSnakeCase: toSnakeCase,
     toCamelCase: toCamelCase,
-    toGetParameters: toGetParameters
+    toGetParameters: toGetParameters,
+    toDates: toDates,
+    toDateStrings: toDateStrings,
+    toBackendParams: toBackendParams,
+    toFrontendParams: toFrontendParams
 };

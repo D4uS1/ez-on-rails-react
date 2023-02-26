@@ -263,7 +263,7 @@ export const EzOnRailsHttpClient = {
      * @param apiVersion
      */
     signUp: async (backendUrl: string, data: EzOnRailsSignUpParams, apiVersion: string) => {
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
             'POST',
@@ -286,7 +286,7 @@ export const EzOnRailsHttpClient = {
      * @param apiVersion
      */
     signIn: async (backendUrl: string, data: EzOnRailsSignInParams, apiVersion: string): Promise<EzOnRailsAuthInfo> => {
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toBackendParams(data);
 
         const result = await fetchWithThrow(
             'POST',
@@ -324,7 +324,7 @@ export const EzOnRailsHttpClient = {
      * @param apiVersion
      */
     passwordResetInstructions: async (backendUrl: string, data: EzOnRailsPasswordResetInstructionsParams, apiVersion: string) => {
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
             'POST',
@@ -345,7 +345,7 @@ export const EzOnRailsHttpClient = {
      * @param apiVersion
      */
     passwordReset: async (backendUrl: string, data: EzOnRailsPasswordResetParams, apiVersion: string) => {
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
             'PUT',
@@ -371,7 +371,7 @@ export const EzOnRailsHttpClient = {
             defaultHttpHeader(authInfo, apiVersion)
         );
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
@@ -387,7 +387,7 @@ export const EzOnRailsHttpClient = {
     updateUser: async (backendUrl: string, data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo, apiVersion: string): Promise<EzOnRailsUser> => {
         // Only the signedId must be passed to the update action
         const avatarSignedId = data.avatar?.signedId;
-        const submitData = { ...EzOnRailsHttpUtils.toSnakeCase(data), avatar: avatarSignedId };
+        const submitData = { ...EzOnRailsHttpUtils.toBackendParams(data), avatar: avatarSignedId };
 
         const result = await fetchWithThrow<EzOnRailsUser>(
             'PATCH',
@@ -396,7 +396,7 @@ export const EzOnRailsHttpClient = {
             defaultHttpHeader(authInfo, apiVersion)
         );
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
@@ -409,7 +409,7 @@ export const EzOnRailsHttpClient = {
      * @param apiVersion
      */
     confirmationInstructions: async (backendUrl: string, data: EzOnRailsConfirmationInstructionsParams, apiVersion: string) => {
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
             'POST',
@@ -429,7 +429,7 @@ export const EzOnRailsHttpClient = {
      */
     confirmation: async (backendUrl: string, data: EzOnRailsConfirmParams, apiVersion: string) => {
         let url = EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/confirmation');
-        data = EzOnRailsHttpUtils.toSnakeCase(data);
+        data = EzOnRailsHttpUtils.toBackendParams(data);
         // @ts-ignore This works because the type only is a default json object
         url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
 
@@ -467,7 +467,7 @@ export const EzOnRailsHttpClient = {
         let url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
         if (data) {
-            data = EzOnRailsHttpUtils.toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toBackendParams(data);
         }
 
         if (beforeRequest) {
@@ -480,7 +480,7 @@ export const EzOnRailsHttpClient = {
 
         const result = await fetchWithThrow<TResponse>('GET', url, null, defaultHttpHeader(authInfo, apiVersion));
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
@@ -514,7 +514,7 @@ export const EzOnRailsHttpClient = {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
         if (data) {
-            data = EzOnRailsHttpUtils.toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toBackendParams(data);
         }
 
         if (beforeRequest) {
@@ -528,7 +528,7 @@ export const EzOnRailsHttpClient = {
             defaultHttpHeader(authInfo, apiVersion)
         );
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
@@ -562,7 +562,7 @@ export const EzOnRailsHttpClient = {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
         if (data) {
-            data = EzOnRailsHttpUtils.toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toBackendParams(data);
         }
 
         if (beforeRequest) {
@@ -576,7 +576,7 @@ export const EzOnRailsHttpClient = {
             defaultHttpHeader(authInfo, apiVersion)
         );
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
@@ -610,7 +610,7 @@ export const EzOnRailsHttpClient = {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
         if (data) {
-            data = EzOnRailsHttpUtils.toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toBackendParams(data);
         }
 
         if (beforeRequest) {
@@ -624,7 +624,7 @@ export const EzOnRailsHttpClient = {
             defaultHttpHeader(authInfo, apiVersion)
         );
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
@@ -660,7 +660,7 @@ export const EzOnRailsHttpClient = {
         let url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
         if (data) {
-            data = EzOnRailsHttpUtils.toSnakeCase(data);
+            data = EzOnRailsHttpUtils.toBackendParams(data);
         }
 
         if (beforeRequest) {
@@ -673,7 +673,7 @@ export const EzOnRailsHttpClient = {
 
         const result = await fetchWithThrow<TResponse>('DELETE', url, null, defaultHttpHeader(authInfo, apiVersion));
 
-        return EzOnRailsHttpUtils.toCamelCase(result.body);
+        return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
 
     /**
