@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.fieldContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.fieldLabel {
+    font-size: large;
+}
+
+.formField {
+
+}
+
+.fieldError {
+
+}
+
+.fieldContainer :global(.invalid-feedback) {
+    font-size: small;
+    color: darkred;
+}
+
+.submitButton {
+
+}

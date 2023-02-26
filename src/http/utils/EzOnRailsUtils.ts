@@ -1,34 +1,51 @@
 import { toCamel, toSnake } from 'convert-keys';
-import { EzOnRailsConfig } from '../../config/EzOnRailsConfig';
 
 /**
- * Returns the full url to the backend having the relative path.
- * The path should not start with a slash.
- * The url starts with the base url given by the config, that was specified by calling the init function of EzOnRails before.
+ * Removes slash from path begin if exists.
  *
  * @param path
  */
-const toBaseUrl = (path: string): string => {
-    if (path.startsWith('/')) {
-        path = path.slice(1);
+const cleanupPath = (path: string) => {
+   if (path.startsWith('/')) {
+       return path.slice(1);
+   }
+
+   return path;
+}
+
+/**
+ * Removes trailing slash from url if exists.
+ *
+ * @param url
+ */
+const cleanupUrl = (url: string) => {
+    if (url.endsWith('/')) {
+        return url.slice(0, -1);
     }
 
-    return `${EzOnRailsConfig.baseUrl()}${path}`;
+    return url;
+}
+
+/**
+ * Returns the full url to the backend having the relative path of an EzOnRails application at the specified backendUrl.
+ *
+ * @param backendUrl
+ * @param path
+ */
+const toBaseUrl = (backendUrl: string, path: string): string => {
+    return `${cleanupUrl(backendUrl)}/${cleanupPath(path)}`;
 };
 
 /**
- * Returns the full url to the backend api having the relative path.
- * The path should not start with a slash.
- * The url starts with the base url given by the config, that was specified by calling the init function of EzOnRails before.
+ * Returns the full url to the backend api of an EzOnRails application at the backendUrl having the relative path.
+ * The backendUrl is expected not to have the api suffix.
+ * The path is expected not to have the api prefix.
  *
+ * @param backendUrl
  * @param path
  */
-const toApiUrl = (path: string): string => {
-    if (path.startsWith('/')) {
-        path = path.slice(1);
-    }
-
-    return `${EzOnRailsConfig.apiUrl()}${path}`;
+const toApiUrl = (backendUrl: string, path: string): string => {
+    return `${cleanupUrl(backendUrl)}/api/${cleanupPath(path)}`;
 };
 
 /**
