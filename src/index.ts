@@ -7,6 +7,9 @@ export const EzOnRails = {
     integrations: EzOnRailsIntegrations
 };
 
+// contexts
+export * from './contexts';
+
 // components
 export * from './components';
 
