@@ -253,7 +253,7 @@ export const EzOnRailsHttpClient = {
     /**
      * Sends a signup request to the EzOnRails application at the specified backendUrl.
      * The specified data is the user data passed to the sign_up action of the EzOnRails endpoint.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * Since this differs from service to service, the data is mentioned to be "any" data.
      * This is a async function, hence returning a promise of the response of the action.
      * The apiVersion is the current api version at the backend that must match.
@@ -276,7 +276,7 @@ export const EzOnRailsHttpClient = {
     /**
      * Sends a sign in request to the EzOnRails application at the specified backendUrl.
      * The user given by the specified data.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The method returns an EzOnRailsAuthInfo object if the request was successfull and the server responded with authentication
      * information for the next request. This information has to be saved and used by the next request to authenticate.
      * The apiVersion is the current api version at the backend that must match.
@@ -440,7 +440,7 @@ export const EzOnRailsHttpClient = {
      * Calls a http GET action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
@@ -448,6 +448,7 @@ export const EzOnRailsHttpClient = {
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
      * @param backendUrl
      * @param path
@@ -488,13 +489,14 @@ export const EzOnRailsHttpClient = {
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
      * @param backendUrl
      * @param path
@@ -536,13 +538,14 @@ export const EzOnRailsHttpClient = {
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
      * @param backendUrl
      * @param path
@@ -584,13 +587,14 @@ export const EzOnRailsHttpClient = {
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
      * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
      * the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
      * @param backendUrl
      * @param path
@@ -633,7 +637,7 @@ export const EzOnRailsHttpClient = {
      * The url is expected to be the path without the system and the api prefix.
      * The call includes the auth headers for the current user.
      * The data object is expected to be an json object containing the body information of the request.
-     * The data object is automaticly converted to snake case, hence it can hold javascript conventional camel case objects.
+     * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
      * The call includes the auth headers for the current user.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
@@ -641,6 +645,7 @@ export const EzOnRailsHttpClient = {
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
+     * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
      *
      * @param backendUrl
      * @param path
