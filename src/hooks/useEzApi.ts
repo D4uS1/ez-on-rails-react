@@ -11,7 +11,7 @@ interface UseEzApiResult<T> {
     data: T | null;
 
     // Not null, if an error occured during request
-    error: Error | null;
+    error: unknown | null;
 
     // Indictaes whether the request is currently in progress
     inProgress: boolean;
@@ -29,10 +29,10 @@ export const useEzApi = <TRequest, TResponse>(
     path: string,
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' = 'GET',
     data?: TRequest
-): UseEzApiResult => {
+): UseEzApiResult<TResponse> => {
     const { backendUrl, authInfo, apiVersion } = useEzOnRails();
-    const [response, setResponse] = useState<T | null>(null);
-    const [error, setError] = useState<Error | null>(null);
+    const [response, setResponse] = useState<TResponse | null>(null);
+    const [error, setError] = useState<unknown | null>(null);
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
@@ -46,28 +46,27 @@ export const useEzApi = <TRequest, TResponse>(
             setResponse(null);
 
             let result: TResponse | null = null;
-            const fullPath = `${backendUrl}/api/${path}`
             try {
                 switch (method) {
                     case 'POST':
-                        result = await EzOnRailsHttpClient.post<TRequest, TResponse>(fullPath, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
                         break;
                     case 'PUT':
-                        result = await EzOnRailsHttpClient.put<TRequest, TResponse>(fullPath, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
                         break;
                     case 'PATCH':
-                        result = await EzOnRailsHttpClient.patch<TRequest, TResponse>(fullPath, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
                         break;
                     case 'DELETE':
-                        result = await EzOnRailsHttpClient.delete<TRequest, TResponse>(fullPath, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
                         break;
                     default:
-                        result = await EzOnRailsHttpClient.get<TRequest, TResponse>(fullPath, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
                 }
 
                 setResponse(result);
                 setInProgress(false);
-            } catch (error: Error) {
+            } catch (error: unknown) {
                 setError(error);
                 setInProgress(false);
             }
