@@ -7,11 +7,13 @@ import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../client/EzOnRailsHttpC
  * This call includes the user information of the current user for authorization, if it is provided.
  *
  * If key is an array, it expects the following values in the right order.
- * Every following parameter is optional.
- * 1. url: string - The url without the base system utl and the api prefix
- * 2. method: string - The HTTP method
- * 3. data: object - The data passed as body json to the server
- * 4. authInfo: EzOnRailsAuthInfo - Authentication information to identify the user on the server side.
+ * The following parameters are needed:
+ * 1. backendUrl - The base url of the EzOnRails application.
+ * 2. path - The relative path of the request (without prefixed api/)
+ * 3. method: string - The HTTP method
+ * 4. data: object - The data passed as body json to the server
+ * 5. authInfo: EzOnRailsAuthInfo - Authentication information to identify the user on the server side.
+ * 6. apiVersion: string - The api version that must match the one in the backend.
  *
  * If the specified method is DELETE, the data field will be ignored.
  *
@@ -19,31 +21,51 @@ import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../client/EzOnRailsHttpC
  */
 export const EzOnRailsSwr = {
     fetcher: async <TParams, TResponse>(
-        url: string,
+        backendUrl: string,
+        path: string,
         method = 'get',
         data: TParams | null = null,
-        authInfo: EzOnRailsAuthInfo | undefined = undefined
+        authInfo: EzOnRailsAuthInfo | undefined = undefined,
+        apiVersion = '1.0'
     ): Promise<TResponse> => {
         method = method.toLowerCase();
         switch (method) {
             case 'post': {
-                return EzOnRailsHttpClient.post<TParams | null, TResponse>(url, data, authInfo);
+                return EzOnRailsHttpClient.post<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiVersion
+                );
             }
 
             case 'put': {
-                return EzOnRailsHttpClient.put<TParams | null, TResponse>(url, data, authInfo);
+                return EzOnRailsHttpClient.put<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
             }
 
             case 'patch': {
-                return EzOnRailsHttpClient.patch<TParams | null, TResponse>(url, data, authInfo);
+                return EzOnRailsHttpClient.patch<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiVersion
+                );
             }
 
             case 'delete': {
-                return EzOnRailsHttpClient.delete<TParams | null, TResponse>(url, data, authInfo);
+                return EzOnRailsHttpClient.delete<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiVersion
+                );
             }
 
             default: {
-                return EzOnRailsHttpClient.get<TParams | null, TResponse>(url, data, authInfo);
+                return EzOnRailsHttpClient.get<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
             }
         }
     }

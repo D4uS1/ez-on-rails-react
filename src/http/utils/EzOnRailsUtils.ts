@@ -1,34 +1,60 @@
 import { toCamel, toSnake } from 'convert-keys';
-import { EzOnRailsConfig } from '../../config/EzOnRailsConfig';
 
 /**
- * Returns the full url to the backend having the relative path.
- * The path should not start with a slash.
- * The url starts with the base url given by the config, that was specified by calling the init function of EzOnRails before.
+ * Removes slash from path begin if exists.
  *
  * @param path
  */
-const toBaseUrl = (path: string): string => {
+const cleanupPath = (path: string) => {
     if (path.startsWith('/')) {
-        path = path.slice(1);
+        return path.slice(1);
     }
 
-    return `${EzOnRailsConfig.baseUrl()}${path}`;
+    return path;
 };
 
 /**
- * Returns the full url to the backend api having the relative path.
- * The path should not start with a slash.
- * The url starts with the base url given by the config, that was specified by calling the init function of EzOnRails before.
+ * Removes trailing slash from url if exists.
  *
- * @param path
+ * @param url
  */
-const toApiUrl = (path: string): string => {
-    if (path.startsWith('/')) {
-        path = path.slice(1);
+const cleanupUrl = (url: string) => {
+    if (url.endsWith('/')) {
+        return url.slice(0, -1);
     }
 
-    return `${EzOnRailsConfig.apiUrl()}${path}`;
+    return url;
+};
+
+/**
+ * Returns the full url to the backend having the relative path of an EzOnRails application at the specified backendUrl.
+ *
+ * @param backendUrl
+ * @param path
+ */
+const toBaseUrl = (backendUrl: string, path: string): string => {
+    return `${cleanupUrl(backendUrl)}/${cleanupPath(path)}`;
+};
+
+/**
+ * Returns the full url to the backend api of an EzOnRails application at the backendUrl having the relative path.
+ * The backendUrl is expected not to have the api suffix.
+ * The path is expected not to have the api prefix.
+ *
+ * @param backendUrl
+ * @param path
+ */
+const toApiUrl = (backendUrl: string, path: string): string => {
+    return `${cleanupUrl(backendUrl)}/api/${cleanupPath(path)}`;
+};
+
+/**
+ * Converts the single string into snake case.
+ *
+ * @param str
+ */
+const toSnakeCaseString = (str: string) => {
+    return str.replace(/[A-Z]/g, (match, index) => (index === 0 ? match.toLowerCase() : '_' + match.toLowerCase()));
 };
 
 /**
@@ -63,12 +89,95 @@ const toGetParameters = (parameters: Record<string, string | number | boolean | 
 };
 
 /**
+ * Searches for occurrences of strings having dates and date-times, converts them to date objects and returns the result.
+ * This is done recursively, hence every nested objects or arrays are looked up.
+ *
+ * @param params
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const toDates = (params: any): any => {
+    if (typeof params === 'string' && /^\d{4}-\d{2}-\d{2}/.test(params)) {
+        return new Date(params);
+    }
+
+    if (Array.isArray(params)) {
+        return params.map((param) => toDates(param));
+    }
+
+    if (typeof params === 'object') {
+        Object.keys(params).forEach((key) => {
+            params[key] = toDates(params[key]);
+        });
+    }
+
+    return params;
+};
+
+/**
+ * Searches for occurrences of dates, converts them to strings and returns the result.
+ * This is done recursively, hence every nested objects or arrays are looked up.
+ *
+ * @param params
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const toDateStrings = (params: any): any => {
+    if (params instanceof Date) {
+        return params.toISOString();
+    }
+
+    if (Array.isArray(params)) {
+        return params.map((param) => toDateStrings(param));
+    }
+
+    if (typeof params === 'object') {
+        Object.keys(params).forEach((key) => {
+            params[key] = toDateStrings(params[key]);
+        });
+    }
+
+    return params;
+};
+
+/**
+ * Prepares the specified params for a request to the backend.
+ * Recursively transforms the keys to underscore and the dates to iso strings.
+ *
+ * @param params
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const toBackendParams = (params: any) => {
+    return toDateStrings(toSnakeCase(params));
+};
+
+/**
+ * Prepares the speciied params for the usage in the frontend.
+ * Recursively transforms the keys to camelCase and the date iso strings to date objects.
+ *
+ * @param params
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const toFrontendParams = (params: any) => {
+    // undefined, null, ...
+    if (!params) return params;
+
+    // no object or array
+    if (typeof params !== 'object') return params;
+
+    return toDates(toCamelCase(params));
+};
+
+/**
  * Contains utils for http access of some EzOnRails Backend.
  */
 export const EzOnRailsHttpUtils = {
     toBaseUrl: toBaseUrl,
     toApiUrl: toApiUrl,
     toSnakeCase: toSnakeCase,
+    toSnakeCaseString: toSnakeCaseString,
     toCamelCase: toCamelCase,
-    toGetParameters: toGetParameters
+    toGetParameters: toGetParameters,
+    toDates: toDates,
+    toDateStrings: toDateStrings,
+    toBackendParams: toBackendParams,
+    toFrontendParams: toFrontendParams
 };

@@ -19,7 +19,7 @@
   },
   "exclude": [
     "node_modules",
-    "components-test-app",
+    "test-app",
     "dist"
   ]
 }

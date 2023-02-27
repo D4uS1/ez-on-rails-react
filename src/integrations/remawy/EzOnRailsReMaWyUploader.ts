@@ -22,9 +22,7 @@ class ActiveStorageUploaderDelegate {
      * @param authInfo
      * @param apiVersion
      */
-    constructor(uploader: EzOnRailsReMaWyUploader,
-                authInfo: EzOnRailsAuthInfo,
-                apiVersion: string) {
+    constructor(uploader: EzOnRailsReMaWyUploader, authInfo: EzOnRailsAuthInfo, apiVersion: string) {
         this.uploader = uploader;
         this.authInfo = authInfo;
         this.apiVersion = apiVersion;
@@ -47,8 +45,8 @@ class ActiveStorageUploaderDelegate {
             request.setRequestHeader(key, httpHeader[key]);
         });
 
-        request.upload.addEventListener("progress", (event) => this.uploader.onDirectUploadProgress(event));
-    };
+        request.upload.addEventListener('progress', (event) => this.uploader.onDirectUploadProgress(event));
+    }
 }
 
 /**
@@ -85,7 +83,7 @@ class EzOnRailsReMaWyUploader extends AbstractUploader {
      * @param file
      */
     public override startUpload(file: File): Promise<void> {
-        let delegate = new ActiveStorageUploaderDelegate(this, this.authInfo, this.apiVersion)
+        const delegate = new ActiveStorageUploaderDelegate(this, this.authInfo, this.apiVersion);
 
         const upload = new ActiveStorage.DirectUpload(
             file,

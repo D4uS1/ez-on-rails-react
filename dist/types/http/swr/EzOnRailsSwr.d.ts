@@ -6,16 +6,18 @@ import { EzOnRailsAuthInfo } from '../client/EzOnRailsHttpClient';
  * This call includes the user information of the current user for authorization, if it is provided.
  *
  * If key is an array, it expects the following values in the right order.
- * Every following parameter is optional.
- * 1. url: string - The url without the base system utl and the api prefix
- * 2. method: string - The HTTP method
- * 3. data: object - The data passed as body json to the server
- * 4. authInfo: EzOnRailsAuthInfo - Authentication information to identify the user on the server side.
+ * The following parameters are needed:
+ * 1. backendUrl - The base url of the EzOnRails application.
+ * 2. path - The relative path of the request (without prefixed api/)
+ * 3. method: string - The HTTP method
+ * 4. data: object - The data passed as body json to the server
+ * 5. authInfo: EzOnRailsAuthInfo - Authentication information to identify the user on the server side.
+ * 6. apiVersion: string - The api version that must match the one in the backend.
  *
  * If the specified method is DELETE, the data field will be ignored.
  *
  * @param key
  */
 export declare const EzOnRailsSwr: {
-    fetcher: <TParams, TResponse>(url: string, method?: string, data?: TParams | null, authInfo?: EzOnRailsAuthInfo | undefined) => Promise<TResponse>;
+    fetcher: <TParams, TResponse>(backendUrl: string, path: string, method?: string, data?: TParams | null, authInfo?: EzOnRailsAuthInfo | undefined, apiVersion?: string) => Promise<TResponse>;
 };
