@@ -9,11 +9,17 @@ export const UseEzApiTestPage = () => {
     const {
         inProgress,
         error,
-        data
-    } = useEzApi<{ test: string }, BearerTokenAccessTest[]>('bearer_token_access_tests', 'POST', { test: 'TEST' })
+        data,
+        callApi
+    } = useEzApi<{ test: string }, BearerTokenAccessTest[]>('bearer_token_access_tests', 'POST', { test: 'TEST' }, { skipInitialCall: true })
+
+    const onClickRequest = () => {
+        callApi();
+    }
 
     return (
         <div>
+            <button onClick={onClickRequest}>Request</button>
             { inProgress && <div>In Progress</div> }
             { data && <div>{JSON.stringify(data)}</div> }
             { error && <div>{ error.toString() }</div> }
