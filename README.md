@@ -82,6 +82,7 @@ import { EzOnRailsRecord } from '@d4us1/ez-on-rails-react'
 
 interface Article extends EzOnRailsRecord {
     author: string;
+    title: string;
     ...
 }
 ```
@@ -92,16 +93,148 @@ The inheritance of EzOnRailsRecord adds necessary attributes like the id and tim
 Now you can use the **useEzScaff** hook to access the default actions that are available for the scaffold.
 This includes the index, show, create, update, delete and search action.
 
+Example usage:
+```
+import React, { useEffect } from 'react';
+import { useEzScaff } from '@d4us1/ez-on-rails-react';
+import { Article } from 'models/Article';
+
+export const ArticlesPage = () => {
+    const {
+        records,
+        inProgress,
+        error,
+        getAll
+    } = useEzScaff<Article>('Articles')
+
+    useEffect(() => {
+        getAll();
+    }, [])
+
+    return (
+        <div>
+        { inProgress && <div>...</div> }
+        { error && <span>{error}</span> }
+        { records && (
+            <div>
+                { records.map((record) => <div>{ record.title }</div>) }
+            </div>
+        )}
+    )
+}
+```
+
+This example fetches all articles from the backend if the page renders.
+Note that you can also show, create, update or delete one Article or search for articles the same way.
+Have a look at the [useEzScaff](### useEzScaff) explanation to see whats possible.
+
+Note that you must pass the pluralized model name to the hook. This is necessary because per convention the base route for the scaffold
+is the pluralized path. The hook automaticly converts the model name to snake case, but its needed because javascript does not have a good working
+builtin pluralize function.
 
 ### 5. Simple api requests
+You can make api requests to your backend using the **useEzApi** hook.
 
+```
+import React from 'react';
+import { useEzApi } from '@d4us1/ez-on-rails-react';
+
+export const SomePage = () => {
+    const {
+        inProgress,
+        error,
+        data
+    } = useEzApi<{ someParam: string }, { someResponse: string }>('some/path', 'POST', { someParam: 'TEST' })
+
+    return (
+        <div>
+            { inProgress && <div>In Progress</div> }
+            { data && <div>{JSON.stringify(data)}</div> }
+            { error && <div>{ error.toString() }</div> }
+        </div>
+    )
+}
+```
+
+This example calls the path _api/some/path_ using a http POST passing the data _{ someParam: 'TEST' }_. The response is saved in the data result of the hook.
+
+Note that this usage triggers the request by calling the hook. It is also possible to trigger the api manually, for instance after a button click. 
+See the [Custom API requests](### 6. Custom API requests) section for details.
 
 ### 6. Custom API requests
+If you want to to make a custom request that is not triggered on hook call you have two possibilities.
+
+#### 1. Use callApi that is returned by useApi (recommended)
+The **useEzApi** hook also returns the function that calls the request itself. Hence it can be called manually.
+
+Example:
+```
+import React from 'react';
+import { useEzApi } from '@d4us1/ez-on-rails-react';
+
+export const SomePage = () => {
+    const {
+        inProgress,
+        error,
+        data,
+        callApi
+    } = useEzApi<{ someParam: string }, { someResponse: string }>('some/path', 'POST', undefined, { skipInitialCall: true })
+
+    return (
+        <div>
+            <button onClick={ () => callApi({ someParam: string }) }>Start request</button>
+            { inProgress && <div>In Progress</div> }
+            { data && <div>{JSON.stringify(data)}</div> }
+            { error && <div>{ error.toString() }</div> }
+        </div>
+    )
+}
+```
+As you can see here, you can pass the option *skipInitialCall* to the hook, hence the hook skips the initial request when its called.
+Instead you can use the *callApi* method that is used by the hook itself, to trigger the request.
+The result of the request will be returnd by the data result of the hook, as soon its available.
+
+You can pass parameters to this function, those will be passed as parameters to the request. If you do not pass parameters, but defined some in the hook itself, they will be send instead.
+
+The *callApi* method returns a Promise with the result. Hence, if you dont want to use the returned data attribute from the hook, you can also wait for the result.
+
+```
+const result = await callApi({ someParam: string });
+```
+
+#### 2. Use the http client
+You can call the http methods that are delivered by the package directly, but it is not recommended.
+
+```
+import React, { useState } from 'react';
+import { EzOnRailsHttpClient, useEzOnRails } from '@d4us1/ez-on-rails-react';
+
+export const SomePage = () => {
+    const { backendUrl, apiVersion, authInfo } = useEzOnRails();
+    const [response, setResponse] = useState<{ someResponse: string } | null>(null);
+    
+    const onClickRequest = async () => {
+        const result = await EzOnRailsHttpClient.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiVersion);
+        setResponse(result);
+    }
+    
+    return (
+        <div>
+            <button onClick={ () => callApi({ someParam: string }) }>Start request</button>
+            { response && <div>{JSON.stringify(response)}</div> }
+        </div>
+    )
+}
+```
+
+The http client also converts the parameters from camelCase to snake_case and the response from snake_case to camelCase and does the other necessary operations for you.
+
+Have a look at the [source](https://github.com/D4uS1/ez-on-rails-react/blob/main/src/http/client/EzOnRailsHttpClient.ts) of the http client to see the possible callable methods here.
+It also contains some non standard methods related to the registration process, but as mentioned before, it is recommended to use just the components and hooks.
 
 ## Versions
 Release versions are located in the branches prefixed with __v__ followed by the verison number.
 You must have a look at the following compatibility list, because you must take a version that is compatible with your ez-on-rails backend.
-
 
 | Version | Compatible Backend Versions |
 |---------|-----------------------------|
@@ -109,6 +242,26 @@ You must have a look at the following compatibility list, because you must take 
 | 0.8.1 | 0.8.0 |
 
 ## Components
+This section will be described soon.
+
+### ActiveStorageDropzone
+### DevelopmentHint
+### LoginForm
+### LostPasswordForm
+### ProtectedPage
+### RegistrationForm
+### ResendConfirmationForm
+### UpdateUserForm
 
 ## Hooks
+This section will be described soon.
+
+### useEzScaff
+### useEzApi
+### useEzOnRails
+
+## Other features
+This section will be described soon.
+
+### SWR Fetcher
 
