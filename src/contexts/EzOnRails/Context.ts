@@ -28,7 +28,10 @@ export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
     apiVersion: '1.0',
     backendUrl: 'http://localhost:3000',
     authInfo: null,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setBackendUrl: (backendUrl: string) => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => {},
-    setApiVersion: (apiVersion: string) => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    setApiVersion: (apiVersion: string) => {}
 });

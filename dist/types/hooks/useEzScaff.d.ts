@@ -2,7 +2,7 @@ import { EzOnRailsRecord, SearchFilter, SearchFilterComposition } from './types'
 /**
  * Describes the result of the useEzScaff hook.
  */
-interface UseEzScaffResult<TProperties, TModel = TProperties & EzOnRailsRecord> {
+interface UseEzScaffResult<TModel extends EzOnRailsRecord, TProperties = Omit<TModel, keyof EzOnRailsRecord>> {
     record: TModel | null;
     records: TModel[] | null;
     inProgress: boolean;
@@ -24,5 +24,5 @@ interface UseEzScaffResult<TProperties, TModel = TProperties & EzOnRailsRecord> 
  *
  * @param pluralModelName
  */
-export declare const useEzScaff: <TProperties, TModel = TProperties & EzOnRailsRecord>(pluralModelName: string) => UseEzScaffResult<TProperties, TModel>;
+export declare const useEzScaff: <TModel extends EzOnRailsRecord, TProperties = Omit<TModel, keyof EzOnRailsRecord>>(pluralModelName: string) => UseEzScaffResult<TModel, TProperties>;
 export {};

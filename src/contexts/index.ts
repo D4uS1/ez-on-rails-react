@@ -1,1 +1,1 @@
-export { EzOnRails } from './EzOnRails/Provider'
+export { EzOnRails } from './EzOnRails/Provider';

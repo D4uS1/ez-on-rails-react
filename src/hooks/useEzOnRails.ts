@@ -4,11 +4,11 @@ import { EzOnRailsContext, EzOnRailsContextValue } from '../contexts/EzOnRails/C
 /**
  * Describes the result of the useEzOnRails hook.
  */
-interface UseEzOnRailsResult extends EzOnRailsContextValue { }
+type UseEzOnRailsResult = EzOnRailsContextValue;
 
 /**
  * Hook that returns the context values including some methods to change it.
  */
 export const useEzOnRails = (): UseEzOnRailsResult => {
     return useContext<EzOnRailsContextValue>(EzOnRailsContext);
-}
+};

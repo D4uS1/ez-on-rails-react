@@ -6,12 +6,12 @@ import { toCamel, toSnake } from 'convert-keys';
  * @param path
  */
 const cleanupPath = (path: string) => {
-   if (path.startsWith('/')) {
-       return path.slice(1);
-   }
+    if (path.startsWith('/')) {
+        return path.slice(1);
+    }
 
-   return path;
-}
+    return path;
+};
 
 /**
  * Removes trailing slash from url if exists.
@@ -24,7 +24,7 @@ const cleanupUrl = (url: string) => {
     }
 
     return url;
-}
+};
 
 /**
  * Returns the full url to the backend having the relative path of an EzOnRails application at the specified backendUrl.
@@ -46,6 +46,15 @@ const toBaseUrl = (backendUrl: string, path: string): string => {
  */
 const toApiUrl = (backendUrl: string, path: string): string => {
     return `${cleanupUrl(backendUrl)}/api/${cleanupPath(path)}`;
+};
+
+/**
+ * Converts the single string into snake case.
+ *
+ * @param str
+ */
+const toSnakeCaseString = (str: string) => {
+    return str.replace(/[A-Z]/g, (match, index) => (index === 0 ? match.toLowerCase() : '_' + match.toLowerCase()));
 };
 
 /**
@@ -85,23 +94,24 @@ const toGetParameters = (parameters: Record<string, string | number | boolean | 
  *
  * @param params
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toDates = (params: any): any => {
     if (typeof params === 'string' && /^\d{4}-\d{2}-\d{2}/.test(params)) {
         return new Date(params);
     }
 
     if (Array.isArray(params)) {
-        return params.map((param) => toDates(param))
+        return params.map((param) => toDates(param));
     }
 
     if (typeof params === 'object') {
         Object.keys(params).forEach((key) => {
-            params[key] = toDates(params[key])
-        })
+            params[key] = toDates(params[key]);
+        });
     }
 
     return params;
-}
+};
 
 /**
  * Searches for occurrences of dates, converts them to strings and returns the result.
@@ -109,23 +119,24 @@ const toDates = (params: any): any => {
  *
  * @param params
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toDateStrings = (params: any): any => {
     if (params instanceof Date) {
         return params.toISOString();
     }
 
     if (Array.isArray(params)) {
-        return params.map((param) => toDateStrings(param))
+        return params.map((param) => toDateStrings(param));
     }
 
     if (typeof params === 'object') {
         Object.keys(params).forEach((key) => {
-            params[key] = toDateStrings(params[key])
-        })
+            params[key] = toDateStrings(params[key]);
+        });
     }
 
     return params;
-}
+};
 
 /**
  * Prepares the specified params for a request to the backend.
@@ -133,9 +144,10 @@ const toDateStrings = (params: any): any => {
  *
  * @param params
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toBackendParams = (params: any) => {
     return toDateStrings(toSnakeCase(params));
-}
+};
 
 /**
  * Prepares the speciied params for the usage in the frontend.
@@ -143,9 +155,16 @@ const toBackendParams = (params: any) => {
  *
  * @param params
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toFrontendParams = (params: any) => {
+    // undefined, null, ...
+    if (!params) return params;
+
+    // no object or array
+    if (typeof params !== 'object') return params;
+
     return toDates(toCamelCase(params));
-}
+};
 
 /**
  * Contains utils for http access of some EzOnRails Backend.
@@ -154,6 +173,7 @@ export const EzOnRailsHttpUtils = {
     toBaseUrl: toBaseUrl,
     toApiUrl: toApiUrl,
     toSnakeCase: toSnakeCase,
+    toSnakeCaseString: toSnakeCaseString,
     toCamelCase: toCamelCase,
     toGetParameters: toGetParameters,
     toDates: toDates,

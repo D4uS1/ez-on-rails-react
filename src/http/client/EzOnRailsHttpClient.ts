@@ -323,7 +323,11 @@ export const EzOnRailsHttpClient = {
      * @param data
      * @param apiVersion
      */
-    passwordResetInstructions: async (backendUrl: string, data: EzOnRailsPasswordResetInstructionsParams, apiVersion: string) => {
+    passwordResetInstructions: async (
+        backendUrl: string,
+        data: EzOnRailsPasswordResetInstructionsParams,
+        apiVersion: string
+    ) => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
@@ -384,7 +388,12 @@ export const EzOnRailsHttpClient = {
      * @param authInfo
      * @param apiVersion
      */
-    updateUser: async (backendUrl: string, data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo, apiVersion: string): Promise<EzOnRailsUser> => {
+    updateUser: async (
+        backendUrl: string,
+        data: EzOnRailsUpdateUserParams,
+        authInfo: EzOnRailsAuthInfo,
+        apiVersion: string
+    ): Promise<EzOnRailsUser> => {
         // Only the signedId must be passed to the update action
         const avatarSignedId = data.avatar?.signedId;
         const submitData = { ...EzOnRailsHttpUtils.toBackendParams(data), avatar: avatarSignedId };
@@ -408,7 +417,11 @@ export const EzOnRailsHttpClient = {
      * @param data
      * @param apiVersion
      */
-    confirmationInstructions: async (backendUrl: string, data: EzOnRailsConfirmationInstructionsParams, apiVersion: string) => {
+    confirmationInstructions: async (
+        backendUrl: string,
+        data: EzOnRailsConfirmationInstructionsParams,
+        apiVersion: string
+    ) => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
@@ -462,7 +475,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
-        apiVersion: string = '1.0',
+        apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
         let url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
@@ -510,7 +523,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
-        apiVersion: string = '1.0',
+        apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
@@ -523,12 +536,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>(
-            'POST',
-            url,
-            data,
-            defaultHttpHeader(authInfo, apiVersion)
-        );
+        const result = await fetchWithThrow<TResponse>('POST', url, data, defaultHttpHeader(authInfo, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -559,7 +567,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
-        apiVersion: string = '1.0',
+        apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
@@ -572,12 +580,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>(
-            'PATCH',
-            url,
-            data,
-            defaultHttpHeader(authInfo, apiVersion)
-        );
+        const result = await fetchWithThrow<TResponse>('PATCH', url, data, defaultHttpHeader(authInfo, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -608,7 +611,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
-        apiVersion: string = '1.0',
+        apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
@@ -621,12 +624,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>(
-            'PUT',
-            url,
-            data,
-            defaultHttpHeader(authInfo, apiVersion)
-        );
+        const result = await fetchWithThrow<TResponse>('PUT', url, data, defaultHttpHeader(authInfo, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -659,7 +657,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
-        apiVersion: string = '1.0',
+        apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
         let url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);

@@ -3,12 +3,11 @@ import { EzOnRailsHttpClient } from '../http/client/EzOnRailsHttpClient';
 import { EzOnRailsHttpUtils } from '../http/utils/EzOnRailsUtils';
 import { EzOnRailsRecord, SearchFilter, SearchFilterComposition } from './types';
 import { useEzOnRails } from './useEzOnRails';
-import { toCamel, toSnake } from 'convert-keys';
 
 /**
  * Describes the result of the useEzScaff hook.
  */
-interface UseEzScaffResult<TProperties, TModel = TProperties & EzOnRailsRecord> {
+interface UseEzScaffResult<TModel extends EzOnRailsRecord, TProperties = Omit<TModel, keyof EzOnRailsRecord>> {
     // Result record for requests related to a single record, like show, create or update
     record: TModel | null;
 
@@ -55,7 +54,9 @@ interface UseEzScaffResult<TProperties, TModel = TProperties & EzOnRailsRecord> 
  *
  * @param pluralModelName
  */
-export const useEzScaff = <TProperties, TModel = TProperties & EzOnRailsRecord>(pluralModelName: string): UseEzScaffResult<TProperties, TModel> => {
+export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TModel, keyof EzOnRailsRecord>>(
+    pluralModelName: string
+): UseEzScaffResult<TModel, TProperties> => {
     const { backendUrl, authInfo, apiVersion } = useEzOnRails();
 
     const [record, setRecord] = useState<TModel | null>(null);
@@ -67,7 +68,7 @@ export const useEzScaff = <TProperties, TModel = TProperties & EzOnRailsRecord>(
      * Converts the modelName to underscore, because the paths to the scaff actions are written in underscore.
      */
     const pluralModelNameUnderscore: string = useMemo(() => {
-        return toSnake(pluralModelName);
+        return EzOnRailsHttpUtils.toSnakeCaseString(pluralModelName);
     }, [pluralModelName]);
 
     /**
@@ -75,21 +76,21 @@ export const useEzScaff = <TProperties, TModel = TProperties & EzOnRailsRecord>(
      * Automatically sets the error and inProgress state, hence the only thing the requestFunc needs to do is
      * to start the request and set the result states after it was successful.
      */
-    const requestHttp = useCallback((requestFunc: () => void) => {
+    const requestHttp = useCallback((requestFunc: () => Promise<void>) => {
         (async () => {
             setError(null);
             setInProgress(true);
 
             try {
-                requestFunc();
+                await requestFunc();
 
                 setInProgress(false);
             } catch (err: unknown) {
                 setInProgress(false);
                 setError(err);
             }
-        })()
-    }, [])
+        })();
+    }, []);
 
     /**
      * Requests the index action related to the defined model on the backend side.
@@ -115,95 +116,109 @@ export const useEzScaff = <TProperties, TModel = TProperties & EzOnRailsRecord>(
      * Saves the result to the record that is returned by the hook.
      * If some error occurs, the error will be saved in the error that is returned by the hook.
      */
-    const getOne = useCallback((id: number) => {
-        requestHttp(async () => {
-            const result = await EzOnRailsHttpClient.get<null, TModel>(
-                backendUrl,
-                `${pluralModelNameUnderscore}/${id}`,
-                null,
-                authInfo,
-                apiVersion
-            );
+    const getOne = useCallback(
+        (id: number) => {
+            requestHttp(async () => {
+                const result = await EzOnRailsHttpClient.get<null, TModel>(
+                    backendUrl,
+                    `${pluralModelNameUnderscore}/${id}`,
+                    null,
+                    authInfo,
+                    apiVersion
+                );
 
-            setRecord(result);
-        });
-    }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
+                setRecord(result);
+            });
+        },
+        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+    );
 
     /**
      * Requests the search action related to the defined model on the backend side.
      * Saves the result to the records that are returned by the hook.
      * If some error occurs, the error will be saved in the error that is returned by the hook.
      */
-    const search = useCallback((query: SearchFilter | SearchFilterComposition) => {
-        requestHttp(async () => {
-            const result = await EzOnRailsHttpClient.get<SearchFilter | SearchFilterComposition, TModel[]>(
-                backendUrl,
-                pluralModelNameUnderscore,
-                query,
-                authInfo,
-                apiVersion
-            );
+    const search = useCallback(
+        (query: SearchFilter | SearchFilterComposition) => {
+            requestHttp(async () => {
+                const result = await EzOnRailsHttpClient.get<SearchFilter | SearchFilterComposition, TModel[]>(
+                    backendUrl,
+                    pluralModelNameUnderscore,
+                    query,
+                    authInfo,
+                    apiVersion
+                );
 
-            setRecords(result);
-        });
-    }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
+                setRecords(result);
+            });
+        },
+        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+    );
 
     /**
      * Requests the create action with the specified properties related to the defined model on the backend side.
      * Saves the result to the record that is returned by the hook.
      * If some error occurs, the error will be saved in the error that is returned by the hook.
      */
-    const create = useCallback((properties: TProperties) => {
-        requestHttp(async () => {
-            const result = await EzOnRailsHttpClient.post<TProperties, TModel>(
-                backendUrl,
-                pluralModelNameUnderscore,
-                properties,
-                authInfo,
-                apiVersion
-            );
+    const create = useCallback(
+        (properties: TProperties) => {
+            requestHttp(async () => {
+                const result = await EzOnRailsHttpClient.post<TProperties, TModel>(
+                    backendUrl,
+                    pluralModelNameUnderscore,
+                    properties,
+                    authInfo,
+                    apiVersion
+                );
 
-            setRecord(result);
-        });
-    }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
+                setRecord(result);
+            });
+        },
+        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+    );
 
     /**
      * Requests the update action with the specified id and properties related to the defined model on the backend side.
      * Saves the result to the record that is returned by the hook.
      * If some error occurs, the error will be saved in the error that is returned by the hook.
      */
-    const update = useCallback((id: number, properties: Partial<TProperties>) => {
-        requestHttp(async () => {
-            const result = await EzOnRailsHttpClient.patch<Partial<TProperties>, TModel>(
-                backendUrl,
-                `${pluralModelNameUnderscore}/${id}`,
-                properties,
-                authInfo,
-                apiVersion
-            );
+    const update = useCallback(
+        (id: number, properties: Partial<TProperties>) => {
+            requestHttp(async () => {
+                const result = await EzOnRailsHttpClient.patch<Partial<TProperties>, TModel>(
+                    backendUrl,
+                    `${pluralModelNameUnderscore}/${id}`,
+                    properties,
+                    authInfo,
+                    apiVersion
+                );
 
-            setRecord(result);
-        });
-    }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
+                setRecord(result);
+            });
+        },
+        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+    );
 
     /**
      * Requests the delete action with the specified id related to the defined model on the backend side.
      * If some error occurs, the error will be saved in the error that is returned by the hook.
      */
-    const remove = useCallback((id: number) => {
-        requestHttp(async () => {
-            await EzOnRailsHttpClient.delete(
-                backendUrl,
-                `${pluralModelNameUnderscore}/${id}`,
-                null,
-                authInfo,
-                apiVersion
-            );
+    const remove = useCallback(
+        (id: number) => {
+            requestHttp(async () => {
+                await EzOnRailsHttpClient.delete(
+                    backendUrl,
+                    `${pluralModelNameUnderscore}/${id}`,
+                    null,
+                    authInfo,
+                    apiVersion
+                );
 
-            setRecord(null);
-        });
-    }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
-
+                setRecord(null);
+            });
+        },
+        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+    );
 
     return {
         record: record,
@@ -216,5 +231,5 @@ export const useEzScaff = <TProperties, TModel = TProperties & EzOnRailsRecord>(
         create: create,
         update: update,
         remove: remove
-    }
-}
+    };
+};

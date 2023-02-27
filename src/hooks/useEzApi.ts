@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import { EzOnRailsContext, EzOnRailsContextValue } from '../contexts/EzOnRails/Context';
+import { useEffect, useState } from 'react';
 import { EzOnRailsHttpClient } from '../http/client/EzOnRailsHttpClient';
 import { useEzOnRails } from './useEzOnRails';
 
@@ -49,19 +48,49 @@ export const useEzApi = <TRequest, TResponse>(
             try {
                 switch (method) {
                     case 'POST':
-                        result = await EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            path,
+                            data,
+                            authInfo,
+                            apiVersion
+                        );
                         break;
                     case 'PUT':
-                        result = await EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            path,
+                            data,
+                            authInfo,
+                            apiVersion
+                        );
                         break;
                     case 'PATCH':
-                        result = await EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            path,
+                            data,
+                            authInfo,
+                            apiVersion
+                        );
                         break;
                     case 'DELETE':
-                        result = await EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            path,
+                            data,
+                            authInfo,
+                            apiVersion
+                        );
                         break;
                     default:
-                        result = await EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                        result = await EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            path,
+                            data,
+                            authInfo,
+                            apiVersion
+                        );
                 }
 
                 setResponse(result);
@@ -77,5 +106,5 @@ export const useEzApi = <TRequest, TResponse>(
         data: response,
         error: error,
         inProgress: inProgress
-    }
-}
+    };
+};

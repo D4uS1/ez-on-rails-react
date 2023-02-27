@@ -3,12 +3,7 @@ import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
 import { Formik } from 'formik';
 import { useEzOnRails } from '../../hooks';
-import {
-    EzOnRailsAuthInfo,
-    EzOnRailsHttpClient,
-    EzOnRailsUpdateUserParams,
-    EzOnRailsUser
-} from '../../http/client/EzOnRailsHttpClient';
+import { EzOnRailsHttpClient, EzOnRailsUpdateUserParams, EzOnRailsUser } from '../../http/client/EzOnRailsHttpClient';
 import { Button, Form } from 'react-bootstrap';
 import { ActiveStorageDropzone } from '../ActiveStorageDropzone/ActiveStorageDropzone';
 import { DefaultFormProps } from '../shared/types/Form';
@@ -215,8 +210,9 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
         })
         .defined();
 
-    return authInfo && (
-        <div className="ez-on-rails-form-outer-container">
+    return (
+        authInfo && (
+            <div className="ez-on-rails-form-outer-container">
                 {initialFormData ? (
                     <Formik
                         initialValues={initialFormData}
@@ -227,10 +223,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                         }}
                     >
                         {({ errors, values, handleChange, setFieldValue, setFieldError, handleSubmit }) => (
-                            <form
-                                onSubmit={handleSubmit}
-                                className={props.containerClassName || formStyles.container}
-                            >
+                            <form onSubmit={handleSubmit} className={props.containerClassName || formStyles.container}>
                                 {!props.hideUsername && (
                                     <Form.Group
                                         id="username-container"
@@ -274,7 +267,9 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         />
                                         {unconfirmedEmail && (
                                             <div
-                                                className={props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text'}
+                                                className={
+                                                    props.fieldInfoClassName || 'ez-on-rails-unconfirmed-email-text'
+                                                }
                                             >
                                                 {props.unconfirmedEmailText ||
                                                     'Die folgende E-Mail Adresse wurde noch nicht bestätigt: '}{' '}
@@ -306,7 +301,9 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                             onChange={handleChange}
                                             isInvalid={!!errors.password}
                                         />
-                                        <div className={props.fieldInfoClassName || 'ez-on-rails-password-optional-text'}>
+                                        <div
+                                            className={props.fieldInfoClassName || 'ez-on-rails-password-optional-text'}
+                                        >
                                             {props.passwordChangeOptionalText ||
                                                 'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.'}
                                         </div>
@@ -363,7 +360,8 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                                 onMaxFilesError={() =>
                                                     setFieldError(
                                                         'avatar',
-                                                        props.avatarToManyFilesErrorText || 'Es ist nur eine Datei erlaubt.'
+                                                        props.avatarToManyFilesErrorText ||
+                                                            'Es ist nur eine Datei erlaubt.'
                                                     )
                                                 }
                                                 maxSize={props.avatarMaxSize || 5242880} // 5 Mb
@@ -371,7 +369,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                                     setFieldError(
                                                         'avatar',
                                                         props.avatarToLargeErrorText ||
-                                                        'Es sind maximal 5MB große Bilder erlaubt.'
+                                                            'Es sind maximal 5MB große Bilder erlaubt.'
                                                     )
                                                 }
                                                 onInvalidTypeError={() =>
@@ -412,6 +410,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                 ) : (
                     <div>Loading...</div>
                 )}
-        </div>
+            </div>
+        )
     );
 };

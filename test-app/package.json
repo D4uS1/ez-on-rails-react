@@ -10,7 +10,7 @@
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "ez-on-rails-react": "file:..",
+    "@d4us1/ez-on-rails-react": "file:..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
@@ -19,7 +19,7 @@
     "web-vitals": "^3.1.1"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
+    "start": "GENERATE_SOURCEMAP=false PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

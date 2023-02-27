@@ -97,7 +97,8 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                         ...values,
                         ...{ resetPasswordToken: props.resetPasswordToken }
                     },
-                apiVersion);
+                    apiVersion
+                );
 
                 await props.onResetPasswordSuccess();
             } catch (e) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEzOnRails } from '../../hooks';
-import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
 
 /**
  * Props for the ProtectedPage component.
@@ -29,7 +28,7 @@ export const ProtectedPage = (props: ProtectedPageProps) => {
 
     return (
         <div>
-            { authInfo ? (
+            {authInfo ? (
                 props.children
             ) : (
                 <div className={props.accessDeniedClassName || 'ez-on-rails-protected-page-access-denied-container'}>

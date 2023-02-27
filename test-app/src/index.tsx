@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { EzOnRails } from "ez-on-rails-react";
-
-EzOnRails.config.init({ apiVersion: '1.0', baseUrl: 'http://localhost:3000'})
 
 ReactDOM.render(
   <React.StrictMode>

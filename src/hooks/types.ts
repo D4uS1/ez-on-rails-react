@@ -19,7 +19,19 @@ export interface EzOnRailsRecord {
 /**
  * Describes the available operators for the search filters that can be used for search actions of scaffolds.
  */
-type SearchFilterOperator = 'eq' | 'neq' | 'isnull' | 'isnotnull' | 'lt' | 'lte' | 'gt' | 'gte' | 'contains' | 'doesnotcontain' | 'isempty' | 'isnotempty';
+type SearchFilterOperator =
+    | 'eq'
+    | 'neq'
+    | 'isnull'
+    | 'isnotnull'
+    | 'lt'
+    | 'lte'
+    | 'gt'
+    | 'gte'
+    | 'contains'
+    | 'doesnotcontain'
+    | 'isempty'
+    | 'isnotempty';
 
 /**
  * Describes a single search filter for a search action of a scaffold.
@@ -43,5 +55,5 @@ export interface SearchFilterComposition {
     logic: 'and' | 'or';
 
     // The filters that are connected
-    filters: (SearchFilter | SearchFilterComposition)[]
+    filters: (SearchFilter | SearchFilterComposition)[];
 }

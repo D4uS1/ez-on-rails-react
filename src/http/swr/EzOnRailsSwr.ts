@@ -26,12 +26,18 @@ export const EzOnRailsSwr = {
         method = 'get',
         data: TParams | null = null,
         authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        apiVersion: string = '1.0'
+        apiVersion = '1.0'
     ): Promise<TResponse> => {
         method = method.toLowerCase();
         switch (method) {
             case 'post': {
-                return EzOnRailsHttpClient.post<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                return EzOnRailsHttpClient.post<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiVersion
+                );
             }
 
             case 'put': {
@@ -39,11 +45,23 @@ export const EzOnRailsSwr = {
             }
 
             case 'patch': {
-                return EzOnRailsHttpClient.patch<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                return EzOnRailsHttpClient.patch<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiVersion
+                );
             }
 
             case 'delete': {
-                return EzOnRailsHttpClient.delete<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                return EzOnRailsHttpClient.delete<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiVersion
+                );
             }
 
             default: {

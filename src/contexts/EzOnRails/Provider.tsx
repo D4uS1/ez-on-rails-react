@@ -39,11 +39,11 @@ export const EzOnRails = (props: EzOnRailsProps) => {
             apiVersion: apiVersion,
             setBackendUrl: setBackendUrl,
             setAuthInfo: setAuthInfo,
-            setApiVersion: setApiVersion,
-        }
+            setApiVersion: setApiVersion
+        };
 
         if (result.backendUrl.endsWith('/')) {
-            result.backendUrl = result.backendUrl.slice(0, -1)
+            result.backendUrl = result.backendUrl.slice(0, -1);
         }
 
         return result;

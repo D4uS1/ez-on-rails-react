@@ -335,7 +335,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
             {props.pasteZone && (
                 <input
                     type="text"
-                    className={ `w-100 p-2 ${styles.pastezoneContainer }` }
+                    className={`w-100 p-2 ${styles.pastezoneContainer}`}
                     value={props.textPastezone || 'Copy and paste some files here'}
                     onPaste={onPaste}
                     readOnly
@@ -351,10 +351,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
             >
                 {({ getRootProps, getInputProps } = useDropzone()) => (
                     <section>
-                        <div
-                            {...getRootProps()}
-                            className={`${styles.dropzoneContainer} p-4 ${props.className}`}
-                        >
+                        <div {...getRootProps()} className={`${styles.dropzoneContainer} p-4 ${props.className}`}>
                             {/* the file input field, but invisible */}
                             <input {...getInputProps()} />
 
