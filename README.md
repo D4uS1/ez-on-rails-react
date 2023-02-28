@@ -58,7 +58,7 @@ export const LoginPage = () => {
         alert("Login failed");
     }
 
-    const onLoginSuccess = async (email: string, authInfo: EzOnRailsAuthInfo) => {
+    const onLoginSuccess = async (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => {
         alert("Login success.");
     }
 
@@ -73,7 +73,9 @@ For now, if a user signs into your application, the access tokens are managed by
 Of course there are also components for a default registration workflow, like registration, password reset, confirmations etc. Every of this component can be fully redesigned by your needs.
 Have a look at the [Components](## Components) section for details.
 
-Note that the success callback takes the email and authInfo, but you dont need to use it. This is only if you want to manage the access token yourself. Normally this is done by the package itself.
+Note that the success callback takes the email, authInfo and a value indicating whether the user has checked the checkbox to stay logged in after app restart.
+With this information, you can save the authentication information somewhere and pass it to the context provider after app restart again.
+If you dont want to show the checkbox, pass *hideStayLoggedIn* to the component.
 
 ### 3. Model Type definitions
 If you created a scaffold for a model in EzOnRails with the ezscaff generator, i recommend to define the model types as follows:
@@ -207,14 +209,14 @@ You can call the http methods that are delivered by the package directly, but it
 
 ```
 import React, { useState } from 'react';
-import { EzOnRailsHttpClient, useEzOnRails } from '@d4us1/ez-on-rails-react';
+import { EzOnRailsHttp, useEzOnRails } from '@d4us1/ez-on-rails-react';
 
 export const SomePage = () => {
     const { backendUrl, apiVersion, authInfo } = useEzOnRails();
     const [response, setResponse] = useState<{ someResponse: string } | null>(null);
     
     const onClickRequest = async () => {
-        const result = await EzOnRailsHttpClient.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiVersion);
+        const result = await EzOnRailsHttp.client.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiVersion);
         setResponse(result);
     }
     
@@ -242,26 +244,310 @@ You must have a look at the following compatibility list, because you must take 
 | 0.8.1 | 0.8.0 |
 
 ## Components
-This section will be described soon.
+There are several components you can use, especially for the user registration workflow.
+Every component is customizable in its style, by passing several properties ending with *className*.
+The components holding forms are customizable by passing the props described in the [DefaultFormProps](### DefaultFormProps) section.
+
+### LoginForm
+Shows a login form that automatically saves the authInfo for following api requests to the backend in the context.
+The form is fully customizable in its style, labels and texts.
+
+The component accepts the following props:
+* labelEmail?: string - The label for the email field
+* labelPassword?: string - The label for the password field
+* labelStayLoggedIn?: string - The label for the stay logged in field
+* invalidEmailErrorText?: string - The error text for an invalid email
+* emailRequiredErrorText?: string - The error text for a required email error
+* passwordToShortErrorText?: string - The error text for a too short password
+* passwordRequiredErrorText?: string - The error text for the required password
+* hideStayLoggedIn?: boolean - Indicates whether the stayLoggedIn checkbox should be invisible
+* minPasswordLength?: number - The minimum length of the password
+* onLoginSuccess: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void> - Called if the user successfully logged in. The email of the user and its auth info for the next request will be passed. Passes also if the user checked the stayLoggedIn checkbox. You can use this to save the authInfo and pass it after app restart to the context provider.
+* onLoginError: (e: unknown) => void - Called if the user login failed. The passed error is the exception.
+* Props to customize the style of the form component. See [DefaultFormProps](### DefaultFormProps) for details.
+
+### RegistrationForm
+Shows a registration form to register a new user.
+
+The component accepts the following props:
+* usernameToShortErrorText?: string - The error text if the user types a too short username
+* usernameToLongErrorText?: string - The error text if the user types a too long username
+* usernameRequiredErrorText?: string - The error text if the user does not provide a username
+* emailInvalidErrorText?: string - The error text if the user types an invalid email
+* emailRequiredErrorText?: string - The error text if the user does not provide an email
+* emailToLongErrorText?: string - The error text if the user types a too long email
+* passwordToShortErrorText?: string - The error text if the user types a to short password
+* passwordRequiredErrorText?: string - The error text if the user does not provide a password
+* passwordsMustMatchErrorText?: string - The error text if the password does not match the password confirmation
+* privacyPolicyNotAcceptedErrorText?: string - The error text if the user did not accept the privacy policy
+* labelUsername?: string - Label for the Username field
+* labelEmail?: string - Label for the Email field
+* labelPassword?: string - Label for the Password field
+* labelPasswordConfirmation?: string - Label for the PasswordConfirmation field
+* labelPrivacyPolicyAccepted?: string | ReactNode - Label for the PrivacyPolicyAccedpted field. Can also be a ReactNode to eg. provide links to the privacy policy.
+* minPasswordLength?: number - The minimum length of the password
+* minUsernameLength?: number - The minimum length of the username
+* maxUsernameLength?: number - The maximum length of the username
+* maxEmailLength?: number - The maximum length of the email
+* onRegisterSuccess: (email: string) => void - Called if the user successfully registered in. The email of the user will be passed.
+* onRegisterError: (e: unknown) => void - Called if the user registration failed. The passed error is the exception.
+* privacyPolicyUrl?: string - URL targeting the privacy policy
+* generalTermsUrl?: string - URL targeting the general terms and conditions
+* Props to customize the style of the form component. See [DefaultFormProps](### DefaultFormProps) for details.
+
+### LostPasswordForm
+Shows a form to request a link to reset the password via email.
+
+The component accepts the following props:
+* invalidEmailErrorText?: string - The error text if the user types an invalid email
+* emailRequiredErrorText?: string - The error text if the user types no email
+* labelEmail?: string - The label for the email
+* onLostPasswordSuccess: (email: string) => void - Called if the request to send new password instructions was successful. The email is the email the request was send to.
+* onLostPasswordError: (e: unknown) => void - Called if the request to send new password instructions was successful. The error is the exception that was thrown during the request.
+* Props to customize the style of the form component. See [DefaultFormProps](### DefaultFormProps) for details.
+
+### ResetPasswordForm
+Shows a form to reset a users password by using the token that was given via a link that was sent to a password reset email.
+If a user requested a password reset using the *LostPasswordForm* component and klicks the link in the email, you must provide a route targeting this link.
+You should get the token that is given via the query parameter and pass it to the *ResetPasswordForm* component.
+
+The component accepts the following props:
+* resetPasswordToken: string - The token to reset the password on the backend
+* labelPassword?: string - The label for the passsword field
+* labelPasswordConfirmation?: string - The label for the password confirmation field
+* passwordRequiredErrorText?: string - The text for a required password error
+* passwordToShortErrorText?: string - The error text for a too short password
+* passwordConfirmationMatchErrorText?: string - The error text if the password and passwordConfirmation do not match
+* minPasswordLength?: number - The minimum length of the password
+* onResetPasswordSuccess: () => Promise<void> - Called if the user successfully resetted the password.
+* onResetPasswordError: (e: unknown) => void - Called if the submit failed. The passed error is the exception.
+
+### ResendConfirmationForm
+Shows a form to request a new confirmation link for a new user that was not yet activated.
+
+The component accepts the following props:
+* invalidEmailErrorText?: string - The error text if the user types an invalid email
+* emailRequiredErrorText?: string - The error text if the user types no email
+* labelEmail?: string - The label for the email
+* onResendConfirmationSuccess: (email: string) => void - Called if the request to resend confirmation instructions was successful. The email is the email the request was send to.
+* onResendConfirmationError: (e: unknown) => void - Called if the request to resend confirmation instructions was successful. The error is the exception that was thrown during the request.
+* Props to customize the style of the form component. See [DefaultFormProps](### DefaultFormProps) for details.
+
+### UpdateUserForm
+Shows a form to update a users data. If your user only has the profile data that is delivered with EzOnRails, you can use this component to provide 
+the ability to update the users profile.
+
+The component accepts the following props:
+* usernameToShortErrorText?: string - The error text if the user types a too short username
+* usernameToLongErrorText?: string - The error text if the user types a too long username
+* usernameRequiredErrorText?: string - The error text if the user does not provide a username
+* emailInvalidErrorText?: string - The error text if the user types an invalid email
+* emailRequiredErrorText?: string - The error text if the user does not provide an email
+* emailToLongErrorText?: string - The error text if the user types a too long email
+* passwordToShortErrorText?: string - The error text if the user types a to short password
+* passwordsMustMatchErrorText?: string - The error text if the password does not match the password confirmation
+* avatarToManyFilesErrorText?: string - Error text for uploading too many files to avatar field
+* avatarToLargeErrorText?: string - Error text for uploading a too large file to avatar
+* avatarWrongFormatErrorText?: string - Error text for uploading a file having the wrong format
+* unconfirmedEmailText?: string - The text shown before the unconfirmed email address, if given
+* passwordChangeOptionalText?: string - The text telling the user that the password change field is optional
+* labelUsername?: string - Label for the Username field
+* labelEmail?: string - Label for the Email field
+* labelPassword?: string - Label for the Password field
+* labelAvatar?: string - Label for the avatar field
+* labelPasswordConfirmation?: string - Label for the PasswordConfirmation field
+* minPasswordLength?: number - The minimum length of the password
+* minUsernameLength?: number - The minimum length of the username
+* maxUsernameLength?: number - The maximum length of the username
+* maxEmailLength?: number - The maximum length of the email
+* onUserUpdateSuccess: (user: EzOnRailsUser) => void - Called if the user was successfully updated
+* onUserUpdateError: (e: unknown) => void - Called if the user update failed. The passed error is the exception.
+* avatarMaxSize?: number - The max size of the avatar (in bytes)
+* dropzoneContainerClassName?: string - Css class for the container holding the dropzone for the avatar
+* hideUsername?: boolean - If set to true, the username field will not be shown and submitted, can be used to only show a set of fields to update
+* hideEmail?: boolean - If set to true, the email field will not be shown and submitted, can be used to only show a set of fields to update
+* hidePassword?: boolean - If set to true, the password and passwordConfirmation field will not be shown and submitted, can be used to only show a set of fields to update
+* hideAvatar?: boolean - If set to true, the avatar field will not be shown and submitted, can be used to only show a set of fields to update
+* submitRef?: React.Ref<HTMLButtonElement> - Ref that is assigned to the submit button, can be used to eg. trigger the submit from outside the form
+* Props to customize the style of the form component. See [DefaultFormProps](### DefaultFormProps) for details.
+
+### ProtectedPage
+Component that shows the content given via its children only if some authInfo is available, hence only if the user is authenticated.
+
+The component accepts the following props:
+* children: React.ReactNode - The children that are shown if the page can be accessed
+* accessDeniedClassName?: string - Optional class name to style the access denied hint
+* accessDeniedText?: string - The text shown if the access was denied. If not given, some default text will be shown.
 
 ### ActiveStorageDropzone
+This is a dropzone that uploads files into the active storage of your EzOnRails backend application.
+
+The component accepts the following props:
+* onChange: (files: RailsFileBlob[]) => void - Called if the uploaded files changes. You can use this value in Form Submits to the backend. If you submit the signedId values of an active storage attachment, they will be attached to the record.
+* files: RailsFileBlob[] - The initial files already existing. Your backend should return RailsFileBlob objects for existing attachments. This must include a *signedId*, *path* and *filename*. You can youse the *attachment_blob_json* method in the backend to return those values.
+* textDropzone?: string - The text shown in the dropzone component. Use empty string to show no text
+* textPastezone?: string - The text shown in the pastezone component
+* multiple: boolean - Indicates whether multiple files are allowed.
+* maxFiles: number -  If multiple is true, this is the maximum number of allowed files
+* onMaxFilesError: (maxFiles: number) => void - Called if the user tried to insert more files than the limit to maxFiles
+* maxSize: number - The maximum size of a file allowed in bytes
+* onMaxSizeError: (maxSize: number) => void - Called if the user tried to insert files having more than the limited maxSize
+* accept?: Accept - Media type to filter allowed file types. An object of key value pairs, where the keys are the mime types.
+* onInvalidTypeError: (accept: Accept | undefined) => void - Called if the user tried to upload a file with a type that is not accepted
+* pasteZone?: boolean - Indicates if the paste zone should be available
+* customIcon?: ReactNode - A custom icon shown in the dropzone
+* className?: string; - className that is passed to the container, enables you to restyle the comoponent
+
 ### DevelopmentHint
-### LoginForm
-### LostPasswordForm
-### ProtectedPage
-### RegistrationForm
-### ResendConfirmationForm
-### UpdateUserForm
+Shows a sticky hint that the app is running in development mode. This can be useful if you have multiple systems looking similar, like staging or test systems.
+You can click on the hint to dismiss it for a short time if something is undercovered by the hint.
+Note that since environment variables in node are created during compile time, it is not possible for ez-on-rails-react to determine whether the app is currently in development mode.
+Hence you have to pass the visible prop, that just indicates whether the component is shown or not.
+
+The component accepts the following props:
+* visible: boolean - Indicates whether the hint should be dispalyed
+* dismissTimeout - A timeout in milliseconds that indicates after what amount of time the component should be shown again after dismiss
+
+### DefaultFormProps
+This is an interface all props of form components are extended with. It enables you to customize the form style.
+
+It accepts the following props:
+* containerClassName?: string - The css class for the container holding all form elements
+* fieldContainerClassName?: string - The css class for the container holding one form field
+* fieldCheckboxContainerClassName?: string - The css class for the container holding one checkbox field
+* fieldLabelClassName?: string - The css class for a field label
+* fieldInputClassName?: string - The css class for one field input
+* fieldCheckboxInputClassName?: string - The css class for one field being a checkbox
+* fieldInfoClassName?: string - The css class for some info related to the info field
+* fieldErrorClassName?: string - The css class for the container holding the error text for a form field
+* submitButtonContainerClassName?: string - The css class for the submit button container
+* submitButtonClassName?: string - The css class for the submit button
+* labelSubmitButton?: string - The text shown in the submit button
 
 ## Hooks
-This section will be described soon.
-
 ### useEzScaff
+Accepts a pluralized model name of a scaffold you generated in the EzOnRails backend and returns methods and values to interact with the models api.
+
+This methods include the default CRUD actions and a search action.
+The hook returns the methods you can call to start the requests. 
+
+If a request related to a single record was finished, like update, delete or show, the response will be returned by the hooks *record* result.
+If a request related to multiple records was finished, like index or search, the response will be returnd by the hooks *records* result.
+
+The hook accepts a generic type of the model. This model should inherit from the *EzOnRailsRecord* interface.
+
+Hook Parameters:
+* pluralModelName: string - The pluralized name of the model. Can be camelcase.
+
+Hook return values:
+* record: TModel | null - Result record for requests related to a single record, like show, create or update.
+* records: TModel[] | null - Result records for requests related to multiple records, like index or search
+* inProgress: boolean - Indicates that some request is currently in Progress
+* error: unknown | null - Holds the error of the last request, if exists
+* getAll: () => void - Requests the index action of the record to receive all available records
+* getOne: (id: number) => void - Requests the show action of the record having the specified id.
+* search: (query: SearchFilter | SearchFilterComposition) => void - Requests records matching the specified query.
+* create: (properties: TProperties) => void - Requests to create a record having the specified properties. The resulting record having the id is saved in the hooks record result.
+* update: (id: number, properties: Partial<TProperties>) => void - Requests to update a record having the specified id by the specified properties.
+* remove: (id: number) => void - Requests to delete the record having the specified id.
+
 ### useEzApi
+Calls an api request to a specified path using the specified HTTP method in the api of the EzOnRails backend.
+Passes the specified data as params, if given. Returns the response of the request in the data result.
+
+The hook returns the *callApi* method, that enables you to call the request manually.
+To skip the initial request on hook load, pass the option *skipInitialCall*.
+
+If you manually call the api, you can wait for the methods result or use the hooks data result.
+
+The hook accepts to generic type parameters. The first describes the type of the request data, the second describes the expected type of the response data.
+
+Hook Parameters:
+* path: string - the relative path to the api to request for, you must not pass the api/ prefix here, it will be appended automatically.
+* method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' = 'GET' - The http method of the request
+* data?: TRequest - Parameters for the request body
+* options?: - An options object for the hook
+  * skipInitialCall?: boolean - If set to true, the initial call of the api on hook call is skipped. In this case you have to call the api manually using the hooks *callApi* method in the result
+
+Hook return values:
+* data: TResponse | null - The response data, if available. Null if the response was not finished yet, or got an error.
+* error: unknown | null - Not null, if an error occured during request
+* inProgress: boolean - Indictaes whether the request is currently in progress
+* callApi: (params?: TRequest) => Promise<TResponse | undefined> - Calls the defined request manually
+
 ### useEzOnRails
+Returns the context values and setters of the EzOnRails context provider. Usually you dont need to use this, but if you want to change the context values manually for some reason, you can make use of this hook.
+
+You may also need the context values for additional features like the [SWR Fetcher](### SWR Fetcher).
+
+Hook return values:
+* backendUrl: string - The base url of the backend (without /api), used by the http requests to the backend
+* authInfo: EzOnRailsAuthInfo | null - The auth info for the http requests, if the user is signed in
+* apiVersion: string - The current api version of the ez-on-rails backend, used by the http requests to the backend
+* setBackendUrl: (backendUrl: string) => void - Setter for the backendUrl
+* setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => void - Setter for the authInfo
+* setApiVersion: (apiVersion: string) => void - Setter for the api version
 
 ## Other features
-This section will be described soon.
-
 ### SWR Fetcher
+If you want to call requests to the EzOnRails Backend using [swr](https://github.com/vercel/swr) you mostly need to pass the correct headers for authorization.
+EzOnRails provides a fetcher you can pass to SWR to do a correct request.
+
+You can pass this fetcher to your swr configuration:
+```
+import { EzOnRailsHttp } from '@d4us1/ez-on-rails-react'
+
+...
+<SWRConfig value={{ fetcher: EzOnRailsHttp.swr.fetcher }}>
+  ...
+</SWRConfig>
+...
+```
+
+If you now call swr, you must pass additional parameters the fetcher needs for the request.
+Note that you must not pass the api/ prefix in the path. It will be appended automatically.
+
+```
+import useSWR from 'swr';
+import { useEzOnRails } from '@d4us1/ez-on-rails-react'
+
+...
+const { backendUrl, authInfo, apiVersion } = useEzOnRails();
+const { data: result } = useSWR<ExpectedResultType>([
+    backendUrl,
+    `path/to/api`,
+    'POST',
+    { someParam: 'value' },
+    authInfo,
+    apiVersion
+]);
+...
+```
+
+### ReMaWy uploader
+If you use the [ReMaWy](https://github.com/D4uS1/remawy) wysiwyg editor you can enable file uploads by using the ReMaWy uploader provided by EzOnRails.
+
+```
+import React, { useMemo } from React;
+import { MarkdownEditor } from "@d4us1/remawy";
+import { EzOnRailsIntegrations, useEzOnRails } from "@d4us1/ez-on-rails-react";
+
+...
+
+const { backendUrl, authInfo, apiVersion } = useEzOnRails();
+
+const uploader = useMemo(() => {
+  if (!authInfo) return undefined;
+  
+  return new EzOnRailsIntegrations.remawy.uploader(backendUrl, authInfo, apiVersion);
+}, [authInfo, backendUrl, apiVersion]);
+
+<MarkdownEditor ...
+                uploadInfo={uploader ? {
+                    uploader: uploader
+                } : undefined}/>
+
+...
+```
+
 
