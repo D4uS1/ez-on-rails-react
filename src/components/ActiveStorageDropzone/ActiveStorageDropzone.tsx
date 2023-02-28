@@ -72,9 +72,6 @@ export interface ActiveStorageDropzoneProps {
 
     // set custom styling
     className?: string;
-
-    // state that is needed for a check if a portrait picture was uploaded
-    onHasPortraitPicture?: (value: boolean) => void;
 }
 
 /**

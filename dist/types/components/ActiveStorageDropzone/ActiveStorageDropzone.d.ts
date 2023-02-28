@@ -33,7 +33,6 @@ export interface ActiveStorageDropzoneProps {
     pasteZone?: boolean;
     customIcon?: React.ReactNode;
     className?: string;
-    onHasPortraitPicture?: (value: boolean) => void;
 }
 /**
  * Image Uploader component for active storage content having a React dropzone
