@@ -72,15 +72,15 @@ export const LoginForm = (props: LoginFormProps) => {
     const LoginValidationSchema: SchemaOf<EzOnRailsSignInParams> = Yup.object()
         .shape({
             email: Yup.string()
-                .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
-                .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.'),
+                .email(props.invalidEmailErrorText || 'Invalid email address.')
+                .required(props.emailRequiredErrorText || 'The email address is required.'),
             password: Yup.string()
                 .min(
                     props.minPasswordLength || 8,
                     props.passwordToShortErrorText ||
-                        'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.'
+                        `The password is too short. It must have at least ${props.minPasswordLength || 8} characters.`
                 )
-                .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich')
+                .required(props.passwordRequiredErrorText || 'The password is required.')
         })
         .defined();
 
@@ -131,7 +131,7 @@ export const LoginForm = (props: LoginFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelEmail || 'E-Mail Adresse'}
+                            {props.labelEmail || 'Email address'}
                         </Form.Label>
 
                         <Form.Control
@@ -154,7 +154,7 @@ export const LoginForm = (props: LoginFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelPassword || 'Passwort'}
+                            {props.labelPassword || 'Password'}
                         </Form.Label>
 
                         <Form.Control
@@ -181,7 +181,7 @@ export const LoginForm = (props: LoginFormProps) => {
                                 id="stayLoggedIn"
                                 className={props.fieldCheckboxInputClassName || formStyles.formField}
                                 type="checkbox"
-                                label={props.labelStayLoggedIn || 'Auf diesem Gerät eingeloggt bleiben'}
+                                label={props.labelStayLoggedIn || 'Stay logged in.'}
                                 onChange={handleChange}
                             />
                         </Form.Group>

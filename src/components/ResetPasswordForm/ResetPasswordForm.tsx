@@ -68,12 +68,12 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                 .min(
                     props.minPasswordLength || 8,
                     props.passwordToShortErrorText ||
-                        'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.'
+                        `The password is too short. It must have at least ${props.minPasswordLength || 8} characters.`
                 )
-                .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich'),
+                .required(props.passwordRequiredErrorText || 'A password is required.'),
             passwordConfirmation: Yup.string().oneOf(
                 [Yup.ref('password')],
-                props.passwordConfirmationMatchErrorText || 'Die Passwörter müssen übereinstimmen.'
+                props.passwordConfirmationMatchErrorText || 'The password and its confirmation must match.'
             )
         })
         .defined();
@@ -130,7 +130,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelPassword || 'Passwort'}
+                            {props.labelPassword || 'Password'}
                         </Form.Label>
 
                         <Form.Control
@@ -153,7 +153,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelPasswordConfirmation || 'Passwort'}
+                            {props.labelPasswordConfirmation || 'Password confirmation'}
                         </Form.Label>
 
                         <Form.Control
@@ -178,7 +178,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                                 type="submit"
                                 className={props.submitButtonClassName || formStyles.submitButton}
                             >
-                                {props.labelSubmitButton || 'Passwort ändern'}
+                                {props.labelSubmitButton || 'Submit'}
                             </Button>
                         </div>
                     )}

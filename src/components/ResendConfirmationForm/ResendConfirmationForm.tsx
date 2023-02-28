@@ -45,8 +45,8 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     const ResendConfirmationValidationSchema: SchemaOf<EzOnRailsConfirmationInstructionsParams> = Yup.object()
         .shape({
             email: Yup.string()
-                .email(props.invalidEmailErrorText || 'Ungültige E-Mail Adresse.')
-                .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
+                .email(props.invalidEmailErrorText || 'Invalid email address.')
+                .required(props.emailRequiredErrorText || 'An email address is required.')
         })
         .defined();
 
@@ -94,7 +94,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelEmail || 'E-Mail Adresse'}
+                            {props.labelEmail || 'Email address'}
                         </Form.Label>
                         <Form.Control
                             id="email"
@@ -118,7 +118,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
                                 type="submit"
                                 className={props.submitButtonClassName || formStyles.submitButton}
                             >
-                                {props.labelSubmitButton || 'Passwort zurücksetzen'}
+                                {props.labelSubmitButton || 'Submit'}
                             </Button>
                         </div>
                     )}

@@ -125,35 +125,39 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 .min(
                     props.minUsernameLength || 5,
                     props.usernameToShortErrorText ||
-                        'Der Benutzername ist zu kurz. Er muss mindestens 4 Zeichen lang sein. '
+                        `The username is too short. It must have at least ${props.minUsernameLength || 5} characters.`
                 )
                 .max(
                     props.maxUsernameLength || 50,
                     props.usernameToLongErrorText ||
-                        'Der Benutzername ist zu lang. Er darf maximal 50 Zeichen lang sein.'
+                        `The username is too long. It must not have more than ${
+                            props.maxUsernameLength || 50
+                        } characters.`
                 )
-                .required(props.usernameRequiredErrorText || 'Der Benutzername ist erforderlich.'),
+                .required(props.usernameRequiredErrorText || 'An username is required.'),
             email: Yup.string()
-                .email(props.emailInvalidErrorText || 'Ungültige E-Mail Adresse.')
-                .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
+                .email(props.emailInvalidErrorText || 'Invalid email address.')
+                .required(props.emailRequiredErrorText || 'An email address is required.')
                 .max(
                     props.maxEmailLength || 100,
                     props.emailToLongErrorText ||
-                        'Die E-Mail Adresse ist zu lang. Sie darf maximal 100 Zeichen lang sein.'
+                        `The email address is too long. It must have not more than ${
+                            props.maxEmailLength || 100
+                        } characters.`
                 ),
             password: Yup.string()
                 .min(
                     props.minPasswordLength || 8,
                     props.passwordToShortErrorText ||
-                        'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.'
+                        `The password is too short. It must have at least ${props.minPasswordLength || 8} characters.`
                 )
-                .required(props.passwordRequiredErrorText || 'Ein Passwort ist erforderlich'),
+                .required(props.passwordRequiredErrorText || 'A password is required.'),
             passwordConfirmation: Yup.string().oneOf(
                 [Yup.ref('password')],
-                props.passwordsMustMatchErrorText || 'Die Passwörter müssen übereinstimmen.'
+                props.passwordsMustMatchErrorText || 'The password and its confirmation must match.'
             ),
             privacyPolicyAccepted: Yup.boolean().isTrue(
-                props.privacyPolicyNotAcceptedErrorText || 'Die Datenschutzerklärung muss akzeptiert werden.'
+                props.privacyPolicyNotAcceptedErrorText || 'The privacy policy must be accepted.'
             )
         })
         .defined();
@@ -182,7 +186,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelUsername || 'Benutzername'}
+                            {props.labelUsername || 'Username'}
                         </Form.Label>
                         <Form.Control
                             id="username"
@@ -203,7 +207,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelEmail || 'E-Mail Adresse'}
+                            {props.labelEmail || 'Email address'}
                         </Form.Label>
                         <Form.Control
                             id="email"
@@ -225,7 +229,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelPassword || 'Passwort'}
+                            {props.labelPassword || 'Password'}
                         </Form.Label>
                         <Form.Control
                             id="password"
@@ -247,7 +251,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                     >
                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                            {props.labelPasswordConfirmation || 'Passwort wiederholen'}
+                            {props.labelPasswordConfirmation || 'Password confirmation'}
                         </Form.Label>
                         <Form.Control
                             id="passwordConfirmation"
@@ -275,15 +279,15 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                             label={
                                 props.labelPrivacyPolicyAccepted || (
                                     <span>
-                                        Ich habe die{' '}
+                                        I have read and accept the{' '}
                                         <a href={props.privacyPolicyUrl} target="_blank" rel="noopener noreferrer">
-                                            Datenschutzerklärung
+                                            privacy policy
                                         </a>{' '}
-                                        und{' '}
+                                        and{' '}
                                         <a href={props.generalTermsUrl} target="_blank" rel="noopener noreferrer">
-                                            allgemeinen Geschäftsbedingungen
+                                            terms and conditions
                                         </a>{' '}
-                                        gelesen und akzeptiere diese.
+                                        .
                                     </span>
                                 )
                             }
@@ -300,7 +304,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                                 type="submit"
                                 variant="primary"
                             >
-                                {props.labelSubmitButton || 'Registrieren'}
+                                {props.labelSubmitButton || 'Register'}
                             </Button>
                         </div>
                     )}

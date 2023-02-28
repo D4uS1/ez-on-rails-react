@@ -183,29 +183,34 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                 .min(
                     props.minUsernameLength || 5,
                     props.usernameToShortErrorText ||
-                        'Der Benutzername ist zu kurz. Er muss mindestens 5 Zeichen lang sein. '
+                        `The username is too short. It must have at least ${props.minUsernameLength || 5} characters.`
                 )
                 .max(
                     props.maxUsernameLength || 50,
                     props.usernameToLongErrorText ||
-                        'Der Benutzername ist zu lang. Er darf maximal 50 Zeichen lang sein.'
+                        `The username is too long. It must have not more than ${
+                            props.maxUsernameLength || 50
+                        } characters.`
                 )
-                .required(props.usernameRequiredErrorText || 'Der Benutzername ist erforderlich.'),
+                .required(props.usernameRequiredErrorText || 'An username is required.'),
             email: Yup.string()
-                .email(props.emailInvalidErrorText || 'Ungültige E-Mail Adresse.')
-                .required(props.emailRequiredErrorText || 'Die E-Mail Adresse ist erforderlich.')
+                .email(props.emailInvalidErrorText || 'Invalid email address.')
+                .required(props.emailRequiredErrorText || 'An email address is required.')
                 .max(
                     props.maxEmailLength || 100,
                     props.emailToLongErrorText ||
-                        'Die E-Mail Adresse ist zu lang. Sie darf maximal 100 Zeichen lang sein.'
+                        `The email address is too long. It must not have more than ${
+                            props.maxEmailLength || 100
+                        } characters.`
                 ),
             password: Yup.string().min(
                 props.minPasswordLength || 8,
-                props.passwordToShortErrorText || 'Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen lang sein.'
+                props.passwordToShortErrorText ||
+                    `The password is too short. It must have at least ${props.minPasswordLength || 8} characters.`
             ),
             passwordConfirmation: Yup.string().oneOf(
                 [Yup.ref('password')],
-                props.passwordsMustMatchErrorText || 'Die Passwörter müssen übereinstimmen.'
+                props.passwordsMustMatchErrorText || 'The password and its confirmation do not match.'
             )
         })
         .defined();
@@ -230,7 +235,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                                     >
                                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                                            {props.labelUsername || 'Benutzername'}
+                                            {props.labelUsername || 'Username'}
                                         </Form.Label>
                                         <Form.Control
                                             id="username"
@@ -255,7 +260,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                                     >
                                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                                            {props.labelEmail || 'E-Mail Adresse'}
+                                            {props.labelEmail || 'Email address'}
                                         </Form.Label>
                                         <Form.Control
                                             id="email"
@@ -272,7 +277,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                                 }
                                             >
                                                 {props.unconfirmedEmailText ||
-                                                    'Die folgende E-Mail Adresse wurde noch nicht bestätigt: '}{' '}
+                                                    'The following email is not yet confirmed: '}{' '}
                                                 {unconfirmedEmail}
                                             </div>
                                         )}
@@ -291,7 +296,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                                     >
                                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                                            {props.labelPassword || 'Passwort'}
+                                            {props.labelPassword || 'Password'}
                                         </Form.Label>
                                         <Form.Control
                                             id="password"
@@ -305,7 +310,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                             className={props.fieldInfoClassName || 'ez-on-rails-password-optional-text'}
                                         >
                                             {props.passwordChangeOptionalText ||
-                                                'Dieses Feld nur ausfüllen, wenn eine Passwort Änderung gewünscht ist.'}
+                                                'You must only provide this if you want to change the password.'}
                                         </div>
                                         <Form.Control.Feedback
                                             type="invalid"
@@ -322,7 +327,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                         className={props.fieldContainerClassName || formStyles.fieldContainer}
                                     >
                                         <Form.Label className={props.fieldLabelClassName || formStyles.fieldLabel}>
-                                            {props.labelPasswordConfirmation || 'Passwort wiederholen'}
+                                            {props.labelPasswordConfirmation || 'Password confirmation'}
                                         </Form.Label>
                                         <Form.Control
                                             id="passwordConfirmation"
@@ -360,8 +365,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                                 onMaxFilesError={() =>
                                                     setFieldError(
                                                         'avatar',
-                                                        props.avatarToManyFilesErrorText ||
-                                                            'Es ist nur eine Datei erlaubt.'
+                                                        props.avatarToManyFilesErrorText || 'Only one file is allowed'
                                                     )
                                                 }
                                                 maxSize={props.avatarMaxSize || 5242880} // 5 Mb
@@ -369,13 +373,15 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                                     setFieldError(
                                                         'avatar',
                                                         props.avatarToLargeErrorText ||
-                                                            'Es sind maximal 5MB große Bilder erlaubt.'
+                                                            `The file must not be larger than ${Math.round(
+                                                                (props.avatarMaxSize || 5242880) / 1048576
+                                                            )} MB.`
                                                     )
                                                 }
                                                 onInvalidTypeError={() =>
                                                     setFieldError(
                                                         'avatar',
-                                                        props.avatarWrongFormatErrorText || 'Ungültiges Dateiformat.'
+                                                        props.avatarWrongFormatErrorText || 'Invalid file format.'
                                                     )
                                                 }
                                             />
@@ -400,7 +406,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
                                             variant="primary"
                                             className={props.submitButtonClassName || formStyles.submitButton}
                                         >
-                                            {props.labelSubmitButton || 'Speichern'}
+                                            {props.labelSubmitButton || 'Submit'}
                                         </Button>
                                     </div>
                                 )}

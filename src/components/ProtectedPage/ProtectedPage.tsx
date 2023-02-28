@@ -32,7 +32,7 @@ export const ProtectedPage = (props: ProtectedPageProps) => {
                 props.children
             ) : (
                 <div className={props.accessDeniedClassName || 'ez-on-rails-protected-page-access-denied-container'}>
-                    {props.accessDeniedText || 'Sie müssen eingeloggt sein um diesen Inhalt sehen zu können.'}
+                    {props.accessDeniedText || 'You must be signed in to see this content.'}
                 </div>
             )}
         </div>
