@@ -1,6 +1,5 @@
 import React from 'react'
-import { LoginForm } from "ez-on-rails-react";
-import { DevelopmentHint, EzOnRailsAuthInfo, UpdateUserForm, EzOnRailsUser } from "ez-on-rails-react";
+import { LoginForm, DevelopmentHint, EzOnRailsAuthInfo, UpdateUserForm, EzOnRailsUser } from "@d4us1/ez-on-rails-react";
 
 export const UpdateUserPage = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

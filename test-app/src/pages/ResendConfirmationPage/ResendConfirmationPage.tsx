@@ -1,6 +1,6 @@
 import './ResendConfirmationPage.css'
 import React from 'react'
-import { ResendConfirmationForm } from "ez-on-rails-react";
+import { ResendConfirmationForm } from "@d4us1/ez-on-rails-react";
 
 export const ResendConfirmationPage = () => {
     const onResendConfirmationError = (e: any) => {

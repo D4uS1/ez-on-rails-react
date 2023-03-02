@@ -1,6 +1,6 @@
 import './RegisterPage.css'
 import React from 'react'
-import { RegistrationForm } from "ez-on-rails-react";
+import { RegistrationForm } from "@d4us1/ez-on-rails-react";
 
 export const RegisterPage = () => {
 

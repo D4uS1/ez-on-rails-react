@@ -2,7 +2,7 @@
 This package provides a react library to interact with [ez-on-rails](https://github.com/D4uS1/ez-on-rails) backends.
 
 EzOnRails provides a rails backend that is ez to use with all your needs to build fast applications having a frontend and a backend.
-It provides many features like a built in permission system, an easy to configure administration view, built in controllers with CRUD functionality builtin features like searching, generators for your models etc.
+It provides many features like a built in permission system, an easy to configure administration view, built in controllers with CRUD functionality, builtin features like searching, generators for your models etc.
 Have a look at the [ez-on-rails](https://github.com/D4uS1/ez-on-rails) repository to see the available features.
 
 This package enables you to build frontend applications that interact with EzOnRails backends.

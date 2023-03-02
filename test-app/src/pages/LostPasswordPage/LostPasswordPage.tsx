@@ -1,6 +1,6 @@
 import './LostPasswordPage.css'
 import React from 'react'
-import { LostPasswordForm } from "ez-on-rails-react";
+import { LostPasswordForm } from "@d4us1/ez-on-rails-react";
 
 export const LostPasswordPage = () => {
     const onLostPasswordError = (e: any) => {
