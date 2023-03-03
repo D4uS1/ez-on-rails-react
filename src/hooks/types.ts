@@ -1,4 +1,9 @@
 /**
+ * Available http methods for http requqests.
+ */
+export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+
+/**
  * Describes the base of an record on the backend side.
  * Each record should inherit from this interface.
  */

@@ -1,0 +1,90 @@
+import { useCallback } from 'react';
+import { EzOnRailsHttpClient } from '../http/client/EzOnRailsHttpClient';
+import { EzOnRailsHttpUtils } from '../http/utils/EzOnRailsUtils';
+import { HttpMethod } from './types';
+import { useEzOnRails } from './useEzOnRails';
+
+/**
+ * Describes the result of the UseEzApiClient hook.
+ */
+interface UseEzApiHttpClientResult {
+    // The method to call any http request against the EzOnRails backend application
+    call: <TRequest, TResponse>(path: string, method: HttpMethod, params?: TRequest) => Promise<TResponse>;
+}
+
+/**
+ * Hook that calls returns a method to call an api request to an EzOnRails application.
+ * The request path and method is specified via the method.
+ * The method automaticly uses the authInfo, backendUrl and apiVersion from the context, hence nothing else must be provided.
+ * If basePath is given, it will be prepended to the path.
+ * The api Prefix must not be given in the path of the method or the basePath. It will be automaticly appended.
+ * The provided params are automaticly converted from camelCase to snakeCase. Date objects are automaticly converted to strings.
+ * The response will be automaticly converted from snakeCase to camelCase. Date strings are automaticly converted to date objects.
+ *
+ * @param basePath
+ */
+export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult => {
+    const { backendUrl, authInfo, apiVersion } = useEzOnRails();
+
+    /**
+     * Calls a request to api of the EzOnRails backend application defined by the context values.
+     * The /api prefix must not be given to the path, it will be appended automaticly.
+     * The params and response is automaticly converted, hence no management for casing or dates is necessary.
+     * If a basePath is passed by the hook, it will be prepended to the path.
+     */
+    const call = useCallback(
+        async <TRequest, TResponse>(path: string, method: HttpMethod, params?: TRequest): Promise<TResponse> => {
+            const cleanedBasePath = basePath
+                ? EzOnRailsHttpUtils.cleanupPath(EzOnRailsHttpUtils.cleanupUrl(basePath))
+                : null;
+            const cleanedPath = EzOnRailsHttpUtils.cleanupPath(path);
+            const fullPath = `${cleanedBasePath ? cleanedBasePath + '/' : ''}${cleanedPath}`;
+
+            switch (method) {
+                case 'POST':
+                    return EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
+                        backendUrl,
+                        fullPath,
+                        params,
+                        authInfo,
+                        apiVersion
+                    );
+                case 'PUT':
+                    return EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
+                        backendUrl,
+                        fullPath,
+                        params,
+                        authInfo,
+                        apiVersion
+                    );
+                case 'PATCH':
+                    return EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
+                        backendUrl,
+                        fullPath,
+                        params,
+                        authInfo,
+                        apiVersion
+                    );
+                case 'DELETE':
+                    return EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
+                        backendUrl,
+                        fullPath,
+                        params,
+                        authInfo,
+                        apiVersion
+                    );
+                default:
+                    return EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
+                        backendUrl,
+                        fullPath,
+                        params,
+                        authInfo,
+                        apiVersion
+                    );
+            }
+        },
+        []
+    );
+
+    return { call: call };
+};

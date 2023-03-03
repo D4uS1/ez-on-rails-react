@@ -8,5 +8,6 @@ export const AppRoutes = {
     resend_confirmation: "/resend_confirmation",
     update_user: "/update_user",
     use_ez_scaff_test_page: "/use_ez_scaff_test",
-    use_ez_api_test_page: "/use_ez_api_test"
+    use_ez_api_test_page: "/use_ez_api_test",
+    use_ez_api_http_client_test_page: "/use_ez_api_http_client_test"
 }

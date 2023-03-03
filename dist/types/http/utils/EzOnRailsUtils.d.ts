@@ -2,6 +2,8 @@
  * Contains utils for http access of some EzOnRails Backend.
  */
 export declare const EzOnRailsHttpUtils: {
+    cleanupUrl: (url: string) => string;
+    cleanupPath: (path: string) => string;
     toBaseUrl: (backendUrl: string, path: string) => string;
     toApiUrl: (backendUrl: string, path: string) => string;
     toSnakeCase: <T>(data: T) => T;

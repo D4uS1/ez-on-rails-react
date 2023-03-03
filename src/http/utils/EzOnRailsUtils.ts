@@ -170,6 +170,8 @@ const toFrontendParams = (params: any) => {
  * Contains utils for http access of some EzOnRails Backend.
  */
 export const EzOnRailsHttpUtils = {
+    cleanupUrl: cleanupUrl,
+    cleanupPath: cleanupPath,
     toBaseUrl: toBaseUrl,
     toApiUrl: toApiUrl,
     toSnakeCase: toSnakeCase,

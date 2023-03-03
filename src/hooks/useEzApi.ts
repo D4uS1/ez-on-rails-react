@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { EzOnRailsHttpClient } from '../http/client/EzOnRailsHttpClient';
+import { HttpMethod } from './types';
+import { useEzApiHttpClient } from './useEzApiHttpClient';
 import { useEzOnRails } from './useEzOnRails';
 
 /**
@@ -34,7 +35,7 @@ interface UseEzApiResult<TRequest, TResponse> {
  */
 export const useEzApi = <TRequest, TResponse>(
     path: string,
-    method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' = 'GET',
+    method: HttpMethod = 'GET',
     data?: TRequest,
     options?: {
         skipInitialCall?: boolean;
@@ -44,6 +45,7 @@ export const useEzApi = <TRequest, TResponse>(
     const [response, setResponse] = useState<TResponse | null>(null);
     const [error, setError] = useState<unknown | null>(null);
     const [inProgress, setInProgress] = useState<boolean>(false);
+    const { call } = useEzApiHttpClient();
 
     /**
      * Calls the api path at the EzOnRails application defined by the backendUrl and passes the specified data.
@@ -51,60 +53,12 @@ export const useEzApi = <TRequest, TResponse>(
      * If params is not given, the data given by the props will be passed.
      */
     const callApi = useCallback(async (params?: TRequest) => {
-        setInProgress(true);
-        setError(null);
-        setResponse(null);
-
-        const parameters = params || data;
-        let result: TResponse | null = null;
-
         try {
-            switch (method) {
-                case 'POST':
-                    result = await EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        path,
-                        parameters,
-                        authInfo,
-                        apiVersion
-                    );
-                    break;
-                case 'PUT':
-                    result = await EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        path,
-                        parameters,
-                        authInfo,
-                        apiVersion
-                    );
-                    break;
-                case 'PATCH':
-                    result = await EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        path,
-                        parameters,
-                        authInfo,
-                        apiVersion
-                    );
-                    break;
-                case 'DELETE':
-                    result = await EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        path,
-                        parameters,
-                        authInfo,
-                        apiVersion
-                    );
-                    break;
-                default:
-                    result = await EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        path,
-                        parameters,
-                        authInfo,
-                        apiVersion
-                    );
-            }
+            setInProgress(true);
+            setError(null);
+            setResponse(null);
+
+            const result: TResponse = await call<TRequest, TResponse>(path, method, params || data);
 
             setResponse(result);
             setInProgress(false);

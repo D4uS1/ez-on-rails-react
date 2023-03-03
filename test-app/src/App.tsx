@@ -8,6 +8,7 @@ import { LostPasswordPage } from "./pages/LostPasswordPage/LostPasswordPage";
 import { ResendConfirmationPage } from "./pages/ResendConfirmationPage/ResendConfirmationPage";
 import { UpdateUserPage } from "./pages/UpdateUserPage/UpdateUserPage";
 import { EzOnRails } from '@d4us1/ez-on-rails-react';
+import { UseEzApiHttpClientTestPage } from './pages/UseEzApiHttpClientTestPage/UseEzApiHttpClientTestPage';
 import { UseEzApiTestPage } from './pages/UseEzApiTestPage/UseEzApiTestPage';
 import { UseEzScaffTestPage } from './pages/UseEzScaffTestPage/UseEzScaffTestPage';
 
@@ -23,6 +24,7 @@ function App() {
             <Route path={AppRoutes.update_user} element={<UpdateUserPage />}/>
             <Route path={AppRoutes.use_ez_scaff_test_page} element={<UseEzScaffTestPage />}/>
             <Route path={AppRoutes.use_ez_api_test_page} element={<UseEzApiTestPage />}/>
+            <Route path={AppRoutes.use_ez_api_http_client_test_page} element={<UseEzApiHttpClientTestPage />}/>
             <Route path="/" element={<Navigate to={AppRoutes.login}/>} />
           </Routes>
         </Router>

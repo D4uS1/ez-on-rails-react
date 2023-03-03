@@ -1,3 +1,4 @@
+import { HttpMethod } from './types';
 /**
  * Describes the result of an api requests using the useEzApi hook.
  */
@@ -20,7 +21,7 @@ interface UseEzApiResult<TRequest, TResponse> {
  * @param data
  * @param options
  */
-export declare const useEzApi: <TRequest, TResponse>(path: string, method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE', data?: TRequest | undefined, options?: {
+export declare const useEzApi: <TRequest, TResponse>(path: string, method?: HttpMethod, data?: TRequest | undefined, options?: {
     skipInitialCall?: boolean;
 }) => UseEzApiResult<TRequest, TResponse>;
 export {};

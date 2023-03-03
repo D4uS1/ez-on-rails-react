@@ -21,6 +21,8 @@ export declare const EzOnRailsHttp: {
         fetcher: <TParams_5, TResponse_5>(backendUrl: string, path: string, method?: string, data?: TParams_5 | null, authInfo?: EzOnRailsAuthInfo | undefined, apiVersion?: string) => Promise<TResponse_5>;
     };
     utils: {
+        cleanupUrl: (url: string) => string;
+        cleanupPath: (path: string) => string;
         toBaseUrl: (backendUrl: string, path: string) => string;
         toApiUrl: (backendUrl: string, path: string) => string;
         toSnakeCase: <T>(data: T) => T;

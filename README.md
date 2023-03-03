@@ -164,7 +164,7 @@ Note that this usage triggers the request by calling the hook. It is also possib
 See the [Custom API requests](### 6. Custom API requests) section for details.
 
 ### 6. Custom API requests
-If you want to to make a custom request that is not triggered on hook call you have two possibilities.
+If you want to to make a custom request that is not triggered on hook call you have three possibilities.
 
 #### 1. Use callApi that is returned by useApi (recommended)
 The **useEzApi** hook also returns the function that calls the request itself. Hence it can be called manually.
@@ -204,7 +204,37 @@ The *callApi* method returns a Promise with the result. Hence, if you dont want 
 const result = await callApi({ someParam: string });
 ```
 
-#### 2. Use the http client
+#### 2. Use the useEzApiHttpClient hook
+This hook can be useful if you have many different http requests in one component and dont want to define an useEzApi hook for each of them.
+The hook returns only a method to call a request to the backend. The method accepts a path, the http method and the parameters and returns a promise of the response.
+Hence you can decide if you want to wait for the response of call it asynchronous.
+
+The hook accepts a base path. This must not ne given, but can be useful if you want to access actions behind some scaffold that are no CRUD actions.
+
+Example:
+```
+import React from 'react';
+import { useEzApiHttpClient } from '@d4us1/ez-on-rails-react';
+
+export const SomePage = () => {
+    const { call } = useEzApiHttpClient()
+    const response = useState<{ someResponse: string } | null>(null)
+
+    const onClickRequest = async () => {
+      const result = await call('some/path', 'POST', { someParam: string })
+      setResponse(result)
+    }
+
+    return (
+        <div>
+            <button onClick={ () => call('some/path', 'POST', { someParam: string }) }>Start request</button>
+            { response && <div>{JSON.stringify(response)}</div> }
+        </div>
+    )
+}
+```
+
+#### 3. Use the http client
 You can call the http methods that are delivered by the package directly, but it is not recommended.
 
 ```
@@ -474,6 +504,18 @@ Hook return values:
 * error: unknown | null - Not null, if an error occured during request
 * inProgress: boolean - Indictaes whether the request is currently in progress
 * callApi: (params?: TRequest) => Promise<TResponse | undefined> - Calls the defined request manually
+
+### useEzApiHttpClient
+Returns a method to call requests to the api of the EzOnRails backend.
+This hook can be used if you want to make custom requests to the api without the need to pass the backendUrl, apiVersion and authInfo.
+The method that is returned accepts a path, the http method and parameters. It returns a promise, hence you can wait for the response or 
+do it asynchronous.
+
+Hook Parameters:
+* basePath?: string - if given, the path specified by the method call will be prefixed with this basePath
+
+Hook return values:
+* call: <TRequest, TResponse>(path: string, method: HttpMethod, params?: TRequest) => Promise<TResponse> - Method that calls a request to the api at the path of the EzOnRails application that is defined in the current context. 
 
 ### useEzOnRails
 Returns the context values and setters of the EzOnRails context provider. Usually you dont need to use this, but if you want to change the context values manually for some reason, you can make use of this hook.
