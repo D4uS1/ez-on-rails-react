@@ -50,11 +50,19 @@ const toApiUrl = (backendUrl: string, path: string): string => {
 
 /**
  * Converts the single string into snake case.
+ * If the string contains :: it will be converted to slash, related to the rails conventions for namespaces and paths.
  *
  * @param str
  */
-const toSnakeCaseString = (str: string) => {
-    return str.replace(/[A-Z]/g, (match, index) => (index === 0 ? match.toLowerCase() : '_' + match.toLowerCase()));
+const toSnakeCasePath = (str: string) => {
+    // convert A-Z to a-z_ except for the first letter, the first letter is only converted to lowercase
+    str = str.replace(/[A-Z]/g, (match, index) => (index === 0 ? match.toLowerCase() : '_' + match.toLowerCase()));
+
+    // special cases for namespaces
+    str = str.replace(/::_/g, '/');
+    str = str.replace(/\/_/g, '/');
+
+    return str;
 };
 
 /**
@@ -175,7 +183,7 @@ export const EzOnRailsHttpUtils = {
     toBaseUrl: toBaseUrl,
     toApiUrl: toApiUrl,
     toSnakeCase: toSnakeCase,
-    toSnakeCaseString: toSnakeCaseString,
+    toSnakeCasePath: toSnakeCasePath,
     toCamelCase: toCamelCase,
     toGetParameters: toGetParameters,
     toDates: toDates,

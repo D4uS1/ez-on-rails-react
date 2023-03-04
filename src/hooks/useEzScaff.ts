@@ -65,10 +65,10 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
     const [error, setError] = useState<unknown | null>(null);
 
     /**
-     * Converts the modelName to underscore, because the paths to the scaff actions are written in underscore.
+     * Returns the base path to the scaffold endpoints from the specified pluralModelName.
      */
-    const pluralModelNameUnderscore: string = useMemo(() => {
-        return EzOnRailsHttpUtils.toSnakeCaseString(pluralModelName);
+    const scaffoldBasePath: string = useMemo(() => {
+        return EzOnRailsHttpUtils.toSnakeCasePath(pluralModelName);
     }, [pluralModelName]);
 
     /**
@@ -107,7 +107,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
         return requestHttp(async () => {
             const result = await EzOnRailsHttpClient.get<null, TModel[]>(
                 backendUrl,
-                pluralModelNameUnderscore,
+                scaffoldBasePath,
                 null,
                 authInfo,
                 apiVersion
@@ -117,7 +117,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
 
             return result;
         });
-    }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
+    }, [backendUrl, authInfo, apiVersion, scaffoldBasePath]);
 
     /**
      * Requests the show action with the specified id related to the defined model on the backend side.
@@ -129,7 +129,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
             return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.get<null, TModel>(
                     backendUrl,
-                    `${pluralModelNameUnderscore}/${id}`,
+                    `${scaffoldBasePath}/${id}`,
                     null,
                     authInfo,
                     apiVersion
@@ -140,7 +140,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
     );
 
     /**
@@ -153,7 +153,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
             return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.get<SearchFilter | SearchFilterComposition, TModel[]>(
                     backendUrl,
-                    pluralModelNameUnderscore,
+                    scaffoldBasePath,
                     query,
                     authInfo,
                     apiVersion
@@ -164,7 +164,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
     );
 
     /**
@@ -177,7 +177,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
             return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.post<TProperties, TModel>(
                     backendUrl,
-                    pluralModelNameUnderscore,
+                    scaffoldBasePath,
                     properties,
                     authInfo,
                     apiVersion
@@ -188,7 +188,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
     );
 
     /**
@@ -201,7 +201,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
             return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.patch<Partial<TProperties>, TModel>(
                     backendUrl,
-                    `${pluralModelNameUnderscore}/${id}`,
+                    `${scaffoldBasePath}/${id}`,
                     properties,
                     authInfo,
                     apiVersion
@@ -212,7 +212,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
     );
 
     /**
@@ -222,18 +222,12 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
     const remove = useCallback(
         (id: number) => {
             return requestHttp(async () => {
-                await EzOnRailsHttpClient.delete(
-                    backendUrl,
-                    `${pluralModelNameUnderscore}/${id}`,
-                    null,
-                    authInfo,
-                    apiVersion
-                );
+                await EzOnRailsHttpClient.delete(backendUrl, `${scaffoldBasePath}/${id}`, null, authInfo, apiVersion);
 
                 setRecord(null);
             });
         },
-        [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
     );
 
     return {
