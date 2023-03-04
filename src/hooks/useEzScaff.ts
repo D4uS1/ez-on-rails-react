@@ -21,27 +21,27 @@ interface UseEzScaffResult<TModel extends EzOnRailsRecord, TProperties = Omit<TM
     error: unknown | null;
 
     // Requests the index action of the record to receive all available records
-    // The result will be saved in the records that are also returned by the hook.
-    getAll: () => void;
+    // The result will also be saved in the records that are also returned by the hook.
+    getAll: () => Promise<TModel[] | null>;
 
     // Requests the show action of the record having the specified id.
-    // Saves the result in the record that is also returned by the hook.
-    getOne: (id: number) => void;
+    // Saves the result also in the record that is also returned by the hook.
+    getOne: (id: number) => Promise<TModel | null>;
 
     // Requests records matching the specified query.
-    // Saves the result in the records that are also returned by the hook.
-    search: (query: SearchFilter | SearchFilterComposition) => void;
+    // Saves the result also in the records that are also returned by the hook.
+    search: (query: SearchFilter | SearchFilterComposition) => Promise<TModel[] | null>;
 
     // Requests to create a record having the specified properties.
-    // Saves the result in the record that is also returned by the hook.
-    create: (properties: TProperties) => void;
+    // Saves the result also in the record that is also returned by the hook.
+    create: (properties: TProperties) => Promise<TModel | null>;
 
     // Requests to update a record having the specified id by the specified properties.
-    // Saves the result in the record that is also returned by the hook.
-    update: (id: number, properties: Partial<TProperties>) => void;
+    // Saves the result also in the record that is also returned by the hook.
+    update: (id: number, properties: Partial<TProperties>) => Promise<TModel | null>;
 
     // Requests to delete the record having the specified id.
-    remove: (id: number) => void;
+    remove: (id: number) => Promise<void | null>;
 }
 
 /**
@@ -75,22 +75,28 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      * Calls the specified requestFunc asynchronous.
      * Automatically sets the error and inProgress state, hence the only thing the requestFunc needs to do is
      * to start the request and set the result states after it was successful.
+     * If an error occurs, null will be returned. Otherwise the result will of requestFunc will be returned.
      */
-    const requestHttp = useCallback((requestFunc: () => Promise<void>) => {
-        (async () => {
+    const requestHttp = useCallback(
+        async <TResponse>(requestFunc: () => Promise<TResponse>): Promise<TResponse | null> => {
             setError(null);
             setInProgress(true);
 
             try {
-                await requestFunc();
+                const result = await requestFunc();
 
                 setInProgress(false);
+
+                return result;
             } catch (err: unknown) {
                 setInProgress(false);
                 setError(err);
+
+                return null;
             }
-        })();
-    }, []);
+        },
+        []
+    );
 
     /**
      * Requests the index action related to the defined model on the backend side.
@@ -98,7 +104,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      * If some error occurs, the error will be saved in the error that is returned by the hook.
      */
     const getAll = useCallback(() => {
-        requestHttp(async () => {
+        return requestHttp(async () => {
             const result = await EzOnRailsHttpClient.get<null, TModel[]>(
                 backendUrl,
                 pluralModelNameUnderscore,
@@ -108,6 +114,8 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
             );
 
             setRecords(result);
+
+            return result;
         });
     }, [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]);
 
@@ -118,7 +126,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      */
     const getOne = useCallback(
         (id: number) => {
-            requestHttp(async () => {
+            return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.get<null, TModel>(
                     backendUrl,
                     `${pluralModelNameUnderscore}/${id}`,
@@ -128,6 +136,8 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 );
 
                 setRecord(result);
+
+                return result;
             });
         },
         [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
@@ -140,7 +150,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      */
     const search = useCallback(
         (query: SearchFilter | SearchFilterComposition) => {
-            requestHttp(async () => {
+            return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.get<SearchFilter | SearchFilterComposition, TModel[]>(
                     backendUrl,
                     pluralModelNameUnderscore,
@@ -150,6 +160,8 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 );
 
                 setRecords(result);
+
+                return result;
             });
         },
         [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
@@ -162,7 +174,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      */
     const create = useCallback(
         (properties: TProperties) => {
-            requestHttp(async () => {
+            return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.post<TProperties, TModel>(
                     backendUrl,
                     pluralModelNameUnderscore,
@@ -172,6 +184,8 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 );
 
                 setRecord(result);
+
+                return result;
             });
         },
         [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
@@ -184,7 +198,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      */
     const update = useCallback(
         (id: number, properties: Partial<TProperties>) => {
-            requestHttp(async () => {
+            return requestHttp(async () => {
                 const result = await EzOnRailsHttpClient.patch<Partial<TProperties>, TModel>(
                     backendUrl,
                     `${pluralModelNameUnderscore}/${id}`,
@@ -194,6 +208,8 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 );
 
                 setRecord(result);
+
+                return result;
             });
         },
         [backendUrl, authInfo, apiVersion, pluralModelNameUnderscore]
@@ -205,7 +221,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
      */
     const remove = useCallback(
         (id: number) => {
-            requestHttp(async () => {
+            return requestHttp(async () => {
                 await EzOnRailsHttpClient.delete(
                     backendUrl,
                     `${pluralModelNameUnderscore}/${id}`,

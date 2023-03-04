@@ -7,12 +7,12 @@ interface UseEzScaffResult<TModel extends EzOnRailsRecord, TProperties = Omit<TM
     records: TModel[] | null;
     inProgress: boolean;
     error: unknown | null;
-    getAll: () => void;
-    getOne: (id: number) => void;
-    search: (query: SearchFilter | SearchFilterComposition) => void;
-    create: (properties: TProperties) => void;
-    update: (id: number, properties: Partial<TProperties>) => void;
-    remove: (id: number) => void;
+    getAll: () => Promise<TModel[] | null>;
+    getOne: (id: number) => Promise<TModel | null>;
+    search: (query: SearchFilter | SearchFilterComposition) => Promise<TModel[] | null>;
+    create: (properties: TProperties) => Promise<TModel | null>;
+    update: (id: number, properties: Partial<TProperties>) => Promise<TModel | null>;
+    remove: (id: number) => Promise<void | null>;
 }
 /**
  * Hook that returns several methods and data related to model scaffolds of an EzOnRails Backend application.
