@@ -137,7 +137,9 @@ const toDateStrings = (params: any): any => {
         return params.map((param) => toDateStrings(param));
     }
 
-    if (typeof params === 'object') {
+    // the !== null is needed here, because typeof returns 'object' for null, this is because
+    // javascript is just HUEHUEHUEHUEHUEHUEHUEHUEHUEHUEHUEHUEHUE
+    if (params !== null && typeof params === 'object') {
         Object.keys(params).forEach((key) => {
             params[key] = toDateStrings(params[key]);
         });
