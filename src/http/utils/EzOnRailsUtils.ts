@@ -112,7 +112,7 @@ const toDates = (params: any): any => {
         return params.map((param) => toDates(param));
     }
 
-    if (typeof params === 'object') {
+    if (params !== null && typeof params === 'object') {
         Object.keys(params).forEach((key) => {
             params[key] = toDates(params[key]);
         });
