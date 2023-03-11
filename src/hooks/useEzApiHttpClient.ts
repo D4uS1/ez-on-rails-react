@@ -83,7 +83,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                     );
             }
         },
-        []
+        [authInfo, apiVersion, backendUrl, basePath]
     );
 
     return { call: call };

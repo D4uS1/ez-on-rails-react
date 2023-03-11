@@ -49,7 +49,7 @@ export interface LoginFormProps extends DefaultFormProps {
     minPasswordLength?: number;
 
     // Called if the user successfully logged in. The email of the user and its auth info for the next request will be passed. Passes also if the user checked the stayLoggedIn checkbox.
-    onLoginSuccess: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
+    onLoginSuccess?: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
 
     // Called if the user login failed. The passed error is the exception.
     onLoginError: (e: unknown) => void;
@@ -101,6 +101,8 @@ export const LoginForm = (props: LoginFormProps) => {
             if (!authInfo) throw 'No authentication object returned';
 
             setAuthInfo(authInfo);
+
+            if (!props.onLoginSuccess) return;
 
             await props.onLoginSuccess(values.email, authInfo, values.stayLoggedIn);
         } catch (e) {

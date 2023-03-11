@@ -15,7 +15,7 @@ export interface LoginFormProps extends DefaultFormProps {
     passwordRequiredErrorText?: string;
     hideStayLoggedIn?: boolean;
     minPasswordLength?: number;
-    onLoginSuccess: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
+    onLoginSuccess?: (email: string, authInfo: EzOnRailsAuthInfo, stayLoggedIn: boolean) => Promise<void>;
     onLoginError: (e: unknown) => void;
 }
 /**

@@ -50,9 +50,16 @@ the css classes of your needs. See the [Components](## Components) section for d
 
 ```
 import React from 'react'
-import { LoginForm, EzOnRailsAuthInfo } from "@d4us1/ez-on-rails-react";
+import { LoginForm, EzOnRailsAuthInfo, useEzOnRails } from "@d4us1/ez-on-rails-react";
 
 export const LoginPage = () => {
+    const { authInfo } = useEzOnRails();
+
+    useEffect(() => {
+      if (authInfo) {
+        // User signed in, do some initialization here
+      }
+    }, [authInfo]);
 
     const onLoginError = (e: unkown) => {
         alert("Login failed");
@@ -74,8 +81,11 @@ Of course there are also components for a default registration workflow, like re
 Have a look at the [Components](## Components) section for details.
 
 Note that the success callback takes the email, authInfo and a value indicating whether the user has checked the checkbox to stay logged in after app restart.
-With this information, you can save the authentication information somewhere and pass it to the context provider after app restart again.
-If you dont want to show the checkbox, pass *hideStayLoggedIn* to the component.
+Since this method is called immediatly after the sign in, the contexts auth info may not be available. Hence if you do some further http requests here, the requests
+may fail. If you want to do some initialization after sign in, it is recommended to do this by a useEffect hook monitoring the authInfo, like in the example above.
+
+You can also save the authentication information somewhere and pass it to the context provider after app restart again.
+If you dont want to show the stay logged in checkbox, pass *hideStayLoggedIn* to the component.
 
 ### 3. Model Type definitions
 If you created a scaffold for a model in EzOnRails with the ezscaff generator, i recommend to define the model types as follows:
