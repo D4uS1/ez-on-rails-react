@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { HttpMethod } from './types';
 import { useEzApiHttpClient } from './useEzApiHttpClient';
 import { useEzOnRails } from './useEzOnRails';
@@ -41,6 +41,7 @@ export const useEzApi = <TRequest, TResponse>(
         skipInitialCall?: boolean;
     }
 ): UseEzApiResult<TRequest, TResponse> => {
+    const oldPath = useRef<string>(path);
     const { backendUrl, authInfo, apiVersion } = useEzOnRails();
     const [response, setResponse] = useState<TResponse | null>(null);
     const [error, setError] = useState<unknown | null>(null);
@@ -68,7 +69,7 @@ export const useEzApi = <TRequest, TResponse>(
             setError(error);
             setInProgress(false);
         }
-    }, []);
+    }, [path]);
 
     /**
      * Called initial and if something relevant for the request in the context changes.
@@ -76,11 +77,17 @@ export const useEzApi = <TRequest, TResponse>(
      */
     useEffect(() => {
         (async () => {
+            // If the path did not change, do not execute again
+            if (path === oldPath.current) return;
+
             if (!options?.skipInitialCall) {
+                console.log("executing again");
                 await callApi();
             }
+
+            oldPath.current = path;
         })();
-    }, [authInfo, backendUrl, apiVersion]);
+    }, [authInfo, backendUrl, apiVersion, path]);
 
     return {
         data: response,
