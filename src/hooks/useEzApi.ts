@@ -41,7 +41,6 @@ export const useEzApi = <TRequest, TResponse>(
         skipInitialCall?: boolean;
     }
 ): UseEzApiResult<TRequest, TResponse> => {
-    const oldPath = useRef<string>(path);
     const { backendUrl, authInfo, apiVersion } = useEzOnRails();
     const [response, setResponse] = useState<TResponse | null>(null);
     const [error, setError] = useState<unknown | null>(null);
@@ -77,15 +76,9 @@ export const useEzApi = <TRequest, TResponse>(
      */
     useEffect(() => {
         (async () => {
-            // If the path did not change, do not execute again
-            if (path === oldPath.current) return;
+            if (options?.skipInitialCall) return;
 
-            if (!options?.skipInitialCall) {
-                console.log("executing again");
-                await callApi();
-            }
-
-            oldPath.current = path;
+            await callApi();
         })();
     }, [authInfo, backendUrl, apiVersion, path]);
 
