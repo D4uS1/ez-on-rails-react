@@ -46,8 +46,6 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
             const cleanedPath = EzOnRailsHttpUtils.cleanupPath(path);
             const fullPath = `${cleanedBasePath ? cleanedBasePath + '/' : ''}${cleanedPath}`;
 
-            console.log('call for fullPath', fullPath);
-
             try {
                 switch (method) {
                     case 'POST':
@@ -92,8 +90,6 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                         );
                 }
             } catch (err: unknown) {
-                console.log('error', err);
-
                 // If the error is a http status 401 error and the onUnauthorized callback is available, call it
                 if (!EzOnRailsHttpUtils.isEzOnRailsHttpError(err) || (err as EzOnRailsHttpError).httpStatusCode !== 401 || !onUnauthorizedCallback) throw err;
 
