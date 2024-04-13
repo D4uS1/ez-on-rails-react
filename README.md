@@ -26,14 +26,22 @@ See the [Versions](## Versions) section to find the newest compatible version fo
 ## Usage
 ### 1. Insert Context provider
 You must add the __EzOnRails__ context provider around your application that manages access tokens, api Versions, backend url etc.
+
+You can also pass an __onUnauthorizedCallback__ that is called if any hook doing http requests fail with a http 401 status code.
+This makes it possible to have a session management and logout the user if some token is invalid.
+Note that you can also set the callback by using the __setOnUnauthorizedCallback__ methode from the __useEzOnRails__ hook.
 Example App.ts:
 ```
 import React from 'react';
 import { EzOnRails } from '@d4us1/ez-on-rails-react';
 
 function App() {
+  const onUnauthorized = () => {
+      ...
+  };
+
   return (
-      <EzOnRails backendUrl='http://localhost:3000' apiVersion='1.0'>
+      <EzOnRails backendUrl='http://localhost:3000' apiVersion='1.0' onUnauthorized={onUnauthorized}>
         ...
       </EzOnRails>
   );
@@ -539,6 +547,7 @@ Hook return values:
 * setBackendUrl: (backendUrl: string) => void - Setter for the backendUrl
 * setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => void - Setter for the authInfo
 * setApiVersion: (apiVersion: string) => void - Setter for the api version
+* setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback) => void - Setter to define a callback that is called if any http request from a hook results in a 401 http status code
 
 ## Other features
 ### SWR Fetcher

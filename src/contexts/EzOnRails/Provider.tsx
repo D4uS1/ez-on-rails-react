@@ -17,6 +17,9 @@ interface EzOnRailsProps {
 
     // The children that can access the context value
     children: ReactNode;
+
+    // Called if any request using ez-on-rails results in a http 401 status code
+    onUnauthorizedCallback?: () => void;
 }
 
 /**
@@ -26,6 +29,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
     const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
+    const [onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<(() => void) | undefined>(props.onUnauthorizedCallback)
 
     /**
      * Called if some value for the context changes.
@@ -39,7 +43,8 @@ export const EzOnRails = (props: EzOnRailsProps) => {
             apiVersion: apiVersion,
             setBackendUrl: setBackendUrl,
             setAuthInfo: setAuthInfo,
-            setApiVersion: setApiVersion
+            setApiVersion: setApiVersion,
+            setOnUnauthorizedCallback: setOnUnauthorizedCallback
         };
 
         if (result.backendUrl.endsWith('/')) {

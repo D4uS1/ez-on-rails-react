@@ -8,6 +8,7 @@ interface EzOnRailsProps {
     backendUrl: string;
     authInfo?: EzOnRailsAuthInfo;
     children: ReactNode;
+    onUnauthorizedCallback?: () => void;
 }
 /**
  * Context provider for the CustomStyle value.

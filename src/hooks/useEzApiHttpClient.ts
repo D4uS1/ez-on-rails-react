@@ -3,6 +3,12 @@ import { EzOnRailsHttpClient } from '../http/client/EzOnRailsHttpClient';
 import { EzOnRailsHttpUtils } from '../http/utils/EzOnRailsUtils';
 import { HttpMethod } from './types';
 import { useEzOnRails } from './useEzOnRails';
+import {EzOnRailsHttpError} from "../http";
+
+/**
+ * Type for an unauthorized callback.
+ */
+export type OnUnauthorizedCallback = () => void;
 
 /**
  * Describes the result of the UseEzApiClient hook.
@@ -24,7 +30,7 @@ interface UseEzApiHttpClientResult {
  * @param basePath
  */
 export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult => {
-    const { backendUrl, authInfo, apiVersion } = useEzOnRails();
+    const { backendUrl, authInfo, apiVersion, onUnauthorizedCallback } = useEzOnRails();
 
     /**
      * Calls a request to api of the EzOnRails backend application defined by the context values.
@@ -40,47 +46,56 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
             const cleanedPath = EzOnRailsHttpUtils.cleanupPath(path);
             const fullPath = `${cleanedBasePath ? cleanedBasePath + '/' : ''}${cleanedPath}`;
 
-            switch (method) {
-                case 'POST':
-                    return EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        fullPath,
-                        params,
-                        authInfo,
-                        apiVersion
-                    );
-                case 'PUT':
-                    return EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        fullPath,
-                        params,
-                        authInfo,
-                        apiVersion
-                    );
-                case 'PATCH':
-                    return EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        fullPath,
-                        params,
-                        authInfo,
-                        apiVersion
-                    );
-                case 'DELETE':
-                    return EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        fullPath,
-                        params,
-                        authInfo,
-                        apiVersion
-                    );
-                default:
-                    return EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
-                        backendUrl,
-                        fullPath,
-                        params,
-                        authInfo,
-                        apiVersion
-                    );
+            try {
+                switch (method) {
+                    case 'POST':
+                        return EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            fullPath,
+                            params,
+                            authInfo,
+                            apiVersion
+                        );
+                    case 'PUT':
+                        return EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            fullPath,
+                            params,
+                            authInfo,
+                            apiVersion
+                        );
+                    case 'PATCH':
+                        return EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            fullPath,
+                            params,
+                            authInfo,
+                            apiVersion
+                        );
+                    case 'DELETE':
+                        return EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            fullPath,
+                            params,
+                            authInfo,
+                            apiVersion
+                        );
+                    default:
+                        return EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
+                            backendUrl,
+                            fullPath,
+                            params,
+                            authInfo,
+                            apiVersion
+                        );
+                }
+            } catch (err: unknown) {
+                // If the error is a http status 401 error and the onUnauthorized callback is available, call it
+                if (!EzOnRailsHttpUtils.isEzOnRailsHttpError(err) || (err as EzOnRailsHttpError).httpStatusCode !== 401 || !onUnauthorizedCallback) throw err;
+
+                onUnauthorizedCallback();
+
+                throw err;
             }
         },
         [authInfo, apiVersion, backendUrl, basePath]

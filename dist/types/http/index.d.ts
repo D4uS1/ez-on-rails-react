@@ -33,6 +33,7 @@ export declare const EzOnRailsHttp: {
         toDateStrings: (params: any) => any;
         toBackendParams: (params: any) => any;
         toFrontendParams: (params: any) => any;
+        isEzOnRailsHttpError: (err: unknown) => boolean;
     };
 };
 export { EzOnRailsAuthInfo, EzOnRailsUser, EzOnRailsUpdateUserParams };

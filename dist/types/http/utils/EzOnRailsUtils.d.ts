@@ -14,4 +14,5 @@ export declare const EzOnRailsHttpUtils: {
     toDateStrings: (params: any) => any;
     toBackendParams: (params: any) => any;
     toFrontendParams: (params: any) => any;
+    isEzOnRailsHttpError: (err: unknown) => boolean;
 };

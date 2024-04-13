@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
+import {OnUnauthorizedCallback} from "../../hooks/useEzApiHttpClient";
 
 /**
  * The EzOnRails context values needed by the package.
@@ -22,6 +23,12 @@ export interface EzOnRailsContextValue {
 
     // Setter for the api version
     setApiVersion: (apiVersion: string) => void;
+
+    // Called if any http request results in a 401 http status code
+    onUnauthorizedCallback?: OnUnauthorizedCallback;
+
+    // Setter to save the callback that is called if some request resulted in a 401 http status
+    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback) => void;
 }
 
 export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
@@ -33,5 +40,7 @@ export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => {},
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-    setApiVersion: (apiVersion: string) => {}
+    setApiVersion: (apiVersion: string) => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback) => {}
 });

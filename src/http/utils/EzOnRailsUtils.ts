@@ -177,6 +177,21 @@ const toFrontendParams = (params: any) => {
 };
 
 /**
+ * Returns true if the specified error object is an http error having a status code.
+ *
+ * @param err
+ */
+const isEzOnRailsHttpError = (err: unknown): boolean => {
+    if (!err) return false;
+
+    if (typeof err === 'object' && (err as any)['httpStatusCode']) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * Contains utils for http access of some EzOnRails Backend.
  */
 export const EzOnRailsHttpUtils = {
@@ -191,5 +206,6 @@ export const EzOnRailsHttpUtils = {
     toDates: toDates,
     toDateStrings: toDateStrings,
     toBackendParams: toBackendParams,
-    toFrontendParams: toFrontendParams
+    toFrontendParams: toFrontendParams,
+    isEzOnRailsHttpError: isEzOnRailsHttpError
 };

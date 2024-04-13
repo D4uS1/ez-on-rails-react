@@ -1,5 +1,9 @@
 import { HttpMethod } from './types';
 /**
+ * Type for an unauthorized callback.
+ */
+export type OnUnauthorizedCallback = () => void;
+/**
  * Describes the result of the UseEzApiClient hook.
  */
 interface UseEzApiHttpClientResult {
