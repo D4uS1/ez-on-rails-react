@@ -1,6 +1,7 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
 import { EzOnRailsContext, EzOnRailsContextValue } from './Context';
+import {OnUnauthorizedCallback} from "../../hooks/useEzApiHttpClient";
 
 /**
  * Props for the EzOnRailsContextProvider.
@@ -29,7 +30,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
     const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
-    const [onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<(() => void) | undefined>(props.onUnauthorizedCallback)
+    const [_onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(props.onUnauthorizedCallback)
 
     /**
      * Called if some value for the context changes.
