@@ -288,8 +288,9 @@ You must have a look at the following compatibility list, because you must take 
 
 | Version | Compatible Backend Versions |
 |---------|-----------------------------|
-| 0.8.0 | 0.8.0                       |
-| 0.8.1 | 0.8.0, 0.8.1                |
+| 0.8.0   | 0.8.0                       |
+| 0.8.1   | 0.8.0, 0.8.1                |
+| 0.8.2   | 0.8.1                       |
 
 ## Components
 There are several components you can use, especially for the user registration workflow.
