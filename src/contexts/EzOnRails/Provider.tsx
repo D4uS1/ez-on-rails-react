@@ -59,7 +59,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
             setAuthInfo: setAuthInfo,
             setApiVersion: setApiVersion,
             setOnUnauthorizedCallback: setOnUnauthorizedCallbackWrapper,
-            //onUnauthorizedCallback: onUnauthorizedCallback
+            onUnauthorizedCallback: onUnauthorizedCallback
         };
 
         if (result.backendUrl.endsWith('/')) {
