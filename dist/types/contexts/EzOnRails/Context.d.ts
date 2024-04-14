@@ -12,6 +12,6 @@ export interface EzOnRailsContextValue {
     setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => void;
     setApiVersion: (apiVersion: string) => void;
     onUnauthorizedCallback?: OnUnauthorizedCallback;
-    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback) => void;
+    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => void;
 }
 export declare const EzOnRailsContext: import("react").Context<EzOnRailsContextValue>;

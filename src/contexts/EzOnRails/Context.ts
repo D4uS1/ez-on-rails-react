@@ -28,7 +28,7 @@ export interface EzOnRailsContextValue {
     onUnauthorizedCallback?: OnUnauthorizedCallback;
 
     // Setter to save the callback that is called if some request resulted in a 401 http status
-    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback) => void;
+    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => void;
 }
 
 export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
@@ -42,5 +42,5 @@ export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setApiVersion: (apiVersion: string) => {},
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback) => {}
+    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => {}
 });
