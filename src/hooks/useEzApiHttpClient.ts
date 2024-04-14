@@ -49,7 +49,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
             try {
                 switch (method) {
                     case 'POST':
-                        return EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
+                        return await EzOnRailsHttpClient.post<TRequest | undefined, TResponse>(
                             backendUrl,
                             fullPath,
                             params,
@@ -57,7 +57,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             apiVersion
                         );
                     case 'PUT':
-                        return EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
+                        return await EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
                             backendUrl,
                             fullPath,
                             params,
@@ -65,7 +65,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             apiVersion
                         );
                     case 'PATCH':
-                        return EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
+                        return await EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
                             backendUrl,
                             fullPath,
                             params,
@@ -73,7 +73,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             apiVersion
                         );
                     case 'DELETE':
-                        return EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
+                        return await EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
                             backendUrl,
                             fullPath,
                             params,
@@ -81,7 +81,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             apiVersion
                         );
                     default:
-                        return EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
+                        return await EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
                             backendUrl,
                             fullPath,
                             params,
