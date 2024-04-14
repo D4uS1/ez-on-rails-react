@@ -100,7 +100,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
 
                 onUnauthorizedCallback();
 
-                throw err;
+                return null as TResponse;
             }
         },
         [authInfo, apiVersion, backendUrl, basePath, onUnauthorizedCallback]
