@@ -1,7 +1,7 @@
-import React, { ReactNode, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useMemo, useState } from 'react';
 import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
 import { EzOnRailsContext, EzOnRailsContextValue } from './Context';
-import {OnUnauthorizedCallback} from "../../hooks/useEzApiHttpClient";
+import { OnUnauthorizedCallback } from '../../hooks/useEzApiHttpClient';
 
 /**
  * Props for the EzOnRailsContextProvider.
@@ -30,7 +30,9 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
     const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
-    const [_onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(() => props.onUnauthorizedCallback)
+    const [_onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(
+        () => props.onUnauthorizedCallback
+    );
 
     /**
      * Saves the newCallback to the state.
@@ -39,9 +41,9 @@ export const EzOnRails = (props: EzOnRailsProps) => {
      *
      * @param newCallback
      */
-    const setOnUnauthorizedCallbackWrapper = (newCallback: OnUnauthorizedCallback | undefined) => {
+    const setOnUnauthorizedCallbackWrapper = useCallback((newCallback: OnUnauthorizedCallback | undefined) => {
         setOnUnauthorizedCallback(() => newCallback);
-    };
+    }, []);
 
     /**
      * Called if some value for the context changes.
@@ -64,7 +66,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
         }
 
         return result;
-    }, [backendUrl, authInfo, apiVersion]);
+    }, [backendUrl, authInfo, apiVersion, setOnUnauthorizedCallbackWrapper]);
 
     return <EzOnRailsContext.Provider value={value}>{props.children}</EzOnRailsContext.Provider>;
 };
