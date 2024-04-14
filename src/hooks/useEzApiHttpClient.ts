@@ -95,8 +95,9 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                     !EzOnRailsHttpUtils.isEzOnRailsHttpError(err) ||
                     (err as EzOnRailsHttpError).httpStatusCode !== 401 ||
                     !onUnauthorizedCallback
-                )
+                ) {
                     throw err;
+                }
 
                 onUnauthorizedCallback();
 

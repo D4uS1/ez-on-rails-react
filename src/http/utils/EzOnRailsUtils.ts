@@ -1,4 +1,5 @@
 import { toCamel, toSnake } from 'convert-keys';
+import {EzOnRailsHttpError} from "../client/EzOnRailsHttpError";
 
 /**
  * Removes slash from path begin if exists.
@@ -184,11 +185,7 @@ const toFrontendParams = (params: any) => {
 const isEzOnRailsHttpError = (err: unknown): boolean => {
     if (!err) return false;
 
-    if (typeof err === 'object' && (err as Record<string, unknown>)['httpStatusCode']) {
-        return true;
-    }
-
-    return false;
+    return err instanceof EzOnRailsHttpError;
 };
 
 /**

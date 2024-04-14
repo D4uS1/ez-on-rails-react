@@ -30,6 +30,8 @@ You must add the __EzOnRails__ context provider around your application that man
 You can also pass an __onUnauthorizedCallback__ that is called if any hook doing http requests fail with a http 401 status code.
 This makes it possible to have a session management and logout the user if some token is invalid.
 Note that you can also set the callback by using the __setOnUnauthorizedCallback__ methode from the __useEzOnRails__ hook.
+Also note that if you use the callback, a 401 error will not be thrown. It will be catched and handled by the callback.
+
 Example App.ts:
 ```
 import React from 'react';
