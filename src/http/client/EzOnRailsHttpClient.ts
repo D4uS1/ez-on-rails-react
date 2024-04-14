@@ -222,7 +222,12 @@ const fetchWithThrow = async <TRes>(
 
     // throw if something went wrong
     if (response.status >= 400) {
-        throw new EzOnRailsHttpError(JSON.stringify(response.body), response.status);
+        let errorMessage = JSON.stringify(response.body);
+        if (errorMessage === '{}') {
+            errorMessage = `HTTP Error ${response.status}`;
+        }
+
+        throw new EzOnRailsHttpError(errorMessage, response.status);
     }
 
     // get header and data and return result
