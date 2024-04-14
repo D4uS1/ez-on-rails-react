@@ -11,14 +11,15 @@ module.exports = {
     plugins: ['prefer-arrow'],
     settings: {
         react: {
-            version: 'detect'
+            version: '18.2.0'
         }
     },
     extends: [
         'plugin:react/recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier',
-        'plugin:prettier/recommended'
+        'plugin:prettier/recommended',
+        'plugin:react-hooks/recommended'
     ],
     rules: {
         "react/jsx-uses-react": "off",

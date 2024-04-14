@@ -38,4 +38,4 @@ export interface ActiveStorageDropzoneProps {
  * Image Uploader component for active storage content having a React dropzone
  * and some input field for pasting content.
  */
-export declare const ActiveStorageDropzone: (props: ActiveStorageDropzoneProps) => JSX.Element;
+export declare const ActiveStorageDropzone: (props: ActiveStorageDropzoneProps) => React.JSX.Element;

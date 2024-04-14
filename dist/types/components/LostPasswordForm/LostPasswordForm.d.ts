@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { DefaultFormProps } from '../shared/types/Form';
 /**
  * Type for props for the LostPasswordForm component.
@@ -16,4 +16,4 @@ export interface LostPasswordFormProps extends DefaultFormProps {
  * @param props
  * @constructor
  */
-export declare const LostPasswordForm: (props: LostPasswordFormProps) => JSX.Element;
+export declare const LostPasswordForm: (props: LostPasswordFormProps) => React.JSX.Element;

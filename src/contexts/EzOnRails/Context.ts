@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
-import {OnUnauthorizedCallback} from "../../hooks/useEzApiHttpClient";
+import { OnUnauthorizedCallback } from '../../hooks/useEzApiHttpClient';
 
 /**
  * The EzOnRails context values needed by the package.

@@ -117,7 +117,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
 
             return result;
         });
-    }, [backendUrl, authInfo, apiVersion, scaffoldBasePath]);
+    }, [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]);
 
     /**
      * Requests the show action with the specified id related to the defined model on the backend side.
@@ -140,7 +140,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -164,7 +164,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -188,7 +188,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -212,7 +212,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -227,7 +227,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 setRecord(null);
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath]
+        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     return {

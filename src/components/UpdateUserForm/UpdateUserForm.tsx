@@ -144,7 +144,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
 
             setFormDataFromUser(await EzOnRailsHttpClient.getUser(backendUrl, authInfo, apiVersion));
         })();
-    }, []);
+    }, [backendUrl, authInfo, apiVersion]);
 
     /**
      * Updates the user given by the form values.

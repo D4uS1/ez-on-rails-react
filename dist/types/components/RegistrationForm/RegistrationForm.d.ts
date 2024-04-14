@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { DefaultFormProps } from '../shared/types/Form';
 /**
  * Props for the RegistrationForm.
@@ -36,4 +36,4 @@ export interface RegistrationFormProps extends DefaultFormProps {
  * @param props
  * @constructor
  */
-export declare const RegistrationForm: (props: RegistrationFormProps) => JSX.Element;
+export declare const RegistrationForm: (props: RegistrationFormProps) => React.JSX.Element;

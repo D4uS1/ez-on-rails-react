@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { DefaultFormProps } from '../shared/types/Form';
 /**
  * Type for props for the ResendConfirmationForm component.
@@ -16,4 +16,4 @@ export interface ResendConfirmationFormProps extends DefaultFormProps {
  * @param props
  * @constructor
  */
-export declare const ResendConfirmationForm: (props: ResendConfirmationFormProps) => JSX.Element;
+export declare const ResendConfirmationForm: (props: ResendConfirmationFormProps) => React.JSX.Element;

@@ -67,7 +67,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
         }
 
         return result;
-    }, [backendUrl, authInfo, apiVersion, setOnUnauthorizedCallbackWrapper]);
+    }, [backendUrl, authInfo, apiVersion, setOnUnauthorizedCallbackWrapper, onUnauthorizedCallback]);
 
     return <EzOnRailsContext.Provider value={value}>{props.children}</EzOnRailsContext.Provider>;
 };

@@ -106,7 +106,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                 setInProgress(false);
             }
         },
-        [props.resetPasswordToken]
+        [props, backendUrl, apiVersion]
     );
 
     // initial values

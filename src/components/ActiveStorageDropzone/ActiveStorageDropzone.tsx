@@ -2,7 +2,7 @@ import React from 'react';
 import * as ActiveStorage from '@rails/activestorage';
 import { ReactNode, useState } from 'react';
 import { ClipboardEvent, MouseEvent } from 'react';
-import Dropzone, { Accept, ErrorCode, FileRejection, useDropzone } from 'react-dropzone';
+import Dropzone, { Accept, ErrorCode, FileRejection } from 'react-dropzone';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsHttpUtils } from '../../http/utils/EzOnRailsUtils';
 import { EzOnRailsHttpClient } from '../../http/client/EzOnRailsHttpClient';
@@ -346,7 +346,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
                 onDropRejected={onDropzoneRejection}
                 accept={props.accept}
             >
-                {({ getRootProps, getInputProps } = useDropzone()) => (
+                {({ getRootProps, getInputProps }) => (
                     <section>
                         <div {...getRootProps()} className={`${styles.dropzoneContainer} p-4 ${props.className}`}>
                             {/* the file input field, but invisible */}

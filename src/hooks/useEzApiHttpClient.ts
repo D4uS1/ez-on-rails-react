@@ -3,7 +3,7 @@ import { EzOnRailsHttpClient } from '../http/client/EzOnRailsHttpClient';
 import { EzOnRailsHttpUtils } from '../http/utils/EzOnRailsUtils';
 import { HttpMethod } from './types';
 import { useEzOnRails } from './useEzOnRails';
-import {EzOnRailsHttpError} from "../http";
+import { EzOnRailsHttpError } from '../http';
 
 /**
  * Type for an unauthorized callback.
@@ -91,7 +91,12 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                 }
             } catch (err: unknown) {
                 // If the error is a http status 401 error and the onUnauthorized callback is available, call it
-                if (!EzOnRailsHttpUtils.isEzOnRailsHttpError(err) || (err as EzOnRailsHttpError).httpStatusCode !== 401 || !onUnauthorizedCallback) throw err;
+                if (
+                    !EzOnRailsHttpUtils.isEzOnRailsHttpError(err) ||
+                    (err as EzOnRailsHttpError).httpStatusCode !== 401 ||
+                    !onUnauthorizedCallback
+                )
+                    throw err;
 
                 onUnauthorizedCallback();
 

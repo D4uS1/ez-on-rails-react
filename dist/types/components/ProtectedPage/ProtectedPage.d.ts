@@ -15,4 +15,4 @@ export interface ProtectedPageProps {
  * @param props
  * @constructor
  */
-export declare const ProtectedPage: (props: ProtectedPageProps) => JSX.Element;
+export declare const ProtectedPage: (props: ProtectedPageProps) => React.JSX.Element;

@@ -47,4 +47,4 @@ export interface UpdateUserFormProps extends DefaultFormProps {
  * @param props
  * @constructor
  */
-export declare const UpdateUserForm: (props: UpdateUserFormProps) => JSX.Element | null;
+export declare const UpdateUserForm: (props: UpdateUserFormProps) => React.JSX.Element | null;

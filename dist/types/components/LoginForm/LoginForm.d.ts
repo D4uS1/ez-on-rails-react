@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
 import { DefaultFormProps } from '../shared/types/Form';
 /**
@@ -25,4 +25,4 @@ export interface LoginFormProps extends DefaultFormProps {
  * @param props
  * @constructor
  */
-export declare const LoginForm: (props: LoginFormProps) => JSX.Element;
+export declare const LoginForm: (props: LoginFormProps) => React.JSX.Element;

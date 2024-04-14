@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 /**
  * Props for the DevelopmentHint component.
  */
@@ -16,4 +16,4 @@ export interface DevelopmentHintProps {
  *
  * @constructor
  */
-export declare const DevelopmentHint: (props: DevelopmentHintProps) => JSX.Element | null;
+export declare const DevelopmentHint: (props: DevelopmentHintProps) => React.JSX.Element | null;

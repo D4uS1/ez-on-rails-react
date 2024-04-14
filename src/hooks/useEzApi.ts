@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { HttpMethod } from './types';
 import { useEzApiHttpClient } from './useEzApiHttpClient';
-import { useEzOnRails } from './useEzOnRails';
 
 /**
  * Describes the result of an api requests using the useEzApi hook.
@@ -41,7 +40,6 @@ export const useEzApi = <TRequest, TResponse>(
         skipInitialCall?: boolean;
     }
 ): UseEzApiResult<TRequest, TResponse> => {
-    const { backendUrl, authInfo, apiVersion } = useEzOnRails();
     const [response, setResponse] = useState<TResponse | null>(null);
     const [error, setError] = useState<unknown | null>(null);
     const [inProgress, setInProgress] = useState<boolean>(false);
@@ -52,23 +50,26 @@ export const useEzApi = <TRequest, TResponse>(
      * Updates the states to make the hook like behavior work and returns the value for manually calls.
      * If params is not given, the data given by the props will be passed.
      */
-    const callApi = useCallback(async (params?: TRequest) => {
-        try {
-            setInProgress(true);
-            setError(null);
-            setResponse(null);
+    const callApi = useCallback(
+        async (params?: TRequest) => {
+            try {
+                setInProgress(true);
+                setError(null);
+                setResponse(null);
 
-            const result: TResponse = await call<TRequest, TResponse>(path, method, params || data);
+                const result: TResponse = await call<TRequest, TResponse>(path, method, params || data);
 
-            setResponse(result);
-            setInProgress(false);
+                setResponse(result);
+                setInProgress(false);
 
-            return result;
-        } catch (error: unknown) {
-            setError(error);
-            setInProgress(false);
-        }
-    }, [path]);
+                return result;
+            } catch (error: unknown) {
+                setError(error);
+                setInProgress(false);
+            }
+        },
+        [path, call, data, method]
+    );
 
     /**
      * Called initial and if something relevant for the request in the context changes.
@@ -80,7 +81,7 @@ export const useEzApi = <TRequest, TResponse>(
 
             await callApi();
         })();
-    }, [authInfo, backendUrl, apiVersion, path]);
+    }, [callApi, options]);
 
     return {
         data: response,

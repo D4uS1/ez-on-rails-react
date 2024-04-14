@@ -184,12 +184,12 @@ const toFrontendParams = (params: any) => {
 const isEzOnRailsHttpError = (err: unknown): boolean => {
     if (!err) return false;
 
-    if (typeof err === 'object' && (err as any)['httpStatusCode']) {
+    if (typeof err === 'object' && (err as Record<string, unknown>)['httpStatusCode']) {
         return true;
     }
 
     return false;
-}
+};
 
 /**
  * Contains utils for http access of some EzOnRails Backend.
