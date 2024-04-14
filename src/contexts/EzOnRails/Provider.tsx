@@ -30,7 +30,18 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
     const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
-    const [_onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(props.onUnauthorizedCallback)
+    const [_onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(() => props.onUnauthorizedCallback)
+
+    /**
+     * Saves the newCallback to the state.
+     * This wrapper is needed because if we would pass the callback to the setOnUnauthorizedCallback function directly, react thinks
+     * this is a state update function and executes it immediatly. Hence we pass a function that returns that function.
+     *
+     * @param newCallback
+     */
+    const setOnUnauthorizedCallbackWrapper = (newCallback: OnUnauthorizedCallback | undefined) => {
+        setOnUnauthorizedCallback(() => newCallback);
+    };
 
     /**
      * Called if some value for the context changes.
@@ -45,7 +56,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
             setBackendUrl: setBackendUrl,
             setAuthInfo: setAuthInfo,
             setApiVersion: setApiVersion,
-            setOnUnauthorizedCallback: setOnUnauthorizedCallback
+            setOnUnauthorizedCallback: setOnUnauthorizedCallbackWrapper
         };
 
         if (result.backendUrl.endsWith('/')) {
