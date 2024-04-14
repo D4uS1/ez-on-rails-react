@@ -18,7 +18,7 @@ export declare const EzOnRailsHttp: {
         defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => Record<string, string>;
     };
     swr: {
-        fetcher: <TParams_5, TResponse_5>(backendUrl: string, path: string, method?: string, data?: TParams_5 | null, authInfo?: EzOnRailsAuthInfo | undefined, apiVersion?: string) => Promise<TResponse_5>;
+        fetcher: <TParams_5, TResponse_5>([backendUrl, path, method, data, authInfo, apiVersion]: [backendUrl: string, path: string, method: string, data: TParams_5 | null, authInfo: EzOnRailsAuthInfo | undefined, apiVersion: string]) => Promise<TResponse_5>;
     };
     utils: {
         cleanupUrl: (url: string) => string;

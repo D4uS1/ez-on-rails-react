@@ -19,5 +19,5 @@ import { EzOnRailsAuthInfo } from '../client/EzOnRailsHttpClient';
  * @param key
  */
 export declare const EzOnRailsSwr: {
-    fetcher: <TParams, TResponse>(backendUrl: string, path: string, method?: string, data?: TParams | null, authInfo?: EzOnRailsAuthInfo | undefined, apiVersion?: string) => Promise<TResponse>;
+    fetcher: <TParams, TResponse>([backendUrl, path, method, data, authInfo, apiVersion]: [backendUrl: string, path: string, method: string, data: TParams | null, authInfo: EzOnRailsAuthInfo | undefined, apiVersion: string]) => Promise<TResponse>;
 };

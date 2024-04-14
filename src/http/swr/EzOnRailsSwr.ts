@@ -20,14 +20,21 @@ import { EzOnRailsAuthInfo, EzOnRailsHttpClient } from '../client/EzOnRailsHttpC
  * @param key
  */
 export const EzOnRailsSwr = {
-    fetcher: async <TParams, TResponse>(
+    fetcher: async <TParams, TResponse>([
+        backendUrl,
+        path,
+        method = 'get',
+        data = null,
+        authInfo = undefined,
+        apiVersion = '1.0'
+    ]: [
         backendUrl: string,
         path: string,
-        method = 'get',
-        data: TParams | null = null,
-        authInfo: EzOnRailsAuthInfo | undefined = undefined,
-        apiVersion = '1.0'
-    ): Promise<TResponse> => {
+        method: string,
+        data: TParams | null,
+        authInfo: EzOnRailsAuthInfo | undefined,
+        apiVersion: string
+    ]): Promise<TResponse> => {
         method = method.toLowerCase();
         switch (method) {
             case 'post': {
