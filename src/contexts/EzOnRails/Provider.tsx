@@ -30,7 +30,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
     const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
-    const [_onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(
+    const [onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(
         () => props.onUnauthorizedCallback
     );
 
@@ -58,7 +58,8 @@ export const EzOnRails = (props: EzOnRailsProps) => {
             setBackendUrl: setBackendUrl,
             setAuthInfo: setAuthInfo,
             setApiVersion: setApiVersion,
-            setOnUnauthorizedCallback: setOnUnauthorizedCallbackWrapper
+            setOnUnauthorizedCallback: setOnUnauthorizedCallbackWrapper,
+            onUnauthorizedCallback: onUnauthorizedCallback
         };
 
         if (result.backendUrl.endsWith('/')) {
