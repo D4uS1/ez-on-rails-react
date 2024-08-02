@@ -11,13 +11,13 @@ This package enables you to build frontend applications that interact with EzOnR
 Install the package using npm
 
 ```
-npm install https://github.com/D4uS1/ez-on-rails-react#v0.8.1
+npm install https://github.com/D4uS1/ez-on-rails-react#v0.8.2
 ```
 
 or yarn.
 
 ```
-yarn add https://github.com/D4uS1/ez-on-rails-react#v0.8.1
+yarn add https://github.com/D4uS1/ez-on-rails-react#v0.8.2
 ```
 
 There is a branch for each released version.
@@ -38,12 +38,12 @@ import React from 'react';
 import { EzOnRails } from '@d4us1/ez-on-rails-react';
 
 function App() {
-  const onUnauthorized = () => {
+  const onUnauthorizedCallback = () => {
       ...
   };
 
   return (
-      <EzOnRails backendUrl='http://localhost:3000' apiVersion='1.0' onUnauthorized={onUnauthorized}>
+      <EzOnRails backendUrl='http://localhost:3000' apiVersion='1.0' onUnauthorizedCallback={onUnauthorizedCallback}>
         ...
       </EzOnRails>
   );
