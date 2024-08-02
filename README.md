@@ -71,7 +71,7 @@ export const LoginPage = () => {
       }
     }, [authInfo]);
 
-    const onLoginError = (e: unkown) => {
+    const onLoginError = (e: unknown) => {
         alert("Login failed");
     }
 
