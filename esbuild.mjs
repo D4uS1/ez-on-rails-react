@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const esbuild = require('esbuild')
-const cssModulesPlugin = require('esbuild-css-modules-plugin');
+import * as esbuild from 'esbuild'
+import * as cssModulesPlugin from 'esbuild-css-modules-plugin'
 const { dependencies } = require("./package.json");
 const { peerDependencies } = require("./package.json");
 
