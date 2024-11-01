@@ -11,13 +11,13 @@ This package enables you to build frontend applications that interact with EzOnR
 Install the package using npm
 
 ```
-npm install https://github.com/D4uS1/ez-on-rails-react#v0.8.2
+npm install https://github.com/D4uS1/ez-on-rails-react#v0.9.0
 ```
 
 or yarn.
 
 ```
-yarn add https://github.com/D4uS1/ez-on-rails-react#v0.8.2
+yarn add https://github.com/D4uS1/ez-on-rails-react#v0.9.0
 ```
 
 There is a branch for each released version.
