@@ -455,9 +455,7 @@ export const EzOnRailsHttpClient = {
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -500,12 +498,9 @@ export const EzOnRailsHttpClient = {
     /**
      * Calls a http POST action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -544,12 +539,9 @@ export const EzOnRailsHttpClient = {
     /**
      * Calls a http PATCH action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -588,12 +580,9 @@ export const EzOnRailsHttpClient = {
     /**
      * Calls a http PUT action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -632,14 +621,11 @@ export const EzOnRailsHttpClient = {
     /**
      * Calls a http DELETE action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The call includes the auth headers for the current user.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
