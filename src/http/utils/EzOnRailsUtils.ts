@@ -161,7 +161,7 @@ const toBackendParams = (params: any) => {
 };
 
 /**
- * Prepares the speciied params for the usage in the frontend.
+ * Prepares the specified params for the usage in the frontend.
  * Recursively transforms the keys to camelCase and the date iso strings to date objects.
  *
  * @param params

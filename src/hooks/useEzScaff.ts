@@ -151,9 +151,9 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
     const search = useCallback(
         (query: SearchFilter | SearchFilterComposition) => {
             return requestHttp(async () => {
-                const result = await EzOnRailsHttpClient.get<SearchFilter | SearchFilterComposition, TModel[]>(
+                const result = await EzOnRailsHttpClient.post<SearchFilter | SearchFilterComposition, TModel[]>(
                     backendUrl,
-                    scaffoldBasePath,
+                    `${scaffoldBasePath}/search`,
                     query,
                     authInfo,
                     apiVersion
