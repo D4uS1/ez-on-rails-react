@@ -25,7 +25,7 @@ See the [Versions](## Versions) section to find the newest compatible version fo
 
 ## Usage
 ### 1. Insert Context provider
-You must add the __EzOnRails__ context provider around your application that manages access tokens, api Versions, backend url etc.
+You must add the __EzOnRails__ context provider around your application that manages access tokens, api key, api Versions, backend url etc.
 
 You can also pass an __onUnauthorizedCallback__ that is called if any hook doing http requests fail with a http 401 status code.
 This makes it possible to have a session management and logout the user if some token is invalid.
@@ -96,6 +96,23 @@ may fail. If you want to do some initialization after sign in, it is recommended
 
 You can also save the authentication information somewhere and pass it to the context provider after app restart again.
 If you dont want to show the stay logged in checkbox, pass *hideStayLoggedIn* to the component.
+
+### Optional: 2.1 Use api key to authorize api key protected actions
+Since version 1.2.0 EzOnRails supports actions to be pritected via api key, hence you do not need to have a user account for 
+some low level protected routes.
+
+If you want to use this feature, you must pass the apiKey to the EzOnRails component.
+Just add the apiKey parameter to the call of EzOnRails comoponent described in section 1.
+```
+...
+      <EzOnRails 
+        ...
+        apiKey='your_api_key'
+        >
+        ...
+      </EzOnRails>
+...
+```
 
 ### 3. Model Type definitions
 If you created a scaffold for a model in EzOnRails with the ezscaff generator, i recommend to define the model types as follows:
@@ -262,11 +279,11 @@ import React, { useState } from 'react';
 import { EzOnRailsHttp, useEzOnRails } from '@d4us1/ez-on-rails-react';
 
 export const SomePage = () => {
-    const { backendUrl, apiVersion, authInfo } = useEzOnRails();
+    const { backendUrl, apiVersion, apiKey, authInfo } = useEzOnRails();
     const [response, setResponse] = useState<{ someResponse: string } | null>(null);
     
     const onClickRequest = async () => {
-        const result = await EzOnRailsHttp.client.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiVersion);
+        const result = await EzOnRailsHttp.client.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiKey, apiVersion);
         setResponse(result);
     }
     
@@ -578,13 +595,14 @@ import useSWR from 'swr';
 import { useEzOnRails } from '@d4us1/ez-on-rails-react'
 
 ...
-const { backendUrl, authInfo, apiVersion } = useEzOnRails();
+const { backendUrl, authInfo, apiKey, apiVersion } = useEzOnRails();
 const { data: result } = useSWR<ExpectedResultType>([
     backendUrl,
     `path/to/api`,
     'POST',
     { someParam: 'value' },
     authInfo,
+    apiKey,
     apiVersion
 ]);
 ...
