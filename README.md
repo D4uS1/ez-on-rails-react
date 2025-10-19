@@ -310,7 +310,7 @@ You must have a look at the following compatibility list, because you must take 
 | 0.8.0   | 0.8.0                       |
 | 0.8.1   | 0.8.0, 0.8.1                |
 | 0.8.2   | 0.8.1                       |
-| 0.9.0   | 0.9.0, 1.0.0, 1.1.0, 1.1.1  |
+| 0.9.0   | 0.9.0, 1.0.0, 1.1.0 - 1.1.4 |
 | 1.2.0   | 1.2.0                       |
 
 ## Components
