@@ -57,7 +57,7 @@ interface UseEzScaffResult<TModel extends EzOnRailsRecord, TProperties = Omit<TM
 export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TModel, keyof EzOnRailsRecord>>(
     pluralModelName: string
 ): UseEzScaffResult<TModel, TProperties> => {
-    const { backendUrl, authInfo, apiVersion } = useEzOnRails();
+    const { backendUrl, authInfo, apiKey, apiVersion } = useEzOnRails();
 
     const [record, setRecord] = useState<TModel | null>(null);
     const [records, setRecords] = useState<TModel[] | null>(null);
@@ -110,6 +110,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 scaffoldBasePath,
                 null,
                 authInfo,
+                apiKey,
                 apiVersion
             );
 
@@ -117,7 +118,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
 
             return result;
         });
-    }, [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]);
+    }, [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]);
 
     /**
      * Requests the show action with the specified id related to the defined model on the backend side.
@@ -132,6 +133,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     `${scaffoldBasePath}/${id}`,
                     null,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
 
@@ -140,7 +142,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -156,6 +158,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     `${scaffoldBasePath}/search`,
                     query,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
 
@@ -164,7 +167,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -180,6 +183,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     scaffoldBasePath,
                     properties,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
 
@@ -188,7 +192,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -204,6 +208,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     `${scaffoldBasePath}/${id}`,
                     properties,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
 
@@ -212,7 +217,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     /**
@@ -222,12 +227,12 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
     const remove = useCallback(
         (id: number) => {
             return requestHttp(async () => {
-                await EzOnRailsHttpClient.delete(backendUrl, `${scaffoldBasePath}/${id}`, null, authInfo, apiVersion);
+                await EzOnRailsHttpClient.delete(backendUrl, `${scaffoldBasePath}/${id}`, null, authInfo, apiKey, apiVersion);
 
                 setRecord(null);
             });
         },
-        [backendUrl, authInfo, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
     );
 
     return {

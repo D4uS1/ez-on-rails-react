@@ -175,11 +175,12 @@ const getAuthInfoFromHeader = (headers: Record<string, string>): EzOnRailsAuthIn
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
  */
-export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => {
+export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | null, apiKey: string |null, apiVersion: string) => {
     return {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         'api-version': apiVersion,
+        'api-key': apiKey ? apiKey : undefined,
         ...authInfoToHeader(authInfo)
     };
 };
@@ -269,7 +270,7 @@ export const EzOnRailsHttpClient = {
             'POST',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users'),
             { user: data },
-            defaultHttpHeader(null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion)
         );
     },
 
@@ -292,7 +293,7 @@ export const EzOnRailsHttpClient = {
             'POST',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'auth/sign_in'),
             data,
-            defaultHttpHeader(null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion)
         );
 
         return getAuthInfoFromHeader(result.headers);
@@ -311,7 +312,7 @@ export const EzOnRailsHttpClient = {
             'DELETE',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'auth/sign_out'),
             null,
-            defaultHttpHeader(authInfo, apiVersion)
+            defaultHttpHeader(authInfo, null, apiVersion)
         );
     },
 
@@ -334,7 +335,7 @@ export const EzOnRailsHttpClient = {
             'POST',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/password'),
             { user: data },
-            defaultHttpHeader(null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion)
         );
     },
 
@@ -355,7 +356,7 @@ export const EzOnRailsHttpClient = {
             'PUT',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/password'),
             { user: data },
-            defaultHttpHeader(null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion)
         );
     },
 
@@ -372,7 +373,7 @@ export const EzOnRailsHttpClient = {
             'GET',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'users/me'),
             null,
-            defaultHttpHeader(authInfo, apiVersion)
+            defaultHttpHeader(authInfo, null, apiVersion)
         );
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
@@ -402,7 +403,7 @@ export const EzOnRailsHttpClient = {
             'PATCH',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'users/me'),
             { user: submitData },
-            defaultHttpHeader(authInfo, apiVersion)
+            defaultHttpHeader(authInfo, null, apiVersion)
         );
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
@@ -428,7 +429,7 @@ export const EzOnRailsHttpClient = {
             'POST',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/confirmation'),
             { user: data },
-            defaultHttpHeader(null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion)
         );
     },
 
@@ -446,7 +447,7 @@ export const EzOnRailsHttpClient = {
         // @ts-ignore This works because the type only is a default json object
         url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
 
-        await fetchWithThrow('GET', url, null, defaultHttpHeader(null, apiVersion));
+        await fetchWithThrow('GET', url, null, defaultHttpHeader(null, null, apiVersion));
     },
 
     /**
@@ -456,6 +457,7 @@ export const EzOnRailsHttpClient = {
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -465,6 +467,7 @@ export const EzOnRailsHttpClient = {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
@@ -473,6 +476,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
+        apiKey: string | null = null,
         apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
@@ -490,7 +494,7 @@ export const EzOnRailsHttpClient = {
             url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
         }
 
-        const result = await fetchWithThrow<TResponse>('GET', url, null, defaultHttpHeader(authInfo, apiVersion));
+        const result = await fetchWithThrow<TResponse>('GET', url, null, defaultHttpHeader(authInfo, apiKey, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -501,6 +505,7 @@ export const EzOnRailsHttpClient = {
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -510,6 +515,7 @@ export const EzOnRailsHttpClient = {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
@@ -518,6 +524,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
+        apiKey: string | null = null,
         apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
@@ -531,7 +538,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>('POST', url, data, defaultHttpHeader(authInfo, apiVersion));
+        const result = await fetchWithThrow<TResponse>('POST', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -542,6 +549,7 @@ export const EzOnRailsHttpClient = {
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -551,6 +559,7 @@ export const EzOnRailsHttpClient = {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
@@ -559,6 +568,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
+        apiKey: string | null = null,
         apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
@@ -572,7 +582,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>('PATCH', url, data, defaultHttpHeader(authInfo, apiVersion));
+        const result = await fetchWithThrow<TResponse>('PATCH', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -583,6 +593,7 @@ export const EzOnRailsHttpClient = {
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -592,6 +603,7 @@ export const EzOnRailsHttpClient = {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
@@ -600,6 +612,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
+        apiKey: string | null = null,
         apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
@@ -613,7 +626,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>('PUT', url, data, defaultHttpHeader(authInfo, apiVersion));
+        const result = await fetchWithThrow<TResponse>('PUT', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -626,6 +639,7 @@ export const EzOnRailsHttpClient = {
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
      * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -635,6 +649,7 @@ export const EzOnRailsHttpClient = {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
@@ -643,6 +658,7 @@ export const EzOnRailsHttpClient = {
         path: string,
         data: TParams,
         authInfo: EzOnRailsAuthInfo | null = null,
+        apiKey: string | null = null,
         apiVersion = '1.0',
         beforeRequest: ((data: TParams) => TParams) | undefined = undefined
     ): Promise<TResponse> => {
@@ -660,7 +676,7 @@ export const EzOnRailsHttpClient = {
             url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
         }
 
-        const result = await fetchWithThrow<TResponse>('DELETE', url, null, defaultHttpHeader(authInfo, apiVersion));
+        const result = await fetchWithThrow<TResponse>('DELETE', url, null, defaultHttpHeader(authInfo, apiKey, apiVersion));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -670,9 +686,10 @@ export const EzOnRailsHttpClient = {
      * Can be used for custom requests without the ez-on-rails-react client.
      *
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string): Record<string, string> => {
-        return defaultHttpHeader(authInfo, apiVersion);
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null,  apiVersion: string): Record<string, string> => {
+        return defaultHttpHeader(authInfo, apiKey, apiVersion);
     }
 };

@@ -16,6 +16,9 @@ interface EzOnRailsProps {
     // Initial auth info for the current user, can be set if the login values were saved somewhere
     authInfo?: EzOnRailsAuthInfo;
 
+    // Api key that can be used instead of the auth info to authorized access to api key protected actions
+    apiKey?: string;
+
     // The children that can access the context value
     children: ReactNode;
 
@@ -30,6 +33,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [backendUrl, setBackendUrl] = useState<string>(props.backendUrl);
     const [authInfo, setAuthInfo] = useState<EzOnRailsAuthInfo | null>(props.authInfo || null);
     const [apiVersion, setApiVersion] = useState<string>(props.apiVersion);
+    const [apiKey, setApiKey] = useState<string | null>(props.apiKey || null);
     const [onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(
         () => props.onUnauthorizedCallback
     );
@@ -54,9 +58,11 @@ export const EzOnRails = (props: EzOnRailsProps) => {
         const result = {
             backendUrl: backendUrl,
             authInfo: authInfo || null,
+            apiKey: apiKey || null,
             apiVersion: apiVersion,
             setBackendUrl: setBackendUrl,
             setAuthInfo: setAuthInfo,
+            setApiKey: setApiKey,
             setApiVersion: setApiVersion,
             setOnUnauthorizedCallback: setOnUnauthorizedCallbackWrapper,
             onUnauthorizedCallback: onUnauthorizedCallback
@@ -67,7 +73,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
         }
 
         return result;
-    }, [backendUrl, authInfo, apiVersion, setOnUnauthorizedCallbackWrapper, onUnauthorizedCallback]);
+    }, [backendUrl, authInfo, apiKey, apiVersion, setOnUnauthorizedCallbackWrapper, onUnauthorizedCallback]);
 
     return <EzOnRailsContext.Provider value={value}>{props.children}</EzOnRailsContext.Provider>;
 };

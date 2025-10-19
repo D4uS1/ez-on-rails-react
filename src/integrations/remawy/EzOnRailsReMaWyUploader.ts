@@ -38,6 +38,7 @@ class ActiveStorageUploaderDelegate {
     directUploadWillCreateBlobWithXHR(request: XMLHttpRequest) {
         const httpHeader: { [key: string]: string } = EzOnRailsHttpClient.defaultHttpHeader(
             this.authInfo,
+            null,
             this.apiVersion
         );
 

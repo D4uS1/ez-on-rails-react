@@ -26,6 +26,7 @@ export const EzOnRailsSwr = {
         method = 'get',
         data = null,
         authInfo = undefined,
+        apiKey = null,
         apiVersion = '1.0'
     ]: [
         backendUrl: string,
@@ -33,6 +34,7 @@ export const EzOnRailsSwr = {
         method: string,
         data: TParams | null,
         authInfo: EzOnRailsAuthInfo | undefined,
+        apiKey: string | null,
         apiVersion: string
     ]): Promise<TResponse> => {
         method = method.toLowerCase();
@@ -43,6 +45,7 @@ export const EzOnRailsSwr = {
                     path,
                     data,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
             }
@@ -57,6 +60,7 @@ export const EzOnRailsSwr = {
                     path,
                     data,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
             }
@@ -67,12 +71,13 @@ export const EzOnRailsSwr = {
                     path,
                     data,
                     authInfo,
+                    apiKey,
                     apiVersion
                 );
             }
 
             default: {
-                return EzOnRailsHttpClient.get<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                return EzOnRailsHttpClient.get<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiKey, apiVersion);
             }
         }
     }

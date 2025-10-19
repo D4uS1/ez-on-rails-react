@@ -30,7 +30,7 @@ interface UseEzApiHttpClientResult {
  * @param basePath
  */
 export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult => {
-    const { backendUrl, authInfo, apiVersion, onUnauthorizedCallback } = useEzOnRails();
+    const { backendUrl, authInfo, apiKey, apiVersion, onUnauthorizedCallback } = useEzOnRails();
 
     /**
      * Calls a request to api of the EzOnRails backend application defined by the context values.
@@ -54,6 +54,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             fullPath,
                             params,
                             authInfo,
+                            apiKey,
                             apiVersion
                         );
                     case 'PUT':
@@ -62,6 +63,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             fullPath,
                             params,
                             authInfo,
+                            apiKey,
                             apiVersion
                         );
                     case 'PATCH':
@@ -70,6 +72,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             fullPath,
                             params,
                             authInfo,
+                            apiKey,
                             apiVersion
                         );
                     case 'DELETE':
@@ -78,6 +81,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             fullPath,
                             params,
                             authInfo,
+                            apiKey,
                             apiVersion
                         );
                     default:
@@ -86,6 +90,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             fullPath,
                             params,
                             authInfo,
+                            apiKey,
                             apiVersion
                         );
                 }
@@ -104,7 +109,7 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                 return null as TResponse;
             }
         },
-        [authInfo, apiVersion, backendUrl, basePath, onUnauthorizedCallback]
+        [authInfo, apiKey, apiVersion, backendUrl, basePath, onUnauthorizedCallback]
     );
 
     return { call: call };

@@ -12,6 +12,9 @@ export interface EzOnRailsContextValue {
     // The auth info for the http requests, if the user is signed in
     authInfo: EzOnRailsAuthInfo | null;
 
+    // An api key to authorize access to actions that are protected by the api key
+    apiKey: string | null;
+
     // The current api version of the ez-on-rails backend, used by the http requests to the backend
     apiVersion: string;
 
@@ -20,6 +23,9 @@ export interface EzOnRailsContextValue {
 
     // Setter for the authInfo
     setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => void;
+
+    // Setter for the apiKey
+    setApiKey: (apiKey: string | null) => void;
 
     // Setter for the api version
     setApiVersion: (apiVersion: string) => void;
@@ -35,10 +41,13 @@ export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
     apiVersion: '1.0',
     backendUrl: 'http://localhost:3000',
     authInfo: null,
+    apiKey: null,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setBackendUrl: (backendUrl: string) => {},
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    setApiKey: (authInfo: string | null) => {},
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setApiVersion: (apiVersion: string) => {},
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
