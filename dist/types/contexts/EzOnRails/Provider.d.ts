@@ -7,6 +7,7 @@ interface EzOnRailsProps {
     apiVersion: string;
     backendUrl: string;
     authInfo?: EzOnRailsAuthInfo;
+    apiKey?: string;
     children: ReactNode;
     onUnauthorizedCallback?: () => void;
 }

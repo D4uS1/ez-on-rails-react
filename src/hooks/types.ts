@@ -51,7 +51,7 @@ export interface SearchFilter {
     // The value to search for using the operator on the field
     value: string | number | boolean | null;
 }
-w
+
 /**
  * Describes a search filter having multiple connected filters for a search action of a scaffold.
  */

@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useCallback, useState } from 'react';
 import * as Yup from 'yup';
-import { SchemaOf } from 'yup';
+import { Schema } from 'yup';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsHttpClient, EzOnRailsPasswordResetParams } from '../../http/client/EzOnRailsHttpClient';
 import { DefaultFormProps } from '../shared/types/Form';
@@ -62,7 +62,7 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
     /**
      * Valodation scheme for the password reset form.
      */
-    const PasswordResetValidationSchema: SchemaOf<EzOnRailsPasswordResetParams> = Yup.object()
+    const PasswordResetValidationSchema: Schema<EzOnRailsPasswordResetParams> = Yup.object()
         .shape({
             password: Yup.string()
                 .min(
@@ -74,7 +74,8 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
             passwordConfirmation: Yup.string().oneOf(
                 [Yup.ref('password')],
                 props.passwordConfirmationMatchErrorText || 'The password and its confirmation must match.'
-            )
+            ).required(props.passwordConfirmationMatchErrorText || 'The password and its confirmation must match.'),
+            resetPasswordToken: Yup.string().required('')
         })
         .defined();
 

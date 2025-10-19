@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import * as Yup from 'yup';
-import { SchemaOf } from 'yup';
+import { Schema } from 'yup';
 import { Formik } from 'formik';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsHttpClient, EzOnRailsSignUpParams } from '../../http/client/EzOnRailsHttpClient';
@@ -119,7 +119,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
     /**
      * Validation Schema for registration values.
      */
-    const RegistrationValidationSchema: SchemaOf<EzOnRailsSignUpParams> = Yup.object()
+    const RegistrationValidationSchema: Schema<EzOnRailsSignUpParams> = Yup.object()
         .shape({
             username: Yup.string()
                 .min(
@@ -155,10 +155,10 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
             passwordConfirmation: Yup.string().oneOf(
                 [Yup.ref('password')],
                 props.passwordsMustMatchErrorText || 'The password and its confirmation must match.'
-            ),
+            ).required(props.passwordsMustMatchErrorText || 'The password and its confirmation must match.'),
             privacyPolicyAccepted: Yup.boolean().isTrue(
                 props.privacyPolicyNotAcceptedErrorText || 'The privacy policy must be accepted.'
-            )
+            ).required(props.privacyPolicyNotAcceptedErrorText || 'The privacy policy must be accepted.')
         })
         .defined();
 

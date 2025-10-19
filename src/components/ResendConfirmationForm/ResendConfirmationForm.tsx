@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-import { SchemaOf } from 'yup';
+import { Schema } from 'yup';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsConfirmationInstructionsParams, EzOnRailsHttpClient } from '../../http/client/EzOnRailsHttpClient';
 import { Formik } from 'formik';
@@ -42,7 +42,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const ResendConfirmationValidationSchema: SchemaOf<EzOnRailsConfirmationInstructionsParams> = Yup.object()
+    const ResendConfirmationValidationSchema: Schema<EzOnRailsConfirmationInstructionsParams> = Yup.object()
         .shape({
             email: Yup.string()
                 .email(props.invalidEmailErrorText || 'Invalid email address.')

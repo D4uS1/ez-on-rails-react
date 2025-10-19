@@ -8,7 +8,7 @@ export declare const EzOnRailsHttpUtils: {
     toApiUrl: (backendUrl: string, path: string) => string;
     toSnakeCase: <T>(data: T) => T;
     toSnakeCasePath: (str: string) => string;
-    toCamelCase: <T_1>(data: T_1) => T_1;
+    toCamelCase: <T>(data: T) => T;
     toGetParameters: (parameters: Record<string, string | number | boolean | null>) => string;
     toDates: (params: any) => any;
     toDateStrings: (params: any) => any;

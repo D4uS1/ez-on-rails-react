@@ -10,15 +10,15 @@ export declare const EzOnRailsHttp: {
         updateUser: (backendUrl: string, data: EzOnRailsUpdateUserParams, authInfo: EzOnRailsAuthInfo, apiVersion: string) => Promise<EzOnRailsUser>;
         confirmationInstructions: (backendUrl: string, data: import("./client/EzOnRailsHttpClient").EzOnRailsConfirmationInstructionsParams, apiVersion: string) => Promise<void>;
         confirmation: (backendUrl: string, data: import("./client/EzOnRailsHttpClient").EzOnRailsConfirmParams, apiVersion: string) => Promise<void>;
-        get: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
-        post: <TParams_1, TResponse_1>(backendUrl: string, path: string, data: TParams_1, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_1) => TParams_1) | undefined) => Promise<TResponse_1>;
-        patch: <TParams_2, TResponse_2>(backendUrl: string, path: string, data: TParams_2, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
-        put: <TParams_3, TResponse_3>(backendUrl: string, path: string, data: TParams_3, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
-        delete: <TParams_4, TResponse_4>(backendUrl: string, path: string, data: TParams_4, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
-        defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => Record<string, string>;
+        get: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+        post: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+        patch: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+        put: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+        delete: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+        defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null, apiVersion: string) => Record<string, string>;
     };
     swr: {
-        fetcher: <TParams_5, TResponse_5>([backendUrl, path, method, data, authInfo, apiVersion]: [backendUrl: string, path: string, method: string, data: TParams_5 | null, authInfo: EzOnRailsAuthInfo | undefined, apiVersion: string]) => Promise<TResponse_5>;
+        fetcher: <TParams, TResponse>([backendUrl, path, method, data, authInfo, apiKey, apiVersion]: [backendUrl: string, path: string, method: string, data: TParams | null, authInfo: EzOnRailsAuthInfo | undefined, apiKey: string | null, apiVersion: string]) => Promise<TResponse>;
     };
     utils: {
         cleanupUrl: (url: string) => string;
@@ -27,7 +27,7 @@ export declare const EzOnRailsHttp: {
         toApiUrl: (backendUrl: string, path: string) => string;
         toSnakeCase: <T>(data: T) => T;
         toSnakeCasePath: (str: string) => string;
-        toCamelCase: <T_1>(data: T_1) => T_1;
+        toCamelCase: <T>(data: T) => T;
         toGetParameters: (parameters: Record<string, string | number | boolean | null>) => string;
         toDates: (params: any) => any;
         toDateStrings: (params: any) => any;

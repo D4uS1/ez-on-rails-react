@@ -21,7 +21,7 @@ interface UseEzApiResult<TRequest, TResponse> {
  * @param data
  * @param options
  */
-export declare const useEzApi: <TRequest, TResponse>(path: string, method?: HttpMethod, data?: TRequest | undefined, options?: {
+export declare const useEzApi: <TRequest, TResponse>(path: string, method?: HttpMethod, data?: TRequest, options?: {
     skipInitialCall?: boolean;
 }) => UseEzApiResult<TRequest, TResponse>;
 export {};

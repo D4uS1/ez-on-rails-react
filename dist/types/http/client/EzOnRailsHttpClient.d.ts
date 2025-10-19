@@ -84,12 +84,13 @@ export interface EzOnRailsConfirmParams {
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
  */
-export declare const defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => {
+export declare const defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null, apiVersion: string) => {
     uid?: string | undefined;
     client?: string | undefined;
     expiry?: string | undefined;
     'token-type'?: string | undefined;
     'access-token'?: string | undefined;
+    'api-key'?: string | undefined;
     'Content-Type': string;
     Accept: string;
     'api-version': string;
@@ -200,9 +201,8 @@ export declare const EzOnRailsHttpClient: {
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -212,19 +212,18 @@ export declare const EzOnRailsHttpClient: {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
-    get: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
+    get: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
      * Calls a http POST action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -234,19 +233,18 @@ export declare const EzOnRailsHttpClient: {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
-    post: <TParams_1, TResponse_1>(backendUrl: string, path: string, data: TParams_1, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_1) => TParams_1) | undefined) => Promise<TResponse_1>;
+    post: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
      * Calls a http PATCH action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -256,19 +254,18 @@ export declare const EzOnRailsHttpClient: {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
-    patch: <TParams_2, TResponse_2>(backendUrl: string, path: string, data: TParams_2, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_2) => TParams_2) | undefined) => Promise<TResponse_2>;
+    patch: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
      * Calls a http PUT action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -278,21 +275,20 @@ export declare const EzOnRailsHttpClient: {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
-    put: <TParams_3, TResponse_3>(backendUrl: string, path: string, data: TParams_3, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_3) => TParams_3) | undefined) => Promise<TResponse_3>;
+    put: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
      * Calls a http DELETE action to the api at the specified path of an EzOnRails application at the backendUrl.
      * The backendUrl and the path are expected not to have the api suffix / prefix included.
-     * The url is expected to be the path without the system and the api prefix.
      * The call includes the auth headers for the current user.
      * The data object is expected to be an json object containing the body information of the request.
      * The data object is automatically converted to snake case. Date objects are automatically converted to iso strings.
      * In this case, the data object will be serialized to a get parameter string and will be appended to the url.
-     * The call includes the auth headers for the current user.
-     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by
-     * the authInfo object.
+     * If the authInfo is passed, the request will send authentication headers to authenticate the user defined by the authInfo object.
+     * If the apiKey is passed, the request will send headers including the api key to authenticate requests that are protected by the api key.
      * The apiVersion is the current api version of the backend.
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
@@ -302,16 +298,18 @@ export declare const EzOnRailsHttpClient: {
      * @param path
      * @param data
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      * @param beforeRequest
      */
-    delete: <TParams_4, TResponse_4>(backendUrl: string, path: string, data: TParams_4, authInfo?: EzOnRailsAuthInfo | null, apiVersion?: string, beforeRequest?: ((data: TParams_4) => TParams_4) | undefined) => Promise<TResponse_4>;
+    delete: <TParams, TResponse>(backendUrl: string, path: string, data: TParams, authInfo?: EzOnRailsAuthInfo | null, apiKey?: string | null, apiVersion?: string, beforeRequest?: ((data: TParams) => TParams) | undefined) => Promise<TResponse>;
     /**
      * Returns the default headers used to make an authorized request.
      * Can be used for custom requests without the ez-on-rails-react client.
      *
      * @param authInfo
+     * @param apiKey
      * @param apiVersion
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiVersion: string) => Record<string, string>;
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null, apiVersion: string) => Record<string, string>;
 };

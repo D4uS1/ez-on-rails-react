@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import { SchemaOf } from 'yup';
+import { Schema } from 'yup';
 import { Formik } from 'formik';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsHttpClient, EzOnRailsUpdateUserParams, EzOnRailsUser } from '../../http/client/EzOnRailsHttpClient';
@@ -177,7 +177,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
     /**
      * Validation Schema for registration values.
      */
-    const UpdateUserValidationSchema: SchemaOf<EzOnRailsUpdateUserParams> = Yup.object()
+    const UpdateUserValidationSchema: Schema<EzOnRailsUpdateUserParams> = Yup.object()
         .shape({
             username: Yup.string()
                 .min(

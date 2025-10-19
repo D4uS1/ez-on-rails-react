@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { EzOnRailsAuthInfo } from '../../http/client/EzOnRailsHttpClient';
 import { OnUnauthorizedCallback } from '../../hooks/useEzApiHttpClient';
 /**
@@ -7,9 +6,11 @@ import { OnUnauthorizedCallback } from '../../hooks/useEzApiHttpClient';
 export interface EzOnRailsContextValue {
     backendUrl: string;
     authInfo: EzOnRailsAuthInfo | null;
+    apiKey: string | null;
     apiVersion: string;
     setBackendUrl: (backendUrl: string) => void;
     setAuthInfo: (authInfo: EzOnRailsAuthInfo | null) => void;
+    setApiKey: (apiKey: string | null) => void;
     setApiVersion: (apiVersion: string) => void;
     onUnauthorizedCallback?: OnUnauthorizedCallback;
     setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => void;

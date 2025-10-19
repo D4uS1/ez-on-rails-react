@@ -92,7 +92,8 @@ class EzOnRailsReMaWyUploader extends AbstractUploader {
             delegate
         );
 
-        upload.create((error: Error, blob: ActiveStorageBlob) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        upload.create((error: Error | null, blob: any) => {
             if (error) {
                 this.onError(error);
             } else {

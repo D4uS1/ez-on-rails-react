@@ -206,7 +206,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
                 }
             );
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            upload.create((error: Error, blob: any) => {
+            upload.create((error: Error | null, blob: any) => {
                 setUploadsInProgress((uploadsInProgress) => uploadsInProgress - 1);
                 // if some error occurs, just print it to the console and do nothing else
                 if (error) {

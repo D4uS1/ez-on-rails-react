@@ -156,6 +156,19 @@ const authInfoToHeader = (authInfo: EzOnRailsAuthInfo | null): EzOnRailsAuthHead
 };
 
 /**
+ * Returns the headers to authorize requests using the specified apiKey.
+ *
+ * @param apiKey
+ */
+const apiKeyHeader = (apiKey: string | null) => {
+    if (!apiKey) return undefined;
+
+    return {
+        'api-key': apiKey
+    }
+}
+
+/**
  * Extracts the authentication information from the specified header and returns
  * a resulting EzOnRailsAuthInfo object. If no auth info are provided, undefined will be
  * returned.
@@ -175,12 +188,12 @@ const getAuthInfoFromHeader = (headers: Record<string, string>): EzOnRailsAuthIn
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
  */
-export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | null, apiKey: string |null, apiVersion: string) => {
+export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null, apiVersion: string) => {
     return {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         'api-version': apiVersion,
-        'api-key': apiKey ? apiKey : undefined,
+        ...apiKeyHeader(apiKey),
         ...authInfoToHeader(authInfo)
     };
 };

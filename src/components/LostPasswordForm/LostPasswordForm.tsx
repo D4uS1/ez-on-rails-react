@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-import { SchemaOf } from 'yup';
+import { Schema } from 'yup';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsHttpClient, EzOnRailsPasswordResetInstructionsParams } from '../../http/client/EzOnRailsHttpClient';
 import { Formik } from 'formik';
@@ -42,7 +42,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const LostPasswordValidationSchema: SchemaOf<EzOnRailsPasswordResetInstructionsParams> = Yup.object()
+    const LostPasswordValidationSchema: Schema<EzOnRailsPasswordResetInstructionsParams> = Yup.object()
         .shape({
             email: Yup.string()
                 .email(props.invalidEmailErrorText || 'Invalid email address.')

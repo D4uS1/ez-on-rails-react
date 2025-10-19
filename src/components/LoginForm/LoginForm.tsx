@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-import { SchemaOf } from 'yup';
+import { Schema } from 'yup';
 import { useEzOnRails } from '../../hooks';
 import { EzOnRailsAuthInfo, EzOnRailsHttpClient, EzOnRailsSignInParams } from '../../http/client/EzOnRailsHttpClient';
 import { DefaultFormProps } from '../shared/types/Form';
@@ -69,7 +69,7 @@ export const LoginForm = (props: LoginFormProps) => {
     /**
      * Valodation scheme for the login form.
      */
-    const LoginValidationSchema: SchemaOf<EzOnRailsSignInParams> = Yup.object()
+    const LoginValidationSchema: Schema<EzOnRailsSignInParams> = Yup.object()
         .shape({
             email: Yup.string()
                 .email(props.invalidEmailErrorText || 'Invalid email address.')
