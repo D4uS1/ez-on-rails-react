@@ -11,13 +11,13 @@ This package enables you to build frontend applications that interact with EzOnR
 Install the package using npm
 
 ```
-npm install https://github.com/D4uS1/ez-on-rails-react#v0.9.0
+npm install https://github.com/D4uS1/ez-on-rails-react#v1.2.0
 ```
 
 or yarn.
 
 ```
-yarn add https://github.com/D4uS1/ez-on-rails-react#v0.9.0
+yarn add https://github.com/D4uS1/ez-on-rails-react#v1.2.0
 ```
 
 There is a branch for each released version.
@@ -294,6 +294,7 @@ You must have a look at the following compatibility list, because you must take 
 | 0.8.1   | 0.8.0, 0.8.1                |
 | 0.8.2   | 0.8.1                       |
 | 0.9.0   | 0.9.0, 1.0.0, 1.1.0, 1.1.1  |
+| 1.2.0   | 1.2.0                       |
 
 ## Components
 There are several components you can use, especially for the user registration workflow.
