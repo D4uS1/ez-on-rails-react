@@ -4,25 +4,25 @@
   "private": true,
   "dependencies": {
     "@d4us1/ez-on-rails-react": "file:..",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.4"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/jest": "^30.0.0",
     "@types/node": "^22.18.11",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.4",
-    "react-scripts": "^5.0.1",
+    "@vitejs/plugin-react": "^5.0.4",
     "typescript": "^5.9.3",
-    "web-vitals": "^5.1.0"
+    "vite": "^7.1.9",
+    "vitest": "^3.0.8"
   },
   "scripts": {
-    "start": "GENERATE_SOURCEMAP=false PORT=3001 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite --port 3001 --open",
+    "build": "vite build",
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
