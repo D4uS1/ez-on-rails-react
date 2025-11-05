@@ -126,6 +126,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
 
         // Supress dropzones onclick callback
         event.stopPropagation();
+        event.preventDefault();
     };
 
     /**

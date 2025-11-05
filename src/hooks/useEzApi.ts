@@ -12,7 +12,7 @@ interface UseEzApiResult<TRequest, TResponse> {
     // Not null, if an error occured during request
     error: unknown | null;
 
-    // Indictaes whether the request is currently in progress
+    // Indicates whether the request is currently in progress
     inProgress: boolean;
 
     // Calls the defined request manually
