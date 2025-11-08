@@ -134,7 +134,7 @@ const toDateStrings = (params: any): any => {
         try {
             return params.toISOString();
         } catch (error) {
-            console.error('Error converting date to iso string', error);
+            console.error('ez-on-rails-react: Error converting date to iso string', error);
             return null;
         }
     }
