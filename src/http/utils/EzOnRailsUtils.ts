@@ -131,7 +131,12 @@ const toDates = (params: any): any => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toDateStrings = (params: any): any => {
     if (params instanceof Date) {
-        return params.toISOString();
+        try {
+            return params.toISOString();
+        } catch (error) {
+            console.error('Error converting date to iso string', error);
+            return null;
+        }
     }
 
     if (Array.isArray(params)) {
