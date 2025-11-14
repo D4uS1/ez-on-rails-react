@@ -40,7 +40,7 @@ export interface EzOnRailsContextValue {
     additionalHttpHeaders?: Record<string, string>;
 
     // Setter to save the additional headers that are added to all http requests
-    setAdditionalHttpHeaders?: (headers: Record<string, string> | undefined) => void;
+    setAdditionalHttpHeaders: (headers: Record<string, string> | undefined) => void;
 }
 
 export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
@@ -57,5 +57,7 @@ export const EzOnRailsContext = createContext<EzOnRailsContextValue>({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
     setApiVersion: (apiVersion: string) => {},
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => {}
+    setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    setAdditionalHttpHeaders: (headers?: Record<string, string>) => {}
 });
