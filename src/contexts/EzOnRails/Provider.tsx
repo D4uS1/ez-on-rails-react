@@ -24,6 +24,9 @@ interface EzOnRailsProps {
 
     // Called if any request using ez-on-rails results in a http 401 status code
     onUnauthorizedCallback?: () => void;
+
+    // Additional added to each backend request
+    additionalHttpHeaders?: Record<string, string>;
 }
 
 /**
@@ -37,6 +40,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
     const [onUnauthorizedCallback, setOnUnauthorizedCallback] = useState<OnUnauthorizedCallback | undefined>(
         () => props.onUnauthorizedCallback
     );
+    const [additionalHttpHeaders, setAdditionalHttpHeaders] = useState<Record<string, string> | undefined>(props.additionalHttpHeaders);
 
     /**
      * Saves the newCallback to the state.
@@ -65,7 +69,9 @@ export const EzOnRails = (props: EzOnRailsProps) => {
             setApiKey: setApiKey,
             setApiVersion: setApiVersion,
             setOnUnauthorizedCallback: setOnUnauthorizedCallbackWrapper,
-            onUnauthorizedCallback: onUnauthorizedCallback
+            onUnauthorizedCallback: onUnauthorizedCallback,
+            additionalHttpHeaders: additionalHttpHeaders,
+            setAdditionalHttpHeaders: setAdditionalHttpHeaders
         };
 
         if (result.backendUrl.endsWith('/')) {
@@ -73,7 +79,7 @@ export const EzOnRails = (props: EzOnRailsProps) => {
         }
 
         return result;
-    }, [backendUrl, authInfo, apiKey, apiVersion, setOnUnauthorizedCallbackWrapper, onUnauthorizedCallback]);
+    }, [backendUrl, authInfo, apiKey, apiVersion, setOnUnauthorizedCallbackWrapper, onUnauthorizedCallback, additionalHttpHeaders]);
 
     return <EzOnRailsContext.Provider value={value}>{props.children}</EzOnRailsContext.Provider>;
 };

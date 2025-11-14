@@ -36,7 +36,7 @@ export interface ResendConfirmationFormProps extends DefaultFormProps {
  * @constructor
  */
 export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
-    const { backendUrl, apiVersion } = useEzOnRails();
+    const { backendUrl, apiVersion, additionalHttpHeaders } = useEzOnRails();
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
@@ -62,7 +62,7 @@ export const ResendConfirmationForm = (props: ResendConfirmationFormProps) => {
     const resendConfirmation = (values: EzOnRailsConfirmationInstructionsParams) => {
         setInProgress(true);
 
-        EzOnRailsHttpClient.confirmationInstructions(backendUrl, values, apiVersion)
+        EzOnRailsHttpClient.confirmationInstructions(backendUrl, values, apiVersion, additionalHttpHeaders)
             .then(() => {
                 props.onResendConfirmationSuccess(values.email);
 

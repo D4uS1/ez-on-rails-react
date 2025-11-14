@@ -63,7 +63,7 @@ export interface LoginFormProps extends DefaultFormProps {
  * @constructor
  */
 export const LoginForm = (props: LoginFormProps) => {
-    const { backendUrl, apiVersion, setAuthInfo } = useEzOnRails();
+    const { backendUrl, apiVersion, setAuthInfo, additionalHttpHeaders } = useEzOnRails();
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
@@ -97,7 +97,7 @@ export const LoginForm = (props: LoginFormProps) => {
         setInProgress(true);
 
         try {
-            const authInfo = await EzOnRailsHttpClient.signIn(backendUrl, values, apiVersion);
+            const authInfo = await EzOnRailsHttpClient.signIn(backendUrl, values, apiVersion, additionalHttpHeaders);
             if (!authInfo) throw 'No authentication object returned';
 
             setAuthInfo(authInfo);

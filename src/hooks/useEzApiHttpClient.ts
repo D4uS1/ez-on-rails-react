@@ -30,7 +30,7 @@ interface UseEzApiHttpClientResult {
  * @param basePath
  */
 export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult => {
-    const { backendUrl, authInfo, apiKey, apiVersion, onUnauthorizedCallback } = useEzOnRails();
+    const { backendUrl, authInfo, apiKey, apiVersion, onUnauthorizedCallback, additionalHttpHeaders } = useEzOnRails();
 
     /**
      * Calls a request to api of the EzOnRails backend application defined by the context values.
@@ -55,7 +55,9 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             params,
                             authInfo,
                             apiKey,
-                            apiVersion
+                            apiVersion,
+                            undefined,
+                            additionalHttpHeaders
                         );
                     case 'PUT':
                         return await EzOnRailsHttpClient.put<TRequest | undefined, TResponse>(
@@ -64,7 +66,9 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             params,
                             authInfo,
                             apiKey,
-                            apiVersion
+                            apiVersion,
+                            undefined,
+                            additionalHttpHeaders
                         );
                     case 'PATCH':
                         return await EzOnRailsHttpClient.patch<TRequest | undefined, TResponse>(
@@ -73,7 +77,9 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             params,
                             authInfo,
                             apiKey,
-                            apiVersion
+                            apiVersion,
+                            undefined,
+                            additionalHttpHeaders
                         );
                     case 'DELETE':
                         return await EzOnRailsHttpClient.delete<TRequest | undefined, TResponse>(
@@ -82,7 +88,9 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             params,
                             authInfo,
                             apiKey,
-                            apiVersion
+                            apiVersion,
+                            undefined,
+                            additionalHttpHeaders
                         );
                     default:
                         return await EzOnRailsHttpClient.get<TRequest | undefined, TResponse>(
@@ -91,7 +99,9 @@ export const useEzApiHttpClient = (basePath?: string): UseEzApiHttpClientResult 
                             params,
                             authInfo,
                             apiKey,
-                            apiVersion
+                            apiVersion,
+                            undefined,
+                            additionalHttpHeaders
                         );
                 }
             } catch (err: unknown) {

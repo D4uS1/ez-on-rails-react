@@ -27,7 +27,8 @@ export const EzOnRailsSwr = {
         data = null,
         authInfo = undefined,
         apiKey = null,
-        apiVersion = '1.0'
+        apiVersion = '1.0',
+        additionalHttpHeaders = undefined
     ]: [
         backendUrl: string,
         path: string,
@@ -35,7 +36,8 @@ export const EzOnRailsSwr = {
         data: TParams | null,
         authInfo: EzOnRailsAuthInfo | undefined,
         apiKey: string | null,
-        apiVersion: string
+        apiVersion: string,
+        additionalHttpHeaders: Record<string, string> | undefined
     ]): Promise<TResponse> => {
         method = method.toLowerCase();
         switch (method) {
@@ -46,12 +48,23 @@ export const EzOnRailsSwr = {
                     data,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
             }
 
             case 'put': {
-                return EzOnRailsHttpClient.put<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiVersion);
+                return EzOnRailsHttpClient.put<TParams | null, TResponse>(
+                    backendUrl,
+                    path,
+                    data,
+                    authInfo,
+                    apiKey,
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
+                );
             }
 
             case 'patch': {
@@ -61,7 +74,9 @@ export const EzOnRailsSwr = {
                     data,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
             }
 
@@ -72,12 +87,14 @@ export const EzOnRailsSwr = {
                     data,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
             }
 
             default: {
-                return EzOnRailsHttpClient.get<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiKey, apiVersion);
+                return EzOnRailsHttpClient.get<TParams | null, TResponse>(backendUrl, path, data, authInfo, apiKey, apiVersion, undefined, additionalHttpHeaders);
             }
         }
     }

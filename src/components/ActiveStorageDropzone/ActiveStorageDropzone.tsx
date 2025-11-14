@@ -79,7 +79,7 @@ export interface ActiveStorageDropzoneProps {
  * and some input field for pasting content.
  */
 export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
-    const { backendUrl, authInfo, apiKey, apiVersion } = useEzOnRails();
+    const { backendUrl, authInfo, apiKey, apiVersion, additionalHttpHeaders } = useEzOnRails();
     const [uploadsInProgress, setUploadsInProgress] = useState<number>(0);
 
     // standard upload icon for dropzone (from boostrap icons)
@@ -106,7 +106,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
      * @param signedId
      */
     const removeFileFromServer = async (signedId: string) => {
-        await EzOnRailsHttpClient.delete(backendUrl, `active_storage/blobs/${signedId}`, null, authInfo, apiKey, apiVersion);
+        await EzOnRailsHttpClient.delete(backendUrl, `active_storage/blobs/${signedId}`, null, authInfo, apiKey, apiVersion, undefined, additionalHttpHeaders);
     };
 
     /**

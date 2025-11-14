@@ -36,7 +36,7 @@ export interface LostPasswordFormProps extends DefaultFormProps {
  * @constructor
  */
 export const LostPasswordForm = (props: LostPasswordFormProps) => {
-    const { backendUrl, apiVersion } = useEzOnRails();
+    const { backendUrl, apiVersion, additionalHttpHeaders } = useEzOnRails();
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
@@ -62,7 +62,7 @@ export const LostPasswordForm = (props: LostPasswordFormProps) => {
     const passwordReset = (values: EzOnRailsPasswordResetInstructionsParams) => {
         setInProgress(true);
 
-        EzOnRailsHttpClient.passwordResetInstructions(backendUrl, values, apiVersion)
+        EzOnRailsHttpClient.passwordResetInstructions(backendUrl, values, apiVersion, additionalHttpHeaders)
             .then(() => {
                 props.onLostPasswordSuccess(values.email);
 

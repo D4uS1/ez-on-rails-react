@@ -14,5 +14,7 @@ export interface EzOnRailsContextValue {
     setApiVersion: (apiVersion: string) => void;
     onUnauthorizedCallback?: OnUnauthorizedCallback;
     setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => void;
+    additionalHttpHeaders?: Record<string, string>;
+    setAdditionalHttpHeaders?: (headers: Record<string, string> | undefined) => void;
 }
 export declare const EzOnRailsContext: import("react").Context<EzOnRailsContextValue>;

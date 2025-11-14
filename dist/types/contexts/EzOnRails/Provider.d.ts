@@ -10,6 +10,7 @@ interface EzOnRailsProps {
     apiKey?: string;
     children: ReactNode;
     onUnauthorizedCallback?: () => void;
+    additionalHttpHeaders?: Record<string, string>;
 }
 /**
  * Context provider for the CustomStyle value.

@@ -187,14 +187,16 @@ const getAuthInfoFromHeader = (headers: Record<string, string>): EzOnRailsAuthIn
 
 /**
  * Returns the default http header needed for communication to some EzOnRails server instance.
+ * If additionalHttpHeaders are passed, they will be added to the returned object.
  */
-export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null, apiVersion: string) => {
+export const defaultHttpHeader = (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null, apiVersion: string, additionalHttpHeaders?: Record<string, string>) => {
     return {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         'api-version': apiVersion,
         ...apiKeyHeader(apiKey),
-        ...authInfoToHeader(authInfo)
+        ...authInfoToHeader(authInfo),
+        ...additionalHttpHeaders
     };
 };
 
@@ -271,19 +273,21 @@ export const EzOnRailsHttpClient = {
      * Since this differs from service to service, the data is mentioned to be "any" data.
      * This is a async function, hence returning a promise of the response of the action.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    signUp: async (backendUrl: string, data: EzOnRailsSignUpParams, apiVersion: string) => {
+    signUp: async (backendUrl: string, data: EzOnRailsSignUpParams, apiVersion: string, additionalHttpHeaders?: Record<string, string>) => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
             'POST',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users'),
             { user: data },
-            defaultHttpHeader(null, null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion, additionalHttpHeaders)
         );
     },
 
@@ -294,19 +298,21 @@ export const EzOnRailsHttpClient = {
      * The method returns an EzOnRailsAuthInfo object if the request was successfull and the server responded with authentication
      * information for the next request. This information has to be saved and used by the next request to authenticate.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    signIn: async (backendUrl: string, data: EzOnRailsSignInParams, apiVersion: string): Promise<EzOnRailsAuthInfo> => {
+    signIn: async (backendUrl: string, data: EzOnRailsSignInParams, apiVersion: string, additionalHttpHeaders?: Record<string, string>): Promise<EzOnRailsAuthInfo> => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
         const result = await fetchWithThrow(
             'POST',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'auth/sign_in'),
             data,
-            defaultHttpHeader(null, null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion, additionalHttpHeaders)
         );
 
         return getAuthInfoFromHeader(result.headers);
@@ -315,32 +321,37 @@ export const EzOnRailsHttpClient = {
     /**
      * Sends a signout request for the current user to the EzOnRails application at the specified backendUrl.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param authInfo
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    signOut: async (backendUrl: string, authInfo: EzOnRailsAuthInfo, apiVersion: string) => {
+    signOut: async (backendUrl: string, authInfo: EzOnRailsAuthInfo, apiVersion: string, additionalHttpHeaders?: Record<string, string>) => {
         await fetchWithThrow(
             'DELETE',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'auth/sign_out'),
             null,
-            defaultHttpHeader(authInfo, null, apiVersion)
+            defaultHttpHeader(authInfo, null, apiVersion, additionalHttpHeaders)
         );
     },
 
     /**
      * Sends a request to send password reset instructions via email to the EzOnRails application at the specified backendUrl.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
     passwordResetInstructions: async (
         backendUrl: string,
         data: EzOnRailsPasswordResetInstructionsParams,
-        apiVersion: string
+        apiVersion: string,
+        additionalHttpHeaders?: Record<string, string>
     ) => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
@@ -348,7 +359,7 @@ export const EzOnRailsHttpClient = {
             'POST',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/password'),
             { user: data },
-            defaultHttpHeader(null, null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion, additionalHttpHeaders)
         );
     },
 
@@ -357,36 +368,40 @@ export const EzOnRailsHttpClient = {
      * This is the request to change the password, after the user filled out the form with the new password.
      * This method also clears all auth headers.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    passwordReset: async (backendUrl: string, data: EzOnRailsPasswordResetParams, apiVersion: string) => {
+    passwordReset: async (backendUrl: string, data: EzOnRailsPasswordResetParams, apiVersion: string, additionalHttpHeaders?: Record<string, string>) => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
         await fetchWithThrow(
             'PUT',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/password'),
             { user: data },
-            defaultHttpHeader(null, null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion, additionalHttpHeaders)
         );
     },
 
     /**
      * Requests and returns the own user information from the EzOnRails application at the specified backendUrl.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param authInfo
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    getUser: async (backendUrl: string, authInfo: EzOnRailsAuthInfo, apiVersion: string): Promise<EzOnRailsUser> => {
+    getUser: async (backendUrl: string, authInfo: EzOnRailsAuthInfo, apiVersion: string, additionalHttpHeaders?: Record<string, string>): Promise<EzOnRailsUser> => {
         const result = await fetchWithThrow<EzOnRailsUser>(
             'GET',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'users/me'),
             null,
-            defaultHttpHeader(authInfo, null, apiVersion)
+            defaultHttpHeader(authInfo, null, apiVersion, additionalHttpHeaders)
         );
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
@@ -396,17 +411,20 @@ export const EzOnRailsHttpClient = {
      * Updates the user with the specified data on the EzOnRails application at the specified backendUrl
      * side and returns the updated profile.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param authInfo
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
     updateUser: async (
         backendUrl: string,
         data: EzOnRailsUpdateUserParams,
         authInfo: EzOnRailsAuthInfo,
-        apiVersion: string
+        apiVersion: string,
+        additionalHttpHeaders?: Record<string, string>
     ): Promise<EzOnRailsUser> => {
         // Only the signedId must be passed to the update action
         const avatarSignedId = data.avatar?.signedId;
@@ -416,7 +434,7 @@ export const EzOnRailsHttpClient = {
             'PATCH',
             EzOnRailsHttpUtils.toApiUrl(backendUrl, 'users/me'),
             { user: submitData },
-            defaultHttpHeader(authInfo, null, apiVersion)
+            defaultHttpHeader(authInfo, null, apiVersion, additionalHttpHeaders)
         );
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
@@ -426,15 +444,18 @@ export const EzOnRailsHttpClient = {
      * Sends a request to resend the confirmation email to the EzOnRails application at the specified backendUrl.
      * This method also clears all auth headers.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
     confirmationInstructions: async (
         backendUrl: string,
         data: EzOnRailsConfirmationInstructionsParams,
-        apiVersion: string
+        apiVersion: string,
+        additionalHttpHeaders?: Record<string, string>
     ) => {
         data = EzOnRailsHttpUtils.toBackendParams(data);
 
@@ -442,25 +463,27 @@ export const EzOnRailsHttpClient = {
             'POST',
             EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/confirmation'),
             { user: data },
-            defaultHttpHeader(null, null, apiVersion)
+            defaultHttpHeader(null, null, apiVersion, additionalHttpHeaders)
         );
     },
 
     /**
      * Sends a request to confirm the account to the EzOnRails application at the specified backendUrl.
      * The apiVersion is the current api version at the backend that must match.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param data
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    confirmation: async (backendUrl: string, data: EzOnRailsConfirmParams, apiVersion: string) => {
+    confirmation: async (backendUrl: string, data: EzOnRailsConfirmParams, apiVersion: string, additionalHttpHeaders?: Record<string, string>) => {
         let url = EzOnRailsHttpUtils.toBaseUrl(backendUrl, 'users/confirmation');
         data = EzOnRailsHttpUtils.toBackendParams(data);
         // @ts-ignore This works because the type only is a default json object
         url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
 
-        await fetchWithThrow('GET', url, null, defaultHttpHeader(null, null, apiVersion));
+        await fetchWithThrow('GET', url, null, defaultHttpHeader(null, null, apiVersion, additionalHttpHeaders));
     },
 
     /**
@@ -475,6 +498,7 @@ export const EzOnRailsHttpClient = {
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
      * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param path
@@ -483,6 +507,7 @@ export const EzOnRailsHttpClient = {
      * @param apiKey
      * @param apiVersion
      * @param beforeRequest
+     * @param additionalHttpHeaders
      */
     get: async <TParams, TResponse>(
         backendUrl: string,
@@ -491,7 +516,8 @@ export const EzOnRailsHttpClient = {
         authInfo: EzOnRailsAuthInfo | null = null,
         apiKey: string | null = null,
         apiVersion = '1.0',
-        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined,
+        additionalHttpHeaders?: Record<string, string>
     ): Promise<TResponse> => {
         let url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
@@ -507,7 +533,7 @@ export const EzOnRailsHttpClient = {
             url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
         }
 
-        const result = await fetchWithThrow<TResponse>('GET', url, null, defaultHttpHeader(authInfo, apiKey, apiVersion));
+        const result = await fetchWithThrow<TResponse>('GET', url, null, defaultHttpHeader(authInfo, apiKey, apiVersion, additionalHttpHeaders));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -523,6 +549,7 @@ export const EzOnRailsHttpClient = {
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
      * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param path
@@ -531,6 +558,7 @@ export const EzOnRailsHttpClient = {
      * @param apiKey
      * @param apiVersion
      * @param beforeRequest
+     * @param additionalHttpHeaders
      */
     post: async <TParams, TResponse>(
         backendUrl: string,
@@ -539,7 +567,8 @@ export const EzOnRailsHttpClient = {
         authInfo: EzOnRailsAuthInfo | null = null,
         apiKey: string | null = null,
         apiVersion = '1.0',
-        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined,
+        additionalHttpHeaders?: Record<string, string>
     ): Promise<TResponse> => {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
@@ -551,7 +580,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>('POST', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion));
+        const result = await fetchWithThrow<TResponse>('POST', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion, additionalHttpHeaders));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -567,6 +596,7 @@ export const EzOnRailsHttpClient = {
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
      * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param path
@@ -575,6 +605,7 @@ export const EzOnRailsHttpClient = {
      * @param apiKey
      * @param apiVersion
      * @param beforeRequest
+     * @param additionalHttpHeaders
      */
     patch: async <TParams, TResponse>(
         backendUrl: string,
@@ -583,7 +614,8 @@ export const EzOnRailsHttpClient = {
         authInfo: EzOnRailsAuthInfo | null = null,
         apiKey: string | null = null,
         apiVersion = '1.0',
-        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined,
+        additionalHttpHeaders?: Record<string, string>
     ): Promise<TResponse> => {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
@@ -595,7 +627,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>('PATCH', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion));
+        const result = await fetchWithThrow<TResponse>('PATCH', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion, additionalHttpHeaders));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -611,6 +643,7 @@ export const EzOnRailsHttpClient = {
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
      * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param path
@@ -619,6 +652,7 @@ export const EzOnRailsHttpClient = {
      * @param apiKey
      * @param apiVersion
      * @param beforeRequest
+     * @param additionalHttpHeaders
      */
     put: async <TParams, TResponse>(
         backendUrl: string,
@@ -627,7 +661,8 @@ export const EzOnRailsHttpClient = {
         authInfo: EzOnRailsAuthInfo | null = null,
         apiKey: string | null = null,
         apiVersion = '1.0',
-        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined,
+        additionalHttpHeaders?: Record<string, string>
     ): Promise<TResponse> => {
         const url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
@@ -639,7 +674,7 @@ export const EzOnRailsHttpClient = {
             data = beforeRequest(data);
         }
 
-        const result = await fetchWithThrow<TResponse>('PUT', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion));
+        const result = await fetchWithThrow<TResponse>('PUT', url, data, defaultHttpHeader(authInfo, apiKey, apiVersion, additionalHttpHeaders));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -657,6 +692,7 @@ export const EzOnRailsHttpClient = {
      * If the beforeRequest function is passed, those will be called after the data has been converted to snake_case and
      * before the data is send to the server. This can be used to manipulate the data right before the request.
      * The response json will be automatically converted to camelCase. ISO Date Strings will be automatically converted to date objects.
+     * If additionalHttpHeaders are passed, they will be added to the headers of the request.
      *
      * @param backendUrl
      * @param path
@@ -665,6 +701,7 @@ export const EzOnRailsHttpClient = {
      * @param apiKey
      * @param apiVersion
      * @param beforeRequest
+     * @param additionalHttpHeaders
      */
     delete: async <TParams, TResponse>(
         backendUrl: string,
@@ -673,7 +710,8 @@ export const EzOnRailsHttpClient = {
         authInfo: EzOnRailsAuthInfo | null = null,
         apiKey: string | null = null,
         apiVersion = '1.0',
-        beforeRequest: ((data: TParams) => TParams) | undefined = undefined
+        beforeRequest: ((data: TParams) => TParams) | undefined = undefined,
+        additionalHttpHeaders?: Record<string, string>
     ): Promise<TResponse> => {
         let url = EzOnRailsHttpUtils.toApiUrl(backendUrl, path);
 
@@ -689,7 +727,7 @@ export const EzOnRailsHttpClient = {
             url = `${url}?${EzOnRailsHttpUtils.toGetParameters(data)}`;
         }
 
-        const result = await fetchWithThrow<TResponse>('DELETE', url, null, defaultHttpHeader(authInfo, apiKey, apiVersion));
+        const result = await fetchWithThrow<TResponse>('DELETE', url, null, defaultHttpHeader(authInfo, apiKey, apiVersion, additionalHttpHeaders));
 
         return EzOnRailsHttpUtils.toFrontendParams(result.body);
     },
@@ -697,12 +735,14 @@ export const EzOnRailsHttpClient = {
     /**
      * Returns the default headers used to make an authorized request.
      * Can be used for custom requests without the ez-on-rails-react client.
+     * If additionalHttpHeaders are passed, they will be added to the result object.
      *
      * @param authInfo
      * @param apiKey
      * @param apiVersion
+     * @param additionalHttpHeaders
      */
-    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null,  apiVersion: string): Record<string, string> => {
-        return defaultHttpHeader(authInfo, apiKey, apiVersion);
+    defaultHttpHeader: (authInfo: EzOnRailsAuthInfo | null, apiKey: string | null,  apiVersion: string, additionalHttpHeaders?: Record<string, string>): Record<string, string> => {
+        return defaultHttpHeader(authInfo, apiKey, apiVersion, additionalHttpHeaders);
     }
 };

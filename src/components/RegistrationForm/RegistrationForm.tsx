@@ -91,7 +91,7 @@ export interface RegistrationFormProps extends DefaultFormProps {
  * @constructor
  */
 export const RegistrationForm = (props: RegistrationFormProps) => {
-    const { backendUrl, apiVersion } = useEzOnRails();
+    const { backendUrl, apiVersion, additionalHttpHeaders } = useEzOnRails();
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
@@ -107,7 +107,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
         setInProgress(true);
 
         try {
-            await EzOnRailsHttpClient.signUp(backendUrl, values, apiVersion);
+            await EzOnRailsHttpClient.signUp(backendUrl, values, apiVersion, additionalHttpHeaders);
             props.onRegisterSuccess(values.email);
             setInProgress(false);
         } catch (e: unknown) {

@@ -56,7 +56,7 @@ export interface ResetPasswordFormProps extends DefaultFormProps {
  * @constructor
  */
 export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
-    const { backendUrl, apiVersion } = useEzOnRails();
+    const { backendUrl, apiVersion, additionalHttpHeaders } = useEzOnRails();
     const [inProgress, setInProgress] = useState<boolean>(false);
 
     /**
@@ -98,7 +98,8 @@ export const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                         ...values,
                         ...{ resetPasswordToken: props.resetPasswordToken }
                     },
-                    apiVersion
+                    apiVersion,
+                    additionalHttpHeaders
                 );
 
                 await props.onResetPasswordSuccess();

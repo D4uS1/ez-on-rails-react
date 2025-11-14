@@ -57,7 +57,7 @@ interface UseEzScaffResult<TModel extends EzOnRailsRecord, TProperties = Omit<TM
 export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TModel, keyof EzOnRailsRecord>>(
     pluralModelName: string
 ): UseEzScaffResult<TModel, TProperties> => {
-    const { backendUrl, authInfo, apiKey, apiVersion } = useEzOnRails();
+    const { backendUrl, authInfo, apiKey, apiVersion, additionalHttpHeaders } = useEzOnRails();
 
     const [record, setRecord] = useState<TModel | null>(null);
     const [records, setRecords] = useState<TModel[] | null>(null);
@@ -111,7 +111,9 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 null,
                 authInfo,
                 apiKey,
-                apiVersion
+                apiVersion,
+                undefined,
+                additionalHttpHeaders
             );
 
             setRecords(result);
@@ -134,7 +136,9 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     null,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
 
                 setRecord(result);
@@ -159,7 +163,9 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     query,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
 
                 setRecords(result);
@@ -184,7 +190,9 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     properties,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
 
                 setRecord(result);
@@ -209,7 +217,9 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                     properties,
                     authInfo,
                     apiKey,
-                    apiVersion
+                    apiVersion,
+                    undefined,
+                    additionalHttpHeaders
                 );
 
                 setRecord(result);
@@ -227,7 +237,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
     const remove = useCallback(
         (id: number) => {
             return requestHttp(async () => {
-                await EzOnRailsHttpClient.delete(backendUrl, `${scaffoldBasePath}/${id}`, null, authInfo, apiKey, apiVersion);
+                await EzOnRailsHttpClient.delete(backendUrl, `${scaffoldBasePath}/${id}`, null, authInfo, apiKey, apiVersion, undefined, additionalHttpHeaders);
 
                 setRecord(null);
             });

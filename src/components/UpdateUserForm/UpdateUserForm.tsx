@@ -118,7 +118,7 @@ export interface UpdateUserFormProps extends DefaultFormProps {
  * @constructor
  */
 export const UpdateUserForm = (props: UpdateUserFormProps) => {
-    const { authInfo, backendUrl, apiVersion } = useEzOnRails();
+    const { authInfo, backendUrl, apiVersion, additionalHttpHeaders } = useEzOnRails();
     const [inProgress, setInProgress] = useState<boolean>(false);
     const [initialFormData, setInitialFormData] = useState<EzOnRailsUpdateUserParams | null>(null);
     const [unconfirmedEmail, setUnconfirmedEmail] = useState<string | undefined>(undefined);
@@ -142,7 +142,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
         (async () => {
             if (!authInfo) return;
 
-            setFormDataFromUser(await EzOnRailsHttpClient.getUser(backendUrl, authInfo, apiVersion));
+            setFormDataFromUser(await EzOnRailsHttpClient.getUser(backendUrl, authInfo, apiVersion, additionalHttpHeaders));
         })();
     }, [backendUrl, authInfo, apiVersion]);
 
@@ -161,7 +161,7 @@ export const UpdateUserForm = (props: UpdateUserFormProps) => {
         setInProgress(true);
 
         try {
-            const updatedUser = await EzOnRailsHttpClient.updateUser(backendUrl, values, authInfo, apiVersion);
+            const updatedUser = await EzOnRailsHttpClient.updateUser(backendUrl, values, authInfo, apiVersion, additionalHttpHeaders);
             props.onUserUpdateSuccess(updatedUser);
 
             // reinitialize form to show possibly unconfirmed email

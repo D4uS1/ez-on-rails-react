@@ -11,13 +11,13 @@ This package enables you to build frontend applications that interact with EzOnR
 Install the package using npm
 
 ```
-npm install https://github.com/D4uS1/ez-on-rails-react#v1.2.0
+npm install https://github.com/D4uS1/ez-on-rails-react#v1.2.1
 ```
 
 or yarn.
 
 ```
-yarn add https://github.com/D4uS1/ez-on-rails-react#v1.2.0
+yarn add https://github.com/D4uS1/ez-on-rails-react#v1.2.1
 ```
 
 There is a branch for each released version.
@@ -98,11 +98,11 @@ You can also save the authentication information somewhere and pass it to the co
 If you dont want to show the stay logged in checkbox, pass *hideStayLoggedIn* to the component.
 
 ### Optional: 2.1 Use api key to authorize api key protected actions
-Since version 1.2.0 EzOnRails supports actions to be pritected via api key, hence you do not need to have a user account for 
+Since version 1.2.0 EzOnRails supports actions to be protected via api key, hence you do not need to have a user account for 
 some low level protected routes.
 
 If you want to use this feature, you must pass the apiKey to the EzOnRails component.
-Just add the apiKey parameter to the call of EzOnRails comoponent described in section 1.
+Just add the apiKey parameter to the call of EzOnRails component described in section 1.
 ```
 ...
       <EzOnRails 
@@ -279,11 +279,11 @@ import React, { useState } from 'react';
 import { EzOnRailsHttp, useEzOnRails } from '@d4us1/ez-on-rails-react';
 
 export const SomePage = () => {
-    const { backendUrl, apiVersion, apiKey, authInfo } = useEzOnRails();
+    const { backendUrl, apiVersion, apiKey, authInfo, additionalHttpHeaders } = useEzOnRails();
     const [response, setResponse] = useState<{ someResponse: string } | null>(null);
     
     const onClickRequest = async () => {
-        const result = await EzOnRailsHttp.client.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiKey, apiVersion);
+        const result = await EzOnRailsHttp.client.post(backendUrl, 'some/path', { someParam: 'Test' }, authInfo, apiKey, apiVersion, undefined, additionalHttpHeaders);
         setResponse(result);
     }
     
@@ -312,6 +312,7 @@ You must have a look at the following compatibility list, because you must take 
 | 0.8.2   | 0.8.1                       |
 | 0.9.0   | 0.9.0, 1.0.0, 1.1.0 - 1.1.4 |
 | 1.2.0   | 1.2.0 - 1.2.1               |
+| 1.2.1   | 1.2.1                       |
 
 ## Components
 There are several components you can use, especially for the user registration workflow.

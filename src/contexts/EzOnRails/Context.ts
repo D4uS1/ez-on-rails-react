@@ -35,6 +35,12 @@ export interface EzOnRailsContextValue {
 
     // Setter to save the callback that is called if some request resulted in a 401 http status
     setOnUnauthorizedCallback: (callback: OnUnauthorizedCallback | undefined) => void;
+
+    // Additional headers that are added to all http requests
+    additionalHttpHeaders?: Record<string, string>;
+
+    // Setter to save the additional headers that are added to all http requests
+    setAdditionalHttpHeaders?: (headers: Record<string, string> | undefined) => void;
 }
 
 export const EzOnRailsContext = createContext<EzOnRailsContextValue>({

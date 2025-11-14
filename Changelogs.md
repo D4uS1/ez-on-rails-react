@@ -10,6 +10,8 @@
 ## 1.2.0
 * Added support for new api key functionality of EzOnRails Backends
 
+## 1.2.1
+* Added additionalHttpHeaders that are appended to the headers for each http request using the hooks and http client.
 
 # Update Steps
 ## From 0.8.x to 1.2.0
@@ -53,4 +55,5 @@ const { data: result } = useSWR<TModel[]>([
 ]);
 ...
 ```
+
 
