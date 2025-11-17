@@ -125,6 +125,10 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
      * @param signedId The signed id of the image.
      */
     const removeFile = async (event: MouseEvent, signedId: string) => {
+        // Supress dropzones onclick callback
+        event.stopPropagation();
+        event.preventDefault();
+
         // remove file from server to prevent garbage
         await removeFileFromServer(signedId);
 
@@ -132,10 +136,6 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
         let newFiles = [...props.files];
         newFiles = newFiles.filter((file) => signedId !== file.signedId);
         props.onChange(newFiles);
-
-        // Supress dropzones onclick callback
-        event.stopPropagation();
-        event.preventDefault();
     };
 
     /**
