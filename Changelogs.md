@@ -12,6 +12,7 @@
 
 ## 1.2.1
 * Added additionalHttpHeaders that are appended to the headers for each http request using the hooks and http client.
+* Replaced img tag for preview in dropzone for non image files with span
 
 # Update Steps
 ## From 0.8.x to 1.2.0
