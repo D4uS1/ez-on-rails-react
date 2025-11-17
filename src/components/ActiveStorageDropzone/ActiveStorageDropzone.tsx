@@ -19,6 +19,15 @@ export const blobShowPath = (signedId: string, filename: string): string => {
 };
 
 /**
+ * Returns true if the file behind the specified filename is an image.
+ *
+ * @param filename
+ */
+const isImage = (filename: string): boolean => {
+    return filename.match(/\.(jpeg|jpg|gif|png|bmp|tif|tiff)$/) !== null;
+}
+
+/**
  * Describes a rails file blob.
  */
 export interface RailsFileBlob {
@@ -279,11 +288,15 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
                 </button>
             </div>
             <div className={'d-flex justify-content-center align-items-center w-100 h-100'}>
-                <img
-                    src={EzOnRailsHttpUtils.toBaseUrl(backendUrl, file.path || '')}
-                    alt={file.filename}
-                    className={'d-block mw-100 m-auto m-0 rounded p-1'}
-                />
+                { isImage(file.filename || '') ? (
+                    <img
+                        src={EzOnRailsHttpUtils.toBaseUrl(backendUrl, file.path || '')}
+                        alt={file.filename}
+                        className={'d-block mw-100 m-auto m-0 rounded p-1'}
+                    />
+                ) : (
+                    <span>{file.filename}</span>
+                )}
             </div>
         </div>
     ));
@@ -297,7 +310,7 @@ export const ActiveStorageDropzone = (props: ActiveStorageDropzoneProps) => {
                 <div className={'d-flex justify-content-center align-items-center w-100 h-100'}>
                     <div className="p-4 text-center">
                         <div className="spinner-border" role="status">
-                            <span className="sr-only">Loading...</span>
+                            <span className="sr-only"></span>
                         </div>
                     </div>
                 </div>
