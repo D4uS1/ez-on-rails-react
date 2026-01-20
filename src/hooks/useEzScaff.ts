@@ -120,7 +120,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
 
             return result;
         });
-    }, [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]);
+    }, [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, additionalHttpHeaders, requestHttp]);
 
     /**
      * Requests the show action with the specified id related to the defined model on the backend side.
@@ -146,7 +146,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, additionalHttpHeaders, requestHttp]
     );
 
     /**
@@ -173,7 +173,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, additionalHttpHeaders, requestHttp]
     );
 
     /**
@@ -200,7 +200,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, additionalHttpHeaders, requestHttp]
     );
 
     /**
@@ -227,7 +227,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 return result;
             });
         },
-        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, additionalHttpHeaders, requestHttp]
     );
 
     /**
@@ -242,7 +242,7 @@ export const useEzScaff = <TModel extends EzOnRailsRecord, TProperties = Omit<TM
                 setRecord(null);
             });
         },
-        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, requestHttp]
+        [backendUrl, authInfo, apiKey, apiVersion, scaffoldBasePath, additionalHttpHeaders, requestHttp]
     );
 
     return {
