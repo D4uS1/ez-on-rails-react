@@ -1,3 +1,6 @@
+# !!!! IMPORTANT NOTE !!!!
+This repository was moved to [Codeberg](https://codeberg.org/D4uS1/ez-on-rails-react). The github repository is not maintained anymore.
+
 # ez-on-rails-react
 This package provides a react library to interact with [ez-on-rails](https://github.com/D4uS1/ez-on-rails) backends.
 
